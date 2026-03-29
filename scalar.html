@@ -1,0 +1,13 @@
+<!-- slow breathing -->
+<!DOCTYPE html><html><body style="margin:0;background:black">
+<canvas id="c"></canvas><script>
+const ctx=c.getContext("2d");c.width=innerWidth;c.height=innerHeight;
+let t=0;
+function draw(){
+ctx.fillStyle="black";ctx.fillRect(0,0,c.width,c.height);
+let r=100+Math.sin(t*0.02)*50;
+ctx.beginPath();ctx.arc(c.width/2,c.height/2,r,0,Math.PI*2);
+ctx.strokeStyle="#00ffcc";ctx.stroke();
+t++;requestAnimationFrame(draw);}
+draw();
+</script></body></html>

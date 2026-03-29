@@ -1,0 +1,12 @@
+<!-- trails -->
+<!DOCTYPE html><html><body style="margin:0;background:black">
+<canvas id="c"></canvas><script>
+const ctx=c.getContext("2d");c.width=innerWidth;c.height=innerHeight;
+let x=c.width/2,y=c.height/2;
+function draw(){
+ctx.fillStyle="rgba(0,0,0,0.05)";ctx.fillRect(0,0,c.width,c.height);
+x+=(Math.random()-0.5)*10;y+=(Math.random()-0.5)*10;
+ctx.fillRect(x,y,2,2);
+requestAnimationFrame(draw);}
+draw();
+</script></body></html>

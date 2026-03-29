@@ -1,253 +1,647 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Living Sound Grid</title>
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            overflow: hidden;
-        }
-        body {
-            background: #000;
-            font-family: 'Courier New', monospace;
-        }
-        canvas {
-            display: block;
-            cursor: crosshair;
-        }
-        #info {
-            position: absolute;
-            top: 10px;
-            left: 10px;
-            color: #0f0;
-            font-size: 12px;
-            text-shadow: 0 0 10px #0f0;
-            pointer-events: none;
-            opacity: 0.7;
-        }
-        #instructions {
-            position: absolute;
-            bottom: 10px;
-            left: 50%;
-            transform: translateX(-50%);
-            color: #0f0;
-            font-size: 14px;
-            text-shadow: 0 0 10px #0f0;
-            text-align: center;
-            opacity: 0.5;
-        }
-    </style>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no" />
+  <title>Living Sound Grid · RSVP Field Instrument</title>
+  <style>
+    *, *::before, *::after {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      -webkit-user-select: none;
+      user-select: none;
+      -webkit-touch-callout: none;
+      touch-action: none;
+    }
+
+    html, body {
+      width: 100%;
+      height: 100%;
+      background: #000;
+      font-family: "Courier New", monospace;
+      overflow: hidden;
+    }
+
+    canvas {
+      display: block;
+      width: 100vw;
+      height: 100vh;
+      cursor: crosshair;
+    }
+
+    #hud {
+      position: absolute;
+      inset: 0;
+      pointer-events: none;
+    }
+
+    #info {
+      position: absolute;
+      top: 10px;
+      left: 10px;
+      color: rgba(210, 255, 210, 0.9);
+      font-size: 11px;
+      line-height: 1.55;
+      background: rgba(0, 0, 0, 0.28);
+      padding: 8px 11px;
+      border-radius: 7px;
+      border: 1px solid rgba(255,255,255,0.07);
+      backdrop-filter: blur(4px);
+      letter-spacing: 0.03em;
+    }
+
+    #info span {
+      color: rgba(255,255,255,0.95);
+    }
+
+    .field-label {
+      color: rgba(180, 220, 180, 0.55);
+      font-size: 9px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-top: 5px;
+      display: block;
+    }
+
+    #instructions {
+      position: absolute;
+      bottom: 12px;
+      left: 50%;
+      transform: translateX(-50%);
+      color: rgba(240,240,240,0.7);
+      font-size: 12px;
+      text-align: center;
+      background: rgba(0,0,0,0.22);
+      padding: 7px 14px;
+      border-radius: 999px;
+      border: 1px solid rgba(255,255,255,0.07);
+      backdrop-filter: blur(4px);
+      white-space: nowrap;
+      max-width: calc(100vw - 24px);
+      overflow: hidden;
+      text-overflow: ellipsis;
+      letter-spacing: 0.03em;
+    }
+
+    #enableButton {
+      position: absolute;
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      border: 1px solid rgba(255,255,255,0.28);
+      background: rgba(0, 0, 0, 0.55);
+      color: rgba(255,255,255,0.9);
+      padding: 14px 22px;
+      border-radius: 999px;
+      font-family: "Courier New", monospace;
+      font-size: 14px;
+      letter-spacing: 0.06em;
+      cursor: pointer;
+      pointer-events: auto;
+      backdrop-filter: blur(8px);
+      box-shadow: 0 0 32px rgba(100,255,100,0.08), 0 0 0 1px rgba(255,255,255,0.04);
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+
+    #enableButton:hover {
+      background: rgba(30, 80, 30, 0.55);
+      box-shadow: 0 0 40px rgba(100,255,100,0.16), 0 0 0 1px rgba(255,255,255,0.08);
+    }
+
+    #enableButton.hidden {
+      display: none;
+    }
+
+    /* voice meter strip */
+    #voicemeter {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      display: flex;
+      flex-direction: column;
+      gap: 3px;
+      pointer-events: none;
+      opacity: 0.72;
+    }
+
+    .voice-bar-wrap {
+      display: flex;
+      align-items: center;
+      gap: 5px;
+    }
+
+    .voice-bar-bg {
+      width: 48px;
+      height: 5px;
+      background: rgba(255,255,255,0.07);
+      border-radius: 3px;
+      overflow: hidden;
+    }
+
+    .voice-bar-fill {
+      height: 100%;
+      width: 0%;
+      border-radius: 3px;
+      transition: width 0.09s linear;
+    }
+
+    .voice-label {
+      font-family: "Courier New", monospace;
+      font-size: 9px;
+      color: rgba(200,220,200,0.5);
+      width: 18px;
+      text-align: right;
+      letter-spacing: 0.04em;
+    }
+  </style>
 </head>
 <body>
-    <canvas id="grid"></canvas>
+  <canvas id="grid"></canvas>
+
+  <div id="hud">
     <div id="info">
-        Generation: <span id="gen">0</span> | 
-        Living Cells: <span id="alive">0</span> | 
-        Frequency: <span id="freq">440</span>Hz
+      <span class="field-label">scalar field Φ</span>
+      Gen <span id="gen">0</span> · Cells <span id="alive">0</span><br>
+      <span class="field-label">vector field v</span>
+      ax <span id="ax">0.00</span> · ay <span id="ay">0.00</span><br>
+      <span class="field-label">entropy S</span>
+      jerk <span id="jrk">0.00</span> · energy <span id="nrg">0.00</span><br>
+      <span class="field-label">sonification</span>
+      Sensors <span id="sensor">inactive</span>
     </div>
+
+    <div id="voicemeter"></div>
+
     <div id="instructions">
-        CLICK to seed life • HOLD to paint • SPACE to clear • The grid makes music as it evolves
+      tap to wake · drag to paint · tilt to flow · shake to inject · space clears · R reseeds
     </div>
 
-    <script>
-        // Canvas setup
-        const canvas = document.getElementById('grid');
-        const ctx = canvas.getContext('2d');
-        canvas.width = window.innerWidth;
-        canvas.height = window.innerHeight;
+    <button id="enableButton">activate field instrument</button>
+  </div>
 
-        // Grid configuration
-        const cellSize = 8;
-        const cols = Math.floor(canvas.width / cellSize);
-        const rows = Math.floor(canvas.height / cellSize);
-        
-        // Create grids
-        let currentGrid = createEmptyGrid();
-        let nextGrid = createEmptyGrid();
-        let generation = 0;
-        let isDrawing = false;
+  <script>
+  (function() {
+    "use strict";
 
-        // Audio context setup
-        const AudioContext = window.AudioContext || window.webkitAudioContext;
-        const audioCtx = new AudioContext();
-        let oscillator = null;
-        let gainNode = null;
+    // ─── canvas ────────────────────────────────────────────────────────
+    const canvas = document.getElementById("grid");
+    const ctx = canvas.getContext("2d", { alpha: false });
 
-        function createEmptyGrid() {
-            return Array(rows).fill(null).map(() => Array(cols).fill(0));
+    const genEl    = document.getElementById("gen");
+    const aliveEl  = document.getElementById("alive");
+    const axEl     = document.getElementById("ax");
+    const ayEl     = document.getElementById("ay");
+    const jrkEl    = document.getElementById("jrk");
+    const nrgEl    = document.getElementById("nrg");
+    const sensorEl = document.getElementById("sensor");
+    const enableButton = document.getElementById("enableButton");
+    const voicemeterEl = document.getElementById("voicemeter");
+
+    // ─── grid state ────────────────────────────────────────────────────
+    const CELL = 10;
+    let cols, rows;
+    let currentGrid = [], nextGrid = [];
+    let generation = 0;
+    let isDrawing = false;
+    let colorPhase = 0;
+    let lastAliveCount = 0;
+
+    // ─── device field (RSVP: Φ scalar, v vector, S entropy) ────────────
+    const deviceField = {
+      ax: 0, ay: 0,           // smoothed vector field v
+      rawX: 0, rawY: 0, rawZ: 0,
+      energy: 0,              // |v| — scalar field Φ proxy
+      jerk: 0,                // d|v|/dt — entropy S proxy
+      lastMag: 0
+    };
+
+    // ─── audio ─────────────────────────────────────────────────────────
+    const AudioContextCtor = window.AudioContext || window.webkitAudioContext;
+    const audioCtx = new AudioContextCtor();
+
+    const MAX_VOICES = 6;
+    const voices = [];
+    let voiceBarFills = [];
+    let audioEnabled = false;
+    let motionEnabled = false;
+    let firstActivation = false;
+
+    // build voice meter UI
+    for (let i = 0; i < MAX_VOICES; i++) {
+      const wrap = document.createElement("div");
+      wrap.className = "voice-bar-wrap";
+
+      const label = document.createElement("div");
+      label.className = "voice-label";
+      label.textContent = "v" + (i + 1);
+
+      const bg = document.createElement("div");
+      bg.className = "voice-bar-bg";
+
+      const fill = document.createElement("div");
+      fill.className = "voice-bar-fill";
+      bg.appendChild(fill);
+
+      wrap.appendChild(label);
+      wrap.appendChild(bg);
+      voicemeterEl.appendChild(wrap);
+      voiceBarFills.push(fill);
+    }
+
+    function buildVoice() {
+      const osc  = audioCtx.createOscillator();
+      const gain = audioCtx.createGain();
+      const pan  = audioCtx.createStereoPanner();
+
+      osc.type = "sine";
+      osc.connect(gain);
+      gain.connect(pan);
+      pan.connect(audioCtx.destination);
+      gain.gain.value = 0.0001;
+      osc.start();
+
+      return { osc, gain, pan, lastFreq: 220, lastVol: 0, lastType: "sine" };
+    }
+
+    for (let i = 0; i < MAX_VOICES; i++) {
+      voices.push(buildVoice());
+    }
+
+    // ─── grid helpers ──────────────────────────────────────────────────
+    function createEmptyGrid() {
+      return Array.from({ length: rows }, () => new Uint8Array(cols));
+    }
+
+    function clearGrid() {
+      currentGrid = createEmptyGrid();
+      nextGrid    = createEmptyGrid();
+      generation  = 0;
+    }
+
+    function seedRandom() {
+      for (let i = 0; i < rows; i++)
+        for (let j = 0; j < cols; j++)
+          currentGrid[i][j] = Math.random() > 0.84 ? 1 : 0;
+      generation = 0;
+    }
+
+    function countNeighbors(grid, row, col) {
+      let n = 0;
+      for (let di = -1; di <= 1; di++)
+        for (let dj = -1; dj <= 1; dj++) {
+          if (di === 0 && dj === 0) continue;
+          n += grid[(row + di + rows) % rows][(col + dj + cols) % cols];
+        }
+      return n;
+    }
+
+    // ─── field operations ──────────────────────────────────────────────
+    function advectGrid(grid) {
+      const dx = Math.max(-2, Math.min(2, Math.round(deviceField.ax * 0.18)));
+      const dy = Math.max(-2, Math.min(2, Math.round(deviceField.ay * 0.18)));
+      if (dx === 0 && dy === 0) return;
+
+      const temp = createEmptyGrid();
+      for (let i = 0; i < rows; i++)
+        for (let j = 0; j < cols; j++) {
+          const ni = (i + dy + rows) % rows;
+          const nj = (j + dx + cols) % cols;
+          temp[ni][nj] = grid[i][j];
+        }
+      for (let i = 0; i < rows; i++)
+        for (let j = 0; j < cols; j++)
+          grid[i][j] = temp[i][j];
+    }
+
+    function injectEntropy(grid) {
+      const e = deviceField.jerk;
+      if (e < 1.8) return;
+      const k = Math.min(80, Math.floor(e * 6));
+      for (let n = 0; n < k; n++) {
+        const i = Math.floor(Math.random() * rows);
+        const j = Math.floor(Math.random() * cols);
+        grid[i][j] = Math.random() > 0.25 ? 1 : 0;
+      }
+    }
+
+    // ─── Game of Life step ─────────────────────────────────────────────
+    function updateGrid() {
+      advectGrid(currentGrid);
+      for (let i = 0; i < rows; i++)
+        for (let j = 0; j < cols; j++) {
+          const n = countNeighbors(currentGrid, i, j);
+          const s = currentGrid[i][j];
+          nextGrid[i][j] = (s === 1 && (n === 2 || n === 3)) || (s === 0 && n === 3) ? 1 : 0;
+        }
+      [currentGrid, nextGrid] = [nextGrid, currentGrid];
+      generation++;
+    }
+
+    // ─── chromatic physics ─────────────────────────────────────────────
+    // hue = Φ(neighbors, generation, v, S, colorPhase)
+    // saturation = f(energy)
+    // lightness = f(jerk, entropy)
+    // glow = f(energy, jerk)
+
+    function cellHue(neighbors, entropy) {
+      const flowHue = deviceField.ax * 22 + deviceField.ay * 22;
+      return (neighbors * 42 + generation * 0.9 + flowHue + colorPhase * 30 + entropy * 28) % 360;
+    }
+
+    function drawGrid() {
+      // semi-transparent fill produces trailing glow without full trails
+      ctx.fillStyle = "rgba(0,0,0,0.94)";
+      ctx.fillRect(0, 0, canvas.width, canvas.height);
+
+      const energy01 = Math.min(1, deviceField.energy / 12);
+      const jerk01   = Math.min(1, deviceField.jerk / 5);
+
+      // colorPhase drifts with energy — field memory
+      colorPhase += 0.008 + jerk01 * 0.035;
+
+      let aliveCount = 0;
+
+      for (let i = 0; i < rows; i++) {
+        for (let j = 0; j < cols; j++) {
+          if (currentGrid[i][j] !== 1) continue;
+          aliveCount++;
+
+          const n = countNeighbors(currentGrid, i, j);
+          const entropy = Math.abs(n - 3);       // S proxy per cell
+
+          const hue        = cellHue(n, entropy);
+          const saturation = Math.min(100, 68 + energy01 * 28 + entropy * 3);
+          const lightness  = Math.min(76, 38 + jerk01 * 18 + Math.max(0, 3 - entropy) * 3);
+          const glow       = 3 + energy01 * 12 + jerk01 * 14 + entropy * 1.5;
+
+          ctx.shadowBlur  = glow;
+          ctx.shadowColor = `hsla(${hue}, 100%, 64%, 0.92)`;
+          ctx.fillStyle   = `hsl(${hue}, ${saturation}%, ${lightness}%)`;
+          ctx.fillRect(j * CELL, i * CELL, CELL - 1, CELL - 1);
+        }
+      }
+
+      ctx.shadowBlur = 0;
+
+      genEl.textContent   = generation;
+      aliveEl.textContent = aliveCount;
+      axEl.textContent    = deviceField.ax.toFixed(2);
+      ayEl.textContent    = deviceField.ay.toFixed(2);
+      jrkEl.textContent   = deviceField.jerk.toFixed(2);
+      nrgEl.textContent   = deviceField.energy.toFixed(2);
+
+      return aliveCount;
+    }
+
+    // ─── spatial multi-voice audio ─────────────────────────────────────
+    // Grid is divided into MAX_VOICES vertical slabs.
+    // Each slab → one voice, positioned in stereo.
+    // hue → pitch class (harmonic identity)
+    // density → amplitude (Φ presence)
+    // entropy → timbre (sine ↔ triangle)
+
+    function sampleRegions() {
+      const slabW = Math.floor(cols / MAX_VOICES);
+      const regions = [];
+      const flowHue = deviceField.ax * 22 + deviceField.ay * 22;
+
+      for (let r = 0; r < MAX_VOICES; r++) {
+        const c0 = r * slabW;
+        const c1 = r === MAX_VOICES - 1 ? cols : c0 + slabW;
+
+        let alive = 0, hueSum = 0, eSum = 0;
+        const area = rows * (c1 - c0);
+
+        for (let i = 0; i < rows; i++)
+          for (let j = c0; j < c1; j++) {
+            if (currentGrid[i][j] !== 1) continue;
+            alive++;
+            const n = countNeighbors(currentGrid, i, j);
+            const entropy = Math.abs(n - 3);
+            const phi = (n * 42 + generation * 0.9 + flowHue + colorPhase * 30 + entropy * 28) % 360;
+            hueSum += phi;
+            eSum   += entropy;
+          }
+
+        const density = alive / area;
+        const avgHue  = alive > 0 ? hueSum / alive : 0;
+        const avgE    = alive > 0 ? eSum   / alive : 0;
+        const center  = (c0 + c1) / 2 / cols;  // normalized 0–1
+
+        regions.push({ density, hue: avgHue, entropy: avgE, center });
+      }
+
+      return regions;
+    }
+
+    function updateSound() {
+      if (!audioEnabled) return;
+      const regions = sampleRegions();
+
+      regions.forEach((reg, i) => {
+        const voice = voices[i];
+
+        // hue → frequency (musically mapped, exponential)
+        const t    = reg.hue / 360;
+        const freq = 110 * Math.pow(2, t * 3 + deviceField.energy * 0.04);
+
+        // density → amplitude
+        const vol = Math.min(0.09, reg.density * 0.28 + 0.0001);
+
+        // entropy → timbre: sine = ordered, triangle = chaotic
+        const newType = reg.entropy < 1.8 ? "sine" : "triangle";
+        if (newType !== voice.lastType) {
+          voice.osc.type = newType;
+          voice.lastType = newType;
         }
 
-        // Seed with random pattern
-        function seedRandom() {
-            for (let i = 0; i < rows; i++) {
-                for (let j = 0; j < cols; j++) {
-                    currentGrid[i][j] = Math.random() > 0.85 ? 1 : 0;
-                }
-            }
+        // slight detune from local entropy
+        const detune = reg.entropy * 18 + deviceField.jerk * 4;
+
+        voice.osc.frequency.exponentialRampToValueAtTime(
+          Math.max(55, freq + detune), audioCtx.currentTime + 0.09
+        );
+        voice.gain.gain.exponentialRampToValueAtTime(
+          Math.max(0.0001, vol), audioCtx.currentTime + 0.09
+        );
+
+        // stereo: slab center → pan position
+        const pan = reg.center * 2 - 1;
+        voice.pan.pan.setTargetAtTime(pan, audioCtx.currentTime, 0.05);
+
+        // update meter bar
+        const fill = voiceBarFills[i];
+        const pct  = Math.min(100, reg.density * 600);
+        const barHue = Math.round(reg.hue);
+        fill.style.width = pct + "%";
+        fill.style.background = `hsl(${barHue}, 90%, 58%)`;
+      });
+    }
+
+    function updateHaptics(aliveCount) {
+      if (!navigator.vibrate) return;
+      const delta = Math.abs(aliveCount - lastAliveCount);
+      if (deviceField.jerk > 4.0) {
+        navigator.vibrate([10, 18, 10]);
+      } else if (delta > 180) {
+        navigator.vibrate(10);
+      }
+      lastAliveCount = aliveCount;
+    }
+
+    // ─── interaction ───────────────────────────────────────────────────
+    function paintAt(cx, cy) {
+      const rect = canvas.getBoundingClientRect();
+      const col  = Math.floor((cx - rect.left)  / CELL);
+      const row  = Math.floor((cy - rect.top)    / CELL);
+      for (let di = -1; di <= 1; di++)
+        for (let dj = -1; dj <= 1; dj++) {
+          const rr = row + di, cc = col + dj;
+          if (rr >= 0 && rr < rows && cc >= 0 && cc < cols)
+            currentGrid[rr][cc] = 1;
         }
+    }
 
-        // Conway's Game of Life rules
-        function countNeighbors(grid, row, col) {
-            let count = 0;
-            for (let i = -1; i <= 1; i++) {
-                for (let j = -1; j <= 1; j++) {
-                    if (i === 0 && j === 0) continue;
-                    const newRow = (row + i + rows) % rows;
-                    const newCol = (col + j + cols) % cols;
-                    count += grid[newRow][newCol];
-                }
-            }
-            return count;
+    // ─── motion sensing ────────────────────────────────────────────────
+    function handleMotion(e) {
+      const acc = e.accelerationIncludingGravity || e.acceleration;
+      if (!acc) return;
+
+      const x = acc.x || 0, y = acc.y || 0, z = acc.z || 0;
+      const S = 0.88;
+
+      deviceField.rawX = x;
+      deviceField.rawY = y;
+      deviceField.rawZ = z;
+
+      deviceField.ax = deviceField.ax * S + x * (1 - S);
+      deviceField.ay = deviceField.ay * S + y * (1 - S);
+
+      const mag = Math.sqrt(x*x + y*y + z*z);
+      deviceField.energy = Math.sqrt(
+        deviceField.ax * deviceField.ax + deviceField.ay * deviceField.ay
+      );
+      deviceField.jerk = Math.abs(mag - deviceField.lastMag);
+      deviceField.lastMag = mag;
+    }
+
+    async function enableMotion() {
+      if (motionEnabled) return;
+      try {
+        if (
+          typeof DeviceMotionEvent !== "undefined" &&
+          typeof DeviceMotionEvent.requestPermission === "function"
+        ) {
+          const res = await DeviceMotionEvent.requestPermission();
+          if (res === "granted") {
+            window.addEventListener("devicemotion", handleMotion, { passive: true });
+            motionEnabled = true;
+            sensorEl.textContent = "active";
+          } else {
+            sensorEl.textContent = "denied";
+          }
+        } else if ("DeviceMotionEvent" in window) {
+          window.addEventListener("devicemotion", handleMotion, { passive: true });
+          motionEnabled = true;
+          sensorEl.textContent = "active";
+        } else {
+          sensorEl.textContent = "unsupported";
         }
+      } catch (err) {
+        sensorEl.textContent = "error";
+      }
+    }
 
-        function updateGrid() {
-            for (let i = 0; i < rows; i++) {
-                for (let j = 0; j < cols; j++) {
-                    const neighbors = countNeighbors(currentGrid, i, j);
-                    const currentState = currentGrid[i][j];
-                    
-                    // Game of Life rules
-                    if (currentState === 1 && (neighbors === 2 || neighbors === 3)) {
-                        nextGrid[i][j] = 1;
-                    } else if (currentState === 0 && neighbors === 3) {
-                        nextGrid[i][j] = 1;
-                    } else {
-                        nextGrid[i][j] = 0;
-                    }
-                }
-            }
-            [currentGrid, nextGrid] = [nextGrid, currentGrid];
-            generation++;
-        }
+    async function activate() {
+      if (firstActivation) {
+        if (audioCtx.state !== "running") await audioCtx.resume();
+        return;
+      }
+      firstActivation = true;
+      if (audioCtx.state !== "running") await audioCtx.resume();
+      audioEnabled = true;
+      await enableMotion();
+      enableButton.classList.add("hidden");
+    }
 
-        function drawGrid() {
-            ctx.fillStyle = '#000';
-            ctx.fillRect(0, 0, canvas.width, canvas.height);
-            
-            let aliveCount = 0;
-            
-            for (let i = 0; i < rows; i++) {
-                for (let j = 0; j < cols; j++) {
-                    if (currentGrid[i][j] === 1) {
-                        aliveCount++;
-                        // Color based on neighbor count for visual interest
-                        const neighbors = countNeighbors(currentGrid, i, j);
-                        const hue = (neighbors * 40 + generation) % 360;
-                        ctx.fillStyle = `hsl(${hue}, 100%, 50%)`;
-                        ctx.fillRect(j * cellSize, i * cellSize, cellSize - 1, cellSize - 1);
-                        
-                        // Add glow effect
-                        ctx.shadowBlur = 10;
-                        ctx.shadowColor = `hsl(${hue}, 100%, 50%)`;
-                    }
-                }
-            }
-            
-            ctx.shadowBlur = 0;
-            
-            // Update display
-            document.getElementById('gen').textContent = generation;
-            document.getElementById('alive').textContent = aliveCount;
-            
-            return aliveCount;
-        }
+    // pointer events (unified mouse + touch via pointer API)
+    canvas.addEventListener("pointerdown", async (e) => {
+      await activate();
+      isDrawing = true;
+      paintAt(e.clientX, e.clientY);
+    });
+    canvas.addEventListener("pointermove", (e) => {
+      if (!isDrawing) return;
+      paintAt(e.clientX, e.clientY);
+    });
+    window.addEventListener("pointerup", () => { isDrawing = false; });
 
-        // Audio synthesis based on grid state
-        function updateSound(aliveCount) {
-            if (aliveCount === 0) {
-                if (oscillator) {
-                    gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.5);
-                }
-                return;
-            }
+    // explicit touch fallback for Safari
+    canvas.addEventListener("touchstart", async (e) => {
+      e.preventDefault();
+      await activate();
+      isDrawing = true;
+      for (const t of e.changedTouches) paintAt(t.clientX, t.clientY);
+    }, { passive: false });
+    canvas.addEventListener("touchmove", (e) => {
+      e.preventDefault();
+      if (!isDrawing) return;
+      for (const t of e.changedTouches) paintAt(t.clientX, t.clientY);
+    }, { passive: false });
+    canvas.addEventListener("touchend", () => { isDrawing = false; });
 
-            // Map alive cells to frequency (200-1200 Hz)
-            const maxCells = rows * cols;
-            const frequency = 200 + (aliveCount / maxCells) * 1000;
-            
-            // Map to volume
-            const volume = Math.min(0.1, aliveCount / maxCells * 0.3);
-            
-            document.getElementById('freq').textContent = Math.round(frequency);
-            
-            if (!oscillator) {
-                oscillator = audioCtx.createOscillator();
-                gainNode = audioCtx.createGain();
-                
-                oscillator.type = 'sine';
-                oscillator.connect(gainNode);
-                gainNode.connect(audioCtx.destination);
-                
-                oscillator.start();
-            }
-            
-            oscillator.frequency.exponentialRampToValueAtTime(
-                frequency, 
-                audioCtx.currentTime + 0.1
-            );
-            gainNode.gain.exponentialRampToValueAtTime(
-                volume + 0.001, 
-                audioCtx.currentTime + 0.1
-            );
-        }
+    enableButton.addEventListener("click", activate);
 
-        // Mouse interaction
-        canvas.addEventListener('mousedown', (e) => {
-            audioCtx.resume(); // Resume audio context on user interaction
-            isDrawing = true;
-            toggleCell(e);
-        });
+    document.addEventListener("keydown", (e) => {
+      if (e.code === "Space")  { e.preventDefault(); clearGrid(); }
+      if (e.code === "KeyR")   seedRandom();
+    });
 
-        canvas.addEventListener('mousemove', (e) => {
-            if (isDrawing) toggleCell(e);
-        });
+    // ─── resize ────────────────────────────────────────────────────────
+    function resizeCanvas() {
+      const oldGrid = currentGrid;
+      const oldRows = rows || 0;
+      const oldCols = cols || 0;
 
-        canvas.addEventListener('mouseup', () => {
-            isDrawing = false;
-        });
+      canvas.width  = window.innerWidth;
+      canvas.height = window.innerHeight;
 
-        function toggleCell(e) {
-            const rect = canvas.getBoundingClientRect();
-            const x = e.clientX - rect.left;
-            const y = e.clientY - rect.top;
-            const col = Math.floor(x / cellSize);
-            const row = Math.floor(y / cellSize);
-            
-            if (row >= 0 && row < rows && col >= 0 && col < cols) {
-                currentGrid[row][col] = 1;
-            }
-        }
+      cols = Math.max(12, Math.floor(canvas.width  / CELL));
+      rows = Math.max(12, Math.floor(canvas.height / CELL));
 
-        // Keyboard controls
-        document.addEventListener('keydown', (e) => {
-            if (e.code === 'Space') {
-                currentGrid = createEmptyGrid();
-                generation = 0;
-            } else if (e.code === 'KeyR') {
-                seedRandom();
-            }
-        });
+      currentGrid = createEmptyGrid();
+      nextGrid    = createEmptyGrid();
 
-        // Main animation loop
-        function animate() {
-            updateGrid();
-            const aliveCount = drawGrid();
-            updateSound(aliveCount);
-            setTimeout(() => requestAnimationFrame(animate), 100);
-        }
-
-        // Initialize
+      if (oldGrid.length) {
+        const mr = Math.min(oldRows, rows);
+        const mc = Math.min(oldCols, cols);
+        for (let i = 0; i < mr; i++)
+          for (let j = 0; j < mc; j++)
+            currentGrid[i][j] = oldGrid[i][j];
+      } else {
         seedRandom();
-        animate();
+      }
+    }
 
-        // Handle window resize
-        window.addEventListener('resize', () => {
-            canvas.width = window.innerWidth;
-            canvas.height = window.innerHeight;
-        });
-    </script>
+    window.addEventListener("resize", resizeCanvas);
+
+    // ─── main loop ─────────────────────────────────────────────────────
+    function animate() {
+      injectEntropy(currentGrid);
+      updateGrid();
+      const alive = drawGrid();
+      updateSound();
+      updateHaptics(alive);
+      setTimeout(() => requestAnimationFrame(animate), 95);
+    }
+
+    // ─── init ──────────────────────────────────────────────────────────
+    resizeCanvas();
+    seedRandom();
+    animate();
+
+  })();
+  </script>
 </body>
 </html>

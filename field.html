@@ -1,0 +1,14 @@
+<!-- wave field -->
+<!DOCTYPE html><html><body style="margin:0;background:black">
+<canvas id="c"></canvas><script>
+const ctx=c.getContext("2d");c.width=innerWidth;c.height=innerHeight;
+let t=0;
+function draw(){
+ctx.fillStyle="black";ctx.fillRect(0,0,c.width,c.height);
+for(let x=0;x<c.width;x+=10){
+let y=c.height/2+Math.sin(x*0.01+t)*100;
+ctx.fillRect(x,y,2,2);
+}
+t+=0.05;requestAnimationFrame(draw);}
+draw();
+</script></body></html>

@@ -1,0 +1,16 @@
+<!-- outward rays -->
+<!DOCTYPE html><html><body style="margin:0;background:black">
+<canvas id="c"></canvas><script>
+const ctx=c.getContext("2d");c.width=innerWidth;c.height=innerHeight;
+let P=Array.from({length:100},()=>({x:0,y:0}));
+function draw(){
+ctx.fillStyle="rgba(0,0,0,0.2)";ctx.fillRect(0,0,c.width,c.height);
+ctx.save();ctx.translate(c.width/2,c.height/2);
+P.forEach(p=>{
+p.x*=1.02;p.y*=1.02;
+if(Math.abs(p.x)>c.width) {p.x=(Math.random()-0.5)*10;p.y=(Math.random()-0.5)*10;}
+ctx.fillRect(p.x,p.y,2,2);
+});
+ctx.restore();requestAnimationFrame(draw);}
+draw();
+</script></body></html>

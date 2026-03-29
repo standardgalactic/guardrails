@@ -1,0 +1,16 @@
+<!-- bounded motion -->
+<!DOCTYPE html><html><body style="margin:0;background:black">
+<canvas id="c"></canvas><script>
+const ctx=c.getContext("2d");c.width=innerWidth;c.height=innerHeight;
+let P=Array.from({length:120},()=>({x:Math.random()*c.width,y:Math.random()*c.height,vx:2,vy:2}));
+function draw(){
+ctx.fillStyle="black";ctx.fillRect(0,0,c.width,c.height);
+P.forEach(p=>{
+p.x+=p.vx;p.y+=p.vy;
+if(p.x<0||p.x>c.width)p.vx*=-1;
+if(p.y<0||p.y>c.height)p.vy*=-1;
+ctx.fillRect(p.x,p.y,2,2);
+});
+requestAnimationFrame(draw);}
+draw();
+</script></body></html>

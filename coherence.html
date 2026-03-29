@@ -1,0 +1,16 @@
+<!-- alignment -->
+<!DOCTYPE html><html><body style="margin:0;background:black">
+<canvas id="c"></canvas><script>
+const ctx=c.getContext("2d");c.width=innerWidth;c.height=innerHeight;
+let P=Array.from({length:150},()=>({x:Math.random()*c.width,y:Math.random()*c.height}));
+function draw(){
+ctx.fillStyle="black";ctx.fillRect(0,0,c.width,c.height);
+let cx=c.width/2,cy=c.height/2;
+P.forEach(p=>{
+p.x+=(cx-p.x)*0.005;
+p.y+=(cy-p.y)*0.005;
+ctx.fillRect(p.x,p.y,2,2);
+});
+requestAnimationFrame(draw);}
+draw();
+</script></body></html>

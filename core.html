@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>core</title>
+<style>
+html, body { margin:0; padding:0; background:black; overflow:hidden; font-family:monospace; color:#00ffcc; }
+body::after { content:""; position:fixed; inset:0; pointer-events:none;
+background:repeating-linear-gradient(to bottom, rgba(0,255,200,0.05) 0px, rgba(0,255,200,0.05) 1px, transparent 2px); }
+#label{position:absolute;top:20px;left:20px;}
+#back{position:absolute;bottom:20px;left:20px;cursor:pointer;}
+</style>
+</head>
+<body>
+<canvas id="c"></canvas>
+<div id="label">core</div>
+<div id="back" onclick="location.href='index.html'">← map</div>
+<script>
+const ctx=c.getContext("2d");function r(){c.width=innerWidth;c.height=innerHeight}r();onresize=r;
+const P=Array.from({length:120},()=>({x:(Math.random()-0.5)*800,y:(Math.random()-0.5)*800,vx:0,vy:0}));
+function draw(){
+ctx.fillStyle="black";ctx.fillRect(0,0,c.width,c.height);
+ctx.save();ctx.translate(c.width/2,c.height/2);
+P.forEach(p=>{
+const dx=-p.y*0.002,dy=p.x*0.002;
+p.vx+=dx+(Math.random()-0.5)*0.3;
+p.vy+=dy+(Math.random()-0.5)*0.3;
+p.vx*=0.95;p.vy*=0.95;p.x+=p.vx;p.y+=p.vy;
+ctx.fillStyle="#00ffcc";ctx.fillRect(p.x,p.y,2,2);
+});
+ctx.restore();requestAnimationFrame(draw);}
+draw();
+</script>
+</body>
+</html>

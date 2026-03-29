@@ -1,0 +1,15 @@
+<!-- directional drift -->
+<!DOCTYPE html><html><body style="margin:0;background:black">
+<canvas id="c"></canvas><script>
+const ctx=c.getContext("2d");c.width=innerWidth;c.height=innerHeight;
+let P=Array.from({length:200},()=>({x:Math.random()*c.width,y:Math.random()*c.height}));
+function draw(){
+ctx.fillStyle="rgba(0,0,0,0.2)";ctx.fillRect(0,0,c.width,c.height);
+P.forEach(p=>{
+p.x+=1+Math.sin(p.y*0.01);
+if(p.x>c.width)p.x=0;
+ctx.fillRect(p.x,p.y,2,2);
+});
+requestAnimationFrame(draw);}
+draw();
+</script></body></html>

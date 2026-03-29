@@ -1,0 +1,15 @@
+<!-- shifting regimes -->
+<!DOCTYPE html><html><body style="margin:0;background:black">
+<canvas id="c"></canvas><script>
+const ctx=c.getContext("2d");c.width=innerWidth;c.height=innerHeight;
+let t=0,P=Array.from({length:150},()=>({x:Math.random()*c.width,y:Math.random()*c.height}));
+function draw(){
+ctx.fillStyle="rgba(0,0,0,0.2)";ctx.fillRect(0,0,c.width,c.height);
+P.forEach(p=>{
+p.x+=Math.sin(t*0.01+p.y*0.01)*2;
+p.y+=Math.cos(t*0.01+p.x*0.01)*2;
+ctx.fillRect(p.x,p.y,2,2);
+});
+t++;requestAnimationFrame(draw);}
+draw();
+</script></body></html>

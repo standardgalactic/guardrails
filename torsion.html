@@ -1,0 +1,17 @@
+<!-- oscillating rotation -->
+<!DOCTYPE html><html><body style="margin:0;background:black">
+<canvas id="c"></canvas><script>
+const ctx=c.getContext("2d");c.width=innerWidth;c.height=innerHeight;
+let t=0,P=Array.from({length:100},()=>({x:Math.random()*800-400,y:Math.random()*800-400}));
+function draw(){
+ctx.fillStyle="black";ctx.fillRect(0,0,c.width,c.height);
+ctx.save();ctx.translate(c.width/2,c.height/2);
+let s=Math.sin(t)*0.02;
+P.forEach(p=>{
+let dx=-p.y*s,dy=p.x*s;
+p.x+=dx;p.y+=dy;
+ctx.fillRect(p.x,p.y,2,2);
+});
+ctx.restore();t+=0.05;requestAnimationFrame(draw);}
+draw();
+</script></body></html>

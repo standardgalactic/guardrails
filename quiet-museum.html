@@ -17,6 +17,7 @@
   --accent3: #d9eed8;
   --accent4: #efe0f6;
   --accent5: #fde7a8;
+  --scan-opacity: 0;
 }
 
 * { box-sizing: border-box; }
@@ -48,6 +49,24 @@ body::before {
   opacity: 0.6;
 }
 
+/* scanline overlay */
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent,
+    transparent 2px,
+    rgba(30, 20, 10, 0.035) 2px,
+    rgba(30, 20, 10, 0.035) 4px
+  );
+  z-index: 999;
+  opacity: var(--scan-opacity);
+  transition: opacity 0.3s;
+}
+
 #app {
   position: relative;
   width: 100%;
@@ -75,6 +94,15 @@ body::before {
   to   { transform: translateY(-55px) translateX(-8px); }
 }
 
+/* field lines — emergent topology indicator */
+#fieldCanvas {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 1;
+  opacity: 0.18;
+}
+
 #room {
   position: absolute;
   inset: 0;
@@ -97,6 +125,11 @@ body::before {
     inset 0 1px 0 rgba(255,255,255,0.6),
     inset 0 -30px 60px rgba(122, 96, 59, 0.08);
   border: 1px solid rgba(100, 75, 45, 0.08);
+  transition: filter 0.06s ease;
+}
+
+#stage.distort {
+  filter: url(#crt-warp);
 }
 
 #stage::before {
@@ -229,14 +262,18 @@ button:active, .tinyToggle:active {
   border: 1px solid rgba(92, 69, 44, 0.14);
   box-shadow: 0 20px 34px rgba(62, 42, 22, 0.12);
   transform-origin: center center;
-  transition: transform 0.35s ease, box-shadow 0.35s ease, opacity 0.35s ease;
   cursor: pointer;
   user-select: none;
+  will-change: transform;
 }
 
 .frame:hover {
-  transform: translateY(-6px) scale(1.02) rotate(var(--rot, 0deg));
-  box-shadow: 0 26px 40px rgba(62, 42, 22, 0.16);
+  box-shadow: 0 26px 40px rgba(62, 42, 22, 0.2);
+}
+
+.frame.dragging {
+  z-index: 99 !important;
+  box-shadow: 0 32px 52px rgba(62,42,22,0.22);
 }
 
 .frameInner {
@@ -249,6 +286,7 @@ button:active, .tinyToggle:active {
     linear-gradient(180deg, rgba(255,255,255,0.86), rgba(255,255,255,0.34)),
     rgba(242,236,227,0.9);
   border: 1px solid rgba(82, 66, 50, 0.08);
+  will-change: filter, transform;
 }
 
 .wash {
@@ -288,6 +326,25 @@ button:active, .tinyToggle:active {
   line-height: 1.28;
 }
 
+/* node state indicator — tiny pulsing dot */
+.nodeState {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 7px;
+  height: 7px;
+  border-radius: 50%;
+  background: rgba(90,130,100,0.55);
+  box-shadow: 0 0 0 2px rgba(90,130,100,0.18);
+  animation: nodeBreath 3s ease-in-out infinite;
+  z-index: 3;
+}
+
+@keyframes nodeBreath {
+  0%, 100% { opacity: 0.45; transform: scale(0.9); }
+  50%       { opacity: 1;    transform: scale(1.15); }
+}
+
 #captionBox {
   position: absolute;
   left: 50%;
@@ -308,9 +365,16 @@ button:active, .tinyToggle:active {
 }
 
 #caption {
-  font-size: clamp(1rem, 1.7vw, 1.35rem);
+  font-size: clamp(0.88rem, 1.4vw, 1.18rem);
   line-height: 1.55;
   margin: 0;
+  font-family: 'Courier New', Courier, monospace;
+  letter-spacing: 0.01em;
+  transition: color 0.3s;
+}
+
+#caption.semantic {
+  color: var(--muted);
 }
 
 #legend {
@@ -328,6 +392,13 @@ button:active, .tinyToggle:active {
 #legend strong {
   color: var(--ink);
   font-weight: 600;
+}
+
+/* field mode toggle */
+#fieldModeBtn.active {
+  background: rgba(90,130,100,0.15);
+  border-color: rgba(90,130,100,0.35);
+  color: #3a6b4a;
 }
 
 #overlay {
@@ -391,6 +462,18 @@ button:active, .tinyToggle:active {
   white-space: pre-wrap;
 }
 
+/* field readout in detail view */
+#detailReadout {
+  font-family: 'Courier New', Courier, monospace;
+  font-size: 0.82rem;
+  color: var(--muted);
+  background: rgba(0,0,0,0.03);
+  border-radius: 8px;
+  padding: 8px 10px;
+  line-height: 1.5;
+  border: 1px solid rgba(80,60,40,0.07);
+}
+
 #closeBtn {
   position: absolute;
   top: 14px;
@@ -421,6 +504,45 @@ button:active, .tinyToggle:active {
   transform: translateX(-50%) translateY(0);
 }
 
+/* field entropy indicator — top right corner */
+#entropyBar {
+  position: absolute;
+  bottom: 8px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 4px;
+  align-items: center;
+  z-index: 6;
+  pointer-events: none;
+  opacity: 0.55;
+}
+
+#entropyBar span {
+  font-family: 'Courier New', monospace;
+  font-size: 0.7rem;
+  color: var(--muted);
+  letter-spacing: 0.05em;
+}
+
+#entropyDots {
+  display: flex;
+  gap: 3px;
+}
+
+.eDot {
+  width: 5px;
+  height: 5px;
+  border-radius: 50%;
+  background: var(--muted);
+  opacity: 0.3;
+  transition: opacity 0.5s;
+}
+
+.eDot.on {
+  opacity: 0.85;
+}
+
 @media (max-width: 920px) {
   #ui { position: absolute; flex-direction: column; align-items: stretch; }
   #controls { justify-content: flex-start; }
@@ -442,6 +564,17 @@ button:active, .tinyToggle:active {
 </style>
 </head>
 <body>
+
+<!-- SVG CRT filter — inline, hidden -->
+<svg width="0" height="0" style="position:absolute">
+  <defs>
+    <filter id="crt-warp" x="-5%" y="-5%" width="110%" height="110%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.008 0.022" numOctaves="1" seed="2" result="noise"/>
+      <feDisplacementMap in="SourceGraphic" in2="noise" scale="6" xChannelSelector="R" yChannelSelector="G"/>
+    </filter>
+  </defs>
+</svg>
+
 <div id="app">
   <div id="sky"></div>
   <div id="room">
@@ -449,14 +582,19 @@ button:active, .tinyToggle:active {
       <div id="wall"></div>
       <div id="floor"></div>
 
+      <!-- field canvas for inter-node lines -->
+      <canvas id="fieldCanvas"></canvas>
+
       <div id="ui">
         <div id="titlePanel" class="panel">
           <h1>The Quiet Museum of Forgotten Afternoons</h1>
-          <p>A gentle browser toy about inventing tiny exhibitions from moods, fragments, and weatherless memories. It does not score you. It does not hurry you. It just keeps hanging little impossible moments on a wall.</p>
+          <p>A gentle browser toy about inventing tiny exhibitions from moods, fragments, and weatherless memories. It does not score you. It does not hurry you.</p>
         </div>
         <div id="controls">
           <button id="newExhibitBtn">Hang a New Afternoon</button>
           <button id="shuffleBtn">Rearrange the Room</button>
+          <button id="fieldModeBtn">Field Mode</button>
+          <button id="collapseBtn">Collapse History</button>
           <button id="saveBtn">Save Museum</button>
           <button id="loadBtn">Load Museum</button>
           <button id="clearBtn">Empty the Walls</button>
@@ -467,12 +605,17 @@ button:active, .tinyToggle:active {
       <div id="gallery"></div>
 
       <div id="captionBox" class="panel">
-        <div class="small">Curator's Note</div>
+        <div class="small">Curator's Note / System Readout</div>
         <p id="caption">This museum collects things that never quite happened, but still seem to have left a trace.</p>
+        <div id="entropyBar">
+          <span>Φ</span>
+          <div id="entropyDots"></div>
+          <span id="entropyVal">0.000</span>
+        </div>
       </div>
 
       <div id="legend" class="panel">
-        <strong>How this works.</strong> Click a small artwork to read its little memory. Double-click anywhere on the wall to hang a new impossible afternoon. Save your collection, clear the room, or let the museum rearrange itself.
+        <strong>How this works.</strong> Click a node to read its memory. Double-click the wall to add a new node. <strong>Field Mode</strong> activates weak inter-node attraction and live oscillation. <strong>Collapse History</strong> reduces to the last 3 nodes — identity as selective retention.
       </div>
 
       <div id="overlay">
@@ -484,6 +627,7 @@ button:active, .tinyToggle:active {
               <h2 id="detailTitle"></h2>
               <div id="detailMeta"></div>
               <div id="detailPoem"></div>
+              <div id="detailReadout"></div>
             </div>
           </div>
         </div>
@@ -502,11 +646,17 @@ const detailArt  = document.getElementById('detailArt');
 const detailTitle= document.getElementById('detailTitle');
 const detailMeta = document.getElementById('detailMeta');
 const detailPoem = document.getElementById('detailPoem');
+const detailReadout = document.getElementById('detailReadout');
 const toast      = document.getElementById('toast');
 const soundBtn   = document.getElementById('soundBtn');
 const sky        = document.getElementById('sky');
+const stage      = document.getElementById('stage');
+const fieldCanvas= document.getElementById('fieldCanvas');
+const entropyDots= document.getElementById('entropyDots');
+const entropyVal = document.getElementById('entropyVal');
+const fieldModeBtn = document.getElementById('fieldModeBtn');
 
-const STORAGE_KEY = 'quiet-museum-v1';
+const STORAGE_KEY = 'quiet-museum-v2';
 
 const palettes = [
   ['#d7e8f7','#f6d9c8','#efe0f6'],
@@ -546,6 +696,10 @@ const shapes = ['petals','arches','clouds','stairs','ribbons','leaves','shells',
 let exhibits     = [];
 let audioCtx     = null;
 let soundEnabled = false;
+let fieldMode    = false;
+let animFrameId  = null;
+let fieldTime    = 0;
+let globalEntropy= 0;
 
 function rand(arr) { return arr[Math.floor(Math.random() * arr.length)]; }
 function r(min, max) { return Math.random() * (max - min) + min; }
@@ -557,7 +711,15 @@ function descriptionFor() { return `${rand(descPartsA)} ${rand(descPartsB)}`; }
 function poemFor() {
   return [`${rand(line1)} ${rand(line2)}`, rand(line3), '', `${rand(line4)} ${rand(line5)}`].join('\n');
 }
-function captionFor(exhibit) {
+
+function systemReadout(exhibit) {
+  const phi  = (Math.sin(Date.now() * 0.0003 + exhibit.density) * 0.5 + 0.5).toFixed(3);
+  const S    = exhibit.density;
+  const dist = (Math.random() * 0.4 + 0.6).toFixed(3);
+  return `[NODE:${exhibit.id.slice(0,6)}]  Φ=${phi}  S=${S}  dist=${dist}\nERA: ${exhibit.era}\nSTATE: ${fieldMode ? 'COUPLED' : 'ISOLATED'}  SHAPE: ${exhibit.shape.toUpperCase()}`;
+}
+
+function captionPoetic(exhibit) {
   return `"${exhibit.title}" suggests that ${rand([
     'small memories may be more architectural than facts',
     'domestic stillness has a texture all its own',
@@ -567,12 +729,22 @@ function captionFor(exhibit) {
   ])}.`;
 }
 
+function captionField(exhibit) {
+  const phi  = (Math.random()).toFixed(4);
+  const s    = exhibit.density;
+  return `[NODE:${exhibit.id.slice(0,6)}] Φ=${phi} | S=${s} | SHAPE=${exhibit.shape.toUpperCase()} | STATE=${fieldMode ? 'COUPLED' : 'STABLE'}`;
+}
+
+function captionFor(exhibit) {
+  return fieldMode ? captionField(exhibit) : captionPoetic(exhibit);
+}
+
 function makePalette() { return rand(palettes).slice(); }
 
 function makeExhibit(x = null, y = null) {
   const palette = makePalette();
-  const width   = window.innerWidth < 620 ? 148 : window.innerWidth < 920 ? 178 : 210;
-  const height  = window.innerWidth < 620 ? 190 : window.innerWidth < 920 ? 220 : 250;
+  const width   = frameWidth();
+  const height  = frameHeight();
   const rect    = gallery.getBoundingClientRect();
   const px = x ?? r(0, Math.max(0, rect.width  - width));
   const py = y ?? r(0, Math.max(0, rect.height - height));
@@ -582,6 +754,7 @@ function makeExhibit(x = null, y = null) {
     description: descriptionFor(),
     poem:        poemFor(),
     x: px, y: py,
+    vx: 0, vy: 0,   // velocity for field dynamics
     rot: r(-6, 6),
     palette,
     shape:   rand(shapes),
@@ -597,6 +770,11 @@ function makeExhibit(x = null, y = null) {
     ])
   };
 }
+
+function frameWidth()  { return window.innerWidth < 620 ? 148 : window.innerWidth < 920 ? 178 : 210; }
+function frameHeight() { return window.innerWidth < 620 ? 190 : window.innerWidth < 920 ? 220 : 250; }
+
+// ── Artwork rendering ──────────────────────────────────────────────────────
 
 function drawWash(container, exhibit, detailed = false) {
   container.innerHTML = '';
@@ -660,22 +838,18 @@ function drawWash(container, exhibit, detailed = false) {
   container.appendChild(scribble);
 }
 
-function shapeTag(shape, i) {
-  if (shape === 'arches')  return 'path';
-  if (shape === 'ribbons') return 'path';
-  if (shape === 'stairs')  return 'path';
-  if (shape === 'leaves')  return chance(0.55) ? 'ellipse' : 'path';
-  if (shape === 'shells')  return 'path';
+function shapeTag(shape) {
+  if (shape === 'arches' || shape === 'ribbons' || shape === 'stairs' || shape === 'shells' || shape === 'petals') return 'path';
+  if (shape === 'leaves') return chance(0.55) ? 'ellipse' : 'path';
   return chance(0.5) ? 'ellipse' : 'circle';
 }
 
 function styleShape(el, exhibit, detailed, i) {
   const fill    = exhibit.palette[i % exhibit.palette.length];
-  const stroke  = 'rgba(100,80,60,0.08)';
   const opacity = detailed ? r(0.32, 0.72) : r(0.3, 0.66);
   el.setAttribute('fill', fill);
   el.setAttribute('fill-opacity', opacity.toFixed(2));
-  el.setAttribute('stroke', stroke);
+  el.setAttribute('stroke', 'rgba(100,80,60,0.08)');
   el.setAttribute('stroke-width', detailed ? '0.35' : '0.28');
   if (el.tagName === 'circle') {
     el.setAttribute('cx', r(10,90)); el.setAttribute('cy', r(10,90));
@@ -719,18 +893,25 @@ function shapePath(type, detailed) {
   return `M 10 10 C 30 30, 70 30, 90 10`;
 }
 
+// ── Frame DOM creation ─────────────────────────────────────────────────────
+
 function createFrameElement(exhibit) {
   const frame = document.createElement('div');
   frame.className  = 'frame';
   frame.style.left = `${exhibit.x}px`;
   frame.style.top  = `${exhibit.y}px`;
-  frame.style.setProperty('--rot', `${exhibit.rot}deg`);
   frame.style.transform = `rotate(${exhibit.rot}deg)`;
   frame.dataset.id = exhibit.id;
 
   const inner = document.createElement('div');
   inner.className = 'frameInner';
   drawWash(inner, exhibit, false);
+
+  // node state indicator
+  const nodeDot = document.createElement('div');
+  nodeDot.className = 'nodeState';
+  nodeDot.style.animationDelay = `${r(-3,0)}s`;
+  inner.appendChild(nodeDot);
 
   const label = document.createElement('div');
   label.className = 'label';
@@ -744,19 +925,21 @@ function createFrameElement(exhibit) {
 
   frame.addEventListener('click', (e) => {
     e.stopPropagation();
-    focusExhibit(exhibit.id);
+    if (!e._wasDrag) focusExhibit(exhibit.id);
   });
 
-  let dragging = false, dragOffsetX = 0, dragOffsetY = 0;
+  let dragging = false, dragOffsetX = 0, dragOffsetY = 0, dragMoved = false;
   frame.addEventListener('pointerdown', (e) => {
     dragging = true;
+    dragMoved = false;
     dragOffsetX = e.clientX - frame.offsetLeft;
     dragOffsetY = e.clientY - frame.offsetTop;
     frame.setPointerCapture(e.pointerId);
-    frame.style.zIndex = '9';
+    frame.classList.add('dragging');
   });
   frame.addEventListener('pointermove', (e) => {
     if (!dragging) return;
+    dragMoved = true;
     const rect = gallery.getBoundingClientRect();
     let nx = e.clientX - rect.left - dragOffsetX;
     let ny = e.clientY - rect.top  - dragOffsetY;
@@ -765,21 +948,179 @@ function createFrameElement(exhibit) {
     frame.style.left = `${nx}px`;
     frame.style.top  = `${ny}px`;
     const ex = exhibits.find(a => a.id === exhibit.id);
-    if (ex) { ex.x = nx; ex.y = ny; }
+    if (ex) { ex.x = nx; ex.y = ny; ex.vx = 0; ex.vy = 0; }
   });
   frame.addEventListener('pointerup', (e) => {
     dragging = false;
     frame.releasePointerCapture(e.pointerId);
-    frame.style.zIndex = 'auto';
+    frame.classList.remove('dragging');
+    if (dragMoved) e._wasDrag = true;
   });
 
   return frame;
 }
 
+// ── Gallery render ─────────────────────────────────────────────────────────
+
 function renderGallery() {
   gallery.innerHTML = '';
   exhibits.forEach(exhibit => gallery.appendChild(createFrameElement(exhibit)));
 }
+
+// Update positions of existing frame elements (for field animation)
+function updateFramePositions() {
+  const frames = gallery.querySelectorAll('.frame');
+  frames.forEach(frame => {
+    const ex = exhibits.find(e => e.id === frame.dataset.id);
+    if (!ex) return;
+    frame.style.left = `${ex.x}px`;
+    frame.style.top  = `${ex.y}px`;
+    frame.style.transform = `rotate(${ex.rot}deg)`;
+  });
+}
+
+// ── Field Canvas (inter-node lines) ───────────────────────────────────────
+
+function resizeCanvas() {
+  fieldCanvas.width  = stage.offsetWidth;
+  fieldCanvas.height = stage.offsetHeight;
+}
+
+function drawFieldLines() {
+  const ctx  = fieldCanvas.getContext('2d');
+  const rect = gallery.getBoundingClientRect();
+  const stageRect = stage.getBoundingClientRect();
+  const offX = rect.left - stageRect.left;
+  const offY = rect.top  - stageRect.top;
+  const fw   = frameWidth();
+  const fh   = frameHeight();
+
+  ctx.clearRect(0, 0, fieldCanvas.width, fieldCanvas.height);
+  if (!fieldMode || exhibits.length < 2) return;
+
+  ctx.lineWidth = 0.8;
+  for (let i = 0; i < exhibits.length; i++) {
+    for (let j = i + 1; j < exhibits.length; j++) {
+      const a = exhibits[i], b = exhibits[j];
+      const ax = offX + a.x + fw/2, ay = offY + a.y + fh/2;
+      const bx = offX + b.x + fw/2, by = offY + b.y + fh/2;
+      const dx = bx - ax, dy = by - ay;
+      const dist = Math.sqrt(dx*dx + dy*dy);
+      if (dist > 420) continue; // only show nearby coupling
+      const alpha = Math.max(0, 1 - dist / 420) * 0.35;
+      const t = fieldTime;
+      const pulse = 0.5 + 0.5 * Math.sin(t * 0.8 + i + j);
+      ctx.strokeStyle = `rgba(90, 110, 100, ${alpha * pulse})`;
+      ctx.setLineDash([4, 8]);
+      ctx.beginPath();
+      ctx.moveTo(ax, ay);
+      ctx.lineTo(bx, by);
+      ctx.stroke();
+    }
+  }
+  ctx.setLineDash([]);
+}
+
+// ── Field dynamics ─────────────────────────────────────────────────────────
+
+const REPEL_MIN  = 180;  // nodes closer than this repel
+const ATTRACT_MAX= 320;  // nodes this far attract
+const ATTRACT_F  = 0.007;
+const REPEL_F    = 0.014;
+const DAMPING    = 0.88;
+
+function applyFieldForces() {
+  const rect = gallery.getBoundingClientRect();
+  const fw   = frameWidth();
+  const fh   = frameHeight();
+
+  for (let i = 0; i < exhibits.length; i++) {
+    for (let j = i + 1; j < exhibits.length; j++) {
+      const a = exhibits[i], b = exhibits[j];
+      const dx = (b.x + fw/2) - (a.x + fw/2);
+      const dy = (b.y + fh/2) - (a.y + fh/2);
+      const dist = Math.sqrt(dx*dx + dy*dy) + 0.001;
+      let fx = 0, fy = 0;
+
+      if (dist < REPEL_MIN) {
+        // repulsion
+        const f = REPEL_F * (REPEL_MIN - dist) / REPEL_MIN;
+        fx = -(dx / dist) * f;
+        fy = -(dy / dist) * f;
+      } else if (dist < ATTRACT_MAX) {
+        // weak attraction
+        const f = ATTRACT_F * (dist - REPEL_MIN) / ATTRACT_MAX;
+        fx =  (dx / dist) * f;
+        fy =  (dy / dist) * f;
+      }
+
+      a.vx -= fx; a.vy -= fy;
+      b.vx += fx; b.vy += fy;
+    }
+  }
+
+  for (const ex of exhibits) {
+    ex.vx *= DAMPING;
+    ex.vy *= DAMPING;
+    ex.x   = Math.max(0, Math.min(rect.width  - fw,  ex.x + ex.vx));
+    ex.y   = Math.max(0, Math.min(rect.height - fh,  ex.y + ex.vy));
+  }
+}
+
+function animateNodes() {
+  const frames = document.querySelectorAll('.frameInner');
+  const t = fieldTime;
+  frames.forEach((el, i) => {
+    const drift  = Math.sin(t * 0.9 + i * 1.1) * 0.5 + 0.5;
+    const scale  = 1 + Math.sin(t * 0.7 + i * 0.8) * 0.012;
+    const bright = 1 + drift * 0.12;
+    el.style.transform = `scale(${scale.toFixed(4)})`;
+    el.style.filter    = `brightness(${bright.toFixed(3)})`;
+  });
+}
+
+function updateEntropy() {
+  // entropy ~ average inter-node distance normalized
+  if (exhibits.length < 2) {
+    globalEntropy = 0;
+    entropyVal.textContent = '0.000';
+    const dots = entropyDots.querySelectorAll('.eDot');
+    dots.forEach(d => d.classList.remove('on'));
+    return;
+  }
+  const fw = frameWidth(), fh = frameHeight();
+  let sum = 0, n = 0;
+  for (let i = 0; i < exhibits.length; i++) {
+    for (let j = i+1; j < exhibits.length; j++) {
+      const dx = exhibits[i].x - exhibits[j].x + (fw/2);
+      const dy = exhibits[i].y - exhibits[j].y + (fh/2);
+      sum += Math.sqrt(dx*dx + dy*dy);
+      n++;
+    }
+  }
+  const avg = n > 0 ? sum / n : 0;
+  globalEntropy = Math.min(1, avg / 400);
+  entropyVal.textContent = globalEntropy.toFixed(3);
+  const dots = entropyDots.querySelectorAll('.eDot');
+  const lit  = Math.round(globalEntropy * dots.length);
+  dots.forEach((d, i) => d.classList.toggle('on', i < lit));
+}
+
+// ── Main animation loop ────────────────────────────────────────────────────
+
+function mainLoop(ts) {
+  fieldTime = ts * 0.001;
+  if (fieldMode) {
+    applyFieldForces();
+    updateFramePositions();
+  }
+  animateNodes();
+  drawFieldLines();
+  updateEntropy();
+  animFrameId = requestAnimationFrame(mainLoop);
+}
+
+// ── Focus / detail ─────────────────────────────────────────────────────────
 
 function focusExhibit(id) {
   const exhibit = exhibits.find(e => e.id === id);
@@ -787,19 +1128,24 @@ function focusExhibit(id) {
   detailTitle.textContent = exhibit.title;
   detailMeta.textContent  = `${exhibit.era} · ${exhibit.note}`;
   detailPoem.textContent  = exhibit.poem;
+  detailReadout.textContent = systemReadout(exhibit);
   drawWash(detailArt, exhibit, true);
   overlay.classList.add('visible');
   caption.textContent = captionFor(exhibit);
+  caption.className   = fieldMode ? 'semantic' : '';
   ping(exhibit.palette[0]);
+  pulseDistortion();
   if (soundEnabled) playChord(exhibit.palette.length + exhibit.density);
 }
 
 function hideOverlay() { overlay.classList.remove('visible'); }
 
+// ── Mutations ──────────────────────────────────────────────────────────────
+
 function addNewExhibit(x = null, y = null, announce = true) {
   const rect   = gallery.getBoundingClientRect();
-  const width  = window.innerWidth < 620 ? 148 : window.innerWidth < 920 ? 178 : 210;
-  const height = window.innerWidth < 620 ? 190 : window.innerWidth < 920 ? 220 : 250;
+  const width  = frameWidth();
+  const height = frameHeight();
   const ex = makeExhibit(
     x == null ? null : Math.max(0, Math.min(rect.width  - width,  x - width/2)),
     y == null ? null : Math.max(0, Math.min(rect.height - height, y - height/2))
@@ -807,23 +1153,58 @@ function addNewExhibit(x = null, y = null, announce = true) {
   exhibits.push(ex);
   renderGallery();
   caption.textContent = captionFor(ex);
+  caption.className   = fieldMode ? 'semantic' : '';
   if (announce) showToast(`Added: ${ex.title}`);
   if (soundEnabled) playPluck();
+  pulseDistortion();
 }
 
 function rearrange() {
   const rect   = gallery.getBoundingClientRect();
-  const width  = window.innerWidth < 620 ? 148 : window.innerWidth < 920 ? 178 : 210;
-  const height = window.innerWidth < 620 ? 190 : window.innerWidth < 920 ? 220 : 250;
+  const width  = frameWidth();
+  const height = frameHeight();
   exhibits = exhibits.map(ex => ({
     ...ex,
     x:   r(0, Math.max(0, rect.width  - width)),
     y:   r(0, Math.max(0, rect.height - height)),
-    rot: r(-7, 7)
+    rot: r(-7, 7),
+    vx: 0, vy: 0
   }));
   renderGallery();
-  caption.textContent = 'The room has reconsidered its own memory and moved a few things around.';
+  caption.textContent = fieldMode
+    ? `[FIELD] Topology perturbed. ${exhibits.length} nodes repositioned. Coupling re-initializing.`
+    : 'The room has reconsidered its own memory and moved a few things around.';
   if (soundEnabled) playChord(8);
+  pulseDistortion();
+}
+
+function collapseHistory() {
+  if (exhibits.length <= 3) {
+    showToast('History already minimal.');
+    return;
+  }
+  const before = exhibits.length;
+  exhibits = exhibits.slice(-3);
+  renderGallery();
+  caption.textContent = fieldMode
+    ? `[COLLAPSE] Ω_t → H_{t+1}: ${before} nodes → 3 retained. Identity as selective retention.`
+    : 'The museum has remembered only what it can carry. Three afternoons remain.';
+  showToast(`State collapsed: ${before} → 3 nodes.`);
+  if (soundEnabled) playChord(4);
+  pulseDistortion();
+}
+
+function toggleFieldMode() {
+  fieldMode = !fieldMode;
+  fieldModeBtn.textContent = fieldMode ? 'Gallery Mode' : 'Field Mode';
+  fieldModeBtn.classList.toggle('active', fieldMode);
+  fieldCanvas.style.opacity = fieldMode ? '1' : '0';
+  caption.textContent = fieldMode
+    ? `[FIELD MODE] ${exhibits.length} nodes coupled. Weak attraction active. Φ-oscillation enabled.`
+    : 'The room has remembered it is a museum and not a field. Frames settle.';
+  caption.className = fieldMode ? 'semantic' : '';
+  showToast(fieldMode ? 'Field mode: nodes coupled.' : 'Gallery mode: nodes isolated.');
+  if (soundEnabled) playChord(fieldMode ? 9 : 6);
 }
 
 function saveMuseum() {
@@ -834,11 +1215,17 @@ function saveMuseum() {
 
 function loadMuseum() {
   const raw = localStorage.getItem(STORAGE_KEY);
-  if (!raw) { showToast('No saved museum was found.'); return; }
+  // also try old key
+  const rawOld = localStorage.getItem('quiet-museum-v1');
+  const src = raw || rawOld;
+  if (!src) { showToast('No saved museum was found.'); return; }
   try {
-    exhibits = JSON.parse(raw);
+    const loaded = JSON.parse(src);
+    exhibits = loaded.map(ex => ({ vx: 0, vy: 0, ...ex }));
     renderGallery();
-    caption.textContent = 'The stored rooms have returned, still carrying their paper weather.';
+    caption.textContent = fieldMode
+      ? `[LOAD] ${exhibits.length} nodes restored from persistent state.`
+      : 'The stored rooms have returned, still carrying their paper weather.';
     showToast('Museum loaded.');
     if (soundEnabled) playChord(10);
   } catch {
@@ -849,10 +1236,22 @@ function loadMuseum() {
 function clearMuseum() {
   exhibits = [];
   renderGallery();
-  caption.textContent = 'The wall is empty again, which is its own kind of exhibition.';
+  caption.textContent = fieldMode
+    ? `[CLEAR] Field state zeroed. 0 nodes. Entropy: 0.000.`
+    : 'The wall is empty again, which is its own kind of exhibition.';
   showToast('The walls have been cleared.');
   if (soundEnabled) playChord(4);
+  pulseDistortion();
 }
+
+// ── CRT distortion ─────────────────────────────────────────────────────────
+
+function pulseDistortion() {
+  stage.classList.add('distort');
+  setTimeout(() => stage.classList.remove('distort'), 130);
+}
+
+// ── Toast ──────────────────────────────────────────────────────────────────
 
 function showToast(message) {
   toast.textContent = message;
@@ -862,7 +1261,7 @@ function showToast(message) {
 }
 
 function escapeHtml(s) {
-  return s
+  return String(s)
     .replaceAll('&','&amp;')
     .replaceAll('<','&lt;')
     .replaceAll('>','&gt;')
@@ -870,12 +1269,16 @@ function escapeHtml(s) {
     .replaceAll("'",'&#39;');
 }
 
+// ── Seeding ────────────────────────────────────────────────────────────────
+
 function seedMuseum() {
   exhibits = [];
   const count = window.innerWidth < 700 ? 4 : 6;
   for (let i = 0; i < count; i++) addNewExhibit(null, null, false);
   caption.textContent = 'This museum collects things that never quite happened, but still seem to have left a trace.';
 }
+
+// ── Atmosphere ────────────────────────────────────────────────────────────
 
 function generateMotes() {
   sky.innerHTML = '';
@@ -905,13 +1308,26 @@ function ping(color) {
     pointerEvents:'none', zIndex:'3',
     transition:'transform 1s ease, opacity 1s ease'
   });
-  document.getElementById('stage').appendChild(ring);
+  stage.appendChild(ring);
   requestAnimationFrame(() => {
     ring.style.transform = 'translate(-50%,-50%) scale(9)';
     ring.style.opacity   = '0';
   });
   setTimeout(() => ring.remove(), 1100);
 }
+
+// ── Build entropy dot row ──────────────────────────────────────────────────
+
+function buildEntropyDots() {
+  entropyDots.innerHTML = '';
+  for (let i = 0; i < 12; i++) {
+    const d = document.createElement('div');
+    d.className = 'eDot';
+    entropyDots.appendChild(d);
+  }
+}
+
+// ── Audio ─────────────────────────────────────────────────────────────────
 
 function initAudio() {
   if (!audioCtx) {
@@ -921,7 +1337,7 @@ function initAudio() {
   }
   if (audioCtx.state === 'suspended') audioCtx.resume();
   soundEnabled = true;
-  soundBtn.textContent = 'Sound Enabled';
+  soundBtn.textContent = 'Sound On';
   return true;
 }
 
@@ -965,42 +1381,75 @@ function playChord(seed = 7) {
   });
 }
 
-// Event listeners
+// ── Event wiring ──────────────────────────────────────────────────────────
+
 document.getElementById('newExhibitBtn').addEventListener('click', () => addNewExhibit());
 document.getElementById('shuffleBtn').addEventListener('click', rearrange);
 document.getElementById('saveBtn').addEventListener('click', saveMuseum);
 document.getElementById('loadBtn').addEventListener('click', loadMuseum);
 document.getElementById('clearBtn').addEventListener('click', clearMuseum);
+document.getElementById('collapseBtn').addEventListener('click', collapseHistory);
+fieldModeBtn.addEventListener('click', toggleFieldMode);
+
 soundBtn.addEventListener('click', () => {
   if (initAudio()) { playChord(6); showToast('Sound enabled.'); }
-  else showToast('Audio is not available in this browser.');
+  else showToast('Audio not available in this browser.');
 });
+
 document.getElementById('closeBtn').addEventListener('click', hideOverlay);
 overlay.addEventListener('click', (e) => { if (e.target === overlay) hideOverlay(); });
+
 gallery.addEventListener('dblclick', (e) => {
   const rect = gallery.getBoundingClientRect();
   addNewExhibit(e.clientX - rect.left, e.clientY - rect.top);
+  pulseDistortion();
 });
+
+// click on stage background → pulse distortion
+stage.addEventListener('click', (e) => {
+  if (e.target === stage || e.target === document.getElementById('wall') || e.target === document.getElementById('floor')) {
+    pulseDistortion();
+  }
+});
+
 window.addEventListener('keydown', (e) => {
   if (e.key === 'Escape') hideOverlay();
-  if (e.key.toLowerCase() === 'n') addNewExhibit();
-  if (e.key.toLowerCase() === 'r') rearrange();
+  if (e.key.toLowerCase() === 'n' && !e.ctrlKey && !e.metaKey) addNewExhibit();
+  if (e.key.toLowerCase() === 'r' && !e.ctrlKey && !e.metaKey) rearrange();
+  if (e.key.toLowerCase() === 'f' && !e.ctrlKey && !e.metaKey) toggleFieldMode();
+  if (e.key.toLowerCase() === 'c' && !e.ctrlKey && !e.metaKey) collapseHistory();
   if (e.key.toLowerCase() === 's' && (e.ctrlKey || e.metaKey)) { e.preventDefault(); saveMuseum(); }
 });
-window.addEventListener('resize', () => { generateMotes(); renderGallery(); });
 
-// Init
+window.addEventListener('resize', () => {
+  generateMotes();
+  resizeCanvas();
+  renderGallery();
+});
+
+// ── Init ──────────────────────────────────────────────────────────────────
+
+buildEntropyDots();
 generateMotes();
-const stored = localStorage.getItem(STORAGE_KEY);
+resizeCanvas();
+fieldCanvas.style.opacity = '0';
+fieldCanvas.style.transition = 'opacity 0.4s';
+
+// try to restore saved state
+const stored = localStorage.getItem(STORAGE_KEY) || localStorage.getItem('quiet-museum-v1');
 if (stored) {
   try {
-    exhibits = JSON.parse(stored);
+    const loaded = JSON.parse(stored);
+    exhibits = loaded.map(ex => ({ vx: 0, vy: 0, ...ex }));
     renderGallery();
     caption.textContent = 'Your saved museum has reopened with its previous arrangement of impossible afternoons.';
   } catch { seedMuseum(); }
 } else {
   seedMuseum();
 }
+
+// Start animation loop
+requestAnimationFrame(mainLoop);
 </script>
 </body>
 </html>
