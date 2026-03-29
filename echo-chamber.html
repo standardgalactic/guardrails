@@ -1,0 +1,343 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VOID//ECHO_Ω</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=VT323&amp;display=swap');
+        
+        :root {
+            --void: #0a001f;
+            --neon: #00ffcc;
+            --blood: #ff0088;
+        }
+        
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            background: var(--void);
+            color: var(--neon);
+            font-family: 'VT323', monospace;
+            overflow: hidden;
+            height: 100vh;
+            cursor: crosshair;
+        }
+        
+        canvas {
+            position: absolute;
+            top: 0; left: 0;
+            z-index: 1;
+        }
+        
+        .overlay {
+            position: absolute;
+            z-index: 10;
+            pointer-events: none;
+        }
+        
+        .header {
+            top: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+            font-size: 2.5rem;
+            text-shadow: 0 0 20px var(--neon);
+            letter-spacing: 8px;
+            animation: glitch 1.5s infinite;
+        }
+        
+        .terminal {
+            bottom: 30px;
+            left: 30px;
+            width: 420px;
+            height: 260px;
+            background: rgba(10, 0, 31, 0.85);
+            border: 3px solid var(--neon);
+            padding: 15px;
+            box-shadow: 0 0 40px var(--neon);
+            pointer-events: all;
+        }
+        
+        .scanline {
+            position: absolute;
+            top: 0; left: 0; right: 0;
+            height: 4px;
+            background: linear-gradient(transparent, rgba(0,255,204,0.3), transparent);
+            animation: scan 4s linear infinite;
+            pointer-events: none;
+            z-index: 20;
+        }
+        
+        button {
+            background: transparent;
+            border: 2px solid var(--blood);
+            color: var(--blood);
+            padding: 8px 20px;
+            font-family: 'VT323', monospace;
+            font-size: 1.4rem;
+            cursor: pointer;
+            transition: all 0.2s;
+            margin: 5px;
+            pointer-events: all;
+        }
+        
+        button:hover {
+            background: var(--blood);
+            color: #000;
+            box-shadow: 0 0 30px var(--blood);
+        }
+        
+        .log {
+            height: 160px;
+            overflow-y: auto;
+            font-size: 1.1rem;
+            line-height: 1.3;
+            color: #88ffdd;
+        }
+        
+        @keyframes glitch {
+            0% { text-shadow: 2px 0 #ff0088, -2px 0 #00ffcc; }
+            20% { text-shadow: -2px 0 #ff0088, 2px 0 #00ffcc; }
+            100% { text-shadow: 2px 0 #ff0088, -2px 0 #00ffcc; }
+        }
+        
+        @keyframes scan {
+            0% { transform: translateY(-100%); }
+            100% { transform: translateY(3000%); }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    
+    <div class="overlay header">VOID//ECHO_Ω</div>
+    
+    <div class="scanline"></div>
+    
+    <div class="overlay terminal">
+        <div style="color:#ff0088; margin-bottom:10px; border-bottom:1px solid #ff0088;">
+            █ NEURAL LACE v0.∞ CONNECTED
+        </div>
+        <div id="log" class="log"></div>
+        <div style="margin-top:12px; text-align:center;">
+            <button onclick="collapse()">COLLAPSE WAVE</button>
+            <button onclick="bloom()">BLOOM NEBULA</button>
+            <button onclick="shatter()">SHATTER REALITY</button>
+        </div>
+    </div>
+    
+    <div class="overlay" style="top:30px;right:30px;font-size:1.1rem;text-align:right;">
+        <div>SECTOR: <span id="sector">ANDROMEDA-7</span></div>
+        <div>ENTROPY: <span id="entropy">0.000000</span>%</div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        let w, h;
+        
+        function resize() {
+            w = window.innerWidth;
+            h = window.innerHeight;
+            canvas.width = w;
+            canvas.height = h;
+        }
+        window.addEventListener('resize', resize);
+        resize();
+        
+        // Particles
+        let particles = [];
+        class Particle {
+            constructor(x, y) {
+                this.x = x || Math.random() * w;
+                this.y = y || Math.random() * h;
+                this.vx = (Math.random() - 0.5) * 1.2;
+                this.vy = (Math.random() - 0.5) * 1.2;
+                this.life = 800 + Math.random() * 600;
+                this.size = Math.random() * 3 + 1;
+                this.hue = Math.random() * 60 + 160;
+            }
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                this.life--;
+                this.vx *= 0.99;
+                this.vy *= 0.99;
+            }
+            draw() {
+                ctx.save();
+                ctx.globalAlpha = this.life / 800;
+                ctx.fillStyle = `hsl(${this.hue}, 100%, 85%)`;
+                ctx.fillRect(this.x, this.y, this.size, this.size);
+                ctx.restore();
+            }
+        }
+        
+        // Central singularity
+        let singularity = { x: w/2, y: h/2, r: 40 };
+        
+        // Background stars
+        let stars = [];
+        for (let i = 0; i < 800; i++) {
+            stars.push({
+                x: Math.random() * w,
+                y: Math.random() * h,
+                size: Math.random() * 2.5,
+                speed: Math.random() * 0.3 + 0.1
+            });
+        }
+        
+        let time = 0;
+        let mouse = { x: w/2, y: h/2 };
+        window.addEventListener('mousemove', e => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+        });
+        
+        function log(message) {
+            const logEl = document.getElementById('log');
+            const entry = document.createElement('div');
+            entry.textContent = `> ${message}`;
+            logEl.appendChild(entry);
+            if (logEl.children.length > 12) logEl.removeChild(logEl.children[0]);
+            logEl.scrollTop = logEl.scrollHeight;
+        }
+        
+        // Effects
+        function collapse() {
+            log("WAVEFUNCTION COLLAPSING...");
+            for (let i = 0; i < 120; i++) {
+                const p = new Particle(singularity.x, singularity.y);
+                p.vx = (Math.random() - 0.5) * 8;
+                p.vy = (Math.random() - 0.5) * 8;
+                p.life = 120;
+                particles.push(p);
+            }
+            singularity.r = 120;
+            setTimeout(() => singularity.r = 40, 400);
+        }
+        
+        function bloom() {
+            log("NEBULA BLOOM DETECTED");
+            for (let i = 0; i < 300; i++) {
+                const p = new Particle();
+                p.hue = 280 + Math.random() * 80;
+                p.vx *= 0.3;
+                p.vy *= 0.3;
+                particles.push(p);
+            }
+        }
+        
+        function shatter() {
+            log("REALITY SHATTER PROTOCOL ACTIVE");
+            for (let i = 0; i < 600; i++) {
+                const p = new Particle(mouse.x, mouse.y);
+                p.life = 300;
+                particles.push(p);
+            }
+        }
+        
+        // Click anywhere
+        canvas.addEventListener('click', e => {
+            for (let i = 0; i < 80; i++) {
+                const p = new Particle(e.clientX, e.clientY);
+                p.vx *= 3;
+                p.vy *= 3;
+                particles.push(p);
+            }
+            if (Math.random() > 0.7) log("ANOMALY REGISTERED");
+        });
+        
+        function animate() {
+            ctx.fillStyle = 'rgba(10, 0, 31, 0.12)';
+            ctx.fillRect(0, 0, w, h);
+            
+            time += 0.008;
+            
+            // Background stars
+            ctx.fillStyle = '#ffffff';
+            for (let s of stars) {
+                ctx.globalAlpha = 0.6 + Math.sin(time * s.speed * 5) * 0.4;
+                ctx.fillRect(s.x, s.y, s.size, s.size);
+                s.x -= s.speed;
+                if (s.x < 0) s.x = w;
+            }
+            ctx.globalAlpha = 1;
+            
+            // Singularity
+            singularity.x = w/2 + Math.sin(time * 0.4) * 80;
+            singularity.y = h/2 + Math.cos(time * 0.3) * 60;
+            
+            ctx.save();
+            ctx.translate(singularity.x, singularity.y);
+            ctx.rotate(time * 2);
+            
+            // Event horizon
+            ctx.fillStyle = '#000';
+            ctx.beginPath();
+            ctx.arc(0, 0, singularity.r, 0, Math.PI * 2);
+            ctx.fill();
+            
+            // Accretion disk
+            const grad = ctx.createRadialGradient(0, 0, singularity.r * 0.6, 0, 0, singularity.r * 2.8);
+            grad.addColorStop(0, 'transparent');
+            grad.addColorStop(0.4, '#ff00aa');
+            grad.addColorStop(1, 'transparent');
+            ctx.fillStyle = grad;
+            ctx.beginPath();
+            ctx.ellipse(0, 0, singularity.r * 3, singularity.r * 0.6, time * 1.5, 0, Math.PI * 2);
+            ctx.fill();
+            ctx.restore();
+            
+            // Particles
+            for (let i = particles.length - 1; i >= 0; i--) {
+                const p = particles[i];
+                p.update();
+                p.draw();
+                
+                // Gravitational pull
+                const dx = singularity.x - p.x;
+                const dy = singularity.y - p.y;
+                const dist = Math.sqrt(dx*dx + dy*dy) + 1;
+                p.vx += dx / dist * 0.08;
+                p.vy += dy / dist * 0.08;
+                
+                if (p.life <= 0) particles.splice(i, 1);
+            }
+            
+            // Occasional new particles
+            if (Math.random() < 0.4) {
+                particles.push(new Particle());
+            }
+            
+            // HUD updates
+            document.getElementById('entropy').textContent = (Math.sin(time) * 12 + 67).toFixed(6);
+            document.getElementById('sector').textContent = ['ANDROMEDA-7', 'ORION-RIFT', 'VOID-9'][Math.floor(time * 0.3) % 3];
+            
+            requestAnimationFrame(animate);
+        }
+        
+        // Boot sequence
+        setTimeout(() => log("NEURAL LACE SYNCHRONIZED"), 300);
+        setTimeout(() => log("YOU ARE NOT SUPPOSED TO BE HERE"), 1200);
+        setTimeout(() => log("...OR ARE YOU?"), 2400);
+        setTimeout(() => log("PRESS BUTTONS. BREAK EVERYTHING."), 3800);
+        
+        animate();
+        
+        // Keyboard easter egg
+        let konami = '';
+        document.addEventListener('keydown', e => {
+            konami += e.key;
+            if (konami.length > 10) konami = konami.slice(-10);
+            if (konami.includes('galactromeda')) {
+                log("MECHACHLEOPTERYX PROTOCOL UNLOCKED");
+                for (let i = 0; i < 800; i++) {
+                    const p = new Particle();
+                    p.hue = 30;
+                    particles.push(p);
+                }
+            }
+        });
+    </script>
+</body>
+</html>

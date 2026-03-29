@@ -1,0 +1,398 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lightpen</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html, body {
+    width: 100%; height: 100%;
+    overflow: hidden;
+    background: #0a0007;
+    cursor: none;
+  }
+
+  canvas {
+    display: block;
+    position: fixed;
+    top: 0; left: 0;
+  }
+
+  #cursor {
+    position: fixed;
+    pointer-events: none;
+    width: 40px; height: 40px;
+    border-radius: 50%;
+    transform: translate(-50%, -50%);
+    mix-blend-mode: screen;
+    transition: width 0.1s, height 0.1s, opacity 0.1s;
+    z-index: 10;
+    background: white;
+    filter: blur(8px);
+    opacity: 0.6;
+  }
+
+  #hint {
+    position: fixed;
+    bottom: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,0.18);
+    font-family: 'Georgia', serif;
+    font-size: 13px;
+    letter-spacing: 0.25em;
+    pointer-events: none;
+    transition: opacity 2s;
+    font-style: italic;
+  }
+
+  #palette {
+    position: fixed;
+    top: 50%;
+    right: 22px;
+    transform: translateY(-50%);
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+    z-index: 20;
+  }
+
+  .swatch {
+    width: 22px; height: 22px;
+    border-radius: 50%;
+    cursor: none;
+    transition: transform 0.15s, box-shadow 0.15s;
+    border: 2px solid rgba(255,255,255,0.08);
+  }
+  .swatch:hover, .swatch.active {
+    transform: scale(1.45);
+    box-shadow: 0 0 14px 4px currentColor;
+  }
+
+  #controls {
+    position: fixed;
+    bottom: 22px;
+    right: 22px;
+    display: flex;
+    gap: 10px;
+    z-index: 20;
+  }
+
+  .btn {
+    background: rgba(255,255,255,0.06);
+    color: rgba(255,255,255,0.45);
+    border: 1px solid rgba(255,255,255,0.1);
+    padding: 6px 14px;
+    font-family: 'Georgia', serif;
+    font-size: 12px;
+    font-style: italic;
+    letter-spacing: 0.1em;
+    cursor: none;
+    border-radius: 2px;
+    transition: background 0.2s, color 0.2s;
+  }
+  .btn:hover {
+    background: rgba(255,255,255,0.13);
+    color: rgba(255,255,255,0.85);
+  }
+</style>
+</head>
+<body>
+
+<canvas id="c"></canvas>
+<div id="cursor"></div>
+
+<div id="palette"></div>
+
+<div id="controls">
+  <button class="btn" id="clearBtn">clear</button>
+  <button class="btn" id="saveBtn">save</button>
+</div>
+
+<div id="hint">drag to smear light</div>
+
+<script>
+const canvas = document.getElementById('c');
+const ctx = canvas.getContext('2d');
+const cursor = document.getElementById('cursor');
+const hint = document.getElementById('hint');
+const paletteEl = document.getElementById('palette');
+
+// ─── Palette ───────────────────────────────────────────────────────────────
+const palettes = [
+  { name: 'ember',   hues: [0, 20, 40],        sat: [90,100], lit: [50,70]  },
+  { name: 'ocean',   hues: [180, 200, 220],     sat: [70,100], lit: [45,70]  },
+  { name: 'aurora',  hues: [120, 160, 280, 320],sat: [60,100], lit: [50,75]  },
+  { name: 'gold',    hues: [40, 55, 30],         sat: [80,100], lit: [55,80]  },
+  { name: 'bruise',  hues: [260, 290, 320],      sat: [50,80],  lit: [30,60]  },
+  { name: 'ice',     hues: [190, 210, 230],      sat: [40,70],  lit: [70,90]  },
+  { name: 'void',    hues: [0, 180, 300],        sat: [0,30],   lit: [15,40]  },
+  { name: 'neon',    hues: [100, 160, 300, 340], sat: [100,100],lit: [55,70]  },
+];
+
+const swatchColors = [
+  '#ff4422','#ff8800','#ffe033','#44ff66',
+  '#00eeff','#4488ff','#cc44ff','#ff44cc',
+  '#ffffff','#aaffcc'
+];
+
+let currentHue = 0;
+let currentPalette = palettes[0];
+let brushSize = 28;
+let isDrawing = false;
+let lastX = null, lastY = null;
+let speed = 0;
+
+// Build palette swatches
+swatchColors.forEach((col, i) => {
+  const s = document.createElement('div');
+  s.className = 'swatch' + (i === 0 ? ' active' : '');
+  s.style.background = col;
+  s.style.color = col;
+  s.title = col;
+  s.addEventListener('mouseenter', () => {
+    document.querySelectorAll('.swatch').forEach(x => x.classList.remove('active'));
+    s.classList.add('active');
+    // Extract hue from color
+    const tmp = document.createElement('canvas');
+    tmp.width = tmp.height = 1;
+    const tc = tmp.getContext('2d');
+    tc.fillStyle = col;
+    tc.fillRect(0,0,1,1);
+    const d = tc.getImageData(0,0,1,1).data;
+    currentHue = rgbToHue(d[0],d[1],d[2]);
+  });
+  paletteEl.appendChild(s);
+});
+
+function rgbToHue(r,g,b){
+  r/=255; g/=255; b/=255;
+  const max=Math.max(r,g,b), min=Math.min(r,g,b);
+  let h;
+  if(max===min) return 0;
+  const d=max-min;
+  switch(max){
+    case r: h=((g-b)/d+(g<b?6:0))/6; break;
+    case g: h=((b-r)/d+2)/6; break;
+    case b: h=((r-g)/d+4)/6; break;
+  }
+  return h*360;
+}
+
+// ─── Canvas resize ─────────────────────────────────────────────────────────
+function resize(){
+  const img = ctx.getImageData(0,0,canvas.width,canvas.height);
+  canvas.width = window.innerWidth;
+  canvas.height = window.innerHeight;
+  fillBlack();
+  ctx.putImageData(img,0,0);
+}
+window.addEventListener('resize', resize);
+
+function fillBlack(){
+  ctx.fillStyle = '#0a0007';
+  ctx.fillRect(0,0,canvas.width,canvas.height);
+}
+
+resize();
+fillBlack();
+
+// ─── Particle system ───────────────────────────────────────────────────────
+const particles = [];
+
+function spawnParticles(x, y, vx, vy, count){
+  for(let i=0; i<count; i++){
+    const angle = Math.random()*Math.PI*2;
+    const mag = Math.random()*speed*0.4 + 0.5;
+    const hShift = (Math.random()-0.5)*60;
+    const h = (currentHue + hShift + 360) % 360;
+    const s = 80 + Math.random()*20;
+    const l = 50 + Math.random()*30;
+    particles.push({
+      x: x + (Math.random()-0.5)*brushSize,
+      y: y + (Math.random()-0.5)*brushSize,
+      vx: Math.cos(angle)*mag + vx*0.2,
+      vy: Math.sin(angle)*mag + vy*0.2,
+      life: 1,
+      decay: 0.018 + Math.random()*0.03,
+      size: Math.random()*brushSize*0.5 + 2,
+      color: `hsl(${h},${s}%,${l}%)`,
+      h, s, l,
+      blur: Math.random()*10 + 4,
+    });
+  }
+}
+
+// ─── Main draw stroke ──────────────────────────────────────────────────────
+function smear(x, y, px, py){
+  const dx = x - px, dy = y - py;
+  speed = Math.sqrt(dx*dx+dy*dy);
+  brushSize = Math.min(60, 20 + speed*0.6);
+
+  // Glow blob
+  const g = ctx.createRadialGradient(x, y, 0, x, y, brushSize*1.8);
+  const hShift = (currentHue + (Math.random()-0.5)*30 + 360) % 360;
+  g.addColorStop(0, `hsla(${hShift},95%,75%,0.22)`);
+  g.addColorStop(0.5, `hsla(${hShift+20},90%,55%,0.10)`);
+  g.addColorStop(1, `hsla(${hShift+40},80%,40%,0)`);
+
+  ctx.globalCompositeOperation = 'screen';
+  ctx.fillStyle = g;
+  ctx.beginPath();
+  ctx.arc(x, y, brushSize*1.8, 0, Math.PI*2);
+  ctx.fill();
+
+  // Smear streak
+  if(px !== null){
+    const steps = Math.ceil(speed/4)+1;
+    for(let i=0; i<steps; i++){
+      const t = i/steps;
+      const sx = px + dx*t, sy = py + dy*t;
+      const sg = ctx.createRadialGradient(sx, sy, 0, sx, sy, brushSize*0.9);
+      sg.addColorStop(0, `hsla(${hShift},100%,70%,0.14)`);
+      sg.addColorStop(1, `hsla(${hShift},80%,40%,0)`);
+      ctx.fillStyle = sg;
+      ctx.beginPath();
+      ctx.arc(sx, sy, brushSize*0.9, 0, Math.PI*2);
+      ctx.fill();
+    }
+  }
+
+  ctx.globalCompositeOperation = 'source-over';
+  spawnParticles(x, y, dx, dy, Math.floor(speed*0.3)+1);
+}
+
+// ─── Particle tick ─────────────────────────────────────────────────────────
+function tickParticles(){
+  for(let i=particles.length-1; i>=0; i--){
+    const p = particles[i];
+    p.x += p.vx; p.y += p.vy;
+    p.vx *= 0.94; p.vy *= 0.94;
+    p.life -= p.decay;
+    if(p.life <= 0){ particles.splice(i,1); continue; }
+
+    ctx.globalCompositeOperation = 'screen';
+    ctx.globalAlpha = p.life * 0.55;
+    ctx.beginPath();
+    const pg = ctx.createRadialGradient(p.x,p.y,0,p.x,p.y,p.size*p.life);
+    pg.addColorStop(0, `hsla(${p.h},${p.s}%,${p.l}%,1)`);
+    pg.addColorStop(1, `hsla(${p.h},${p.s}%,${p.l}%,0)`);
+    ctx.fillStyle = pg;
+    ctx.arc(p.x, p.y, p.size*p.life, 0, Math.PI*2);
+    ctx.fill();
+    ctx.globalAlpha = 1;
+    ctx.globalCompositeOperation = 'source-over';
+  }
+}
+
+// ─── Slow fade / bloom ─────────────────────────────────────────────────────
+let fadeTimer = 0;
+function bloomFade(){
+  fadeTimer++;
+  if(fadeTimer % 3 === 0){
+    ctx.globalCompositeOperation = 'source-over';
+    ctx.globalAlpha = 0.012;
+    ctx.fillStyle = '#0a0007';
+    ctx.fillRect(0,0,canvas.width,canvas.height);
+    ctx.globalAlpha = 1;
+  }
+}
+
+// ─── RAF loop ──────────────────────────────────────────────────────────────
+function loop(){
+  tickParticles();
+  bloomFade();
+  requestAnimationFrame(loop);
+}
+loop();
+
+// ─── Input handling ────────────────────────────────────────────────────────
+function getPos(e){
+  if(e.touches) return [e.touches[0].clientX, e.touches[0].clientY];
+  return [e.clientX, e.clientY];
+}
+
+canvas.addEventListener('mousedown', e => {
+  isDrawing = true;
+  hint.style.opacity = '0';
+  const [x,y] = getPos(e);
+  lastX = x; lastY = y;
+  smear(x, y, x, y);
+});
+canvas.addEventListener('mousemove', e => {
+  const [x,y] = getPos(e);
+  cursor.style.left = x+'px';
+  cursor.style.top = y+'px';
+  if(!isDrawing) return;
+  smear(x, y, lastX, lastY);
+  lastX = x; lastY = y;
+});
+canvas.addEventListener('mouseup', () => { isDrawing = false; });
+canvas.addEventListener('mouseleave', () => { isDrawing = false; });
+
+canvas.addEventListener('touchstart', e => {
+  e.preventDefault();
+  isDrawing = true;
+  hint.style.opacity = '0';
+  const [x,y] = getPos(e);
+  lastX = x; lastY = y;
+  smear(x, y, x, y);
+}, {passive:false});
+canvas.addEventListener('touchmove', e => {
+  e.preventDefault();
+  if(!isDrawing) return;
+  const [x,y] = getPos(e);
+  smear(x, y, lastX, lastY);
+  lastX = x; lastY = y;
+}, {passive:false});
+canvas.addEventListener('touchend', () => { isDrawing = false; });
+
+// Cursor size pulse
+canvas.addEventListener('mousemove', e => {
+  const s = isDrawing ? brushSize*1.2 : 20;
+  cursor.style.width = s+'px';
+  cursor.style.height = s+'px';
+  if(isDrawing){
+    cursor.style.background = `hsl(${currentHue},100%,70%)`;
+    cursor.style.opacity = '0.7';
+  } else {
+    cursor.style.background = 'white';
+    cursor.style.opacity = '0.35';
+  }
+});
+
+// ─── Buttons ───────────────────────────────────────────────────────────────
+document.getElementById('clearBtn').addEventListener('click', () => {
+  ctx.globalAlpha = 1;
+  ctx.globalCompositeOperation = 'source-over';
+  fillBlack();
+  particles.length = 0;
+  hint.style.opacity = '1';
+});
+
+document.getElementById('saveBtn').addEventListener('click', () => {
+  const a = document.createElement('a');
+  a.download = 'smear_' + Date.now() + '.png';
+  a.href = canvas.toDataURL();
+  a.click();
+});
+
+// Keyboard hue shift
+window.addEventListener('keydown', e => {
+  if(e.key === 'ArrowRight') currentHue = (currentHue+15)%360;
+  if(e.key === 'ArrowLeft')  currentHue = (currentHue-15+360)%360;
+  if(e.key === ' '){ fillBlack(); particles.length=0; hint.style.opacity='1'; }
+});
+
+// ─── Idle ambient glow ─────────────────────────────────────────────────────
+let ambientAngle = 0;
+setInterval(() => {
+  if(isDrawing) return;
+  ambientAngle += 0.008;
+  currentHue = (currentHue + 0.3) % 360;
+}, 80);
+</script>
+</body>
+</html>

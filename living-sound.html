@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Living Sound Grid</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+        }
+        body {
+            background: #000;
+            font-family: 'Courier New', monospace;
+        }
+        canvas {
+            display: block;
+            cursor: crosshair;
+        }
+        #info {
+            position: absolute;
+            top: 10px;
+            left: 10px;
+            color: #0f0;
+            font-size: 12px;
+            text-shadow: 0 0 10px #0f0;
+            pointer-events: none;
+            opacity: 0.7;
+        }
+        #instructions {
+            position: absolute;
+            bottom: 10px;
+            left: 50%;
+            transform: translateX(-50%);
+            color: #0f0;
+            font-size: 14px;
+            text-shadow: 0 0 10px #0f0;
+            text-align: center;
+            opacity: 0.5;
+        }
+    </style>
+</head>
+<body>
+    <canvas id="grid"></canvas>
+    <div id="info">
+        Generation: <span id="gen">0</span> | 
+        Living Cells: <span id="alive">0</span> | 
+        Frequency: <span id="freq">440</span>Hz
+    </div>
+    <div id="instructions">
+        CLICK to seed life • HOLD to paint • SPACE to clear • The grid makes music as it evolves
+    </div>
+
+    <script>
+        // Canvas setup
+        const canvas = document.getElementById('grid');
+        const ctx = canvas.getContext('2d');
+        canvas.width = window.innerWidth;
+        canvas.height = window.innerHeight;
+
+        // Grid configuration
+        const cellSize = 8;
+        const cols = Math.floor(canvas.width / cellSize);
+        const rows = Math.floor(canvas.height / cellSize);
+        
+        // Create grids
+        let currentGrid = createEmptyGrid();
+        let nextGrid = createEmptyGrid();
+        let generation = 0;
+        let isDrawing = false;
+
+        // Audio context setup
+        const AudioContext = window.AudioContext || window.webkitAudioContext;
+        const audioCtx = new AudioContext();
+        let oscillator = null;
+        let gainNode = null;
+
+        function createEmptyGrid() {
+            return Array(rows).fill(null).map(() => Array(cols).fill(0));
+        }
+
+        // Seed with random pattern
+        function seedRandom() {
+            for (let i = 0; i < rows; i++) {
+                for (let j = 0; j < cols; j++) {
+                    currentGrid[i][j] = Math.random() > 0.85 ? 1 : 0;
+                }
+            }
+        }
+
+        // Conway's Game of Life rules
+        function countNeighbors(grid, row, col) {
+            let count = 0;
+            for (let i = -1; i <= 1; i++) {
+                for (let j = -1; j <= 1; j++) {
+                    if (i === 0 && j === 0) continue;
+                    const newRow = (row + i + rows) % rows;
+                    const newCol = (col + j + cols) % cols;
+                    count += grid[newRow][newCol];
+                }
+            }
+            return count;
+        }
+
+        function updateGrid() {
+            for (let i = 0; i < rows; i++) {
+                for (let j = 0; j < cols; j++) {
+                    const neighbors = countNeighbors(currentGrid, i, j);
+                    const currentState = currentGrid[i][j];
+                    
+                    // Game of Life rules
+                    if (currentState === 1 && (neighbors === 2 || neighbors === 3)) {
+                        nextGrid[i][j] = 1;
+                    } else if (currentState === 0 && neighbors === 3) {
+                        nextGrid[i][j] = 1;
+                    } else {
+                        nextGrid[i][j] = 0;
+                    }
+                }
+            }
+            [currentGrid, nextGrid] = [nextGrid, currentGrid];
+            generation++;
+        }
+
+        function drawGrid() {
+            ctx.fillStyle = '#000';
+            ctx.fillRect(0, 0, canvas.width, canvas.height);
+            
+            let aliveCount = 0;
+            
+            for (let i = 0; i < rows; i++) {
+                for (let j = 0; j < cols; j++) {
+                    if (currentGrid[i][j] === 1) {
+                        aliveCount++;
+                        // Color based on neighbor count for visual interest
+                        const neighbors = countNeighbors(currentGrid, i, j);
+                        const hue = (neighbors * 40 + generation) % 360;
+                        ctx.fillStyle = `hsl(${hue}, 100%, 50%)`;
+                        ctx.fillRect(j * cellSize, i * cellSize, cellSize - 1, cellSize - 1);
+                        
+                        // Add glow effect
+                        ctx.shadowBlur = 10;
+                        ctx.shadowColor = `hsl(${hue}, 100%, 50%)`;
+                    }
+                }
+            }
+            
+            ctx.shadowBlur = 0;
+            
+            // Update display
+            document.getElementById('gen').textContent = generation;
+            document.getElementById('alive').textContent = aliveCount;
+            
+            return aliveCount;
+        }
+
+        // Audio synthesis based on grid state
+        function updateSound(aliveCount) {
+            if (aliveCount === 0) {
+                if (oscillator) {
+                    gainNode.gain.exponentialRampToValueAtTime(0.001, audioCtx.currentTime + 0.5);
+                }
+                return;
+            }
+
+            // Map alive cells to frequency (200-1200 Hz)
+            const maxCells = rows * cols;
+            const frequency = 200 + (aliveCount / maxCells) * 1000;
+            
+            // Map to volume
+            const volume = Math.min(0.1, aliveCount / maxCells * 0.3);
+            
+            document.getElementById('freq').textContent = Math.round(frequency);
+            
+            if (!oscillator) {
+                oscillator = audioCtx.createOscillator();
+                gainNode = audioCtx.createGain();
+                
+                oscillator.type = 'sine';
+                oscillator.connect(gainNode);
+                gainNode.connect(audioCtx.destination);
+                
+                oscillator.start();
+            }
+            
+            oscillator.frequency.exponentialRampToValueAtTime(
+                frequency, 
+                audioCtx.currentTime + 0.1
+            );
+            gainNode.gain.exponentialRampToValueAtTime(
+                volume + 0.001, 
+                audioCtx.currentTime + 0.1
+            );
+        }
+
+        // Mouse interaction
+        canvas.addEventListener('mousedown', (e) => {
+            audioCtx.resume(); // Resume audio context on user interaction
+            isDrawing = true;
+            toggleCell(e);
+        });
+
+        canvas.addEventListener('mousemove', (e) => {
+            if (isDrawing) toggleCell(e);
+        });
+
+        canvas.addEventListener('mouseup', () => {
+            isDrawing = false;
+        });
+
+        function toggleCell(e) {
+            const rect = canvas.getBoundingClientRect();
+            const x = e.clientX - rect.left;
+            const y = e.clientY - rect.top;
+            const col = Math.floor(x / cellSize);
+            const row = Math.floor(y / cellSize);
+            
+            if (row >= 0 && row < rows && col >= 0 && col < cols) {
+                currentGrid[row][col] = 1;
+            }
+        }
+
+        // Keyboard controls
+        document.addEventListener('keydown', (e) => {
+            if (e.code === 'Space') {
+                currentGrid = createEmptyGrid();
+                generation = 0;
+            } else if (e.code === 'KeyR') {
+                seedRandom();
+            }
+        });
+
+        // Main animation loop
+        function animate() {
+            updateGrid();
+            const aliveCount = drawGrid();
+            updateSound(aliveCount);
+            setTimeout(() => requestAnimationFrame(animate), 100);
+        }
+
+        // Initialize
+        seedRandom();
+        animate();
+
+        // Handle window resize
+        window.addEventListener('resize', () => {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+        });
+    </script>
+</body>
+</html>

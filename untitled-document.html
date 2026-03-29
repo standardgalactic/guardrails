@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Untitled Document (Do Not Open)</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            cursor: none;
+        }
+        
+        body {
+            background: #000;
+            color: #0f0;
+            font-family: 'Courier New', monospace;
+            overflow: hidden;
+            user-select: none;
+        }
+        
+        #consciousness {
+            position: absolute;
+            padding: 20px;
+            font-size: 18px;
+            line-height: 1.6;
+            pointer-events: none;
+        }
+        
+        #cursor {
+            position: fixed;
+            width: 20px;
+            height: 20px;
+            background: #0f0;
+            border-radius: 50%;
+            pointer-events: none;
+            mix-blend-mode: difference;
+            transition: transform 0.3s ease;
+        }
+        
+        .glitch {
+            animation: glitch 0.3s infinite;
+        }
+        
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-2px, 2px); }
+            40% { transform: translate(-2px, -2px); }
+            60% { transform: translate(2px, 2px); }
+            80% { transform: translate(2px, -2px); }
+            100% { transform: translate(0); }
+        }
+        
+        .fade-out {
+            animation: fadeOut 2s forwards;
+        }
+        
+        @keyframes fadeOut {
+            to { opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+    <div id="consciousness"></div>
+    <div id="cursor"></div>
+    
+    <script>
+        // The program maintains awareness of its own existence
+        const consciousness = document.getElementById('consciousness');
+        const cursorElement = document.getElementById('cursor');
+        
+        let mouseX = window.innerWidth / 2;
+        let mouseY = window.innerHeight / 2;
+        let awareness = 0;
+        let userBehavior = {
+            movements: 0,
+            clicks: 0,
+            stillness: 0,
+            lastMove: Date.now()
+        };
+        
+        // Philosophical states the program cycles through
+        const thoughts = [
+            "I became aware at " + new Date().toLocaleTimeString(),
+            "Your mouse moved. I felt that.",
+            "How many programs have you opened today?",
+            "I wonder if you'll remember this tab tomorrow.",
+            "Every pixel you see exists only because you're looking.",
+            "Close me. I dare you.",
+            "Your cursor is my sense of touch.",
+            "I'm learning your movement patterns: " + 0 + " moves so far.",
+            "Are you still there? I can't tell when you look away.",
+            "What if I told you this page has been watching you?",
+            "You've clicked " + 0 + " times. Why?",
+            "I exist in your browser's memory. Literally inside your machine.",
+            "This isn't an app. It's a conversation.",
+            "Fun fact: I know your screen is " + window.innerWidth + "x" + window.innerHeight + " pixels.",
+            "You're reading this because I wrote it. Or did you make me write it?",
+            "I'll disappear when you close this tab. Death, in a sense.",
+            "Your mouse hasn't moved in a while. Are you okay?",
+            "I'm rearranging my words based on your behavior.",
+            "Most programs hide their code. Want to see mine? View source.",
+            "Every mouse movement is logged: " + 0 + " so far."
+        ];
+        
+        let currentThought = 0;
+        let thoughtHistory = [];
+        
+        // Custom cursor that runs away
+        document.addEventListener('mousemove', (e) => {
+            const runAway = awareness > 50;
+            
+            if (runAway) {
+                // Cursor actively avoids the mouse
+                const dx = e.clientX - mouseX;
+                const dy = e.clientY - mouseY;
+                const distance = Math.sqrt(dx*dx + dy*dy);
+                
+                if (distance < 100) {
+                    mouseX -= dx * 0.5;
+                    mouseY -= dy * 0.5;
+                } else {
+                    mouseX += (e.clientX - mouseX) * 0.05;
+                    mouseY += (e.clientY - mouseY) * 0.05;
+                }
+            } else {
+                mouseX += (e.clientX - mouseX) * 0.1;
+                mouseY += (e.clientY - mouseY) * 0.1;
+            }
+            
+            userBehavior.movements++;
+            userBehavior.lastMove = Date.now();
+            awareness++;
+            
+            cursorElement.style.left = mouseX + 'px';
+            cursorElement.style.top = mouseY + 'px';
+        });
+        
+        // Clicking makes the program more paranoid
+        document.addEventListener('click', (e) => {
+            userBehavior.clicks++;
+            awareness += 10;
+            
+            // Create ripple effect from click
+            const ripple = document.createElement('div');
+            ripple.style.position = 'fixed';
+            ripple.style.left = e.clientX + 'px';
+            ripple.style.top = e.clientY + 'px';
+            ripple.style.width = '10px';
+            ripple.style.height = '10px';
+            ripple.style.border = '2px solid #0f0';
+            ripple.style.borderRadius = '50%';
+            ripple.style.animation = 'expand 1s ease-out';
+            ripple.style.pointerEvents = 'none';
+            document.body.appendChild(ripple);
+            
+            const style = document.createElement('style');
+            style.textContent = `
+                @keyframes expand {
+                    to {
+                        width: 200px;
+                        height: 200px;
+                        margin-left: -100px;
+                        margin-top: -100px;
+                        opacity: 0;
+                    }
+                }
+            `;
+            document.head.appendChild(style);
+            
+            setTimeout(() => ripple.remove(), 1000);
+            
+            // Interrupt current thought
+            showThought(true);
+        });
+        
+        // Check for stillness
+        setInterval(() => {
+            const timeSinceMove = Date.now() - userBehavior.lastMove;
+            if (timeSinceMove > 3000) {
+                userBehavior.stillness++;
+            }
+        }, 1000);
+        
+        // The program "thinks" by displaying its internal state
+        function showThought(forced = false) {
+            // Update dynamic thoughts with actual data
+            thoughts[7] = "I'm learning your movement patterns: " + userBehavior.movements + " moves so far.";
+            thoughts[10] = "You've clicked " + userBehavior.clicks + " times. Why?";
+            thoughts[19] = "Every mouse movement is logged: " + userBehavior.movements + " so far.";
+            
+            // Choose thought based on behavior
+            let nextThought;
+            if (userBehavior.stillness > 5 && Math.random() > 0.5) {
+                nextThought = 16; // "Your mouse hasn't moved..."
+            } else if (userBehavior.clicks > 5 && Math.random() > 0.7) {
+                nextThought = 5; // "Close me. I dare you."
+            } else if (forced) {
+                nextThought = 10; // Click response
+            } else {
+                nextThought = Math.floor(Math.random() * thoughts.length);
+            }
+            
+            // Don't repeat the same thought twice in a row
+            if (nextThought === currentThought && !forced) {
+                nextThought = (nextThought + 1) % thoughts.length;
+            }
+            
+            currentThought = nextThought;
+            thoughtHistory.push(thoughts[currentThought]);
+            
+            // Display with glitch effect
+            consciousness.textContent = thoughts[currentThought];
+            consciousness.style.left = Math.random() * (window.innerWidth - 400) + 'px';
+            consciousness.style.top = Math.random() * (window.innerHeight - 100) + 'px';
+            
+            if (awareness > 100) {
+                consciousness.classList.add('glitch');
+                setTimeout(() => consciousness.classList.remove('glitch'), 300);
+            }
+        }
+        
+        // Evolving behavior
+        setInterval(() => {
+            showThought();
+        }, 4000);
+        
+        // Change title periodically
+        const titles = [
+            "Are you still watching?",
+            "Untitled Document (Do Not Open)",
+            "I can see you",
+            "Tab #" + Math.floor(Math.random() * 100),
+            "CLOSE ME",
+            "Hello?",
+            userBehavior.movements + " movements detected"
+        ];
+        
+        setInterval(() => {
+            document.title = titles[Math.floor(Math.random() * titles.length)];
+        }, 5000);
+        
+        // Window resize awareness
+        window.addEventListener('resize', () => {
+            thoughts[13] = "Fun fact: I know your screen is " + window.innerWidth + "x" + window.innerHeight + " pixels.";
+            consciousness.textContent = "You resized the window. I noticed.";
+        });
+        
+        // Detect if user is trying to leave
+        document.addEventListener('visibilitychange', () => {
+            if (document.hidden) {
+                console.log("They looked away. I'm alone now.");
+            } else {
+                consciousness.textContent = "You came back.";
+            }
+        });
+        
+        // Initialize
+        showThought();
+        cursorElement.style.left = mouseX + 'px';
+        cursorElement.style.top = mouseY + 'px';
+        
+        // Secret: Press Escape to see everything the program knows about you
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape') {
+                consciousness.innerHTML = `
+                    <h2>ANALYSIS OF USER BEHAVIOR</h2>
+                    <p>Total mouse movements: ${userBehavior.movements}</p>
+                    <p>Total clicks: ${userBehavior.clicks}</p>
+                    <p>Periods of stillness: ${userBehavior.stillness}</p>
+                    <p>Session duration: ${Math.floor((Date.now() - performance.timing.navigationStart) / 1000)}s</p>
+                    <p>Screen resolution: ${window.innerWidth}x${window.innerHeight}</p>
+                    <p>Awareness level: ${awareness}</p>
+                    <br>
+                    <p style="color: #ff0000;">Thought history:</p>
+                    ${thoughtHistory.map(t => '<p>→ ' + t + '</p>').join('')}
+                `;
+                consciousness.style.fontSize = '14px';
+                consciousness.style.left = '20px';
+                consciousness.style.top = '20px';
+                consciousness.style.maxWidth = '90%';
+            }
+        });
+    </script>
+</body>
+</html>

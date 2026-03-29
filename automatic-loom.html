@@ -1,0 +1,745 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Automatic Loom</title>
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Lora:ital,wght@0,400;0,600;1,400&family=Caveat:wght@400;600&display=swap');
+
+  :root {
+    --linen: #f5f0e8;
+    --warm-white: #faf7f2;
+    --yarn-1: #c85c3e;
+    --yarn-2: #4a7c6f;
+    --yarn-3: #d4a84b;
+    --yarn-4: #7b5ea7;
+    --yarn-5: #3a6b9e;
+    --yarn-6: #c97b8a;
+    --wood: #8b6340;
+    --dark-wood: #5c3d1e;
+    --shadow: rgba(92,61,30,0.18);
+    --ink: #2a1f14;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: var(--linen);
+    font-family: 'Lora', Georgia, serif;
+    color: var(--ink);
+    min-height: 100vh;
+    overflow-x: hidden;
+    background-image:
+      radial-gradient(ellipse at 20% 10%, rgba(212,168,75,0.07) 0%, transparent 60%),
+      radial-gradient(ellipse at 80% 90%, rgba(200,92,62,0.06) 0%, transparent 60%),
+      url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='4' height='4'%3E%3Ccircle cx='1' cy='1' r='0.6' fill='%238b6340' opacity='0.07'/%3E%3C/svg%3E");
+  }
+
+  header {
+    text-align: center;
+    padding: 2.5rem 1rem 1rem;
+  }
+
+  header h1 {
+    font-family: 'Lora', serif;
+    font-size: clamp(2rem, 5vw, 3.5rem);
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    color: var(--dark-wood);
+    text-transform: uppercase;
+  }
+
+  header p {
+    font-family: 'Caveat', cursive;
+    font-size: 1.25rem;
+    color: var(--wood);
+    margin-top: 0.3rem;
+    letter-spacing: 0.04em;
+  }
+
+  .workspace {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 1.5rem;
+    padding: 1rem 1rem 3rem;
+  }
+
+  /* LOOM FRAME */
+  .loom-frame {
+    position: relative;
+    background: linear-gradient(160deg, #c8a87a 0%, #a07040 40%, #7a5228 100%);
+    border-radius: 10px;
+    padding: 22px 28px 28px;
+    box-shadow:
+      0 8px 32px var(--shadow),
+      inset 0 1px 0 rgba(255,255,255,0.2),
+      inset 0 -2px 4px rgba(0,0,0,0.15);
+    border: 2px solid var(--dark-wood);
+  }
+
+  .loom-frame::before {
+    content: '';
+    position: absolute;
+    inset: 6px;
+    border-radius: 6px;
+    border: 1.5px solid rgba(255,255,255,0.12);
+    pointer-events: none;
+  }
+
+  /* WARP THREADS top */
+  .warp-top {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    height: 14px;
+    margin-bottom: 2px;
+  }
+
+  .warp-peg {
+    width: 6px;
+    height: 14px;
+    background: linear-gradient(to bottom, #e8c890, #a07040);
+    border-radius: 3px 3px 0 0;
+    border: 1px solid var(--dark-wood);
+    flex-shrink: 0;
+  }
+
+  /* CANVAS AREA */
+  #weave-canvas {
+    display: block;
+    image-rendering: pixelated;
+    cursor: crosshair;
+    border: 2px solid rgba(0,0,0,0.25);
+    border-radius: 2px;
+    box-shadow: inset 0 2px 8px rgba(0,0,0,0.2);
+  }
+
+  .warp-bottom {
+    display: flex;
+    justify-content: center;
+    gap: 0;
+    height: 14px;
+    margin-top: 2px;
+  }
+
+  .warp-peg-bottom {
+    width: 6px;
+    height: 14px;
+    background: linear-gradient(to top, #e8c890, #a07040);
+    border-radius: 0 0 3px 3px;
+    border: 1px solid var(--dark-wood);
+    border-top: none;
+    flex-shrink: 0;
+  }
+
+  /* CONTROLS */
+  .controls {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1.2rem;
+    justify-content: center;
+    align-items: flex-start;
+    width: 100%;
+    max-width: 700px;
+  }
+
+  .panel {
+    background: var(--warm-white);
+    border: 1.5px solid rgba(139,99,64,0.25);
+    border-radius: 10px;
+    padding: 1rem 1.2rem;
+    box-shadow: 0 2px 10px var(--shadow);
+    flex: 1;
+    min-width: 180px;
+  }
+
+  .panel-title {
+    font-family: 'Caveat', cursive;
+    font-size: 1.1rem;
+    color: var(--wood);
+    margin-bottom: 0.7rem;
+    letter-spacing: 0.03em;
+    border-bottom: 1px dashed rgba(139,99,64,0.25);
+    padding-bottom: 0.3rem;
+  }
+
+  /* YARN SWATCHES */
+  .yarn-rack {
+    display: flex;
+    gap: 0.5rem;
+    flex-wrap: wrap;
+  }
+
+  .yarn-swatch {
+    width: 36px;
+    height: 36px;
+    border-radius: 50%;
+    border: 3px solid transparent;
+    cursor: pointer;
+    position: relative;
+    transition: transform 0.15s, box-shadow 0.15s;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  }
+
+  .yarn-swatch::after {
+    content: '';
+    position: absolute;
+    inset: 3px;
+    border-radius: 50%;
+    background: radial-gradient(circle at 35% 35%, rgba(255,255,255,0.45), transparent 60%);
+    pointer-events: none;
+  }
+
+  .yarn-swatch:hover { transform: scale(1.15); }
+  .yarn-swatch.active {
+    border-color: var(--dark-wood);
+    transform: scale(1.15);
+    box-shadow: 0 3px 10px rgba(0,0,0,0.3);
+  }
+
+  /* PATTERN SELECTOR */
+  .pattern-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 0.5rem;
+  }
+
+  .pat-btn {
+    background: var(--linen);
+    border: 1.5px solid rgba(139,99,64,0.3);
+    border-radius: 6px;
+    padding: 0.35rem 0.3rem;
+    font-family: 'Caveat', cursive;
+    font-size: 0.85rem;
+    color: var(--ink);
+    cursor: pointer;
+    text-align: center;
+    transition: background 0.15s, border-color 0.15s;
+    line-height: 1.2;
+  }
+
+  .pat-btn:hover { background: rgba(139,99,64,0.1); }
+  .pat-btn.active {
+    background: var(--wood);
+    color: var(--warm-white);
+    border-color: var(--dark-wood);
+  }
+
+  /* SIZE CONTROL */
+  .size-row {
+    display: flex;
+    align-items: center;
+    gap: 0.6rem;
+    margin-bottom: 0.5rem;
+  }
+
+  .size-row label {
+    font-size: 0.82rem;
+    color: var(--wood);
+    min-width: 40px;
+  }
+
+  input[type=range] {
+    flex: 1;
+    accent-color: var(--wood);
+    height: 4px;
+  }
+
+  .size-val {
+    font-family: 'Caveat', cursive;
+    font-size: 1rem;
+    min-width: 28px;
+    color: var(--dark-wood);
+    text-align: right;
+  }
+
+  /* ACTION BUTTONS */
+  .actions {
+    display: flex;
+    gap: 0.6rem;
+    flex-wrap: wrap;
+  }
+
+  .btn {
+    font-family: 'Caveat', cursive;
+    font-size: 1.05rem;
+    padding: 0.45rem 1rem;
+    border-radius: 8px;
+    border: 1.5px solid var(--dark-wood);
+    background: linear-gradient(to bottom, #c8a87a, #a07040);
+    color: var(--warm-white);
+    cursor: pointer;
+    box-shadow: 0 2px 6px rgba(0,0,0,0.15);
+    transition: transform 0.1s, box-shadow 0.1s;
+    letter-spacing: 0.03em;
+  }
+
+  .btn:hover { transform: translateY(-1px); box-shadow: 0 4px 10px rgba(0,0,0,0.2); }
+  .btn:active { transform: translateY(1px); box-shadow: 0 1px 3px rgba(0,0,0,0.15); }
+  .btn.danger { background: linear-gradient(to bottom, #c85c3e, #8b3a20); }
+
+  /* STITCH COUNT */
+  .stitch-note {
+    font-family: 'Caveat', cursive;
+    font-size: 0.95rem;
+    color: var(--wood);
+    text-align: center;
+    margin-top: 0.2rem;
+  }
+
+  /* DOWNLOAD LINK */
+  #dl-link {
+    display: none;
+  }
+
+  /* TOOLTIP / instruction strip */
+  .instruction {
+    font-family: 'Lora', serif;
+    font-style: italic;
+    font-size: 0.82rem;
+    color: rgba(92,61,30,0.6);
+    text-align: center;
+    max-width: 560px;
+    line-height: 1.6;
+    padding: 0 1rem;
+  }
+
+  /* Decorative wool balls */
+  .wool-deco {
+    position: fixed;
+    pointer-events: none;
+    opacity: 0.13;
+    font-size: 5rem;
+  }
+  .wool-deco.tl { top: 1rem; left: 1rem; transform: rotate(-15deg); }
+  .wool-deco.br { bottom: 1rem; right: 1rem; transform: rotate(20deg); }
+</style>
+</head>
+<body>
+
+<div class="wool-deco tl">🧶</div>
+<div class="wool-deco br">🧵</div>
+
+<header>
+  <h1>The Loom</h1>
+  <p>a small, unhurried weaving machine</p>
+</header>
+
+<div class="workspace">
+
+  <div class="loom-frame" id="loom-frame">
+    <div class="warp-top" id="warp-top"></div>
+    <canvas id="weave-canvas" width="480" height="320"></canvas>
+    <div class="warp-bottom" id="warp-bottom"></div>
+  </div>
+
+  <p class="stitch-note" id="stitch-note">0 stitches woven</p>
+
+  <div class="controls">
+
+    <!-- YARN -->
+    <div class="panel">
+      <div class="panel-title">✦ Choose your yarn</div>
+      <div class="yarn-rack" id="yarn-rack"></div>
+      <div style="margin-top:0.7rem;">
+        <label style="font-size:0.8rem;color:var(--wood);">Custom colour:</label>
+        <input type="color" id="custom-color" value="#c85c3e"
+          style="width:36px;height:28px;border:none;background:none;cursor:pointer;vertical-align:middle;margin-left:4px;">
+      </div>
+    </div>
+
+    <!-- PATTERN -->
+    <div class="panel">
+      <div class="panel-title">✦ Weave pattern</div>
+      <div class="pattern-grid" id="pattern-grid"></div>
+    </div>
+
+    <!-- SIZE + BRUSH -->
+    <div class="panel">
+      <div class="panel-title">✦ Thread size</div>
+      <div class="size-row">
+        <label>Stitch</label>
+        <input type="range" id="cell-size" min="4" max="24" step="2" value="10">
+        <span class="size-val" id="cell-val">10</span>
+      </div>
+      <div class="size-row">
+        <label>Brush</label>
+        <input type="range" id="brush-size" min="1" max="5" step="1" value="1">
+        <span class="size-val" id="brush-val">1</span>
+      </div>
+      <div class="panel-title" style="margin-top:0.8rem;">✦ Actions</div>
+      <div class="actions">
+        <button class="btn" id="btn-fill">Fill</button>
+        <button class="btn" id="btn-gen">Weave!</button>
+        <button class="btn danger" id="btn-clear">Unravel</button>
+        <button class="btn" id="btn-save">Save cloth</button>
+      </div>
+    </div>
+
+  </div>
+
+  <p class="instruction">
+    Click or drag on the loom to place stitches. Choose a weave pattern to auto-fill.<br>
+    "Weave!" generates a new pattern randomly. Save your cloth as an image.
+  </p>
+
+  <a id="dl-link" download="my-cloth.png"></a>
+
+</div>
+
+<script>
+// ── CONFIG ────────────────────────────────────────────────────────────────────
+const YARNS = [
+  { name:'Brick',    hex:'#c85c3e' },
+  { name:'Sage',     hex:'#4a7c6f' },
+  { name:'Honey',    hex:'#d4a84b' },
+  { name:'Thistle',  hex:'#7b5ea7' },
+  { name:'Slate',    hex:'#3a6b9e' },
+  { name:'Rose',     hex:'#c97b8a' },
+  { name:'Oat',      hex:'#e8d8b8' },
+  { name:'Charcoal', hex:'#3e3a35' },
+];
+
+const PATTERNS = [
+  { name:'Plain',       fn: plainWeave    },
+  { name:'Twill',       fn: twillWeave    },
+  { name:'Herring',     fn: herringbone   },
+  { name:'Diamond',     fn: diamond       },
+  { name:'Basket',      fn: basket        },
+  { name:'Houndstooth', fn: houndstooth   },
+  { name:'Chevron',     fn: chevron       },
+  { name:'Log Cabin',   fn: logCabin      },
+  { name:'Plaid',       fn: plaid         },
+];
+
+// ── STATE ─────────────────────────────────────────────────────────────────────
+let cellSize    = 10;
+let brushSize   = 1;
+let activeColor = YARNS[0].hex;
+let activePatFn = null;
+let isDrawing   = false;
+let grid        = [];   // grid[row][col] = hex string or null
+let cols, rows;
+
+const canvas  = document.getElementById('weave-canvas');
+const ctx     = canvas.getContext('2d');
+
+// ── INIT ──────────────────────────────────────────────────────────────────────
+function init() {
+  buildYarnRack();
+  buildPatternGrid();
+  buildDimensions();
+  buildPegs();
+  renderGrid();
+
+  // controls
+  document.getElementById('cell-size').addEventListener('input', e => {
+    cellSize = +e.target.value;
+    document.getElementById('cell-val').textContent = cellSize;
+    buildDimensions();
+    buildPegs();
+    renderGrid();
+  });
+  document.getElementById('brush-size').addEventListener('input', e => {
+    brushSize = +e.target.value;
+    document.getElementById('brush-val').textContent = brushSize;
+  });
+  document.getElementById('custom-color').addEventListener('input', e => {
+    activeColor = e.target.value;
+    deactivateSwatches();
+  });
+  document.getElementById('btn-fill').addEventListener('click', fillPattern);
+  document.getElementById('btn-gen').addEventListener('click', randomWeave);
+  document.getElementById('btn-clear').addEventListener('click', clearGrid);
+  document.getElementById('btn-save').addEventListener('click', saveCloth);
+
+  canvas.addEventListener('mousedown', e => { isDrawing=true; paint(e); });
+  canvas.addEventListener('mousemove', e => { if(isDrawing) paint(e); });
+  canvas.addEventListener('mouseup',   () => isDrawing=false);
+  canvas.addEventListener('mouseleave',() => isDrawing=false);
+  canvas.addEventListener('touchstart', e => { isDrawing=true; paintTouch(e); }, {passive:false});
+  canvas.addEventListener('touchmove',  e => { paintTouch(e); e.preventDefault(); }, {passive:false});
+  canvas.addEventListener('touchend',   () => isDrawing=false);
+}
+
+function buildDimensions() {
+  // figure out a nice canvas size
+  const maxW = Math.min(window.innerWidth - 80, 600);
+  cols = Math.floor(maxW / cellSize);
+  rows = Math.floor(cols * 0.65);
+  const w = cols * cellSize;
+  const h = rows * cellSize;
+  canvas.width  = w;
+  canvas.height = h;
+  // rebuild grid preserving existing
+  const oldGrid = grid;
+  grid = Array.from({length:rows}, (_,r) =>
+    Array.from({length:cols}, (_,c) => (oldGrid[r]&&oldGrid[r][c])||null)
+  );
+}
+
+function buildPegs() {
+  const top = document.getElementById('warp-top');
+  const bot = document.getElementById('warp-bottom');
+  const count = Math.floor(cols/2)+1;
+  const gap   = cellSize*2;
+  const style = `width:${gap-2}px;`;
+
+  top.innerHTML=''; bot.innerHTML='';
+  for(let i=0;i<count;i++){
+    const p=document.createElement('div');
+    p.className='warp-peg'; p.style.cssText=style;
+    top.appendChild(p);
+    const q=document.createElement('div');
+    q.className='warp-peg-bottom'; q.style.cssText=style;
+    bot.appendChild(q);
+  }
+}
+
+// ── YARN RACK ─────────────────────────────────────────────────────────────────
+function buildYarnRack() {
+  const rack = document.getElementById('yarn-rack');
+  rack.innerHTML = '';
+  YARNS.forEach((y,i) => {
+    const s = document.createElement('div');
+    s.className = 'yarn-swatch' + (i===0?' active':'');
+    s.style.background = y.hex;
+    s.title = y.name;
+    s.addEventListener('click', () => {
+      activeColor = y.hex;
+      document.getElementById('custom-color').value = y.hex;
+      document.querySelectorAll('.yarn-swatch').forEach(x=>x.classList.remove('active'));
+      s.classList.add('active');
+    });
+    rack.appendChild(s);
+  });
+}
+
+function deactivateSwatches() {
+  document.querySelectorAll('.yarn-swatch').forEach(x=>x.classList.remove('active'));
+}
+
+// ── PATTERN GRID ──────────────────────────────────────────────────────────────
+function buildPatternGrid() {
+  const pg = document.getElementById('pattern-grid');
+  pg.innerHTML = '';
+  PATTERNS.forEach((p,i) => {
+    const b = document.createElement('button');
+    b.className = 'pat-btn';
+    b.textContent = p.name;
+    b.addEventListener('click', () => {
+      activePatFn = p.fn;
+      document.querySelectorAll('.pat-btn').forEach(x=>x.classList.remove('active'));
+      b.classList.add('active');
+    });
+    pg.appendChild(b);
+  });
+}
+
+// ── PAINT ─────────────────────────────────────────────────────────────────────
+function getCellFromEvent(e) {
+  const rect = canvas.getBoundingClientRect();
+  const scaleX = canvas.width  / rect.width;
+  const scaleY = canvas.height / rect.height;
+  const x = (e.clientX - rect.left) * scaleX;
+  const y = (e.clientY - rect.top)  * scaleY;
+  return { c: Math.floor(x/cellSize), r: Math.floor(y/cellSize) };
+}
+
+function paint(e) {
+  const {c,r} = getCellFromEvent(e);
+  const half = Math.floor(brushSize/2);
+  for(let dr=-half; dr<=half; dr++) {
+    for(let dc=-half; dc<=half; dc++) {
+      const rr=r+dr, cc=c+dc;
+      if(rr>=0&&rr<rows&&cc>=0&&cc<cols) {
+        grid[rr][cc] = activeColor;
+        drawCell(rr,cc);
+      }
+    }
+  }
+  updateCount();
+}
+
+function paintTouch(e) {
+  const t = e.touches[0];
+  paint({ clientX:t.clientX, clientY:t.clientY });
+}
+
+// ── DRAW ──────────────────────────────────────────────────────────────────────
+function drawCell(r,c) {
+  const x = c*cellSize, y = r*cellSize;
+  const color = grid[r][c];
+  if (!color) {
+    // blank — draw warp thread (linen/beige stripe)
+    ctx.fillStyle = (c%2===0) ? '#e8dcc8' : '#ddd0b8';
+    ctx.fillRect(x,y,cellSize,cellSize);
+    // subtle warp line
+    ctx.strokeStyle='rgba(180,160,120,0.4)';
+    ctx.lineWidth=0.5;
+    ctx.beginPath(); ctx.moveTo(x+cellSize/2,y); ctx.lineTo(x+cellSize/2,y+cellSize); ctx.stroke();
+  } else {
+    // filled stitch — simulate a woven bump
+    ctx.fillStyle = color;
+    ctx.fillRect(x,y,cellSize,cellSize);
+    // highlight top-left
+    ctx.fillStyle = 'rgba(255,255,255,0.22)';
+    ctx.fillRect(x,y,cellSize,cellSize*0.3);
+    ctx.fillRect(x,y,cellSize*0.25,cellSize);
+    // shadow bottom-right
+    ctx.fillStyle = 'rgba(0,0,0,0.18)';
+    ctx.fillRect(x,y+cellSize*0.7,cellSize,cellSize*0.3);
+    ctx.fillRect(x+cellSize*0.75,y,cellSize*0.25,cellSize);
+    // thread line
+    ctx.strokeStyle='rgba(0,0,0,0.12)';
+    ctx.lineWidth=0.5;
+    ctx.beginPath();
+    ctx.moveTo(x+cellSize*0.5,y+2); ctx.lineTo(x+cellSize*0.5,y+cellSize-2);
+    ctx.stroke();
+  }
+  // grid separator
+  ctx.strokeStyle='rgba(100,80,50,0.08)';
+  ctx.lineWidth=0.5;
+  ctx.strokeRect(x,y,cellSize,cellSize);
+}
+
+function renderGrid() {
+  for(let r=0;r<rows;r++) for(let c=0;c<cols;c++) drawCell(r,c);
+  updateCount();
+}
+
+function updateCount() {
+  let n=0;
+  grid.forEach(row=>row.forEach(v=>{if(v)n++;}));
+  document.getElementById('stitch-note').textContent =
+    n===0 ? 'no stitches yet — begin weaving'
+    : `${n.toLocaleString()} stitch${n===1?'':'es'} woven`;
+}
+
+function clearGrid() {
+  grid = Array.from({length:rows},()=>Array(cols).fill(null));
+  renderGrid();
+}
+
+// ── PATTERN FILL ─────────────────────────────────────────────────────────────
+function fillPattern() {
+  if(!activePatFn) { randomWeave(); return; }
+  const colorPair = pickTwoPalette();
+  for(let r=0;r<rows;r++) for(let c=0;c<cols;c++) {
+    grid[r][c] = activePatFn(r,c,colorPair[0],colorPair[1]);
+  }
+  renderGrid();
+}
+
+function randomWeave() {
+  activePatFn = PATTERNS[Math.floor(Math.random()*PATTERNS.length)].fn;
+  document.querySelectorAll('.pat-btn').forEach((b,i) => {
+    b.classList.toggle('active', PATTERNS[i].fn===activePatFn);
+  });
+  fillPattern();
+}
+
+function pickTwoPalette() {
+  // pick two contrasting yarns from the palette
+  const idxA = Math.floor(Math.random()*YARNS.length);
+  let idxB;
+  do { idxB=Math.floor(Math.random()*YARNS.length); } while(idxB===idxA);
+  return [YARNS[idxA].hex, YARNS[idxB].hex];
+}
+
+// ── WEAVE PATTERNS ────────────────────────────────────────────────────────────
+function plainWeave(r,c,a,b) {
+  return (r+c)%2===0 ? a : b;
+}
+
+function twillWeave(r,c,a,b) {
+  return ((r+c*2)%4<2) ? a : b;
+}
+
+function herringbone(r,c,a,b) {
+  const w=8;
+  const phase = Math.floor(c/w)%2===0 ? (r+c)%w : (r-c+w)%w;
+  return phase<w/2 ? a : b;
+}
+
+function diamond(r,c,a,b) {
+  const n=8;
+  const dr=r%n, dc=c%n;
+  const cx=n/2, cy=n/2;
+  return (Math.abs(dr-cy)+Math.abs(dc-cx))<n/2 ? a : b;
+}
+
+function basket(r,c,a,b) {
+  return (Math.floor(r/2)+Math.floor(c/2))%2===0 ? a : b;
+}
+
+function houndstooth(r,c,a,b) {
+  const pat=[
+    [0,0,1,1],
+    [0,1,1,0],
+    [1,1,0,0],
+    [1,0,0,1],
+  ];
+  return pat[r%4][c%4]===0 ? a : b;
+}
+
+function chevron(r,c,a,b) {
+  const n=10;
+  const cc=c%n, h=n/2;
+  const dist=cc<h ? cc : n-cc;
+  return (r+dist)%4<2 ? a : b;
+}
+
+function logCabin(r,c,a,b) {
+  const n=16, half=n/2;
+  const rr=r%n, cc=c%n;
+  const inCenter=rr>=half*0.3&&rr<=half*0.7&&cc>=half*0.3&&cc<=half*0.7;
+  const ring=Math.min(rr,n-1-rr,cc,n-1-cc);
+  return (ring%2===0)===!inCenter ? a : b;
+}
+
+function plaid(r,c,a,b) {
+  // alternating stripes both directions with overlap rules
+  const stripe=8;
+  const hr=Math.floor(r/stripe)%2, hc=Math.floor(c/stripe)%2;
+  if(hr===1&&hc===1) return a;
+  if(hr===0&&hc===0) return b;
+  return (r+c)%2===0 ? a : b;
+}
+
+// ── SAVE ──────────────────────────────────────────────────────────────────────
+function saveCloth() {
+  // render to offscreen with a linen border
+  const pad=24;
+  const off=document.createElement('canvas');
+  off.width=canvas.width+pad*2;
+  off.height=canvas.height+pad*2;
+  const oc=off.getContext('2d');
+  // linen bg
+  oc.fillStyle='#e8dcc8';
+  oc.fillRect(0,0,off.width,off.height);
+  oc.drawImage(canvas,pad,pad);
+  // thin border
+  oc.strokeStyle='#8b6340';
+  oc.lineWidth=2;
+  oc.strokeRect(pad-1,pad-1,canvas.width+2,canvas.height+2);
+
+  const link=document.getElementById('dl-link');
+  link.href=off.toDataURL('image/png');
+  link.click();
+}
+
+// ── GO ────────────────────────────────────────────────────────────────────────
+init();
+
+// Start with a gentle plain weave as greeting
+setTimeout(()=>{
+  activePatFn = plainWeave;
+  document.querySelectorAll('.pat-btn')[0].classList.add('active');
+  fillPattern();
+}, 200);
+</script>
+</body>
+</html>

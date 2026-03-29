@@ -1,0 +1,323 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Index of Unmade Things</title>
+  <style>
+    :root{
+      --bg:#07070a;
+      --fg:#e8e3d7;
+      --muted:#8f8b85;
+      --a:#7cf7c5;
+      --b:#ff7aa2;
+      --c:#ffe66d;
+      --panel:rgba(255,255,255,.05);
+      --line:rgba(255,255,255,.12);
+    }
+    html,body{
+      margin:0;
+      width:100%;
+      height:100%;
+      overflow:hidden;
+      background:
+        radial-gradient(circle at 20% 20%, rgba(124,247,197,.10), transparent 20%),
+        radial-gradient(circle at 80% 30%, rgba(255,122,162,.10), transparent 18%),
+        radial-gradient(circle at 50% 80%, rgba(255,230,109,.08), transparent 22%),
+        linear-gradient(180deg, #050507, #09090e 55%, #050507);
+      color:var(--fg);
+      font-family: ui-serif, Georgia, "Times New Roman", serif;
+      user-select:none;
+    }
+    #wrap{
+      position:relative;
+      width:100%;
+      height:100%;
+      display:grid;
+      place-items:center;
+    }
+    #panel{
+      width:min(780px, calc(100vw - 28px));
+      height:min(520px, calc(100vh - 28px));
+      border:1px solid var(--line);
+      background:var(--panel);
+      backdrop-filter: blur(10px);
+      box-shadow: 0 20px 80px rgba(0,0,0,.45);
+      display:grid;
+      grid-template-rows:auto 1fr auto;
+      overflow:hidden;
+      position:relative;
+    }
+    header{
+      padding:18px 20px 10px;
+      border-bottom:1px solid var(--line);
+      display:flex;
+      justify-content:space-between;
+      gap:20px;
+      align-items:flex-end;
+    }
+    h1{
+      margin:0;
+      font-size:clamp(20px, 3vw, 38px);
+      letter-spacing:.08em;
+      text-transform:uppercase;
+      font-weight:700;
+      line-height:1.05;
+    }
+    .sub{
+      color:var(--muted);
+      font-size:13px;
+      text-align:right;
+      max-width:300px;
+      line-height:1.4;
+    }
+    main{
+      display:grid;
+      grid-template-columns:1.3fr .9fr;
+      gap:0;
+      min-height:0;
+    }
+    #poem{
+      padding:22px;
+      font-size:clamp(22px, 2.8vw, 34px);
+      line-height:1.18;
+      letter-spacing:.01em;
+      display:flex;
+      align-items:center;
+      justify-content:center;
+      text-align:left;
+      position:relative;
+      border-right:1px solid var(--line);
+    }
+    #poem span{
+      display:inline-block;
+      transform-origin:center;
+      transition:transform .2s ease, filter .2s ease;
+    }
+    #controls{
+      padding:18px;
+      display:flex;
+      flex-direction:column;
+      gap:14px;
+      justify-content:center;
+    }
+    button{
+      appearance:none;
+      border:1px solid var(--line);
+      background:rgba(255,255,255,.06);
+      color:var(--fg);
+      padding:14px 16px;
+      font:inherit;
+      font-size:15px;
+      cursor:pointer;
+      transition:transform .15s ease, background .15s ease, border-color .15s ease;
+      text-align:left;
+    }
+    button:hover{
+      transform:translateY(-1px);
+      background:rgba(255,255,255,.10);
+      border-color:rgba(255,255,255,.22);
+    }
+    button strong{
+      color:var(--c);
+      display:block;
+      margin-bottom:4px;
+      font-size:16px;
+    }
+    #status{
+      padding:12px 20px 16px;
+      border-top:1px solid var(--line);
+      display:flex;
+      justify-content:space-between;
+      gap:10px;
+      color:var(--muted);
+      font-size:12px;
+      font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    }
+    #sigil{
+      position:absolute;
+      inset:auto 18px 56px auto;
+      width:110px;
+      height:110px;
+      opacity:.82;
+      pointer-events:none;
+      filter: drop-shadow(0 0 18px rgba(124,247,197,.18));
+    }
+    .float{
+      position:absolute;
+      font-family: ui-monospace, monospace;
+      font-size:12px;
+      color:rgba(232,227,215,.55);
+      pointer-events:none;
+      white-space:nowrap;
+      animation: drift 12s linear infinite;
+    }
+    @keyframes drift{
+      from{ transform:translate3d(0,0,0) rotate(0deg); }
+      to{ transform:translate3d(0,-120px,0) rotate(8deg); }
+    }
+    .flash{
+      animation: flash .4s ease;
+    }
+    @keyframes flash{
+      0%{ filter:hue-rotate(0deg) brightness(1); }
+      50%{ filter:hue-rotate(120deg) brightness(1.4); }
+      100%{ filter:hue-rotate(0deg) brightness(1); }
+    }
+    @media (max-width:720px){
+      main{ grid-template-columns:1fr; }
+      #poem{ border-right:none; border-bottom:1px solid var(--line); min-height:210px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="wrap">
+    <div id="panel">
+      <header>
+        <div>
+          <h1>Index of Unmade Things</h1>
+        </div>
+        <div class="sub">
+          press the buttons, or just wait for the page to reconsider itself
+        </div>
+      </header>
+
+      <main>
+        <section id="poem" aria-live="polite">
+          <span id="line">The room remembers a door that was never installed.</span>
+        </section>
+
+        <aside id="controls">
+          <button id="b1"><strong>Summon a minor omen</strong>Produces a sentence that knows too much.</button>
+          <button id="b2"><strong>Rotate the mood</strong>Rewrites the palette and the grammar together.</button>
+          <button id="b3"><strong>Ask the page to lie</strong>It answers in increasingly confident nonsense.</button>
+          <button id="b4"><strong>Ritual of the unnecessary</strong>Creates a temporary constellation of words.</button>
+        </aside>
+      </main>
+
+      <div id="status">
+        <div id="clock">00:00:00</div>
+        <div id="mood">state: idling, but suspiciously</div>
+      </div>
+
+      <svg id="sigil" viewBox="0 0 100 100">
+        <circle cx="50" cy="50" r="34" fill="none" stroke="rgba(124,247,197,.55)" stroke-width="1.5"/>
+        <path d="M50 14 L63 38 L90 50 L63 62 L50 86 L37 62 L10 50 L37 38 Z" fill="none" stroke="rgba(255,122,162,.55)" stroke-width="1.5"/>
+        <path d="M50 24 L56 44 L76 50 L56 56 L50 76 L44 56 L24 50 L44 44 Z" fill="none" stroke="rgba(255,230,109,.45)" stroke-width="1.2"/>
+        <circle cx="50" cy="50" r="4" fill="rgba(232,227,215,.78)"/>
+      </svg>
+    </div>
+  </div>
+
+  <script>
+    const lines = [
+      "The room remembers a door that was never installed.",
+      "A small moon is filing a complaint against gravity.",
+      "Your shadow has started learning an obsolete language.",
+      "The kettle dreams in hex, but only when ignored.",
+      "Somewhere, a staircase is being misread as a prayer.",
+      "The archive of possible selves is temporarily open.",
+      "A velvet error has entered the building politely.",
+      "Tonight’s weather: 12% thunder, 88% unfinished thought."
+    ];
+
+    const moods = [
+      ["state: idling, but suspiciously", "#7cf7c5"],
+      ["state: emitting soft paradox", "#ff7aa2"],
+      ["state: becoming ceremonial", "#ffe66d"],
+      ["state: mildly haunted", "#9fd0ff"],
+      ["state: negotiating with void", "#d8a7ff"]
+    ];
+
+    const line = document.getElementById("line");
+    const clock = document.getElementById("clock");
+    const mood = document.getElementById("mood");
+    const panel = document.getElementById("panel");
+    const poem = document.getElementById("poem");
+
+    let n = 0;
+    let m = 0;
+
+    function setLine(text){
+      line.style.transform = "scale(0.98) rotate(" + ((Math.random() * 2) - 1) + "deg)";
+      line.textContent = text;
+      setTimeout(() => line.style.transform = "scale(1) rotate(0deg)", 120);
+    }
+
+    function nextLine(){
+      n = (n + 1) % lines.length;
+      setLine(lines[n]);
+      spawnFloat(lines[n].split(" ").slice(0,2).join(" "));
+    }
+
+    function rotateMood(){
+      m = (m + 1) % moods.length;
+      document.documentElement.style.setProperty("--a", moods[m][1]);
+      mood.textContent = moods[m][0];
+      panel.classList.remove("flash");
+      void panel.offsetWidth;
+      panel.classList.add("flash");
+    }
+
+    function lie(){
+      const truthFragments = [
+        "This sentence was born in a corridor.",
+        "No one agreed on the correct moon.",
+        "The floor has become theatrical.",
+        "The page insists it is a weather system.",
+        "An instruction manual is shedding feathers."
+      ];
+      const a = truthFragments[Math.floor(Math.random() * truthFragments.length)];
+      const b = lines[Math.floor(Math.random() * lines.length)].toLowerCase();
+      setLine(a + " " + b);
+    }
+
+    function ritual(){
+      const a = ["salt", "glass", "paper", "echo", "wire", "ink"];
+      const b = ["breathing", "folding", "listening", "erasing", "hovering", "remembering"];
+      const c = ["the threshold", "a forgotten name", "the second wall", "your unspoken map", "the unlit center"];
+      setLine(`The ${a[Math.floor(Math.random()*a.length)]} is ${b[Math.floor(Math.random()*b.length)]} ${c[Math.floor(Math.random()*c.length)]}.`);
+      for(let i=0;i<9;i++) spawnFloat(a[Math.floor(Math.random()*a.length)] + " · " + b[Math.floor(Math.random()*b.length)]);
+    }
+
+    function spawnFloat(text){
+      const d = document.createElement("div");
+      d.className = "float";
+      d.textContent = text;
+      d.style.left = Math.random() * 88 + "%";
+      d.style.top = 75 + Math.random() * 18 + "%";
+      d.style.animationDuration = (8 + Math.random() * 10) + "s";
+      d.style.color = ["rgba(124,247,197,.5)","rgba(255,122,162,.45)","rgba(255,230,109,.45)"][Math.floor(Math.random()*3)];
+      document.getElementById("wrap").appendChild(d);
+      setTimeout(() => d.remove(), 18000);
+    }
+
+    document.getElementById("b1").onclick = nextLine;
+    document.getElementById("b2").onclick = rotateMood;
+    document.getElementById("b3").onclick = lie;
+    document.getElementById("b4").onclick = ritual;
+
+    document.addEventListener("keydown", (e) => {
+      if (e.key === "1") nextLine();
+      if (e.key === "2") rotateMood();
+      if (e.key === "3") lie();
+      if (e.key === "4") ritual();
+    });
+
+    setInterval(() => {
+      const now = new Date();
+      clock.textContent = now.toLocaleTimeString([], { hour12:false });
+    }, 250);
+
+    setInterval(() => {
+      if (Math.random() < 0.45) nextLine();
+      if (Math.random() < 0.22) rotateMood();
+    }, 4500);
+
+    setInterval(() => {
+      poem.style.transform = `translate(${(Math.random()*4-2)}px, ${(Math.random()*4-2)}px)`;
+      setTimeout(() => poem.style.transform = "translate(0,0)", 130);
+    }, 1600);
+  </script>
+</body>
+</html>

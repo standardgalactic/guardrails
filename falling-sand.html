@@ -1,0 +1,527 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Sand</title>
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  body {
+    background: #0a0a0f;
+    overflow: hidden;
+    width: 100vw;
+    height: 100vh;
+    font-family: 'Georgia', serif;
+    user-select: none;
+  }
+
+  canvas {
+    display: block;
+    image-rendering: pixelated;
+    cursor: crosshair;
+  }
+
+  #ui {
+    position: fixed;
+    bottom: 24px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    background: rgba(10,10,15,0.7);
+    border: 1px solid rgba(255,255,255,0.08);
+    border-radius: 40px;
+    padding: 10px 18px;
+    backdrop-filter: blur(12px);
+    z-index: 10;
+  }
+
+  .swatch {
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid transparent;
+    transition: transform 0.15s, border-color 0.15s;
+    flex-shrink: 0;
+  }
+  .swatch:hover { transform: scale(1.2); }
+  .swatch.active {
+    border-color: rgba(255,255,255,0.7);
+    transform: scale(1.25);
+    box-shadow: 0 0 10px rgba(255,255,255,0.3);
+  }
+
+  .sep {
+    width: 1px;
+    height: 20px;
+    background: rgba(255,255,255,0.12);
+    flex-shrink: 0;
+  }
+
+  #brush-slider {
+    -webkit-appearance: none;
+    appearance: none;
+    width: 80px;
+    height: 4px;
+    background: rgba(255,255,255,0.15);
+    border-radius: 2px;
+    outline: none;
+    cursor: pointer;
+  }
+  #brush-slider::-webkit-slider-thumb {
+    -webkit-appearance: none;
+    width: 14px; height: 14px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.7);
+    cursor: pointer;
+  }
+
+  #clear-btn {
+    background: none;
+    border: 1px solid rgba(255,255,255,0.15);
+    color: rgba(255,255,255,0.45);
+    border-radius: 20px;
+    padding: 3px 10px;
+    font-size: 11px;
+    letter-spacing: 0.08em;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-family: 'Georgia', serif;
+  }
+  #clear-btn:hover {
+    border-color: rgba(255,255,255,0.4);
+    color: rgba(255,255,255,0.8);
+  }
+
+  #hint {
+    position: fixed;
+    top: 28px;
+    left: 50%;
+    transform: translateX(-50%);
+    color: rgba(255,255,255,0.2);
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    pointer-events: none;
+    text-transform: uppercase;
+    animation: fadeHint 4s ease-out forwards;
+  }
+  @keyframes fadeHint {
+    0% { opacity: 1; }
+    60% { opacity: 1; }
+    100% { opacity: 0; }
+  }
+</style>
+</head>
+<body>
+
+<div id="hint">pour sand — watch it fall</div>
+<canvas id="c"></canvas>
+
+<div id="ui">
+  <!-- swatches injected by JS -->
+  <div class="sep"></div>
+  <input type="range" id="brush-slider" min="1" max="8" value="3" title="brush size">
+  <div class="sep"></div>
+  <button id="clear-btn">clear</button>
+</div>
+
+<script>
+// ─── CONFIG ──────────────────────────────────────────────────────────────────
+const SCALE = 3;           // pixels per cell
+const FPS   = 60;
+const GRAVITY_CHANCE = 0.97; // how reliably sand falls
+
+// Material IDs
+const EMPTY  = 0;
+const SAND   = 1;
+const WATER  = 2;
+const STONE  = 3;
+const FIRE   = 4;
+const SMOKE  = 5;
+const OIL    = 6;
+const LAVA   = 7;
+
+// Color palettes per material — multiple shades for texture
+const PALETTES = {
+  [SAND]:  ['#d4a96a','#c99a58','#dbb47a','#bf9048','#e0bc86','#c8964e'],
+  [WATER]: ['#3a7bd5','#2e6ac4','#4488e8','#2560b8','#5596e8','#3070cc'],
+  [STONE]: ['#6b6b6b','#5c5c5c','#787878','#505050','#828282','#686868'],
+  [FIRE]:  ['#ff6a00','#ff4500','#ff8c00','#ff2200','#ffaa00','#ff5500'],
+  [SMOKE]: ['#888','#777','#999','#666','#aaa','#888'],
+  [OIL]:   ['#3d2b00','#4a3300','#2e2000','#5c4200','#3a2800','#453100'],
+  [LAVA]:  ['#ff3300','#ff5500','#ff1100','#cc2200','#ff4400','#ff6600'],
+};
+
+// Swatch definitions for UI
+const MATERIALS = [
+  { id: SAND,  label: 'Sand',  color: '#d4a96a' },
+  { id: WATER, label: 'Water', color: '#3a7bd5' },
+  { id: STONE, label: 'Stone', color: '#6b6b6b' },
+  { id: FIRE,  label: 'Fire',  color: '#ff6a00' },
+  { id: OIL,   label: 'Oil',   color: '#4a3300' },
+  { id: LAVA,  label: 'Lava',  color: '#ff3300' },
+];
+
+// ─── CANVAS SETUP ────────────────────────────────────────────────────────────
+const canvas = document.getElementById('c');
+const ctx    = canvas.getContext('2d');
+
+let W, H, COLS, ROWS;
+
+function resize() {
+  W = canvas.width  = window.innerWidth;
+  H = canvas.height = window.innerHeight;
+  COLS = Math.floor(W / SCALE);
+  ROWS = Math.floor(H / SCALE);
+  initGrid();
+}
+
+// ─── GRID ─────────────────────────────────────────────────────────────────────
+let grid, colorGrid, updated;
+
+function initGrid() {
+  grid      = new Uint8Array(COLS * ROWS);
+  colorGrid = new Array(COLS * ROWS).fill(null);
+  updated   = new Uint8Array(COLS * ROWS);
+}
+
+function idx(x, y)  { return y * COLS + x; }
+function inBounds(x,y) { return x >= 0 && x < COLS && y >= 0 && y < ROWS; }
+
+function get(x, y) {
+  if (!inBounds(x, y)) return STONE; // treat edges as solid
+  return grid[idx(x, y)];
+}
+
+function set(x, y, mat, col) {
+  if (!inBounds(x, y)) return;
+  const i = idx(x, y);
+  grid[i]      = mat;
+  colorGrid[i] = col ?? randomColor(mat);
+  updated[i]   = 1;
+}
+
+function swap(x1,y1, x2,y2) {
+  if (!inBounds(x1,y1) || !inBounds(x2,y2)) return;
+  const i1 = idx(x1,y1), i2 = idx(x2,y2);
+  [grid[i1], grid[i2]]           = [grid[i2], grid[i1]];
+  [colorGrid[i1], colorGrid[i2]] = [colorGrid[i2], colorGrid[i1]];
+  updated[i1] = updated[i2] = 1;
+}
+
+function randomColor(mat) {
+  const p = PALETTES[mat];
+  if (!p) return '#fff';
+  return p[Math.floor(Math.random() * p.length)];
+}
+
+// ─── SIMULATION ───────────────────────────────────────────────────────────────
+// Process bottom to top, randomize left/right to avoid directional bias
+function step() {
+  updated.fill(0);
+
+  for (let y = ROWS - 1; y >= 0; y--) {
+    // alternate scan direction each row to reduce bias
+    const leftFirst = Math.random() < 0.5;
+    for (let xi = 0; xi < COLS; xi++) {
+      const x = leftFirst ? xi : (COLS - 1 - xi);
+      stepCell(x, y);
+    }
+  }
+}
+
+function stepCell(x, y) {
+  const mat = get(x, y);
+  if (mat === EMPTY || mat === STONE) return;
+
+  if (mat === SAND)  updateSand(x, y);
+  if (mat === WATER) updateWater(x, y);
+  if (mat === OIL)   updateOil(x, y);
+  if (mat === LAVA)  updateLava(x, y);
+  if (mat === FIRE)  updateFire(x, y);
+  if (mat === SMOKE) updateSmoke(x, y);
+}
+
+// Density check — higher density sinks
+const DENSITY = {
+  [EMPTY]: 0,
+  [SMOKE]: 0.1,
+  [FIRE]:  0.3,
+  [OIL]:   0.7,
+  [WATER]: 1.0,
+  [SAND]:  2.0,
+  [LAVA]:  3.0,
+  [STONE]: 999,
+};
+
+function canDisplace(mover, target) {
+  if (target === STONE) return false;
+  return DENSITY[mover] > DENSITY[target];
+}
+
+function updateSand(x, y) {
+  if (Math.random() > GRAVITY_CHANCE) return;
+
+  // try directly down
+  if (canDisplace(SAND, get(x, y+1))) {
+    swap(x, y, x, y+1); return;
+  }
+  // try diagonal
+  const r = Math.random() < 0.5;
+  const d1 = r ? -1 : 1;
+  const d2 = -d1;
+  if (canDisplace(SAND, get(x+d1, y+1))) {
+    swap(x, y, x+d1, y+1); return;
+  }
+  if (canDisplace(SAND, get(x+d2, y+1))) {
+    swap(x, y, x+d2, y+1);
+  }
+}
+
+function updateWater(x, y) {
+  if (canDisplace(WATER, get(x, y+1))) {
+    swap(x, y, x, y+1); return;
+  }
+  const r = Math.random() < 0.5;
+  const spread = 3;
+  for (let d = 1; d <= spread; d++) {
+    const dx = r ? d : -d;
+    if (canDisplace(WATER, get(x+dx, y+1))) {
+      swap(x, y, x+dx, y+1); return;
+    }
+    if (canDisplace(WATER, get(x+dx, y))) {
+      swap(x, y, x+dx, y); return;
+    }
+  }
+}
+
+function updateOil(x, y) {
+  if (canDisplace(OIL, get(x, y+1))) {
+    swap(x, y, x, y+1); return;
+  }
+  const r = Math.random() < 0.5;
+  for (let d = 1; d <= 2; d++) {
+    const dx = r ? d : -d;
+    if (canDisplace(OIL, get(x+dx, y+1))) { swap(x, y, x+dx, y+1); return; }
+    if (canDisplace(OIL, get(x+dx, y)))   { swap(x, y, x+dx, y);   return; }
+  }
+}
+
+function updateLava(x, y) {
+  // lava behaves like slow sand/liquid hybrid
+  if (Math.random() > 0.7) return; // viscous
+  if (canDisplace(LAVA, get(x, y+1))) { swap(x, y, x, y+1); return; }
+  const r = Math.random() < 0.5;
+  const d = r ? 1 : -1;
+  if (canDisplace(LAVA, get(x+d, y+1))) { swap(x, y, x+d, y+1); return; }
+  if (canDisplace(LAVA, get(x-d, y+1))) { swap(x, y, x-d, y+1); return; }
+  if (Math.random() < 0.02 && canDisplace(LAVA, get(x+d, y))) {
+    swap(x, y, x+d, y);
+  }
+
+  // lava ignites adjacent flammables
+  for (let dy = -1; dy <= 1; dy++) {
+    for (let dx = -1; dx <= 1; dx++) {
+      const neighbor = get(x+dx, y+dy);
+      if (neighbor === OIL && Math.random() < 0.03) {
+        set(x+dx, y+dy, FIRE);
+      }
+      if (neighbor === WATER && Math.random() < 0.005) {
+        set(x+dx, y+dy, SMOKE);
+      }
+    }
+  }
+}
+
+function updateFire(x, y) {
+  // fire rises
+  if (Math.random() < 0.4 && get(x, y-1) === EMPTY) {
+    swap(x, y, x, y-1);
+  }
+  // drift sideways
+  if (Math.random() < 0.3) {
+    const dx = Math.random() < 0.5 ? -1 : 1;
+    if (get(x+dx, y) === EMPTY) swap(x, y, x+dx, y);
+  }
+  // produce smoke
+  if (Math.random() < 0.05 && get(x, y-1) === EMPTY) {
+    set(x, y-1, SMOKE);
+  }
+  // eventually die
+  if (Math.random() < 0.03) {
+    set(x, y, EMPTY);
+    return;
+  }
+  // ignite oil neighbors
+  for (let dy = -1; dy <= 1; dy++) {
+    for (let dx = -1; dx <= 1; dx++) {
+      if (get(x+dx, y+dy) === OIL && Math.random() < 0.05) {
+        set(x+dx, y+dy, FIRE);
+      }
+    }
+  }
+}
+
+function updateSmoke(x, y) {
+  if (Math.random() < 0.3 && get(x, y-1) === EMPTY) {
+    swap(x, y, x, y-1);
+  } else if (Math.random() < 0.2) {
+    const dx = Math.random() < 0.5 ? -1 : 1;
+    if (get(x+dx, y) === EMPTY || get(x+dx, y) === SMOKE) {
+      swap(x, y, x+dx, y);
+    }
+  }
+  // fade out
+  if (Math.random() < 0.008) set(x, y, EMPTY);
+}
+
+// ─── RENDER ───────────────────────────────────────────────────────────────────
+function render() {
+  ctx.clearRect(0, 0, W, H);
+
+  // Draw cells
+  for (let y = 0; y < ROWS; y++) {
+    for (let x = 0; x < COLS; x++) {
+      const mat = grid[idx(x, y)];
+      if (mat === EMPTY) continue;
+
+      let color = colorGrid[idx(x, y)] ?? randomColor(mat);
+
+      // fire flicker
+      if (mat === FIRE) {
+        const flicker = PALETTES[FIRE];
+        color = flicker[Math.floor(Math.random() * flicker.length)];
+      }
+      // smoke fade alpha
+      if (mat === SMOKE) {
+        ctx.globalAlpha = 0.55 + Math.random() * 0.25;
+      } else {
+        ctx.globalAlpha = 1;
+      }
+
+      ctx.fillStyle = color;
+      ctx.fillRect(x * SCALE, y * SCALE, SCALE, SCALE);
+    }
+  }
+  ctx.globalAlpha = 1;
+}
+
+// ─── BRUSH ────────────────────────────────────────────────────────────────────
+let currentMat   = SAND;
+let brushRadius  = 3;
+let isDrawing    = false;
+let mouseX = 0, mouseY = 0;
+let lastX = 0, lastY = 0;
+
+function paintAt(px, py) {
+  const cx = Math.floor(px / SCALE);
+  const cy = Math.floor(py / SCALE);
+  const r  = brushRadius;
+
+  for (let dy = -r; dy <= r; dy++) {
+    for (let dx = -r; dx <= r; dx++) {
+      if (dx*dx + dy*dy > r*r) continue;
+      if (Math.random() < 0.6) {
+        const tx = cx + dx, ty = cy + dy;
+        if (inBounds(tx, ty) && (currentMat === STONE || get(tx, ty) === EMPTY)) {
+          set(tx, ty, currentMat);
+        }
+      }
+    }
+  }
+}
+
+// Interpolate between two points to fill gaps when dragging fast
+function paintLine(x0, y0, x1, y1) {
+  const dx = x1 - x0, dy = y1 - y0;
+  const dist = Math.sqrt(dx*dx + dy*dy);
+  const steps = Math.max(1, Math.ceil(dist / (SCALE * 0.8)));
+  for (let i = 0; i <= steps; i++) {
+    const t = i / steps;
+    paintAt(x0 + dx*t, y0 + dy*t);
+  }
+}
+
+canvas.addEventListener('pointerdown', e => {
+  isDrawing = true;
+  lastX = e.clientX; lastY = e.clientY;
+  paintAt(e.clientX, e.clientY);
+});
+canvas.addEventListener('pointermove', e => {
+  mouseX = e.clientX; mouseY = e.clientY;
+  if (!isDrawing) return;
+  paintLine(lastX, lastY, e.clientX, e.clientY);
+  lastX = e.clientX; lastY = e.clientY;
+});
+canvas.addEventListener('pointerup',   () => isDrawing = false);
+canvas.addEventListener('pointerleave',() => isDrawing = false);
+canvas.addEventListener('contextmenu', e => e.preventDefault());
+
+// Touch support
+canvas.addEventListener('touchstart', e => {
+  e.preventDefault();
+  const t = e.touches[0];
+  isDrawing = true;
+  lastX = t.clientX; lastY = t.clientY;
+  paintAt(t.clientX, t.clientY);
+}, { passive: false });
+canvas.addEventListener('touchmove', e => {
+  e.preventDefault();
+  const t = e.touches[0];
+  paintLine(lastX, lastY, t.clientX, t.clientY);
+  lastX = t.clientX; lastY = t.clientY;
+}, { passive: false });
+canvas.addEventListener('touchend', () => isDrawing = false);
+
+// ─── UI ───────────────────────────────────────────────────────────────────────
+const uiDiv = document.getElementById('ui');
+
+MATERIALS.forEach(m => {
+  const s = document.createElement('div');
+  s.className = 'swatch' + (m.id === SAND ? ' active' : '');
+  s.style.background = m.color;
+  s.title = m.label;
+  s.addEventListener('click', () => {
+    document.querySelectorAll('.swatch').forEach(el => el.classList.remove('active'));
+    s.classList.add('active');
+    currentMat = m.id;
+  });
+  uiDiv.insertBefore(s, uiDiv.firstChild);
+});
+
+document.getElementById('brush-slider').addEventListener('input', e => {
+  brushRadius = parseInt(e.target.value);
+});
+
+document.getElementById('clear-btn').addEventListener('click', () => {
+  initGrid();
+});
+
+// Remove hint after animation
+setTimeout(() => {
+  const hint = document.getElementById('hint');
+  if (hint) hint.remove();
+}, 4500);
+
+// ─── LOOP ─────────────────────────────────────────────────────────────────────
+resize();
+window.addEventListener('resize', resize);
+
+let last = 0;
+const interval = 1000 / FPS;
+
+function loop(ts) {
+  requestAnimationFrame(loop);
+  if (ts - last < interval) return;
+  last = ts;
+  step();
+  render();
+}
+
+requestAnimationFrame(loop);
+</script>
+</body>
+</html>

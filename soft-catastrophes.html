@@ -1,0 +1,735 @@
+<!DOCTYPE html><html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>The Department of Soft Catastrophes</title>
+  <style>
+    :root {
+      --bg1: #f6efe7;
+      --bg2: #e9f0f7;
+      --ink: #2c3440;
+      --muted: #6d7582;
+      --line: rgba(44, 52, 64, 0.13);
+      --card: rgba(255,255,255,0.58);
+      --shadow: rgba(49, 62, 79, 0.12);
+      --accent: #c77d7d;
+      --accent2: #8aa3c7;
+      --good: #6a9770;
+      --warn: #c09355;
+      --glow: rgba(255,255,255,0.6);
+      --radius: 22px;
+    }* { box-sizing: border-box; }
+
+html, body {
+  margin: 0;
+  padding: 0;
+  width: 100%;
+  height: 100%;
+  font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+  color: var(--ink);
+  overflow: hidden;
+  background:
+    radial-gradient(circle at 10% 20%, rgba(255,255,255,0.75), transparent 22%),
+    radial-gradient(circle at 80% 10%, rgba(255,255,255,0.55), transparent 25%),
+    radial-gradient(circle at 20% 85%, rgba(255,255,255,0.45), transparent 20%),
+    linear-gradient(140deg, var(--bg1), var(--bg2));
+}
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background-image:
+    linear-gradient(rgba(255,255,255,0.12), rgba(255,255,255,0.12)),
+    radial-gradient(circle at center, rgba(255,255,255,0.3), transparent 60%);
+  mix-blend-mode: screen;
+  opacity: 0.6;
+}
+
+#app {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: grid;
+  grid-template-columns: 360px 1fr;
+  gap: 18px;
+  padding: 18px;
+}
+
+.panel {
+  background: var(--card);
+  backdrop-filter: blur(16px) saturate(115%);
+  -webkit-backdrop-filter: blur(16px) saturate(115%);
+  border: 1px solid rgba(255,255,255,0.7);
+  border-radius: var(--radius);
+  box-shadow: 0 18px 50px var(--shadow);
+}
+
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.header {
+  padding: 22px 22px 14px;
+  border-bottom: 1px solid var(--line);
+}
+
+.eyebrow {
+  letter-spacing: 0.16em;
+  text-transform: uppercase;
+  font-size: 11px;
+  color: var(--muted);
+  margin-bottom: 10px;
+}
+
+h1 {
+  margin: 0;
+  font-size: 28px;
+  line-height: 1.05;
+  font-weight: 750;
+  letter-spacing: -0.035em;
+}
+
+.sub {
+  margin-top: 10px;
+  color: var(--muted);
+  line-height: 1.45;
+  font-size: 14px;
+}
+
+.controls {
+  padding: 18px 18px 14px;
+  display: grid;
+  gap: 12px;
+  border-bottom: 1px solid var(--line);
+}
+
+.row {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: center;
+  gap: 12px;
+}
+
+label {
+  font-size: 13px;
+  color: var(--muted);
+}
+
+.value {
+  font-variant-numeric: tabular-nums;
+  font-size: 13px;
+  color: var(--ink);
+  background: rgba(255,255,255,0.55);
+  border: 1px solid rgba(255,255,255,0.5);
+  padding: 4px 8px;
+  border-radius: 999px;
+  min-width: 56px;
+  text-align: center;
+}
+
+input[type="range"] {
+  width: 100%;
+  appearance: none;
+  -webkit-appearance: none;
+  height: 8px;
+  border-radius: 999px;
+  background: linear-gradient(90deg, rgba(199,125,125,0.5), rgba(138,163,199,0.5));
+  outline: none;
+}
+
+input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: white;
+  border: 1px solid rgba(44, 52, 64, 0.15);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+  cursor: pointer;
+}
+
+.buttons {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 6px;
+}
+
+button {
+  appearance: none;
+  border: none;
+  border-radius: 14px;
+  padding: 12px 14px;
+  font-size: 14px;
+  font-weight: 650;
+  cursor: pointer;
+  transition: transform 0.12s ease, box-shadow 0.12s ease, opacity 0.2s ease;
+  box-shadow: 0 10px 22px rgba(50, 63, 80, 0.12);
+}
+
+button:hover { transform: translateY(-1px); }
+button:active { transform: translateY(1px) scale(0.995); }
+
+.primary {
+  background: linear-gradient(135deg, rgba(199,125,125,0.96), rgba(164,142,205,0.96));
+  color: white;
+}
+
+.secondary {
+  background: rgba(255,255,255,0.7);
+  color: var(--ink);
+  border: 1px solid rgba(44,52,64,0.08);
+}
+
+.ledger {
+  min-height: 0;
+  overflow: auto;
+  padding: 14px 18px 18px;
+}
+
+.ledger h2 {
+  margin: 2px 0 12px;
+  font-size: 14px;
+  font-weight: 700;
+  color: var(--muted);
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+}
+
+.entry {
+  background: rgba(255,255,255,0.5);
+  border: 1px solid rgba(255,255,255,0.65);
+  border-radius: 16px;
+  padding: 12px 12px 11px;
+  margin-bottom: 10px;
+  box-shadow: 0 8px 18px rgba(40, 55, 76, 0.06);
+}
+
+.entry .meta {
+  font-size: 11px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  margin-bottom: 7px;
+}
+
+.entry .text {
+  font-size: 14px;
+  line-height: 1.45;
+}
+
+.entry.good { border-left: 4px solid rgba(106,151,112,0.65); }
+.entry.warn { border-left: 4px solid rgba(192,147,85,0.7); }
+.entry.soft { border-left: 4px solid rgba(138,163,199,0.7); }
+
+.main {
+  position: relative;
+  min-width: 0;
+  overflow: hidden;
+}
+
+canvas {
+  width: 100%;
+  height: 100%;
+  display: block;
+  border-radius: var(--radius);
+}
+
+.hud {
+  position: absolute;
+  left: 18px;
+  right: 18px;
+  bottom: 18px;
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 12px;
+  align-items: end;
+  pointer-events: none;
+}
+
+.card {
+  background: rgba(255,255,255,0.48);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  border: 1px solid rgba(255,255,255,0.64);
+  border-radius: 18px;
+  box-shadow: 0 12px 30px rgba(44,52,64,0.1);
+  padding: 14px 16px;
+  pointer-events: auto;
+}
+
+.status-title {
+  margin: 0 0 6px;
+  font-size: 13px;
+  color: var(--muted);
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+}
+
+.status-body {
+  margin: 0;
+  font-size: 17px;
+  line-height: 1.35;
+  max-width: 700px;
+}
+
+.badges {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  justify-content: flex-end;
+}
+
+.badge {
+  background: rgba(255,255,255,0.7);
+  border: 1px solid rgba(255,255,255,0.75);
+  color: var(--ink);
+  padding: 9px 11px;
+  border-radius: 999px;
+  font-size: 13px;
+  font-variant-numeric: tabular-nums;
+  box-shadow: 0 8px 18px rgba(44,52,64,0.08);
+}
+
+.hint {
+  margin-top: 10px;
+  font-size: 12px;
+  color: var(--muted);
+}
+
+@media (max-width: 900px) {
+  body { overflow: auto; }
+  #app {
+    height: auto;
+    min-height: 100%;
+    grid-template-columns: 1fr;
+  }
+  .main {
+    min-height: 62vh;
+  }
+  .hud {
+    grid-template-columns: 1fr;
+  }
+  .badges {
+    justify-content: flex-start;
+  }
+}
+
+  </style>
+</head>
+<body>
+  <div id="app">
+    <aside class="panel sidebar">
+      <div class="header">
+        <div class="eyebrow">Civic Maintenance for Fragile Feelings</div>
+        <h1>The Department of Soft Catastrophes</h1>
+        <div class="sub">
+          This is not a game, simulator, dashboard, or toy in the usual sense. It is a small administrative instrument for calming impossible situations by filing them as weather.
+        </div>
+      </div><div class="controls">
+    <div>
+      <div class="row"><label for="mood">Atmospheric tenderness</label><div class="value" id="moodVal">63</div></div>
+      <input id="mood" type="range" min="0" max="100" value="63" />
+    </div>
+    <div>
+      <div class="row"><label for="memory">Residual memory in the air</label><div class="value" id="memoryVal">41</div></div>
+      <input id="memory" type="range" min="0" max="100" value="41" />
+    </div>
+    <div>
+      <div class="row"><label for="bureaucracy">Administrative overreach</label><div class="value" id="bureauVal">28</div></div>
+      <input id="bureaucracy" type="range" min="0" max="100" value="28" />
+    </div>
+    <div class="buttons">
+      <button class="primary" id="issueBtn">Issue New Notice</button>
+      <button class="secondary" id="clearBtn">Clear Sky</button>
+    </div>
+    <div class="hint">
+      Move the sliders and watch the city reinterpret its emotional paperwork. Click anywhere in the sky to file a local disturbance.
+    </div>
+  </div>
+
+  <div class="ledger" id="ledger">
+    <h2>Public Notices</h2>
+  </div>
+</aside>
+
+<main class="panel main">
+  <canvas id="scene"></canvas>
+  <div class="hud">
+    <div class="card">
+      <div class="status-title">Current Advisory</div>
+      <p class="status-body" id="advisory">A mild discrepancy between expectation and upholstery has spread across the district. Curtains are asked to remain diplomatic.</p>
+    </div>
+    <div class="badges">
+      <div class="badge">Incidents: <span id="incidentCount">0</span></div>
+      <div class="badge">Sky compliance: <span id="compliance">97%</span></div>
+      <div class="badge">Ambient excuses: <span id="excuses">12</span></div>
+    </div>
+  </div>
+</main>
+
+  </div>  <script>
+    const canvas = document.getElementById('scene');
+    const ctx = canvas.getContext('2d');
+
+    const mood = document.getElementById('mood');
+    const memory = document.getElementById('memory');
+    const bureaucracy = document.getElementById('bureaucracy');
+    const moodVal = document.getElementById('moodVal');
+    const memoryVal = document.getElementById('memoryVal');
+    const bureauVal = document.getElementById('bureauVal');
+    const advisory = document.getElementById('advisory');
+    const ledger = document.getElementById('ledger');
+    const incidentCount = document.getElementById('incidentCount');
+    const compliance = document.getElementById('compliance');
+    const excuses = document.getElementById('excuses');
+    const issueBtn = document.getElementById('issueBtn');
+    const clearBtn = document.getElementById('clearBtn');
+
+    const state = {
+      mood: Number(mood.value),
+      memory: Number(memory.value),
+      bureaucracy: Number(bureaucracy.value),
+      incidents: [],
+      particles: [],
+      time: 0,
+      noticeId: 0,
+      lastAdvisory: ''
+    };
+
+    const nouns = [
+      'upholstery', 'midnight tea', 'public staircases', 'flowers in envelopes', 'parking lots',
+      'unclaimed umbrellas', 'hallway velvet', 'kitchen windows', 'elevator music', 'paper moons',
+      'forgotten receipts', 'municipal mirrors', 'dust motes', 'small apologies', 'retired confetti'
+    ];
+
+    const phenomena = [
+      'drizzle of second thoughts', 'localized velvet pressure', 'wandering administrative fog',
+      'emotional overcast', 'murmur front', 'bureaucratic pollen bloom', 'faint sincerity hail',
+      'unlicensed nostalgia gusts', 'ceremonial mist', 'domestic aurora', 'overdue softness',
+      'interior weather spill', 'pocket thunder', 'feathered static'
+    ];
+
+    const responses = [
+      'remain calm and alphabetize any nearby feelings',
+      'leave one lamp on for procedural mercy',
+      'avoid arguing with decorative objects',
+      'let all curtains negotiate among themselves',
+      'keep one hand free for improbable paperwork',
+      'offer tea to the nearest contradiction',
+      'walk slowly so the floor can update its story',
+      'apologize only to furniture that deserves it',
+      'file your confusion under seasonal changes',
+      'permit the air to revise its testimony'
+    ];
+
+    const seals = ['soft', 'good', 'warn'];
+
+    function rand(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    function clamp(v, a, b) {
+      return Math.max(a, Math.min(b, v));
+    }
+
+    function lerp(a, b, t) {
+      return a + (b - a) * t;
+    }
+
+    function resize() {
+      const dpr = Math.min(window.devicePixelRatio || 1, 2);
+      const rect = canvas.getBoundingClientRect();
+      canvas.width = Math.floor(rect.width * dpr);
+      canvas.height = Math.floor(rect.height * dpr);
+      ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+    }
+
+    function syncUI() {
+      state.mood = Number(mood.value);
+      state.memory = Number(memory.value);
+      state.bureaucracy = Number(bureaucracy.value);
+      moodVal.textContent = state.mood;
+      memoryVal.textContent = state.memory;
+      bureauVal.textContent = state.bureaucracy;
+      updateComputedBadges();
+      generateAdvisory(false);
+    }
+
+    function updateComputedBadges() {
+      const calm = Math.round(clamp(100 - state.bureaucracy * 0.55 + state.mood * 0.25 - state.memory * 0.1, 8, 100));
+      const excuseCount = Math.round(4 + state.memory * 0.12 + state.bureaucracy * 0.21 + state.incidents.length * 0.7);
+      compliance.textContent = calm + '%';
+      excuses.textContent = excuseCount;
+      incidentCount.textContent = state.incidents.length;
+    }
+
+    function makeIncident(x = Math.random() * canvas.clientWidth, y = Math.random() * canvas.clientHeight, manual = false) {
+      const size = 20 + Math.random() * 60 + state.memory * 0.2;
+      const drift = (Math.random() - 0.5) * (0.2 + state.mood * 0.006);
+      const upward = -0.1 - Math.random() * 0.25 - state.bureaucracy * 0.001;
+      const type = rand(phenomena);
+      state.incidents.push({
+        x, y,
+        r: size,
+        vx: drift,
+        vy: upward,
+        hue: 200 + Math.random() * 80,
+        life: 1,
+        pulse: Math.random() * Math.PI * 2,
+        kind: type,
+        formal: manual
+      });
+      if (state.incidents.length > 36) state.incidents.shift();
+      addNotice(type, manual ? 'Filed by hand' : 'Detected automatically');
+      updateComputedBadges();
+      generateAdvisory(true);
+    }
+
+    function addNotice(type, source) {
+      state.noticeId += 1;
+      const entry = document.createElement('div');
+      const seal = rand(seals);
+      entry.className = 'entry ' + seal;
+      const noun = rand(nouns);
+      const instruction = rand(responses);
+      entry.innerHTML = `
+        <div class="meta">Notice ${String(state.noticeId).padStart(3, '0')} · ${source}</div>
+        <div class="text">A ${type} has been observed near <strong>${noun}</strong>. Residents are advised to ${instruction}.</div>
+      `;
+      const anchor = ledger.querySelector('h2');
+      if (anchor.nextSibling) ledger.insertBefore(entry, anchor.nextSibling);
+      else ledger.appendChild(entry);
+      while (ledger.querySelectorAll('.entry').length > 12) {
+        ledger.lastElementChild.remove();
+      }
+    }
+
+    function generateAdvisory(forceReplace) {
+      const intensity = state.mood * 0.42 + state.memory * 0.28 + state.bureaucracy * 0.3 + state.incidents.length * 2;
+      let tone;
+      if (intensity < 35) tone = 'A polite stillness has settled over the district.';
+      else if (intensity < 60) tone = 'Minor emotional weather remains within acceptable ornamental limits.';
+      else if (intensity < 85) tone = 'The city is processing a textured inconvenience with surprising grace.';
+      else if (intensity < 110) tone = 'Several avenues are now under advisory for accumulating atmosphere.';
+      else tone = 'Conditions have become ceremonially unstable, but not unfriendly.';
+
+      const detail = ` ${rand(phenomena)} is interacting with ${rand(nouns)}, and citizens should ${rand(responses)}.`;
+      const candidate = tone + detail;
+      if (forceReplace || candidate !== state.lastAdvisory) {
+        state.lastAdvisory = candidate;
+        advisory.textContent = candidate;
+      }
+    }
+
+    function seedParticles() {
+      state.particles = [];
+      const count = 110;
+      for (let i = 0; i < count; i++) {
+        state.particles.push({
+          x: Math.random() * canvas.clientWidth,
+          y: Math.random() * canvas.clientHeight,
+          s: 0.4 + Math.random() * 3.8,
+          a: 0.15 + Math.random() * 0.5,
+          vx: (Math.random() - 0.5) * 0.2,
+          vy: -0.08 - Math.random() * 0.16,
+          wobble: Math.random() * Math.PI * 2,
+          tone: Math.random()
+        });
+      }
+    }
+
+    function clearSky() {
+      state.incidents = [];
+      state.noticeId = 0;
+      ledger.innerHTML = '<h2>Public Notices</h2>';
+      addNotice('clearing event', 'Department action');
+      updateComputedBadges();
+      generateAdvisory(true);
+    }
+
+    function drawBackground(w, h) {
+      const tMood = state.mood / 100;
+      const tMemory = state.memory / 100;
+      const tBureau = state.bureaucracy / 100;
+
+      const grad = ctx.createLinearGradient(0, 0, 0, h);
+      grad.addColorStop(0, `rgba(${Math.round(lerp(245, 226, tMemory))}, ${Math.round(lerp(238, 235, tMood))}, ${Math.round(lerp(231, 248, tMood))}, 1)`);
+      grad.addColorStop(1, `rgba(${Math.round(lerp(233, 214, tBureau))}, ${Math.round(lerp(241, 228, tMemory))}, ${Math.round(lerp(247, 240, tBureau))}, 1)`);
+      ctx.fillStyle = grad;
+      ctx.fillRect(0, 0, w, h);
+
+      for (let i = 0; i < 6; i++) {
+        const y = h * (0.18 + i * 0.12) + Math.sin(state.time * 0.0003 + i) * 18;
+        ctx.beginPath();
+        for (let x = -40; x <= w + 40; x += 18) {
+          const wave = Math.sin(x * 0.008 + i * 1.7 + state.time * 0.0005) * (8 + i * 2 + tMood * 18);
+          const lineY = y + wave;
+          if (x === -40) ctx.moveTo(x, lineY);
+          else ctx.lineTo(x, lineY);
+        }
+        ctx.strokeStyle = `rgba(255,255,255,${0.12 + i * 0.015})`;
+        ctx.lineWidth = 22 - i * 2.4;
+        ctx.stroke();
+      }
+
+      drawCity(w, h);
+    }
+
+    function drawCity(w, h) {
+      const baseY = h * 0.72;
+      const buildings = 24;
+      for (let i = 0; i < buildings; i++) {
+        const bw = w / buildings + 10;
+        const x = i * (w / buildings) - 5;
+        const n = Math.sin(i * 12.9898) * 43758.5453;
+        const frac = n - Math.floor(n);
+        const bh = 70 + frac * (h * 0.24) + state.memory * 0.3;
+        const corner = 10 + frac * 18;
+        const g = ctx.createLinearGradient(x, baseY - bh, x, baseY);
+        g.addColorStop(0, `rgba(255,255,255,${0.18 + frac * 0.15})`);
+        g.addColorStop(1, `rgba(130,145,167,${0.16 + frac * 0.2})`);
+        roundRect(ctx, x, baseY - bh, bw, bh, corner);
+        ctx.fillStyle = g;
+        ctx.fill();
+
+        const windows = Math.floor(bh / 22);
+        const cols = Math.max(2, Math.floor(bw / 20));
+        for (let yy = 0; yy < windows; yy++) {
+          for (let xx = 0; xx < cols; xx++) {
+            if ((xx + yy + i) % 3 === 0) continue;
+            const wx = x + 10 + xx * 15;
+            const wy = baseY - bh + 12 + yy * 18;
+            ctx.fillStyle = `rgba(255,255,255,${0.11 + ((xx * yy + i) % 5) * 0.04})`;
+            ctx.fillRect(wx, wy, 7, 9);
+          }
+        }
+      }
+
+      ctx.fillStyle = 'rgba(255,255,255,0.18)';
+      ctx.fillRect(0, baseY, w, h - baseY);
+    }
+
+    function roundRect(context, x, y, w, h, r) {
+      context.beginPath();
+      context.moveTo(x + r, y);
+      context.arcTo(x + w, y, x + w, y + h, r);
+      context.arcTo(x + w, y + h, x, y + h, r);
+      context.arcTo(x, y + h, x, y, r);
+      context.arcTo(x, y, x + w, y, r);
+      context.closePath();
+    }
+
+    function drawParticles(w, h, dt) {
+      for (const p of state.particles) {
+        p.x += p.vx * (1 + state.mood * 0.01) * dt * 0.06 + Math.sin(state.time * 0.001 + p.wobble) * 0.08;
+        p.y += p.vy * (1 + state.memory * 0.008) * dt * 0.06;
+        p.wobble += 0.01;
+        if (p.y < -10) {
+          p.y = h + 10;
+          p.x = Math.random() * w;
+        }
+        if (p.x < -10) p.x = w + 10;
+        if (p.x > w + 10) p.x = -10;
+
+        ctx.beginPath();
+        ctx.arc(p.x, p.y, p.s, 0, Math.PI * 2);
+        const alpha = p.a * (0.6 + 0.4 * Math.sin(state.time * 0.001 + p.wobble));
+        ctx.fillStyle = p.tone > 0.5 ? `rgba(255,255,255,${alpha})` : `rgba(199,125,125,${alpha * 0.35})`;
+        ctx.fill();
+      }
+    }
+
+    function drawIncidents(dt) {
+      for (let i = state.incidents.length - 1; i >= 0; i--) {
+        const c = state.incidents[i];
+        c.x += c.vx * dt * 0.05;
+        c.y += c.vy * dt * 0.05;
+        c.pulse += 0.015 + state.mood * 0.0002;
+        c.life -= 0.00025 * (0.4 + state.bureaucracy * 0.02);
+
+        const rr = c.r * (0.85 + Math.sin(c.pulse) * 0.14);
+        const gradient = ctx.createRadialGradient(c.x, c.y, 0, c.x, c.y, rr);
+        gradient.addColorStop(0, `hsla(${c.hue}, 70%, 85%, ${0.22 * c.life})`);
+        gradient.addColorStop(0.5, `hsla(${c.hue + 20}, 65%, 78%, ${0.12 * c.life})`);
+        gradient.addColorStop(1, `hsla(${c.hue + 45}, 55%, 70%, 0)`);
+        ctx.beginPath();
+        ctx.arc(c.x, c.y, rr, 0, Math.PI * 2);
+        ctx.fillStyle = gradient;
+        ctx.fill();
+
+        ctx.beginPath();
+        ctx.arc(c.x, c.y, rr * 0.6, 0, Math.PI * 2);
+        ctx.strokeStyle = `rgba(255,255,255,${0.18 * c.life})`;
+        ctx.lineWidth = 1.2;
+        ctx.stroke();
+
+        if (c.formal) {
+          ctx.beginPath();
+          ctx.arc(c.x, c.y, rr * 0.28, 0, Math.PI * 2);
+          ctx.fillStyle = `rgba(255,255,255,${0.22 * c.life})`;
+          ctx.fill();
+        }
+
+        if (c.life <= 0 || c.y < -120) state.incidents.splice(i, 1);
+      }
+    }
+
+    function maybeAutoIncident() {
+      const chance = 0.002 + state.memory * 0.00002 + state.bureaucracy * 0.00001;
+      if (Math.random() < chance) {
+        makeIncident();
+      }
+    }
+
+    function animate(ts) {
+      if (!animate.last) animate.last = ts;
+      const dt = Math.min(32, ts - animate.last);
+      animate.last = ts;
+      state.time = ts;
+
+      const w = canvas.clientWidth;
+      const h = canvas.clientHeight;
+      ctx.clearRect(0, 0, w, h);
+      drawBackground(w, h);
+      drawParticles(w, h, dt);
+      drawIncidents(dt);
+      maybeAutoIncident();
+      updateComputedBadges();
+
+      requestAnimationFrame(animate);
+    }
+
+    mood.addEventListener('input', syncUI);
+    memory.addEventListener('input', syncUI);
+    bureaucracy.addEventListener('input', syncUI);
+
+    issueBtn.addEventListener('click', () => makeIncident(undefined, undefined, true));
+    clearBtn.addEventListener('click', clearSky);
+
+    canvas.addEventListener('click', (e) => {
+      const rect = canvas.getBoundingClientRect();
+      const x = e.clientX - rect.left;
+      const y = e.clientY - rect.top;
+      makeIncident(x, y, true);
+    });
+
+    window.addEventListener('resize', () => {
+      resize();
+      seedParticles();
+    });
+
+    resize();
+    seedParticles();
+    addNotice('orientation haze', 'Opening procedure');
+    addNotice('gentle contradiction', 'Opening procedure');
+    generateAdvisory(true);
+    updateComputedBadges();
+    requestAnimationFrame(animate);
+  </script></body>
+</html>

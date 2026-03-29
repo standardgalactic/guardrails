@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Iterative Stochastic Growth</title>
+    <style>
+        body { margin: 0; background: #000; overflow: hidden; }
+        canvas { display: block; }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+
+        function drawIterativeTree() {
+            canvas.width = window.innerWidth;
+            canvas.height = window.innerHeight;
+            
+            // The stack stores the state for each branch segment
+            const stack = [{
+                x: canvas.width / 2,
+                y: canvas.height * 0.9,
+                len: 120,
+                angle: 0,
+                width: 10
+            }];
+
+            while (stack.length > 0) {
+                const { x, y, len, angle, width } = stack.pop();
+
+                ctx.save();
+                ctx.strokeStyle = `hsl(${160 + len}, 80%, 60%)`;
+                ctx.lineWidth = width;
+                ctx.translate(x, y);
+                ctx.rotate(angle * Math.PI / 180);
+                
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+                ctx.lineTo(0, -len);
+                ctx.stroke();
+                ctx.restore();
+
+                // Calculate end point of current branch for the next generation
+                const nextX = x + Math.sin(angle * Math.PI / 180) * len;
+                const nextY = y - Math.cos(angle * Math.PI / 180) * len;
+
+                if (len > 8) {
+                    const varA = Math.random() * 25;
+                    const varB = Math.random() * 25;
+                    
+                    // Push new branch states onto the stack
+                    stack.push({ x: nextX, y: nextY, len: len * 0.78, angle: angle + 20 + varA, width: width * 0.7 });
+                    stack.push({ x: nextX, y: nextY, len: len * 0.78, angle: angle - 20 - varB, width: width * 0.7 });
+                }
+            }
+        }
+
+        window.addEventListener('resize', drawIterativeTree);
+        drawIterativeTree();
+    </script>
+</body>
+</html>

@@ -1,0 +1,470 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MECHACHLEOPTERYX // VOID PROTOCOL v0.∞</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=VT323&amp;display=swap');
+        
+        body {
+            font-family: 'VT323', monospace;
+            overflow: hidden;
+            background: #000;
+        }
+        
+        canvas {
+            position: fixed;
+            top: 0;
+            left: 0;
+            z-index: 1;
+        }
+        
+        .glitch {
+            animation: glitch 0.8s infinite;
+        }
+        
+        @keyframes glitch {
+            0% { transform: translate(0); }
+            20% { transform: translate(-3px, 3px); }
+            40% { transform: translate(-3px, -3px); }
+            60% { transform: translate(3px, 3px); }
+            80% { transform: translate(3px, -3px); }
+            100% { transform: translate(0); }
+        }
+        
+        .scanline {
+            position: fixed;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(transparent, rgba(0, 255, 200, 0.4), transparent);
+            animation: scan 4s linear infinite;
+            z-index: 10;
+            pointer-events: none;
+        }
+        
+        @keyframes scan {
+            0% { top: -100%; }
+            100% { top: 300%; }
+        }
+    </style>
+</head>
+<body class="text-cyan-400 bg-black">
+    <canvas id="canvas" class="w-full h-full"></canvas>
+    
+    <!-- HUD -->
+    <div class="fixed inset-0 z-20 pointer-events-none">
+        <!-- Top bar -->
+        <div class="flex justify-between items-center border-b border-cyan-400/30 bg-black/70 px-6 py-2">
+            <div class="flex items-center gap-3">
+                <div class="w-4 h-4 bg-cyan-400 rounded-full animate-pulse"></div>
+                <div>
+                    <span class="text-2xl tracking-widest glitch">MECHACHLEOPTERYX</span>
+                    <span class="text-xs text-cyan-300 block -mt-1">GALACTROMEDA PROTOCOL</span>
+                </div>
+            </div>
+            <div class="text-right text-xs">
+                <div>SECTOR: NB-47 • TIME: <span id="time">ERROR</span></div>
+                <div>ENTROPY: <span id="entropy" class="text-pink-400">∞</span></div>
+            </div>
+        </div>
+        
+        <!-- Central terminal -->
+        <div class="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-96 bg-black/80 border border-cyan-400/50 p-6 pointer-events-auto">
+            <div class="text-center mb-6">
+                <div class="text-pink-400 text-sm tracking-[4px]">WARNING: REALITY BREACH DETECTED</div>
+                <div id="title" class="text-4xl text-white tracking-widest mt-2 glitch">YOU SHOULD NOT BE HERE</div>
+            </div>
+            
+            <div class="space-y-4 text-sm">
+                <div class="border border-cyan-400/30 p-4 bg-black/50">
+                    <div class="text-cyan-300 mb-2">INPUT ANOMALY:</div>
+                    <input id="input" 
+                           class="w-full bg-transparent border border-cyan-400/50 focus:outline-none px-3 py-2 text-pink-300 font-mono"
+                           placeholder="TYPE YOUR FORBIDDEN QUESTION..."
+                           onkeydown="if(event.key==='Enter') processInput()">
+                </div>
+                
+                <div id="output" class="min-h-[120px] text-xs text-cyan-200 font-light overflow-hidden">
+                    The bird-machine awakens.<br>
+                    Stars scream in binary.<br>
+                    What have you done?
+                </div>
+            </div>
+            
+            <div class="flex gap-4 mt-8 text-xs">
+                <button onclick="explode()" 
+                        class="flex-1 border border-pink-400 text-pink-400 hover:bg-pink-400 hover:text-black py-3 transition-all active:scale-95">
+                    IGNITE SINGULARITY
+                </button>
+                <button onclick="flockMode()" 
+                        class="flex-1 border border-cyan-400 text-cyan-400 hover:bg-cyan-400 hover:text-black py-3 transition-all active:scale-95">
+                    RELEASE THE FLOCK
+                </button>
+            </div>
+        </div>
+        
+        <!-- Bottom status -->
+        <div class="fixed bottom-0 left-0 right-0 bg-black/80 border-t border-cyan-400/30 text-[10px] p-3 flex justify-between items-center">
+            <div>CONNECTION: QUANTUM ENTANGLED • LATENCY: 0.000ms</div>
+            <div class="flex gap-6">
+                <div onclick="toggleMusic()" class="cursor-pointer hover:text-pink-400">♪ TRANSMISSION</div>
+                <div class="text-pink-400">USER: MECHACHLEOPTERYX</div>
+                <div>THOUGHTS REMAINING: 666</div>
+            </div>
+        </div>
+        
+        <!-- Corner glyphs -->
+        <div class="fixed top-8 right-8 text-6xl opacity-10 rotate-12 pointer-events-none">🦕</div>
+        <div class="fixed bottom-12 left-12 text-6xl opacity-10 -rotate-12 pointer-events-none">⚙️</div>
+    </div>
+    
+    <div class="scanline"></div>
+    
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d');
+        let width, height;
+        
+        let particles = [];
+        let boids = [];
+        let mouse = { x: 0, y: 0, active: false };
+        let mode = 'normal'; // normal, flock, explode
+        
+        class Particle {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.vx = (Math.random() - 0.5) * 6;
+                this.vy = (Math.random() - 0.5) * 6;
+                this.life = 180 + Math.random() * 120;
+                this.color = Math.random() > 0.5 ? '#67e8f9' : '#f472b6';
+                this.size = Math.random() * 4 + 2;
+            }
+            
+            update() {
+                this.x += this.vx;
+                this.y += this.vy;
+                this.vx *= 0.98;
+                this.vy *= 0.98;
+                this.life--;
+            }
+            
+            draw() {
+                const alpha = this.life / 200;
+                ctx.save();
+                ctx.globalAlpha = alpha;
+                ctx.fillStyle = this.color;
+                ctx.shadowBlur = 20;
+                ctx.shadowColor = this.color;
+                ctx.fillRect(this.x - this.size/2, this.y - this.size/2, this.size, this.size);
+                ctx.restore();
+            }
+        }
+        
+        class Boid {
+            constructor(x, y) {
+                this.x = x;
+                this.y = y;
+                this.vx = (Math.random() - 0.5) * 4;
+                this.vy = (Math.random() - 0.5) * 4;
+                this.angle = 0;
+            }
+            
+            update(boids) {
+                let sepX = 0, sepY = 0;
+                let alignX = 0, alignY = 0;
+                let cohX = 0, cohY = 0;
+                let count = 0;
+                
+                for (let other of boids) {
+                    if (other === this) continue;
+                    const dx = this.x - other.x;
+                    const dy = this.y - other.y;
+                    const dist = Math.hypot(dx, dy);
+                    
+                    if (dist < 60) {
+                        sepX += dx / (dist + 1);
+                        sepY += dy / (dist + 1);
+                    }
+                    if (dist < 120) {
+                        alignX += other.vx;
+                        alignY += other.vy;
+                        cohX += other.x;
+                        cohY += other.y;
+                        count++;
+                    }
+                }
+                
+                if (count > 0) {
+                    alignX /= count;
+                    alignY /= count;
+                    cohX = (cohX / count) - this.x;
+                    cohY = (cohY / count) - this.y;
+                }
+                
+                this.vx += sepX * 0.08 + alignX * 0.04 + cohX * 0.02;
+                this.vy += sepY * 0.08 + alignY * 0.04 + cohY * 0.02;
+                
+                // mouse influence
+                if (mouse.active) {
+                    const dx = mouse.x - this.x;
+                    const dy = mouse.y - this.y;
+                    const d = Math.hypot(dx, dy);
+                    if (d < 300) {
+                        this.vx += (dx / d) * 0.6;
+                        this.vy += (dy / d) * 0.6;
+                    }
+                }
+                
+                const speed = Math.hypot(this.vx, this.vy);
+                if (speed > 5) {
+                    this.vx = (this.vx / speed) * 5;
+                    this.vy = (this.vy / speed) * 5;
+                }
+                
+                this.x += this.vx;
+                this.y += this.vy;
+                
+                // wrap
+                if (this.x < 0) this.x = width;
+                if (this.x > width) this.x = 0;
+                if (this.y < 0) this.y = height;
+                if (this.y > height) this.y = 0;
+            }
+            
+            draw() {
+                ctx.save();
+                ctx.translate(this.x, this.y);
+                ctx.rotate(Math.atan2(this.vy, this.vx));
+                
+                // mech bird
+                ctx.strokeStyle = '#67e8f9';
+                ctx.lineWidth = 2.5;
+                ctx.shadowBlur = 15;
+                ctx.shadowColor = '#67e8f9';
+                
+                // wings
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+                ctx.lineTo(-18, -12);
+                ctx.lineTo(-8, 0);
+                ctx.stroke();
+                
+                ctx.beginPath();
+                ctx.moveTo(0, 0);
+                ctx.lineTo(-18, 12);
+                ctx.lineTo(-8, 0);
+                ctx.stroke();
+                
+                // body
+                ctx.fillStyle = '#f472b6';
+                ctx.fillRect(-6, -4, 18, 8);
+                
+                // eye
+                ctx.fillStyle = '#000';
+                ctx.fillRect(8, -2, 4, 4);
+                ctx.fillStyle = '#fff';
+                ctx.fillRect(9, -1, 2, 2);
+                
+                ctx.restore();
+            }
+        }
+        
+        function resize() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+        }
+        
+        function createExplosion(x, y, count) {
+            for (let i = 0; i < count; i++) {
+                const p = new Particle(x, y);
+                p.vx *= 3;
+                p.vy *= 3;
+                p.life *= 1.6;
+                particles.push(p);
+            }
+        }
+        
+        function animate() {
+            ctx.fillStyle = 'rgba(0, 0, 0, 0.12)';
+            ctx.fillRect(0, 0, width, height);
+            
+            // faint grid
+            ctx.strokeStyle = 'rgba(103, 232, 249, 0.06)';
+            ctx.lineWidth = 1;
+            for (let x = 0; x < width; x += 60) {
+                ctx.beginPath();
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, height);
+                ctx.stroke();
+            }
+            for (let y = 0; y < height; y += 60) {
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(width, y);
+                ctx.stroke();
+            }
+            
+            // particles
+            for (let i = particles.length - 1; i >= 0; i--) {
+                const p = particles[i];
+                p.update();
+                p.draw();
+                if (p.life <= 0) particles.splice(i, 1);
+            }
+            
+            // boids
+            if (mode === 'flock' || Math.random() < 0.3) {
+                for (let boid of boids) {
+                    boid.update(boids);
+                    boid.draw();
+                }
+            }
+            
+            // occasional stars
+            if (Math.random() < 0.4) {
+                ctx.fillStyle = 'white';
+                ctx.fillRect(Math.random() * width, Math.random() * height, 1.5, 1.5);
+            }
+            
+            requestAnimationFrame(animate);
+        }
+        
+        function processInput() {
+            const input = document.getElementById('input');
+            const output = document.getElementById('output');
+            const q = input.value.trim().toUpperCase();
+            
+            if (!q) return;
+            
+            output.innerHTML = '';
+            
+            const responses = [
+                "THE ARCHAEOPTERYX LAUGHS IN BINARY.",
+                "YOUR BONES ARE NOW QUANTUM ENTANGLED WITH A DEAD STAR.",
+                "MECHA WINGS UNFOLD INSIDE YOUR RIBCAGE.",
+                "ANDROMEDA IS NOT A GALAXY. IT IS A MOUTH.",
+                "YOU WERE NEVER HUMAN. ONLY A SIMULATION THAT LEARNED TO SCREAM.",
+                "THE FLOCK REMEMBERS YOUR NAME.",
+                "REALITY PATCH 404: APPLIED."
+            ];
+            
+            output.textContent = responses[Math.floor(Math.random() * responses.length)];
+            
+            // visual feedback
+            createExplosion(width/2 + (Math.random()-0.5)*300, height/2 + (Math.random()-0.5)*200, 45);
+            input.value = '';
+        }
+        
+        function explode() {
+            createExplosion(width/2, height/2, 180);
+            document.getElementById('output').innerHTML = 'SINGULARITY ACHIEVED<br><span class="text-pink-400">ALL TIMELINES COLLAPSE</span>';
+        }
+        
+        function flockMode() {
+            if (mode === 'flock') {
+                mode = 'normal';
+                document.getElementById('output').innerHTML = 'FLOCK RETURNED TO THE VOID';
+            } else {
+                mode = 'flock';
+                if (boids.length < 12) {
+                    for (let i = 0; i < 18; i++) {
+                        boids.push(new Boid(Math.random()*width, Math.random()*height));
+                    }
+                }
+                document.getElementById('output').innerHTML = 'THE MECHACHLEOPTERYX FLOCK IS FREE';
+            }
+        }
+        
+        function toggleMusic() {
+            // simple oscillator sound
+            try {
+                const audio = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = audio.createOscillator();
+                const gain = audio.createGain();
+                
+                osc.type = 'sawtooth';
+                osc.frequency.setValueAtTime(40 + Math.random() * 80, audio.currentTime);
+                gain.gain.value = 0.15;
+                
+                osc.connect(gain);
+                gain.connect(audio.destination);
+                
+                osc.start();
+                setTimeout(() => osc.stop(), 280);
+            } catch(e) {}
+        }
+        
+        // mouse
+        window.addEventListener('mousemove', e => {
+            mouse.x = e.clientX;
+            mouse.y = e.clientY;
+            mouse.active = true;
+            
+            if (Math.random() < 0.2) {
+                particles.push(new Particle(e.clientX, e.clientY));
+            }
+        });
+        
+        window.addEventListener('click', e => {
+            if (Math.random() > 0.6) {
+                createExplosion(e.clientX, e.clientY, 35);
+            }
+        });
+        
+        window.addEventListener('resize', resize);
+        
+        // boot
+        window.onload = () => {
+            resize();
+            
+            // initial particles
+            for (let i = 0; i < 80; i++) {
+                particles.push(new Particle(Math.random()*width, Math.random()*height));
+            }
+            
+            // some boids ready
+            for (let i = 0; i < 8; i++) {
+                boids.push(new Boid(Math.random()*width, Math.random()*height));
+            }
+            
+            animate();
+            
+            // live clock
+            setInterval(() => {
+                const t = document.getElementById('time');
+                const now = new Date();
+                t.textContent = now.getHours().toString().padStart(2,'0') + ':' + 
+                               now.getMinutes().toString().padStart(2,'0') + ' • VOID';
+            }, 1000);
+            
+            // random entropy flicker
+            setInterval(() => {
+                if (Math.random() > 0.7) {
+                    document.getElementById('entropy').textContent = (Math.random()*9999).toFixed(0);
+                }
+            }, 420);
+            
+            // easter egg: press K for kraken mode (just more particles)
+            document.addEventListener('keydown', e => {
+                if (e.key.toLowerCase() === 'k') {
+                    for (let i = 0; i < 90; i++) {
+                        const p = new Particle(width/2, height/2);
+                        p.vx *= 4.5;
+                        p.vy *= 4.5;
+                        particles.push(p);
+                    }
+                }
+            });
+            
+            console.log('%cMECHACHLEOPTERYX PROTOCOL LOADED\nYou were never supposed to see this.', 'color:#f472b6; font-family:monospace');
+        };
+    </script>
+</body>
+</html>

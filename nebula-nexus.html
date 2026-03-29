@@ -1,0 +1,393 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+    <title>NEBULA NEXUS</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=VT323&display=swap');
+        
+        body {
+            margin: 0;
+            padding: 0;
+            overflow: hidden;
+            background: #000;
+            color: #0ff;
+            font-family: 'VT323', monospace;
+            touch-action: none;
+            image-rendering: pixelated;
+        }
+        
+        canvas {
+            position: absolute;
+            top: 0;
+            left: 0;
+            display: block;
+            width: 100%;
+            height: 100%;
+        }
+        
+        #overlay {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            z-index: 10;
+            display: flex;
+            flex-direction: column;
+            justify-content: space-between;
+            padding: 15px;
+            box-sizing: border-box;
+            user-select: none;
+        }
+        
+        header {
+            text-align: center;
+            text-shadow: 0 0 20px #0ff;
+            font-size: 2.8rem;
+            letter-spacing: 6px;
+            animation: glitch 4s infinite;
+        }
+        
+        footer {
+            display: flex;
+            justify-content: space-between;
+            font-size: 1rem;
+            opacity: 0.75;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .scanline {
+            position: absolute;
+            top: -100%;
+            left: 0;
+            width: 100%;
+            height: 5px;
+            background: linear-gradient(transparent, rgba(0,255,255,0.25), transparent);
+            animation: scan 7s linear infinite;
+            pointer-events: none;
+        }
+        
+        .log {
+            position: absolute;
+            bottom: 90px;
+            left: 15px;
+            background: rgba(0,0,0,0.7);
+            padding: 10px 18px;
+            max-width: 380px;
+            border: 1px solid #0ff;
+            box-shadow: 0 0 20px #0ff;
+            font-size: 1.1rem;
+            line-height: 1.2;
+            opacity: 0;
+            transition: opacity 0.5s;
+            pointer-events: none;
+        }
+        
+        @keyframes glitch {
+            0% { text-shadow: 3px 0 #f0f, -3px 0 #0ff; }
+            20% { text-shadow: -3px 0 #f0f, 3px 0 #0ff; }
+            100% { text-shadow: 3px 0 #f0f, -3px 0 #0ff; }
+        }
+        
+        @keyframes scan {
+            0% { top: -100%; }
+            100% { top: 400%; }
+        }
+    </style>
+</head>
+<body>
+    <canvas id="canvas"></canvas>
+    
+    <div id="overlay">
+        <header>NEBULA NEXUS</header>
+        
+        <div class="log" id="log"></div>
+        
+        <footer>
+            <div>DRAG = PAINT NEBULA • TAP = BIRTH STAR</div>
+            <div>SPACE = PULSE • ESC = FORGET ECHOES</div>
+        </footer>
+        
+        <div class="scanline"></div>
+    </div>
+
+    <script>
+        const canvas = document.getElementById('canvas');
+        const ctx = canvas.getContext('2d', { alpha: true });
+        const logEl = document.getElementById('log');
+        
+        let width, height;
+        let particles = [];
+        let connections = [];
+        let isTouching = false;
+        
+        class Particle {
+            constructor(x, y, type = 'star') {
+                this.x = x;
+                this.y = y;
+                this.vx = (Math.random() - 0.5) * 1.2;
+                this.vy = (Math.random() - 0.5) * 1.2;
+                this.life = type === 'echo' ? 950 : 1400;
+                this.maxLife = this.life;
+                this.size = type === 'echo' ? Math.random() * 11 + 7 : Math.random() * 3.5 + 1.5;
+                this.hue = type === 'echo' ? 260 + Math.random() * 90 : 190 + Math.random() * 70;
+                this.type = type;
+                this.wobble = Math.random() * Math.PI * 2;
+                this.freq = Math.random() * 0.06 + 0.015;
+            }
+            
+            update() {
+                this.wobble += this.freq;
+                this.x += this.vx + Math.sin(this.wobble) * 0.4;
+                this.y += this.vy + Math.cos(this.wobble * 1.4) * 0.25;
+                
+                if (this.type === 'echo') {
+                    this.vx *= 0.982;
+                    this.vy *= 0.982;
+                }
+                
+                this.life--;
+                
+                const dx = width/2 - this.x;
+                const dy = height/2 - this.y;
+                this.vx += dx * 0.000035;
+                this.vy += dy * 0.000035;
+            }
+            
+            draw() {
+                const alpha = Math.max(0, this.life / this.maxLife);
+                ctx.save();
+                ctx.globalAlpha = alpha * 0.95;
+                
+                if (this.type === 'echo') {
+                    const pulse = Math.sin(Date.now() / 180) * 5 + 10;
+                    ctx.shadowBlur = 45;
+                    ctx.shadowColor = `hsl(${this.hue}, 100%, 75%)`;
+                    
+                    ctx.fillStyle = `hsl(${this.hue}, 100%, 88%)`;
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size + pulse, 0, Math.PI * 2);
+                    ctx.fill();
+                    
+                    ctx.shadowBlur = 18;
+                    ctx.fillStyle = '#ffffff';
+                    ctx.beginPath();
+                    ctx.arc(this.x, this.y, this.size * 0.65, 0, Math.PI * 2);
+                    ctx.fill();
+                } else {
+                    ctx.shadowBlur = 10;
+                    ctx.shadowColor = `hsl(${this.hue}, 90%, 85%)`;
+                    ctx.fillStyle = '#fff';
+                    ctx.fillRect(this.x - this.size/2, this.y - this.size/2, this.size, this.size);
+                }
+                ctx.restore();
+            }
+        }
+        
+        function resize() {
+            width = window.innerWidth;
+            height = window.innerHeight;
+            canvas.width = width;
+            canvas.height = height;
+        }
+        
+        function log(text) {
+            logEl.textContent = text;
+            logEl.style.opacity = 1;
+            setTimeout(() => logEl.style.opacity = 0, 2600);
+        }
+        
+        function connectParticles() {
+            connections = [];
+            for (let i = 0; i < particles.length; i++) {
+                for (let j = i + 1; j < particles.length; j++) {
+                    const a = particles[i];
+                    const b = particles[j];
+                    const dx = a.x - b.x;
+                    const dy = a.y - b.y;
+                    const dist = Math.hypot(dx, dy);
+                    
+                    if (dist < 190 && (a.type === 'echo' || b.type === 'echo')) {
+                        connections.push({a, b, dist});
+                    }
+                }
+            }
+        }
+        
+        function drawConnections() {
+            ctx.strokeStyle = 'rgba(120, 220, 255, 0.18)';
+            ctx.lineWidth = 1.8;
+            
+            for (let conn of connections) {
+                const alpha = (190 - conn.dist) / 190;
+                ctx.globalAlpha = alpha * 0.65;
+                ctx.beginPath();
+                ctx.moveTo(conn.a.x, conn.a.y);
+                ctx.lineTo(conn.b.x, conn.b.y);
+                ctx.stroke();
+            }
+            ctx.globalAlpha = 1;
+        }
+        
+        function createBurst(x, y, count, type) {
+            for (let i = 0; i < count; i++) {
+                const p = new Particle(x, y, type);
+                const angle = Math.random() * Math.PI * 2;
+                const speed = Math.random() * 4 + 0.8;
+                p.vx = Math.cos(angle) * speed;
+                p.vy = Math.sin(angle) * speed;
+                particles.push(p);
+            }
+        }
+        
+        function animate() {
+            ctx.fillStyle = 'rgba(2, 0, 18, 0.13)';
+            ctx.fillRect(0, 0, width, height);
+            
+            // Subtle nebula grid
+            ctx.strokeStyle = 'rgba(100, 150, 255, 0.04)';
+            for (let x = 40; x < width; x += 70) {
+                ctx.beginPath();
+                ctx.moveTo(x, 0);
+                ctx.lineTo(x, height);
+                ctx.stroke();
+            }
+            for (let y = 40; y < height; y += 70) {
+                ctx.beginPath();
+                ctx.moveTo(0, y);
+                ctx.lineTo(width, y);
+                ctx.stroke();
+            }
+            
+            particles.forEach((p, i) => {
+                p.update();
+                p.draw();
+                if (p.life <= 0) particles.splice(i, 1);
+            });
+            
+            connectParticles();
+            drawConnections();
+            
+            // Occasional natural birth
+            if (Math.random() < 0.035 && particles.length < 220) {
+                particles.push(new Particle(Math.random() * width, Math.random() * height));
+            }
+            
+            requestAnimationFrame(animate);
+        }
+        
+        // ====================== MOUSE & TOUCH ======================
+        function handleBirth(x, y) {
+            createBurst(x, y, 22, 'echo');
+            log("NEW NEBULA BORN");
+            
+            // Tiny audio click
+            try {
+                const audio = new (window.AudioContext || window.webkitAudioContext)();
+                const osc = audio.createOscillator();
+                osc.type = 'sine';
+                osc.frequency.setValueAtTime(90 + Math.random() * 110, audio.currentTime);
+                const gain = audio.createGain();
+                gain.gain.value = 0.25;
+                osc.connect(gain).connect(audio.destination);
+                osc.start();
+                gain.gain.exponentialRampToValueAtTime(0.001, audio.currentTime + 0.55);
+                osc.stop(audio.currentTime + 0.65);
+            } catch(e) {}
+        }
+        
+        // Mouse
+        let isDragging = false;
+        
+        canvas.addEventListener('mousedown', e => {
+            isDragging = true;
+            if (e.button === 0) handleBirth(e.clientX, e.clientY);
+        });
+        
+        canvas.addEventListener('mousemove', e => {
+            if (!isDragging) return;
+            if (Math.random() < 0.45) {
+                const p = new Particle(e.clientX, e.clientY, 'echo');
+                p.life = 520;
+                particles.push(p);
+            }
+        });
+        
+        window.addEventListener('mouseup', () => isDragging = false);
+        
+        canvas.addEventListener('click', e => {
+            if (Math.random() > 0.5) createBurst(e.clientX, e.clientY, 9, 'star');
+        });
+        
+        // Touch support (optimized for mobile)
+        canvas.addEventListener('touchstart', e => {
+            e.preventDefault();
+            isTouching = true;
+            const touch = e.touches[0];
+            handleBirth(touch.clientX, touch.clientY);
+        });
+        
+        canvas.addEventListener('touchmove', e => {
+            e.preventDefault();
+            if (!isTouching) return;
+            const touch = e.touches[0];
+            if (Math.random() < 0.5) {
+                const p = new Particle(touch.clientX, touch.clientY, 'echo');
+                p.life = 480;
+                particles.push(p);
+            }
+        });
+        
+        canvas.addEventListener('touchend', () => {
+            isTouching = false;
+        });
+        
+        // Keyboard
+        document.addEventListener('keydown', e => {
+            if (e.key === ' ' || e.key === 'Spacebar') {
+                particles.forEach(p => {
+                    const dx = width/2 - p.x;
+                    const dy = height/2 - p.y;
+                    const dist = Math.hypot(dx, dy) || 1;
+                    p.vx += (dx / dist) * 9;
+                    p.vy += (dy / dist) * 9;
+                });
+                log("NEXUS PULSES");
+            }
+            
+            if (e.key === 'Escape') {
+                particles = particles.filter(p => p.type !== 'echo');
+                log("ECHOES DISSOLVED");
+            }
+            
+            if (e.key.toLowerCase() === 'r') {
+                particles = [];
+                log("NEBULA RESET");
+            }
+        });
+        
+        // Init
+        window.addEventListener('resize', resize);
+        resize();
+        
+        // Seed the nebula
+        for (let i = 0; i < 260; i++) {
+            particles.push(new Particle(Math.random() * width, Math.random() * height));
+        }
+        
+        setTimeout(() => {
+            createBurst(width * 0.35, height * 0.45, 42, 'echo');
+            createBurst(width * 0.68, height * 0.62, 31, 'echo');
+            log("THE NEBULA AWAKENS");
+        }, 300);
+        
+        animate();
+        
+        console.log("%cNEBULA NEXUS initialized.\nTouch / Drag to create.\nYou are now part of the nexus.", "color:#0ff; font-family:monospace");
+    </script>
+</body>
+</html>
