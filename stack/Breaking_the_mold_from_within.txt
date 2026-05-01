@@ -23,8 +23,8 @@ Right. It's not a bug in our brains.
 No, it isn't because we aren't smart enough or because the creators we watch aren't like researching hard enough.
 It is a structural mathematical necessity of the platforms we use.
 And to really understand this, we are pulling from a totally fascinating, honestly, incredibly dense paper.
-It was published in 2026 by an author writing under the name Fliction.
-Fliction. Yeah.
+It was published in 2026 by an author writing under the name Flyxion.
+Flyxion. Yeah.
 The paper is titled Selection Without Closure.
 And what makes this text so remarkable is that it takes these rigorous tools of, you know, dynamical systems, mathematical modeling, topology.
 Heavy stuff.
@@ -40,11 +40,11 @@ But before we get to the AI stuff, the paper uses a really helpful framing devic
 Right.
 The video essayist example.
 Yeah.
-Fliction describes this sophisticated video essayist who is dissecting the dominance of highly polarized political content in algorithmic feeds.
+Flyxion describes this sophisticated video essayist who is dissecting the dominance of highly polarized political content in algorithmic feeds.
 Like the essayist is trying to figure out why certain political factions just totally dominate the space.
 And why counter strategies always seem to fail.
 Right.
-And it is super crucial to note here, for you listening, Flickshan is absolutely not taking a political side in this analysis.
+And it is super crucial to note here, for you listening, Flyxion is absolutely not taking a political side in this analysis.
 And, you know, neither are we.
 No.
 Not really.
@@ -52,7 +52,7 @@ Whether a creator is trying to boost a left-wing perspective or a right-wing per
 Because the observation is that all of these creators, regardless of their politics, are treating the platform as a neutral channel.
 Yes.
 They ask, how do we send our specific political signals better?
-What they completely fail to ask, and what Flickshan's math basically demands that we ask, is how the channel itself fundamentally transforms the signal.
+What they completely fail to ask, and what Flyxion's math basically demands that we ask, is how the channel itself fundamentally transforms the signal.
 Exactly.
 It isn't about the politics of the content at all.
 It is strictly about the physics of the medium.
@@ -67,7 +67,7 @@ Oh, all the time.
 Engagement is the buzzword.
 Right.
 We assume the dashboard metrics, clicks, watch time, likes, all of that are the underlying reality of the system.
-But Flickshan just completely pulls that assumption apart.
+But Flyxion just completely pulls that assumption apart.
 Engagement is just the symptom.
 It's the readout.
 Exactly.
@@ -95,7 +95,7 @@ Yeah.
 The platform's algorithms naturally elevate whatever propagates the fastest.
 Which means the platform heavily, heavily selects for high recomposability.
 Yes.
-But Flixian also sets up this diametric opposite to that force.
+But Flyxion also sets up this diametric opposite to that force.
 If recomposability is the ability to be detached, the opposing mathematical force is what the paper calls binding force.
 Binding force.
 Okay.
@@ -124,7 +124,7 @@ Yes.
 It retains its effective charge while happily conforming to whatever new context you drop it into.
 Okay.
 So the paper introduces this mathematical function to describe how algorithms filter these properties.
-Fliction calls it the platform selection equation, DL platform.
+Flyxion calls it the platform selection equation, DL platform.
 Great.
 And what DL platform demonstrates mathematically is that platforms systematically penalize binding force.
 Okay.
@@ -158,7 +158,7 @@ Which is what everyone always says.
 Oh, attention spans are shrinking.
 Right.
 That's a super common psychological critique.
-But affliction completely rejects it.
+But Flyxion completely rejects it.
 The feed doesn't hate intelligence.
 The feed hates accountability.
 Accountability is the key variable there.
@@ -198,7 +198,7 @@ thought.
 You are swimming in an ocean of Lego bricks because the water is highly acidic to engine blocks.
 Oh, that's good.
 It's the necessary mechanism by which engagement is actually produced.
-But this introduces a massive structural contradiction that Fliction spends the next section of the
+But this introduces a massive structural contradiction that Flyxion spends the next section of the
 paper trying to resolve.
 Yes.
 The long form content problem.
@@ -218,7 +218,7 @@ It's difficult.
 It uses really large vocabularies.
 It seems to directly violate the idea that the feed only wants Lego bricks.
 It does seem that way.
-But Fliction anticipates this objection.
+But Flyxion anticipates this objection.
 The paper argues that the strategies used by the influencer class producing this content
 are not actually rebellious or subversive.
 They aren't beating the algorithm.
@@ -250,7 +250,7 @@ It projects this overwhelming aura of depth.
 Yeah.
 The creator totally believes they are smuggling the complex engine block into the system by,
 like, painting it red so it looks like a Lego brick.
-But Fliction drops a formal definition here that just dismantles this entirely.
+But Flyxion drops a formal definition here that just dismantles this entirely.
 The paper defines this phenomena as pseudobinding.
 Pseudobinding.
 Yes.
@@ -272,7 +272,7 @@ Oh, absolutely.
 In fact, that is basically the primary marketing strategy for long-form content.
 Creators will cut a highly provocative 30-second quote from their three-hour video,
 overlay it onto a split screen with, I don't know, video game footage, and it goes incredibly viral.
-And Flicksheen's math points out a devastating structural truth about that.
+And Flyxion's math points out a devastating structural truth about that.
 If you can clip a 10-minute philosophical argument into 20 seconds without losing its emotional punch,
 that implies its emotional punch was never dependent on its structural duration.
 Wow.
@@ -288,11 +288,11 @@ It simulates constraint, but offers zero resistance to being ripped out of conte
 And the platform algorithm aggressively selects for this because it's like the ultimate optimization.
 It makes the user feel intelligent for consuming deep content, which drives up retention, while remaining fully atomizable and shareable, which drives up propagation.
 But achieving this balance is incredibly labor-intensive.
-And this brings us to the socioeconomic core of Flicksheen's argument, which models what they call the privileged structure of digital discourse.
+And this brings us to the socioeconomic core of Flyxion's argument, which models what they call the privileged structure of digital discourse.
 This part of the paper was fascinating.
 The author introduces a variable, denoted as CPS-E wire, to mathematically model the production cost of any given content strategy.
 Okay, let's break down that CPS equation.
-How does Flicksheen actually quantify production cost in this context?
+How does Flyxion actually quantify production cost in this context?
 The equation splits cost into two very distinct vectors.
 True binding, creating a rigorous, logically airtight mathematical or philosophical proof, requires high intellectual cost.
 It requires immense mental labor, isolation, and time spent purely on the logical architecture of the idea.
@@ -330,7 +330,7 @@ I know people just want to click on popular media.
 So I will use a review of a massive blockbuster movie like, let's say, a Marvel film to sneak in a genuinely complex argument about existentialist philosophy.
 People click for the superhero, but they end up staying for Sartre.
 Isn't that a valid, subversive way to utilize the system's mechanics against itself?
-Fliction actually dedicates an entire section to dismantling this exact premise.
+Flyxion actually dedicates an entire section to dismantling this exact premise.
 The paper labels it the Trojan horse fallacy.
 Okay, why is it a fallacy?
 To prove why it fails, the paper introduces a mathematical limit called the Trojan horse bound.
@@ -340,7 +340,7 @@ The bound dictates that when you translate a difficult, highly bound idea into a
 Wait, inherently?
 Yes.
 You do not preserve the original idea.
-You only preserve what Fliction calls the recomposable residue.
+You only preserve what Flyxion calls the recomposable residue.
 Recomposable residue.
 Okay, if I do a 40-minute video linking a superhero's character arc to Sartre's concept of radical freedom, what exactly is the residue and what gets destroyed?
 Think about it this way.
@@ -367,7 +367,7 @@ Or, more dangerously, they have no way of realizing when the idea is being misap
 It ceases to be philosophy and becomes a blunt aesthetic instrument.
 Yeah.
 That's, wow.
-As Fliction bluntly summarizes, this is not political or philosophical education.
+As Flyxion bluntly summarizes, this is not political or philosophical education.
 It is aestheticization.
 Yes.
 The ideas that can be successfully smuggled inside accessible cultural forms are only the ideas that were already accessible.
@@ -408,7 +408,7 @@ A person eats the tiny piece of chicken on a toothpick, they realize it tastes g
 Doesn't the viral out of context, quote, act as a free sample that leads people to read the actual book?
 This is perhaps the most pervasive defense of the democratization of information on digital feeds.
 I hear it all the time.
-And fliction dismantles it using a concept from advanced topology called sheaf theory, specifically focusing on what the paper calls theorem three.
+And Flyxion dismantles it using a concept from advanced topology called sheaf theory, specifically focusing on what the paper calls theorem three.
 The cohomological obstruction.
 Sheaf theory and cohomological obstructions.
 Okay.
@@ -428,7 +428,7 @@ That failure to patch the data into a global whole is called an obstruction.
 Okay.
 So how does this map to the digital feed?
 What is the local data in a social media environment?
-The local data corresponds to what Fliction calls local coherence.
+The local data corresponds to what Flyxion calls local coherence.
 A digital feed is absolutely brilliant at amplifying local coherence.
 It isolates specific community bubbles and feeds them narratives that are totally internally consistent within that specific bubble.
 So inside Community A, everyone understands the same references, they share the same baseline assumptions, and they validate the exact same outrage.
@@ -464,7 +464,7 @@ More content does not produce more coherence.
 It is totally counterintuitive.
 Our baseline assumption is always that the solution to bad speech is more speech.
 We think that if we just flood the zone with smart, well-researched, highly produced content, the truth will eventually win the marketplace of ideas.
-But Fliction's math demonstrates that under a recomposability-driven system, adding more content directly increases the fragmentation.
+But Flyxion's math demonstrates that under a recomposability-driven system, adding more content directly increases the fragmentation.
 It just provides more raw material for the creation of incompatible, locally coherent bubbles.
 The system fundamentally becomes more fragmented precisely as it becomes more populated.
 Which leaves us with a pretty stark reality.
@@ -474,9 +474,9 @@ We still build suspension bridges.
 We still calculate orbital trajectories.
 We still write complex software.
 There must be environments where binding force is preserved.
-And this marks the transition to the second major half of Fliction's argument.
+And this marks the transition to the second major half of Flyxion's argument.
 The paper introduces a parallel architecture, the exact inverse of the selection regime we've been trapped in.
-Fliction calls it the closure regime.
+Flyxion calls it the closure regime.
 The closure regime.
 Yes.
 The closure regime is governed by a fundamentally different mathematical functional, denoted as J-closure.
@@ -531,7 +531,7 @@ And this border crossing explains theorem four, regime incompatibility.
 The paper asks why these two worlds cannot seamlessly interface.
 Why can't we have the rigor of the closure regime natively embedded within the reach of the selection regime?
 And the mathematical answer is that they actively repel each other.
-Because operating in a closure regime requires what Fliction calls paying the price of semantic identity.
+Because operating in a closure regime requires what Flyxion calls paying the price of semantic identity.
 Precision is incredibly expensive, cognitively speaking.
 It is fundamentally difficult to read a dense mathematical proof.
 It is frustrating to learn the syntax of a new programming language.
@@ -550,10 +550,10 @@ You cannot use a viral political slogan to compile a server back end.
 Gradient ascent in one regime moving toward optimal success is literally gradient descent in the other.
 They operate on mutually exclusive physics.
 This binary makes total sense when the boundaries hold. Code is code. Feeds are feeds.
-But the truly chilling pivot in Fliction's paper explores what happens when the boundaries collapse.
+But the truly chilling pivot in Flyxion's paper explores what happens when the boundaries collapse.
 What happens when the logic of the selection regime, the logic of the feed, begins to actively infect and override the ultimate closure regime.
 And that collapse is exactly what the paper argues is happening right now in the architecture of artificial intelligence.
-Fliction extends the entire framework far beyond social media influencers,
+Flyxion extends the entire framework far beyond social media influencers,
 demonstrating that large language models, the AI systems that are currently drafting our emails, writing our documents,
 and increasingly writing our software, are formally mathematically identical to feed architectures.
 That is just a staggering claim.
@@ -571,7 +571,7 @@ It does not hold a persistent, strictly bound, semantic architecture in its memo
 It just generates forward, step by step, chasing the immediate local plausibility of the next word.
 So when an AI hallucinates, when it confidently invents a historical event that never happened,
 complete with fake citations and dates, we shouldn't look at that as a temporary bug that will eventually be patched out.
-No. Fliction argues the hallucination is the exact same dynamic as the algorithmic feed.
+No. Flyxion argues the hallucination is the exact same dynamic as the algorithmic feed.
 It is selection without closure.
 The AI is producing an output that perfectly satisfies local plausibility.
 It absolutely sounds like a real historical fact.
@@ -588,7 +588,7 @@ According to the paper, a leading AI safety and development lab accidentally lea
 This was the proprietary tool they were using to help write and maintain their own AI software.
 It was an environment where the models were largely writing the code to extend the models.
 And when human systems engineers finally got a look at this leaked repository, what they found was an architectural nightmare.
-Flixion zeroes in on one specific function within this code base that spanned over 3,000 lines of code.
+Flyxion zeroes in on one specific function within this code base that spanned over 3,000 lines of code.
 A single function. 3,000 lines long. I mean, for anyone who has ever written software, that number alone induces panic.
 A 3,000 line function is the textbook definition of structural failure. It means every single modular boundary has completely collapsed.
 Exactly. The function was a tangled, monstrous nesting doll.
@@ -617,11 +617,11 @@ The defects persisted indefinitely because the operative selection metric didn't
 As long as the AI kept generating high throughput, as long as it kept producing pull requests that technically compiled, the system registered success.
 Verification was entirely replaced by iteration.
 When generation replaces verification, code becomes discourse.
-That quote from Fletchian encapsulates the terror of this transition perfectly.
+That quote from Flyxion encapsulates the terror of this transition perfectly.
 The code is no longer optimizing for actual correctness, it is optimizing for the appearance of correctness to satisfy the throughput metric.
 The server infrastructure running our world is slowly morphing into a pseudo-bound video essay.
 That's horrifying.
-And Fletchian widens the analytical lens one final time to capture why this convergence is happening everywhere, not just in AI labs and social media platforms.
+And Flyxion widens the analytical lens one final time to capture why this convergence is happening everywhere, not just in AI labs and social media platforms.
 The paper introduces the metafunctional governing all of this.
 Just exerious.
 So this isn't just about platforms chasing engagement, it's about the fundamental imperative of technological capitalism, the optimization for scale at all costs.
@@ -633,7 +633,7 @@ It is infuriating.
 You try to change your default web browser and the OS hides the toggle behind four submenu layers, warns you that you are making a massive mistake, and then automatically resets it back to the proprietary browser after the next overnight update.
 Or the hardware button on the side of the phone that summons the proprietary AI assistant, a button that the software explicitly forbids you from remapping to a function you actually want, like turning on the flashlight.
 That is J-growth operating at the physical interface layer.
-Think about it through Fletchian's math.
+Think about it through Flyxion's math.
 Every affordance that allows you, the user, to dictate your own workflow reduces the platform's share of your attention.
 Therefore, user control is a mathematical penalty to their growth.
 The system structurally selects against configurability.
@@ -641,7 +641,7 @@ It wants your interaction to be highly recomposable meaning.
 It wants to seamlessly slide its own proprietary signals and ads into your workflow at any moment.
 And it heavily penalizes binding, which would be you exerting strict, unchanging control over your own tool.
 It also perfectly explains the relentless cycle of tech company press releases.
-Fletchian talks about the phenomenon of capability claims without inspection.
+Flyxion talks about the phenomenon of capability claims without inspection.
 Yes.
 A major tech firm will escalate their claims about what their new AI model can achieve.
 It passed the medical boards.
@@ -672,11 +672,11 @@ What is the path forward?
 Where do we go from here?
 This leads to the paper's conclusion.
 And it is unflinchingly stark.
-Fliction does not offer a neat, comfortable solution.
+Flyxion does not offer a neat, comfortable solution.
 We've reached the bifurcation.
 Let's synthesize the journey we've just been on.
 We started by trying to locate the source of that feeling of absurdity watching brilliant people try to fix a broken discourse by posting better, smarter content onto the feed.
-But Fliction's math has shown us that there is no smooth transition to be had.
+But Flyxion's math has shown us that there is no smooth transition to be had.
 There's no easy incremental reform.
 You cannot fix the feed with better media literacy programs.
 You cannot save the discourse by sneaking existential philosophy into Marvel movie reviews.
@@ -691,12 +691,12 @@ You cannot possess the immense power of the engine block and the frictionless ad
 If you want an idea to be perfectly accountable, precise, and true, you must accept the reality that it will never go viral.
 If you want an idea to go viral, you must accept the reality that it will be stripped of the very truth that made it valuable.
 What survives is what has withdrawn.
-That is Flicksheen's final haunting observation.
+That is Flyxion's final haunting observation.
 The systems that preserve binding, the deep mathematics, the rigorous verified code bases, the careful, quiet philosophical inquiry, are the ones that impose the cost of binding.
 They demand that you pay the price of semantic identity.
 They require friction, time, and intellectual labor.
 And because they require that effort, they have largely withdrawn, becoming structurally invisible to the massive propagation economy reaching above them.
-I want to leave you with a final provocative thought that builds on Flicksheen's framework.
+I want to leave you with a final provocative thought that builds on Flyxion's framework.
 We spent this entire deep dive talking about mathematical models, AI code bases, and video essays.
 But let's bring the concept of binding force back to your actual physical life.
 Right.

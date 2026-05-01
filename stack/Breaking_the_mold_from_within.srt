@@ -100,11 +100,11 @@ And to really understand this, we are pulling from a totally fascinating, honest
 
 26
 00:01:52,060 --> 00:01:56,420
-It was published in 2026 by an author writing under the name Fliction.
+It was published in 2026 by an author writing under the name Flyxion.
 
 27
 00:01:57,440 --> 00:01:58,060
-Fliction. Yeah.
+Flyxion. Yeah.
 
 28
 00:01:58,060 --> 00:02:01,140
@@ -168,7 +168,7 @@ Yeah.
 
 43
 00:02:54,500 --> 00:03:03,180
-Fliction describes this sophisticated video essayist who is dissecting the dominance of highly polarized political content in algorithmic feeds.
+Flyxion describes this sophisticated video essayist who is dissecting the dominance of highly polarized political content in algorithmic feeds.
 
 44
 00:03:03,660 --> 00:03:08,120
@@ -184,7 +184,7 @@ Right.
 
 47
 00:03:10,880 --> 00:03:18,600
-And it is super crucial to note here, for you listening, Flickshan is absolutely not taking a political side in this analysis.
+And it is super crucial to note here, for you listening, Flyxion is absolutely not taking a political side in this analysis.
 
 48
 00:03:18,980 --> 00:03:20,440
@@ -216,7 +216,7 @@ They ask, how do we send our specific political signals better?
 
 55
 00:03:43,200 --> 00:03:50,520
-What they completely fail to ask, and what Flickshan's math basically demands that we ask, is how the channel itself fundamentally transforms the signal.
+What they completely fail to ask, and what Flyxion's math basically demands that we ask, is how the channel itself fundamentally transforms the signal.
 
 56
 00:03:50,640 --> 00:03:51,000
@@ -276,7 +276,7 @@ We assume the dashboard metrics, clicks, watch time, likes, all of that are the 
 
 70
 00:04:20,380 --> 00:04:23,360
-But Flickshan just completely pulls that assumption apart.
+But Flyxion just completely pulls that assumption apart.
 
 71
 00:04:24,060 --> 00:04:26,000
@@ -388,7 +388,7 @@ Yes.
 
 98
 00:05:49,180 --> 00:05:53,200
-But Flixian also sets up this diametric opposite to that force.
+But Flyxion also sets up this diametric opposite to that force.
 
 99
 00:05:53,800 --> 00:06:00,660
@@ -504,7 +504,7 @@ So the paper introduces this mathematical function to describe how algorithms fi
 
 127
 00:07:29,140 --> 00:07:32,840
-Fliction calls it the platform selection equation, DL platform.
+Flyxion calls it the platform selection equation, DL platform.
 
 128
 00:07:32,940 --> 00:07:33,080
@@ -640,7 +640,7 @@ That's a super common psychological critique.
 
 161
 00:08:59,580 --> 00:09:01,420
-But affliction completely rejects it.
+But Flyxion completely rejects it.
 
 162
 00:09:01,420 --> 00:09:02,900
@@ -800,7 +800,7 @@ It's the necessary mechanism by which engagement is actually produced.
 
 201
 00:10:51,260 --> 00:10:56,620
-But this introduces a massive structural contradiction that Fliction spends the next section of the
+But this introduces a massive structural contradiction that Flyxion spends the next section of the
 
 202
 00:10:56,620 --> 00:10:57,940
@@ -880,7 +880,7 @@ It does seem that way.
 
 221
 00:11:41,920 --> 00:11:43,780
-But Fliction anticipates this objection.
+But Flyxion anticipates this objection.
 
 222
 00:11:44,280 --> 00:11:48,140
@@ -1008,7 +1008,7 @@ like, painting it red so it looks like a Lego brick.
 
 253
 00:13:11,060 --> 00:13:15,120
-But Fliction drops a formal definition here that just dismantles this entirely.
+But Flyxion drops a formal definition here that just dismantles this entirely.
 
 254
 00:13:15,120 --> 00:13:18,500
@@ -1096,7 +1096,7 @@ overlay it onto a split screen with, I don't know, video game footage, and it go
 
 275
 00:14:15,220 --> 00:14:19,100
-And Flicksheen's math points out a devastating structural truth about that.
+And Flyxion's math points out a devastating structural truth about that.
 
 276
 00:14:19,560 --> 00:14:25,000
@@ -1160,7 +1160,7 @@ But achieving this balance is incredibly labor-intensive.
 
 291
 00:15:23,740 --> 00:15:31,960
-And this brings us to the socioeconomic core of Flicksheen's argument, which models what they call the privileged structure of digital discourse.
+And this brings us to the socioeconomic core of Flyxion's argument, which models what they call the privileged structure of digital discourse.
 
 292
 00:15:32,220 --> 00:15:33,880
@@ -1176,7 +1176,7 @@ Okay, let's break down that CPS equation.
 
 295
 00:15:43,920 --> 00:15:47,740
-How does Flicksheen actually quantify production cost in this context?
+How does Flyxion actually quantify production cost in this context?
 
 296
 00:15:47,820 --> 00:15:50,940
@@ -1328,7 +1328,7 @@ Isn't that a valid, subversive way to utilize the system's mechanics against its
 
 333
 00:18:35,200 --> 00:18:38,960
-Fliction actually dedicates an entire section to dismantling this exact premise.
+Flyxion actually dedicates an entire section to dismantling this exact premise.
 
 334
 00:18:39,420 --> 00:18:41,760
@@ -1368,7 +1368,7 @@ You do not preserve the original idea.
 
 343
 00:19:11,980 --> 00:19:15,140
-You only preserve what Fliction calls the recomposable residue.
+You only preserve what Flyxion calls the recomposable residue.
 
 344
 00:19:15,840 --> 00:19:16,860
@@ -1476,7 +1476,7 @@ That's, wow.
 
 370
 00:21:08,780 --> 00:21:12,860
-As Fliction bluntly summarizes, this is not political or philosophical education.
+As Flyxion bluntly summarizes, this is not political or philosophical education.
 
 371
 00:21:12,860 --> 00:21:14,620
@@ -1640,7 +1640,7 @@ I hear it all the time.
 
 411
 00:23:28,880 --> 00:23:36,680
-And fliction dismantles it using a concept from advanced topology called sheaf theory, specifically focusing on what the paper calls theorem three.
+And Flyxion dismantles it using a concept from advanced topology called sheaf theory, specifically focusing on what the paper calls theorem three.
 
 412
 00:23:37,240 --> 00:23:38,920
@@ -1720,7 +1720,7 @@ What is the local data in a social media environment?
 
 431
 00:24:39,080 --> 00:24:42,820
-The local data corresponds to what Fliction calls local coherence.
+The local data corresponds to what Flyxion calls local coherence.
 
 432
 00:24:43,360 --> 00:24:47,620
@@ -1864,7 +1864,7 @@ We think that if we just flood the zone with smart, well-researched, highly prod
 
 467
 00:27:33,680 --> 00:27:41,320
-But Fliction's math demonstrates that under a recomposability-driven system, adding more content directly increases the fragmentation.
+But Flyxion's math demonstrates that under a recomposability-driven system, adding more content directly increases the fragmentation.
 
 468
 00:27:41,320 --> 00:27:47,300
@@ -1904,7 +1904,7 @@ There must be environments where binding force is preserved.
 
 477
 00:28:12,440 --> 00:28:15,960
-And this marks the transition to the second major half of Fliction's argument.
+And this marks the transition to the second major half of Flyxion's argument.
 
 478
 00:28:16,760 --> 00:28:22,980
@@ -1912,7 +1912,7 @@ The paper introduces a parallel architecture, the exact inverse of the selection
 
 479
 00:28:23,500 --> 00:28:25,100
-Fliction calls it the closure regime.
+Flyxion calls it the closure regime.
 
 480
 00:28:25,220 --> 00:28:26,100
@@ -2132,7 +2132,7 @@ And the mathematical answer is that they actively repel each other.
 
 534
 00:31:32,540 --> 00:31:38,740
-Because operating in a closure regime requires what Fliction calls paying the price of semantic identity.
+Because operating in a closure regime requires what Flyxion calls paying the price of semantic identity.
 
 535
 00:31:40,000 --> 00:31:42,840
@@ -2208,7 +2208,7 @@ This binary makes total sense when the boundaries hold. Code is code. Feeds are 
 
 553
 00:33:00,700 --> 00:33:05,500
-But the truly chilling pivot in Fliction's paper explores what happens when the boundaries collapse.
+But the truly chilling pivot in Flyxion's paper explores what happens when the boundaries collapse.
 
 554
 00:33:05,760 --> 00:33:13,860
@@ -2220,7 +2220,7 @@ And that collapse is exactly what the paper argues is happening right now in the
 
 556
 00:33:18,980 --> 00:33:22,980
-Fliction extends the entire framework far beyond social media influencers,
+Flyxion extends the entire framework far beyond social media influencers,
 
 557
 00:33:22,980 --> 00:33:29,580
@@ -2292,7 +2292,7 @@ complete with fake citations and dates, we shouldn't look at that as a temporary
 
 574
 00:34:44,620 --> 00:34:49,220
-No. Fliction argues the hallucination is the exact same dynamic as the algorithmic feed.
+No. Flyxion argues the hallucination is the exact same dynamic as the algorithmic feed.
 
 575
 00:34:49,500 --> 00:34:51,060
@@ -2360,7 +2360,7 @@ And when human systems engineers finally got a look at this leaked repository, w
 
 591
 00:36:10,380 --> 00:36:16,820
-Flixion zeroes in on one specific function within this code base that spanned over 3,000 lines of code.
+Flyxion zeroes in on one specific function within this code base that spanned over 3,000 lines of code.
 
 592
 00:36:16,820 --> 00:36:22,880
@@ -2476,7 +2476,7 @@ When generation replaces verification, code becomes discourse.
 
 620
 00:39:09,200 --> 00:39:12,800
-That quote from Fletchian encapsulates the terror of this transition perfectly.
+That quote from Flyxion encapsulates the terror of this transition perfectly.
 
 621
 00:39:13,360 --> 00:39:20,520
@@ -2492,7 +2492,7 @@ That's horrifying.
 
 624
 00:39:26,920 --> 00:39:34,240
-And Fletchian widens the analytical lens one final time to capture why this convergence is happening everywhere, not just in AI labs and social media platforms.
+And Flyxion widens the analytical lens one final time to capture why this convergence is happening everywhere, not just in AI labs and social media platforms.
 
 625
 00:39:34,240 --> 00:39:37,660
@@ -2540,7 +2540,7 @@ That is J-growth operating at the physical interface layer.
 
 636
 00:40:40,640 --> 00:40:42,220
-Think about it through Fletchian's math.
+Think about it through Flyxion's math.
 
 637
 00:40:42,220 --> 00:40:50,220
@@ -2572,7 +2572,7 @@ It also perfectly explains the relentless cycle of tech company press releases.
 
 644
 00:41:17,400 --> 00:41:20,580
-Fletchian talks about the phenomenon of capability claims without inspection.
+Flyxion talks about the phenomenon of capability claims without inspection.
 
 645
 00:41:20,880 --> 00:41:21,100
@@ -2696,7 +2696,7 @@ And it is unflinchingly stark.
 
 675
 00:43:20,940 --> 00:43:23,340
-Fliction does not offer a neat, comfortable solution.
+Flyxion does not offer a neat, comfortable solution.
 
 676
 00:43:23,520 --> 00:43:24,740
@@ -2712,7 +2712,7 @@ We started by trying to locate the source of that feeling of absurdity watching 
 
 679
 00:43:36,620 --> 00:43:40,280
-But Fliction's math has shown us that there is no smooth transition to be had.
+But Flyxion's math has shown us that there is no smooth transition to be had.
 
 680
 00:43:40,400 --> 00:43:42,500
@@ -2772,7 +2772,7 @@ What survives is what has withdrawn.
 
 694
 00:44:50,660 --> 00:44:54,580
-That is Flicksheen's final haunting observation.
+That is Flyxion's final haunting observation.
 
 695
 00:44:54,580 --> 00:45:07,780
@@ -2792,7 +2792,7 @@ And because they require that effort, they have largely withdrawn, becoming stru
 
 699
 00:45:22,940 --> 00:45:26,860
-I want to leave you with a final provocative thought that builds on Flicksheen's framework.
+I want to leave you with a final provocative thought that builds on Flyxion's framework.
 
 700
 00:45:27,200 --> 00:45:32,320

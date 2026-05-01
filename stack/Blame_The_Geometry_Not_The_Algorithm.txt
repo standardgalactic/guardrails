@@ -10,7 +10,7 @@ whatever platform or the engagement bait content itself. But today we were doing
 different. We are looking at a source that basically says, stop blaming the people,
 stop blaming the software updates, blame the geometry. It is a massive shift in perspective.
 And honestly, it's a little vertigo inducing. We are unpacking a paper released just this month,
-February, 2026, by an author known as Flixian. The title is Manufacturing Stability,
+February, 2026, by an author known as Flyxion. The title is Manufacturing Stability,
 Structural Foundations for Digital Infrastructure.
 And, um, when you say structural, we should be clear to everyone listening. You don't mean like
 organizational charts or corporate structure. You mean physics. You mean the actual mathematical
@@ -36,7 +36,7 @@ Like the earth.
 Exactly like the earth. If you stand in the middle of a cornfield, the world looks flat. You can walk
 north, south, east, west. It feels like a perfectly flat two-dimensional plane.
 But if I zoom out into orbit, I see it's a sphere.
-Correct. Now Fliction asks us to imagine the internet as a surface just like that.
+Correct. Now Flyxion asks us to imagine the internet as a surface just like that.
 We call it the information manifold. When you log on to a social media platform,
 you feel like you are standing on a flat field. You think, I can choose to click this or I can
 search for that. Yeah, I feel like I am the captain of my own ship. I'm just browsing.
@@ -132,7 +132,7 @@ And as they get more data on me, that gap just widens. Their model gets higher a
 Mine just stays the same.
 That is the asymmetry. Eventually, the platform isn't just predicting you anymore.
 It is simulating you better than you can simulate yourself.
-And this leads directly to what Fliction calls manifold collapse.
+And this leads directly to what Flyxion calls manifold collapse.
 Manifold collapse. That sounds like the end of the world.
 It's the end of your internal world.
 The idea is that because their map of you is so much better than your map of yourself,
@@ -166,7 +166,7 @@ And honestly, if the paper stopped right there,
 I would say burn the computers and move to a cabin in the woods.
 Right.
 Just unplug everything.
-But Flitchin doesn't start there.
+But Flyxion doesn't start there.
 They actually propose a solution.
 And it's not more moderation or breaking up big tech companies.
 It's a total architectural overhaul.
@@ -186,7 +186,7 @@ In programming, we have this concept of types.
 If you try to divide a number by the word banana,
 the computer throws a type error.
 It just refuses to run.
-Flitchin wants to create a new layer of the internet
+Flyxion wants to create a new layer of the internet
 where engagement farming or context stripping
 creates a literal type error at the protocol level.
 How do you even do that?
@@ -402,7 +402,7 @@ This brings us to segment four, chippification.
 Chippification.
 It's a really fun word for a very deep historical process.
 Right.
-Fliction argues that physical systems inevitably evolve into abstract logical systems.
+Flyxion argues that physical systems inevitably evolve into abstract logical systems.
 Use the factory example in the text.
 Right.
 Think about the Industrial Revolution.
@@ -542,7 +542,7 @@ It forces the digital system to measure entropy, to measure provenance, to measu
 By forcing the system to measure them, we can finally optimize for them.
 And this leads directly to the final ethical point, the right to non-extraction.
 This is the rights-based framework that ties it all together.
-Fliction argues that as a human being, you have a fundamental right not to be harvested for behavioral surplus.
+Flyxion argues that as a human being, you have a fundamental right not to be harvested for behavioral surplus.
 Harvested?
 We are back to the farming metaphor from earlier.
 We are the crop.

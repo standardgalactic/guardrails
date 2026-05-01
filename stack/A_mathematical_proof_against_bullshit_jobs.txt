@@ -13,7 +13,7 @@ Yes. Like if my entire job vanished yesterday, would reality even notice?
 Or would, I don't know, just a few spreadsheets be out of date?
 And that is exactly the nightmare we're unpacking today.
 Because today we are looking at a mathematical proof that basically validates that exact nightmare.
-Yeah, we are diving into a highly analytical, I mean, borderline revolutionary paper by an author known as Flixian.
+Yeah, we are diving into a highly analytical, I mean, borderline revolutionary paper by an author known as Flyxion.
 It's titled Constraint Closure 4.PDF with the subtitle Trajectory and Residue, How Work Becomes What Continues to Hold.
 Such a great title.
 It really is. So our mission for this deep dive is to completely decode this paper.
@@ -621,7 +621,7 @@ It offers a theoretically perfect, thermodynamically ungameable structure
 for routing human energy away from performative signaling and toward the actual preservation of our world.
 It is mathematically beautiful and undeniably necessary.
 But as we wrap up this deep dive, I want to leave you with one final provocative thought
-that builds on everything Flickshon has laid out.
+that builds on everything Flyxion has laid out.
 The paper presents this perfect, ruthlessly efficient system of measurement.
 Let's imagine we actually achieve it.
 Imagine we build this system, perhaps monitored by an omnipresent, perfectly calibrated AI

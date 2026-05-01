@@ -39,7 +39,7 @@ A shield, yeah.
 It's a protective layer that hides complexity. You treat the car as a single object car,
 so you don't have to treat it as 10,000 moving parts.
 Right. It's a mental coping mechanism.
-But the author of this monograph, a researcher who goes by fliction,
+But the author of this monograph, a researcher who goes by Flyxion,
 he argues that this view is fundamentally backward, or at least it's missing the mechanism.
 Backward.
 He argues that abstraction isn't just hiding details. It is a reductional act.

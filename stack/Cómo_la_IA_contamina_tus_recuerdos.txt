@@ -7,7 +7,7 @@ Totalmente. Y es que solemos pensar en nuestros recuerdos como si fueran la bóv
 Claro. Y si el recuerdo falla, asumimos que el archivo se corrompió o que hay un sector dañado en ese disco duro.
 Ajá. Pero hoy vamos a demoler esa puerta. Bienvenidos a un nuevo análisis a fondo. Nuestra misión hoy es explorar un ensayo absolutamente fascinante que se publicó en abril de 2026.
 Un ensayo revolucionario, la verdad.
-Sí. Escrito por el investigador independiente Flexion. Se titula Estabilidad de Reconstrucción y Contaminación Sintética. Y bueno, el objetivo de esta inmersión es entender cómo funciona realmente la arquitectura de la memoria humana y qué sucede a un nivel casi matemático cuando la inteligencia artificial generativa de alta fidelidad logra hackear ese proceso interno.
+Sí. Escrito por el investigador independiente Flyxion. Se titula Estabilidad de Reconstrucción y Contaminación Sintética. Y bueno, el objetivo de esta inmersión es entender cómo funciona realmente la arquitectura de la memoria humana y qué sucede a un nivel casi matemático cuando la inteligencia artificial generativa de alta fidelidad logra hackear ese proceso interno.
 Y el documento es súper denso porque cruza, digamos, la ciencia cognitiva, la topología matemática y la teoría de la información. La premisa central destruye por completo este modelo de la memoria como un archivo de almacenamiento. Es una ficción biológica.
 Bien, vamos a desempacar esto. Porque si descartamos la idea del disco duro, ¿qué es la memoria entonces? Una página que está siendo reescrita y editada constantemente, en tiempo real. Y los editores son nuestro estado de ánimo actual, nuestras expectativas y las pistas del entorno que nos rodea en el instante preciso en que intentamos recordar.
 Exacto. Lo fascinante aquí es que Flicción define la memoria estrictamente como un proceso de, y cito, reconstrucción iterativa bajo restricciones parciales. O sea, no estás abriendo un archivo antiguo. Estás creando un evento desde cero, cada vez, ensamblando fragmentos.
@@ -21,7 +21,7 @@ Es muy estable.
 Exacto, es estable. Pero si tiene pocas de estas anclas, es increíblemente maleable. Y aquí es donde la tecnología moderna choca de frente con nuestra biología. Porque si nuestra mente es un editor de Wikipedia desesperado por pistas…
 Ahí viene el problema.
 ¿Qué pasa cuando le inyectamos videos generados por IA? Sistemas como Zora, que son hiperrealistas. El ensayo lo llama contaminación por proyección sintética.
-Sí, y entramos en un territorio donde la biología humana es engañada por sus propios mecanismos de supervivencia. Flaexion señala que estos medios sintéticos aprueban las pruebas de admisibilidad local del cerebro.
+Sí, y entramos en un territorio donde la biología humana es engañada por sus propios mecanismos de supervivencia. Flyxion señala que estos medios sintéticos aprueban las pruebas de admisibilidad local del cerebro.
 A ver, explícanos eso de la admisibilidad local.
 Pues evolutivamente, nuestro cerebro aprendió a confiar en las físicas locales. O sea, si las sombras coinciden con la fuente de luz, si la textura de la piel refleja la humedad correctamente, el cerebro procesa esa parcela de información y concluye que es real.
 Porque antes no había manera de falsificar eso.
@@ -65,7 +65,7 @@ Ahora, si somos tan vulnerables como grupo, mi primer instinto es buscar defensa
 Ah, sí.
 Si vi un video y tiene una marca de agua gigante que dice generado por IA, ¿no debería mi cerebro usar eso como una restricción fuerte? ¿Por qué el texto dice que las marcas de agua son solo decoración en la frontera y no actúan como un anticuerpo contra este virus?
 Si conectamos esto con el panorama general, una marca de agua visual opera exclusivamente en lo que el ensayo denomina la superficie representacional.
-Flaxion establece un principio de sistemas dinámicos súper importante.
+Flyxion establece un principio de sistemas dinámicos súper importante.
 A ver.
 Una restricción solo es real si es invariante bajo las dinámicas del sistema que habita. ¿Qué significa esto en la práctica?
 Sí, porque suena complejo.

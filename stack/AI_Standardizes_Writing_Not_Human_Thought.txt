@@ -36,7 +36,7 @@ well, it is incredibly easy to jump to the conclusion that the human minds produ
 We see uniform output and we just assume uniform input.
 Exactly. We assume our minds are becoming that single uniform median.
 But today, we are going to challenge that assumption from the ground up.
-Our deep dive today is powered by a fascinating, honestly incredibly dense, 61-page academic paper by a researcher writing under the name Fliction.
+Our deep dive today is powered by a fascinating, honestly incredibly dense, 61-page academic paper by a researcher writing under the name Flyxion.
 Brilliant piece of work.
 It really is. It's titled, Right.
 But here is where it gets really interesting for you listening.
@@ -553,7 +553,7 @@ If millions of students ask the AI the same question, and they all get the same 
 We are basically eating beige paint.
 It is a much more valid concern, and the paper readily acknowledges that epistemic use raises substantive, troubling questions about perspective-filled convergence.
 When the machine supplies the concepts, the risk of homogenization is real.
-However, Fliction notes a vital caveat that limits the force of this concern, at least based on current evidence.
+However, Flyxion notes a vital caveat that limits the force of this concern, at least based on current evidence.
 What's the caveat?
 Even in epistemic use, humans rarely act as completely passive receptacles.
 We don't just absorb the AI's output unquestioningly like a blank slate.
@@ -656,7 +656,7 @@ And it's a big but.
 And this is a massive but.
 The paper doesn't end with a victory lap.
 The final section flips the script entirely.
-The author, Fliction, reveals that there are I, a massive existential ecological risk.
+The author, Flyxion, reveals that there are I, a massive existential ecological risk.
 And it's not located in how we write.
 It's located in how we discover.
 We are transitioning now from the mechanics of expression to the ecology of knowledge.

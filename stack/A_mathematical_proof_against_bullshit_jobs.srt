@@ -60,7 +60,7 @@ Because today we are looking at a mathematical proof that basically validates th
 
 16
 00:00:54,880 --> 00:01:02,040
-Yeah, we are diving into a highly analytical, I mean, borderline revolutionary paper by an author known as Flixian.
+Yeah, we are diving into a highly analytical, I mean, borderline revolutionary paper by an author known as Flyxion.
 
 17
 00:01:02,440 --> 00:01:10,900
@@ -2492,7 +2492,7 @@ But as we wrap up this deep dive, I want to leave you with one final provocative
 
 624
 00:44:16,780 --> 00:44:19,280
-that builds on everything Flickshon has laid out.
+that builds on everything Flyxion has laid out.
 
 625
 00:44:19,280 --> 00:44:23,240

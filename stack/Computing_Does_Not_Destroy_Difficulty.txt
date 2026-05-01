@@ -29,7 +29,7 @@ So our mission today is to unpack this architecture of concealment. We need to f
 difficulty isn't disappearing, where exactly is it going? Right. And what happens when the places we
 hide it get full? That is the multi-trillion dollar question. And it forces us to look at the
 architecture of our world, not as a magic show, but as a waste management system for complexity.
-A waste management system. Wow. Okay. Let's start with that rug metaphor because fliction uses it
+A waste management system. Wow. Okay. Let's start with that rug metaphor because Flyxion uses it
 right out of the gate in order and obfuscation. The quote is, the metaphor of sweeping problems under
 rugs captures this phenomenon. A rug does not remove what lies beneath it. It makes the surface navigable.
 Right. Think about walking across a floor. If there's debris everywhere, cables, dirt,
@@ -37,7 +37,7 @@ dirt, unfinished floorboards, sharp nails, you can't walk. You trip. It's unusab
 The rug makes the room usable. In computer science, we call the rug an interface. And the
 debris underneath is the complexity. But isn't that the whole point? I don't want to see the
 nails in the dirt. I just want to walk across the room. Absolutely. That is the utility of the rug.
-That's why we build interfaces. But here is the nuance that Fliction points out. It's not just
+That's why we build interfaces. But here is the nuance that Flyxion points out. It's not just
 ignoring the debris. Oh, okay. It's what the paper calls controlled reduction. You aren't just
 pretending the mess isn't there. You are actively engaging in a process to stabilize it just enough
 so you can put a lid on it. You have to do work to hide the work. It takes effort to hold the rug
@@ -66,13 +66,13 @@ refresh cycles. Right. The firmware is dealing with the addressing. The operatin
 the allocation, making sure two programs don't try to write to the same spot. And then even in the
 code itself, there are more layers. Exactly. The programming language has a garbage collector that
 runs around cleaning up memory you aren't using anymore. The janitor hidden under the road. Precisely.
-So Flixion formalizes this. The paper introduces two variables that I think are really helpful for
+So Flyxion formalizes this. The paper introduces two variables that I think are really helpful for
 visualizing this. Okay. You have eighth, the explicit difficulty. That is the difficulty you
 experience. Which ideally is zero. I just click save. Right. But then there is high, the hidden
 difficulty. This is the structural complexity required to make that click work. The refreshing,
 the error correction, the garbage collection. Oh, the janitor. All the janitors. Yeah. And the
 conservation principle states that you can drive I down down, but you almost always have to increase
-iHiDollar to do it. The total structural burden, call it sciiner, is conserved. Actually, Flixion
+iHiDollar to do it. The total structural burden, call it sciiner, is conserved. Actually, Flyxion
 argues the total burden usually goes up, doesn't he? It's not a one-to-one trade. Yes. That's a key
 point. It's not a zero-sum game where one goes down and the other goes up by the same amount. It's not
 perfectly efficient. Not at all. Usually, to make something 10% simpler for the user, you have to make
@@ -89,7 +89,7 @@ to get anything done. That is the value of abstraction. Yeah. But the cost is op
 Opacity. We lose touch with what is actually happening. We start to believe the world actually is that
 simple. We forget the closet is even there. This brings us to a really interesting part of the
 paper about quarantining impossibility, because I always thought computers were these omnipotent
-logic machines. If you have enough processing power, you can solve anything. But Fliction says
+logic machines. If you have enough processing power, you can solve anything. But Flyxion says
 there are some things that are just impossible. This is where we get into the hard math limits.
 Computer science isn't just about engineering. It's about fundamental logic. There are monsters in the
 math. Monsters like what? Like the halting problem. Alan Turing proved this back in the 30s. He asked a
@@ -132,7 +132,7 @@ Right.
 Said, here is all the text in the world. You figure out the patterns.
 So where is the logic? Where is the reasoning? If I ask it a question and it gives me an answer,
 where did that answer come from?
-It is smeared. That is the word Flixson uses, and I think it's perfect.
+It is smeared. That is the word Flyxion uses, and I think it's perfect.
 The reasoning isn't in a specific line of code. It is distributed across those billions of weights.
 It's a statistical tendency, not a logical rule.
 It's a pattern, not a reason.
@@ -177,7 +177,7 @@ when it hallucinates or acts weirdly, it's because the hidden burden of the envi
 has shifted.
 Give me an example of that. What do you mean by the environment shifting?
 Well, the model was trained on data from the past. It assumes the future looks like the training
-data. Fliction calls this the hidden environment assumptions. If the context changes, say a new
+data. Flyxion calls this the hidden environment assumptions. If the context changes, say a new
 slang term emerges, a major world event happens, or the political climate shifts, the model doesn't
 just fail. It fails weirdly.
 It starts saying things that are out of date or just plain wrong.
@@ -202,7 +202,7 @@ world of thermodynamics.
 The title alone, The Mortality of Computation, is a provocation. Because we have this bias,
 software is forever. Digital implies immortal. If I write a poem on paper, it burns. If I write
 it in the cloud, it's there forever.
-And Fliction says, wrong. The paper challenges the myth of immortality. It argues that logical
+And Flyxion says, wrong. The paper challenges the myth of immortality. It argues that logical
 universality, the idea that a computer can do anything, that a Turing machine is universal,
 does not equal physical immortality.
 Because the computer is made of stuff. It's not a ghost.
@@ -237,7 +237,7 @@ the computer spits out a tiny puff of heat into the room.
 So my computer getting hot isn't just because the battery is inefficient or the fan is dusty.
 It's a fundamental law of the universe. To think, to compute, is to create heat.
 Exactly. You cannot process information without polluting the environment with heat.
-Fliction calls computation constrained energy descent.
+Flyxion calls computation constrained energy descent.
 What does that mean?
 It means we are fighting a constant uphill battle against nature.
 Nature wants chaos. Nature wants those bits to flip randomly.
@@ -324,7 +324,7 @@ A river isn't a river.
 It's hydroelectric power waiting to be spun.
 The world only exists to the extent that it can be input into our system.
 And in computing, how does that apply?
-In computing, Flexion argues we do this to everything.
+In computing, Flyxion argues we do this to everything.
 We treat the world purely as inputs and outputs.
 We see the interface, not the reality.
 We demand that the world fit into our database schema.
@@ -359,7 +359,7 @@ The paper redefines technical debt.
 I usually think of technical debt as, you know, I wrote sloppy code to meet a deadline and I'll fix it later.
 It's laziness.
 That's the surface definition.
-Fliction defines it much more profoundly as deferred explicit burden.
+Flyxion defines it much more profoundly as deferred explicit burden.
 Or my favorite, temporal displacement.
 Worrowing stability from the future.
 Yes.
@@ -453,7 +453,7 @@ And engineering is about trade-offs.
 It's about managing complexity, not pretending it doesn't exist.
 Let's try to synthesize all of this.
 We've covered a lot of ground.
-We have these two massive papers by Fliction.
+We have these two massive papers by Flyxion.
 What is the big picture here, the new ontology that Papel talks about?
 I think it comes down to a unified structural ontology that has three parts.
 It's like a three-step syllogism for our digital age.

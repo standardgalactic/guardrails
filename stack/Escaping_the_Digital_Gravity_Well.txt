@@ -8,7 +8,7 @@ Looking at the absolute stack of notes we have for today, I think that's actuall
 We aren't just reviewing a tech trend today. We're looking at a fundamental shift in how we
 understand the physics of information.
 We really are. So let's set the scene here. I have a paper in front of me. It was released
-literally today, February 19th, 2026. It's by an author who goes by the pseudonym Flixian.
+literally today, February 19th, 2026. It's by an author who goes by the pseudonym Flyxion.
 And the title, well, I looked at the title this morning and I almost called in sick.
 Dense.
 It is. Distributed centrality. Symmetry preservation in non-equilibrium semantic substrates.
@@ -32,7 +32,7 @@ And the doors are locked from the outside.
 Yes. That is a perfect description. It feels like a trap. Or like a casino, where the house doesn't
 just win, but the house actually owns the laws of physics inside the building.
 Right. The carpet pattern, the lack of clocks, the free drinks, it's all engineered. But this paper
-by Flixian, it argues that this isn't just a metaphor anymore. It's not just bad user experience
+by Flyxion, it argues that this isn't just a metaphor anymore. It's not just bad user experience
 or greedy capitalism. It is a fundamental shift in the geometry of reality.
 Specifically, the reality of meaning. So the mission of this deep dive is to decode this paper.
 We're going to take this concept of distributed centrality and figure out how digital platforms
@@ -125,7 +125,7 @@ It's easier for atoms to just randomly form a cloud of gas than to assemble a hu
 Much easier. So a Boltzmann brain is a statistical anomaly. It's a brain that spontaneously fluctuates
 into existence in the void, thinks one single thought, and then dissolves back into chaos.
 In classical physics, it's a total freak accident.
-But Flickshahn, the author of this paper, flips this entirely on his head.
+But Flyxion, the author of this paper, flips this entirely on his head.
 He does. He argues that the classical view assumes the universe is in equilibrium.
 That it's mostly dead and random. But the internet. The internet is a high gradient system. It is
 flooding with energy. It is far from equilibrium.
@@ -228,7 +228,7 @@ And agency.
 Agency is the thermodynamic and cognitive work it took to actually create it. The sweat,
 the thinking, the risk, the life experience behind the post.
 The paper introduces the as-relation here. And this sounded very philosophical to me. Ground and roll.
-It is philosophical, but Flixian formalizes it mathematically. The as-relation is the core
+It is philosophical, but Flyxion formalizes it mathematically. The as-relation is the core
 definition of meaning. You have the ground, denoted by gamma, which is the physical fact.
 The pixels on the screen.
 Right.
@@ -251,7 +251,7 @@ Exactly. This is the ultimate extraction mechanism. The platform gets the value,
 the low entropy information, the pure signal without expending the sweat. The agency, the risk,
 the metabolic cost, the sheer effort of being a person in the world is left entirely with the user.
 So they get the gold and we keep the shovel in the back.
-Precisely. And the result of this massive decoupling, according to Fliction,
+Precisely. And the result of this massive decoupling, according to Flyxion,
 is semantic heat death.
 Semantic heat death and genre exhaustion. I love this term, genre exhaustion. It sounds like a great
 indie band name, but here it describes the current state of the internet perfectly.
@@ -313,7 +313,7 @@ Derivational history.
 If the algorithm is a black box, dissent integrity is completely violated. The map has been replaced
 by a command. You aren't seeing what the world is. You are seeing what the platform is
 commanding you to believe the world is, and you have absolutely no way to verify it.
-So we are flying blind, trusting instruments in the cockpit that we know are rigged.
+So we are Flyxion blind, trusting instruments in the cockpit that we know are rigged.
 And that destroys the human capacity for meaning. If you can't trace the history of a fact,
 is it even a fact? Or is it just a command from the substrate?
 That is a profoundly disturbing question. If I can't see why the machine showed me this
@@ -395,7 +395,7 @@ Exactly. A startup cannot fight a black hole. The physics are fundamentally wron
 The escape velocity required is just too high for any human or company to achieve.
 So, are we completely doomed? Because it feels like we are very deep in regime 2 right now.
 Looking at the big three or four tech giants, the gravity feels pretty crushing from where I'm sitting.
-It certainly feels that way. But Flixing argues there is a solution. But it's not the solution you
+It certainly feels that way. But Flyxion argues there is a solution. But it's not the solution you
 might expect. It's not bring them up in a standard courtroom. It's Section 7. The solution.
 Renormalization and stability.
 Algebraic antitrust. I love this phrase so much. It sounds like a cyberpunk manifesto.

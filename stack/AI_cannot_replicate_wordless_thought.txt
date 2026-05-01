@@ -13,7 +13,7 @@ Which represents a massive cognitive paradigm shift.
 Because if true thought is wordless, well, it forces us to completely re-evaluate everything we are currently building in the tech world.
 Welcome to this deep dive.
 Today, we are exploring a single, incredibly dense, and frankly mind-bending source.
-It's an essay by an independent theorist named Flixian.
+It's an essay by an independent theorist named Flyxion.
 Yeah, and the title is Wordless, Imageless Thought, Structural Cognition, and the Linguistic Interface of Artificial Intelligence.
 It's a heavy title, but our mission today is to explore the radical idea at its core.
 Basically, if human thought is so much deeper than the words or pictures in our heads,
@@ -26,7 +26,7 @@ Exactly. Maintaining that in an age of artificial fluency.
 But to understand why AI is so fundamentally different from human intelligence,
 we first have to dismantle that massive misconception we just mentioned.
 The idea that everybody thinks in words.
-Yes. And to dismantle it, Flixian actually takes us back over a century, right?
+Yes. And to dismantle it, Flyxion actually takes us back over a century, right?
 Yeah, it's fascinating. There is a 1920 article from a publication called The Lone Hand by a writer named L. Woolicott.
 Okay.
 Woolicott made this incredible prediction long before modern neuroscience even existed.
@@ -162,7 +162,7 @@ What's that?
 If AI is just stringing together plausible tokens at the surface level, why does it sometimes feel so viscerally wrong to read its outputs?
 Like, even when the grammar is flawless, the tone is confident, and we can't immediately articulate what the factual error is, why do we get that feeling?
 That visceral rejection comes down to the formal geometry of thought.
-Fliction models this using something called the TARTAN framework.
+Flyxion models this using something called the TARTAN framework.
 Okay.
 It stands for Typed Attribute Reduction with Typed Attribute Notation.
 Hold on.
@@ -268,7 +268,7 @@ Which brings us to the ultimate question.
 Now that we understand these deep structural differences between human thought and machine
 language, and we know how the mirror mechanism can trap us, how exactly do we interact with
 this tech without losing our minds?
-Fortunately, Fluxian lays out a very specific playbook for maintaining your epistemic sovereignty.
+Fortunately, Flyxion lays out a very specific playbook for maintaining your epistemic sovereignty.
 Let's hear it.
 The first rule is task orientation over question orientation.
 You should never, under any circumstances, ask an AI for its opinion.

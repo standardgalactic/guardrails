@@ -41,7 +41,7 @@ Which brings us to the mission for this deep dive.
 Today, we are immersing ourselves in a truly radical, mathematically rigorous paper published in March 2026.
 A very recent, very heavy piece of work.
 Very heavy.
-The author goes by the handle Fliction, or Fliction, depending on how you pronounce it.
+The author goes by the handle Flyxion, or Flyxion, depending on how you pronounce it.
 And the paper is titled Process, Projection, and Power Toward a Unified Ontology of Choice, Causality, and Value.
 Quite a mouthful.
 It is.
@@ -88,7 +88,7 @@ We look around and we think the universe is a giant container.
 And inside that container are things.
 Particles, planets, chairs, people, dollars.
 And then as a secondary phenomenon, those things occasionally move or change state.
-This is what fliction refers to as an ontology of being.
+This is what Flyxion refers to as an ontology of being.
 Okay.
 Unpack that term for us.
 Well, ontology is just the philosophical study of what actually exists.
@@ -99,7 +99,7 @@ That's a great visual.
 The being, the static ball, is the default state of the universe.
 The doing the movement across the table is just an accidental property that happens to the being when force is applied.
 That is the perfect way to visualize the classical mindset.
-But Fliction's paper completely inverts that paradigm.
+But Flyxion's paper completely inverts that paradigm.
 It argues that classical science is looking at reality entirely backward.
 Backward how?
 The paper proposes what it calls an ontology of becoming.
@@ -220,7 +220,7 @@ You take the fluid future and you forge it into the solid past.
 And that transition from possibility to fixed history is mathematically asymmetric.
 You can't undo it.
 Exactly.
-And what Fliction argues is that this physical collapse, this transition from many futures to one past, has an internal subjective aspect to it.
+And what Flyxion argues is that this physical collapse, this transition from many futures to one past, has an internal subjective aspect to it.
 That internal aspect is consciousness.
 Wow.
 Subjective experience is simply what it feels like from the inside to be the process that resolves possibilities into history.
@@ -288,7 +288,7 @@ But when asked to generate an identity, it fell into a generic sinkhole.
 And the paper meticulously argues that this was not just a temporary glitch or a lack of training data.
 It was a mathematical inevitability.
 Why did it happen?
-Because the generated names lacked what Fliction calls history coupling.
+Because the generated names lacked what Flyxion calls history coupling.
 History coupling.
 Let's dig into that.
 When the Markov chain generated the word Thaler, each letter was chosen probabilistically in isolation.
@@ -313,7 +313,7 @@ So, if unconstrained generation isn't enough to create a distinct identity, if j
 up a random string of letters or actions doesn't make us self-quitting, what is the actual mathematical
 requirement for an identity to exist and survive?
 This is where we get to the core of the paper.
-Fliction outlines the architecture of identity through four rigorous mathematical theorems.
+Flyxion outlines the architecture of identity through four rigorous mathematical theorems.
 If you want to exist as a stable, compiled self, you must continuously satisfy these four
 conditions.
 Okay, let's go through them.
@@ -526,7 +526,7 @@ It doesn't happen in a theoretical void.
 Exactly.
 It happens in a strictly governed physical reality.
 It happens inside the unforgiving medium of time.
-And this is where affliction introduces one of the most brutal, uncompromising mathematical
+And this is where Flyxion introduces one of the most brutal, uncompromising mathematical
 rules in the entire paper, the log-sovereignty theorem.
 Log-sovereignty.
 The paper explicitly states that the history of a compiled self must be structurally, physically
@@ -658,8 +658,8 @@ our predictions.
 We seek equilibrium.
 Right.
 Isn't minimizing surprise the entire point of a stable identity?
-Why does Flixion say Fristen is wrong?
-Flixion doesn't say Fristen is wrong about the brain's desire to minimize surprise.
+Why does Flyxion say Fristen is wrong?
+Flyxion doesn't say Fristen is wrong about the brain's desire to minimize surprise.
 The paper acknowledges that optimization is happening.
 But it argues that the free energy principle misses a crucial foundational metric, provenance.
 Provenance, meaning the origin story or the historical validity of the structure itself.
@@ -680,7 +680,7 @@ a freezer so I'm not immediately surprised, the free energy principle can't tell
 between the structural integrity of those two beliefs.
 It misses the derivation certificate of the belief.
 It ignores the heavy, append-only log that proves why a structure is valid.
-So what Fliction does, and this is the genius of the paper, is take all three of these competing
+So what Flyxion does, and this is the genius of the paper, is take all three of these competing
 theories and unify them.
 It builds a superset.
 Yes.
@@ -748,7 +748,7 @@ The cognitive overload is insurmountable.
 So to solve this evolutionary coordination problem, human beings invented a mathematical tool.
 We invented a technology to bypass the calculation.
 We invented money.
-And here is where Fliction's economic critique begins.
+And here is where Flyxion's economic critique begins.
 The paper does not define money the way a traditional economist would.
 It doesn't call it a medium of exchange or a store of value.
 The paper defines money fundamentally as a lossy projection functor.
@@ -787,7 +787,7 @@ The 1D metric can never simulate the 3D reality.
 But our entire global society is built on the assumption that it can.
 Our entire economy assumes the GIF is an accurate representation of the movie.
 What happens mathematically when an entire civilization tries to run on a lossy projection?
-The system accumulates what Fliction calls admissibility entropy.
+The system accumulates what Flyxion calls admissibility entropy.
 Admissibility entropy, meaning the errors start to pile up.
 Exactly.
 When you compress a 3D human into a 1D scalar number, like a credit score or a price or an engagement metric, the algorithm is forced to round you off to the nearest generic archetype.
@@ -899,7 +899,7 @@ They are running real-time risk assessments to authenticate your legal access to
 A 1D algorithm is looking at a 2MB GIF of your life and deciding if you deserve to participate in society.
 And treating a finite summary as a complete representation of a living person in a high-stakes,
 legally binding context is not just an insult.
-Fliction argues it is a formal mathematical error.
+Flyxion argues it is a formal mathematical error.
 It inherently denies human dignity.
 It treats a living, breathing, continuously becoming uncompressible human trajectory
 as if it were a static, dead file sitting in a filing cabinet.
@@ -919,7 +919,7 @@ The beautiful, chaotic, generative substrate of human creativity and dignity is 
 ground down into generic slop to feed the machine.
 It is an incredibly bleak, dystopian picture of our current era of extractive computing.
 It paints us into a corner where mathematics itself seems to dictate our doom.
-But what makes Fliction's paper an absolute masterpiece,
+But what makes Flyxion's paper an absolute masterpiece,
 and the reason we wanted to do a deep dive on it,
 is that it does not stop at diagnosing the disease.
 It doesn't just complain about capitalism and walk away.
@@ -952,7 +952,7 @@ otherwise our brains melt trying to barter bread for shoes.
 Right.
 We cannot function without abstraction.
 The coordination problem is real.
-Fliction recognizes this.
+Flyxion recognizes this.
 The paper argues that the problem isn't the existence of the 2D JIF itself.
 The structural sin of modern computing is that we throw away the 100 gigabyte 3D movie file
 the moment the JIF is rendered.
@@ -996,7 +996,7 @@ It is a digital architecture that actually respects the irreversible arrow of hu
 rather than treating our lives as a timeless, symmetrical block of data to be mined, overwritten,
 and deleted by whoever has the most server space.
 It is a breathtaking unified synthesis.
-Fliction manages to connect the deepest, most esoteric physics of time, route it directly
+Flyxion manages to connect the deepest, most esoteric physics of time, route it directly
 through the subjective internal experience of human consciousness, and output it straight
 into software architecture and macroeconomics.
 It proves mathematically that physics, consciousness, and economics are not separate domains.

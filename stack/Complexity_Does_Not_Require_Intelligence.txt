@@ -27,7 +27,7 @@ that we are going to try and dismantle today.
 It's a big project.
 It is. We are opening up a file that I genuinely think is going to fundamentally change how you,
 the listener, look at intelligence and complexity. The paper is titled Complexity Without Intelligence.
-It's by a researcher named Flixian, and it was just published January 24, 2026.
+It's by a researcher named Flyxion, and it was just published January 24, 2026.
 And that title alone is, I mean, it's deliberately provocative. Complexity Without Intelligence.
 It feels like an oxymoron, right? A contradiction in terms. We are just so trained to think that
 smart equals complex.
@@ -42,7 +42,7 @@ We dismiss the spider.
 We assume that because the spider isn't consciously thinking about, I don't know, the tensile strength
 of its own silk, or calculating the geometric angles in its head, that the activity itself
 must be simple.
-But Flixian is here to argue that we have this completely fundamentally backward.
+But Flyxion is here to argue that we have this completely fundamentally backward.
 The mission of this paper, and really our mission for this deep dive, is to take a scalpel
 and surgically separate two ideas that have been glued together for decades.
 And those two ideas are?
@@ -88,7 +88,7 @@ And the poor Roombas.
 But the point is, we rank them based on one single criterion.
 How close are they to us?
 How close do they come to mimicking human-style cognition?
-That's what Fliction calls the deliberation bias, right?
+That's what Flyxion calls the deliberation bias, right?
 We confuse the complexity of an action with the perceived effort of thinking really hard
 about that action.
 Okay.
@@ -136,7 +136,7 @@ And then you have synchronic linguistics, which studies the language system as i
 one specific point in time.
 A snapshot.
 Frozen.
-So when Fliction talks about synchronic complexity, they're asking us to take a snapshot and completely
+So when Flyxion talks about synchronic complexity, they're asking us to take a snapshot and completely
 ignore the history.
 Completely and utterly.
 Yeah.
@@ -574,7 +574,7 @@ You are viable.
 And this leads to the most interesting part, the idea of breakdown.
 Usually, we think of a breakdown as the ultimate failure state.
 You know, the system crashed.
-But Fliction says a breakdown event is actually informative.
+But Flyxion says a breakdown event is actually informative.
 It's a source of information.
 Think back to your driving analogy.
 You're fluently driving to work.

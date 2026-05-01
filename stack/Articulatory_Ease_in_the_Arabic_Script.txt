@@ -18,7 +18,7 @@ As if it were designed by a committee of graphic designers sitting in a pristine
 with unlimited time and resources trying to make the most logical system possible.
 Exactly. But the source material we have today argues the complete opposite.
 It argues that logic had very little to do with it, and biology had everything to do with it.
-We are diving into a fascinating paper titled Embodied Constraint and Minimal Assembly by Affliction,
+We are diving into a fascinating paper titled Embodied Constraint and Minimal Assembly by Flyxion,
 published just this year, February 14, 2026.
 And the core argument here is that writing is messy. It is a physical struggle.
 It's a struggle between your hand, which is fundamentally lazy, and your eye, which is fundamentally picky.
@@ -59,7 +59,7 @@ And the driving force behind this assembly,
 and this is the part that really blew my mind, is thermodynamics.
 The author actually brings physics into this.
 Yes.
-This is where Flitchin gets really interesting.
+This is where Flyxion gets really interesting.
 He calls writing a dissipative act.
 Which is a fancy way of saying it burns calories.
 It burns calories.
@@ -255,7 +255,7 @@ They require extra effort.
 You have to buzz your vocal cords or blow more air or twist your tongue in a weird way or hold the sound longer.
 So, unmarked is the default setting and marked is the upgrade package that costs extra energy.
 Correct.
-And the fliction paper argues that the Arabic script unconsciously mapped this physical reality onto the paper.
+And the Flyxion paper argues that the Arabic script unconsciously mapped this physical reality onto the paper.
 Extra effort in the mouth equals extra ink on the page.
 Let's look at the examples because this is where you can really see it.
 The paper brings up D versus D-H, dell and dell.
@@ -394,7 +394,7 @@ Why does the L surrender to the S or the N or the T, but it stands its ground ag
 the K or the B?
 If you ask a traditional grammarian, they might give you a poetic answer about the sun burning
 up the stars.
-But Flixian says, look at the mouth.
+But Flyxion says, look at the mouth.
 It's not poetry.
 It's biomechanics.
 It's the tongue map.

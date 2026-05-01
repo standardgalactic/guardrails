@@ -131,7 +131,7 @@ or moving things inefficiently, the energy AI data centers use is the necessary 
 information processing work.
 Exactly. The waste heat is a byproduct, not the actual purpose of the machine. And often,
 that computation is substituting for much higher entropy human activities, right? Like
-flying across the country for a meeting that could have been an email.
+Flyxion across the country for a meeting that could have been an email.
 Or now, maybe just a generated summary report.
 Right. So the real question isn't, does AI use energy? Of course it does. All work consumes energy.
 The right question, from this thermodynamic and frankly, policy perspective, is really twofold.

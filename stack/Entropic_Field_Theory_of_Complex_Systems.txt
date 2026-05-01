@@ -28,7 +28,7 @@ that dense academic architecture into a series of profound aha moments for you. 
 shortcut to understanding the hidden architecture of the universe, and we are going to do it without
 drowning in all that jargon. So where do we even begin to tackle a framework this expansive?
 I think the most logical entry point isn't actually the physics of the math, but rather a specific
-conceptual philosophy of complex systems that the paper builds upon. Before Flixion introduces the
+conceptual philosophy of complex systems that the paper builds upon. Before Flyxion introduces the
 heavy thermodynamic equations, the entire framework is grounded in what is known as the
 evo-devo framework. What would you tell you that? Yes. Primarily articulated by the systems theorist
 John E. Smart. To grasp the math later, you first have to really deeply understand this duality between
@@ -36,7 +36,7 @@ evolution and development. Okay. Evolutionary development. Now, when we talk abo
 I think we all know the foundational Darwinian mechanics, right? Random mutation, natural
 selection, stochastic environmental pressures. The standard model. Yeah, the standard model.
 It's basically a brute force algorithmic search through a massive phase space of possibilities.
-But SMART's framework, which Flixion is mathematically formalizing here, pairs this familiar evolutionary
+But SMART's framework, which Flyxion is mathematically formalizing here, pairs this familiar evolutionary
 force with a second equally important force, which is development. Exactly. In the evo-devo framework,
 any complex system, whether it's a biological lineage, a technological network, or a cosmological
 structure, it grows and self-organizes through these two opposing but entirely complementary dynamics.
@@ -68,7 +68,7 @@ system, the actual stable functional forms it eventually takes, is governed by t
 The developmental constraints.
 Yes. In dynamical systems theory, we call these constraints attractors. They're deep,
 stable basins in the mathematical landscape that pull the chaotic 95% toward highly predictable,
-repeating configurations. I want to look at how Fliction uses biological morphogenesis to illustrate this,
+repeating configurations. I want to look at how Flyxion uses biological morphogenesis to illustrate this,
 because the implications for convergent evolution are just staggering for you to think about.
 Let's talk about how biological forms take shape. It's a great example.
 We're often taught to view biological structures as the result of millions of lucky genetic rolls of
@@ -122,7 +122,7 @@ It would take too long. Even if the chain sampled millions of different configur
 it would take longer than the age of the universe to randomly stumble upon its native stable folded state.
 But obviously that doesn't happen. In your body right now, millions of proteins are reliably
 folding into their highly complex tertiary structures in a matter of milliseconds.
-So how does fliction explain this rapid convergence?
+So how does Flyxion explain this rapid convergence?
 It is the ultimate demonstration of a developmental constraint.
 The protein is not randomly exploring a flat possibility space. The physical constraints built
 into the chemistry, the hydrophobic interactions driving water-repelling carbon chains to the center,
@@ -140,12 +140,12 @@ The constraints are baked into the medium itself. And that leads to the massive 
 the rest of the paper. If genes and proteins and entire organisms are essentially just dynamic
 patterns falling into stable geometric valleys, what is the actual fabric of those valleys? What is the
 physical space they are falling through? That is the pivotal question that bridges the biological
-philosophy to the hard physics. To answer it, Flixian introduces the core thermodynamic model,
+philosophy to the hard physics. To answer it, Flyxion introduces the core thermodynamic model,
 which is the relativistic scalar vector plenum, or the RSVP. Let's break this down,
 because adopting this framework requires a fundamental shift in how we perceive reality. For centuries,
 our baseline intuition for physics has been the billiard ball model. Antonian physics. Yeah.
 We imagine an empty void of space, and inside that void are discrete, solid objects, atoms,
-planets, biological cells bouncing off one another. But Flixian argues that to truly understand complex
+planets, biological cells bouncing off one another. But Flyxion argues that to truly understand complex
 systems, we have to throw that model out entirely. The billiard ball model is fundamentally inadequate
 for modeling auto-poetic, self-organizing systems. The RSVP framework demands an ontological
 shift toward field theory. You have to imagine the universe not as an empty room filled with objects,
@@ -158,7 +158,7 @@ But the wave isn't made of permanent water molecules. New water is violently rus
 it every millisecond. It's just a pattern. The wave is simply a persistent structural pattern
 of energy flowing through the medium. Under the RSV2 model, you and I are not billiard balls.
 We are standing waves in a continuous thermodynamic fluid. But before we get to the specific fields,
-I have to ask, why does Fliction call it a relativistic plenum? What does relativity have
+I have to ask, why does Flyxion call it a relativistic plenum? What does relativity have
 to do with biology or networks? It is a vital distinction. In this context,
 relativistic doesn't necessarily mean we are dealing with objects moving near the speed of light,
 like in Einsteinian astrophysics. Rather, it means that the interactions within this plenum are strictly
@@ -168,7 +168,7 @@ complex system, that information ripples outward through the medium at a finite 
 of the system is entirely dependent on the local frame of reference. This local causality is crucial
 because it ensures the math doesn't violate fundamental physics when scaling up from a single
 biological cell to a planetary network. Okay, so we have this relativistic fluid-like universe.
-How does Fliction actually map it? What are the mathematical building blocks he uses to describe
+How does Flyxion actually map it? What are the mathematical building blocks he uses to describe
 these standing waves? He uses three specific interacting fields. Could you walk us through them?
 Certainly. The three fields represent the fundamental components of any complex organization
 in this model. The first is the scalar field, mathematically denoted by the Greek letter phi. A scalar
@@ -187,7 +187,7 @@ rivers and currents moving across it. It dictates how the scalar density is cont
 pulled, and circulated to maintain the patterns. And finally, we have the third field, which is
 what anchors this entire theory in the hard laws of physics, the entropy field, represented by the letter
 S. Now, most of us have a basic colloquial understanding of entropy as disorder or things falling apart.
-How does fliction rigorously define the entropy field in this framework?
+How does Flyxion rigorously define the entropy field in this framework?
 In the RSVP, the entropy field is vastly more sophisticated than just chaos. It captures local
 dispersion, thermal dissipation, and crucially the informational uncertainty of the system. It
 represents the fundamental thermodynamic tension of the universe. The pushback. Exactly. While the scalar
@@ -199,7 +199,7 @@ And this interaction between the scalar density, the vector flow, and the entrop
 a section of the paper titled, The Thermodynamics of Form. This part completely reframed how I think
 about biological traits. The paper asks a seemingly simple question. Why do developmental constraints
 exist in the first place? Why does nature insist on repeating the exact same forms, like the eye or the
-wing over and over? Infliction answers this by invoking the Landauer Principle. The integration of the Landauer
+wing over and over? Flyxion answers this by invoking the Landauer Principle. The integration of the Landauer
 Principle is where the thermodynamics truly meet information theory. In 1961, a physicist at IBM named
 Rolf Landauer proved something revolutionary about the physical limits of computation. It's not just abstract.
 No, he proved that the logical erasure of information, which is essentially the act of removing degrees of
@@ -240,7 +240,7 @@ Through heat and waste. We ingest highly ordered low entropy chemical bonds in t
 we extract the vector energy to maintain our internal scalar structure, and we radiate heat
 and chemical waste, which is high entropy, back into the environment. We are thermodynamic whirlpools. We
 are thermodynamic whirlpools. I absolutely love that conceptualization. And that brings us to the core of
-the paper, where fliction translates all of this biological philosophy and thermodynamic theory
+the paper, where Flyxion translates all of this biological philosophy and thermodynamic theory
 into a single breathtaking set of mechanics. Let's look under the hood at part three, the math of
 becoming. The central mathematical proposition of the paper decomposes the complex dynamics of the
 entire system into a surprisingly elegant primary equation. It states that the partial derivative of
@@ -306,9 +306,9 @@ Here's where it gets really interesting because this math perfectly closes the l
 Remember John Smart's 955 heuristic from the beginning. The observation that 95 percent of
 observable nature is evolutionary noise and only five percent is stable developmental attractors.
 By formally decomposing the dynamics into these D and E operators governed by the lambda ratio,
-Flixian proves that the 955 rule isn't just a clever biological metaphor. It's its thermodynamic law.
+Flyxion proves that the 955 rule isn't just a clever biological metaphor. It's its thermodynamic law.
 It is a rigorous thermodynamic necessity in high dimensional systems. The mathematical equations
-perfectly mirror the biological reality. It is a phenomenal synthesis. Flixian successfully
+perfectly mirror the biological reality. It is a phenomenal synthesis. Flyxion successfully
 extracts evo-devo from the realm of biological observation and embeds it firmly in the realm of fundamental
 thermodynamic law. And this operator decomposition leads directly to the identification of the most important
 emergent structure in the entire RSVP framework. The paper coin is a unique term for it, the Lamphron.
@@ -348,7 +348,7 @@ reactions establishes itself, it becomes fiercely self-reinforcing. It internall
 exact catalysts it requires to continue its own reaction. It builds itself. It maintains its highly
 ordered scalar density, the precise concentration ingredients of metabolites, by continuously
 circulating chemical vector flows and aggressively dissipating metabolic entropy. It is a mathematically
-perfect realization of Flixion's RSVP equations executing in biochemistry. So we have these beautiful
+perfect realization of Flyxion's RSVP equations executing in biochemistry. So we have these beautiful
 self-regenerating lamphrons, cells, organisms, complex ecosystems, but we know the universe is a
 profoundly violent and unstable place. The evolutionary operator, E, is constantly bombarding these
 structures with stochastic noise, thermal shocks, and environmental perturbations. How do they actually
@@ -368,7 +368,7 @@ Exactly. When a child's immune system is exposed to a moderate pathogen, it lear
 signature and becomes vastly more resilient. Even on an ecological scale, we see hormesis. A moderate,
 naturally occurring forest fire clears out dead high-entropy brush, forces serotonous pinecones to release
 their seeds and ultimately makes the entire ecosystem vastly more resistant to a total catastrophic burn
-in the future. What Fliction achieves here is providing the underlying rigorous mathematical
+in the future. What Flyxion achieves here is providing the underlying rigorous mathematical
 mechanism for why hormesis occurs at a fundamental physical level. In the RSVP framework, when a
 lampron is struck by a moderate perturbation, its internal entropy temporarily spikes. The system is
 violently briefly pushed up the walls of its comfortable developmental attractor basin. It gets shaken up.
@@ -384,7 +384,7 @@ This synergy of autopoesis, the relentless self-maintenance in hormesis,
 the stress-induced deepening of the attractor basin explains exactly how complex structures can
 persist, scale, and thrive in a universe defined by constant fluctuating noise.
 It's a phenomenal lens through which to view resilience. And up at this point,
-we've primarily focused on biology cells, proteins, organisms, forests. But Flexion's framework does not
+we've primarily focused on biology cells, proteins, organisms, forests. But Flyxion's framework does not
 stop at the edge of the forest. The paper scales these equations up. Way up. Which brings us to part five,
 the new sphere and collective intelligence. This is where we take the thermodynamic math of the RSVP
 and apply it directly to human communication networks, the internet, and the global cultural
@@ -397,7 +397,7 @@ the new sphere a reflexive planetary scale envelope of thought, cognition, and i
 that develops once human minds become sufficiently networked. Teilhard de Chardin essentially predicted
 the structural architecture of the internet decades before the first computer was even built. He saw that as
 humanity developed faster and denser communication networks, we were literally forming a planetary
-scale cognitive brain. And Fliction's paper takes that philosophical concept and says this planetary
+scale cognitive brain. And Flyxion's paper takes that philosophical concept and says this planetary
 cognitive layer, this new sphere, obeys the exact same RSVP thermodynamic equations as a folding protein
 or a cellular metabolism. It acts as an informational plenum. The mapping between the physical thermodynamic
 fields and the informational networks is remarkably elegant and mathematically consistent. In this informational
@@ -432,7 +432,7 @@ coordinate its vector flows and form a stable, highly coherent planetary scale l
 here and apply a strict rule of impartiality, which is incredibly important when discussing global culture.
 It is extremely easy to look at global politics, the rise of the internet, and shifting cultural
 institutions through a moral, ideological, or political lens. We tend to view these things through left-wing
-or right-wing paradigms assigning moral intentionality to the systems. But Fliction's paper makes a crucial,
+or right-wing paradigms assigning moral intentionality to the systems. But Flyxion's paper makes a crucial,
 entirely impartial observation here. The fundamental thermodynamic math does not care about human
 politics. That is vital to emphasize. The text argues that highly interconnected global cooperative
 institutions do not emerge primarily because human beings are making enlightened moral or political choices.
@@ -494,7 +494,7 @@ the emergence of the planetary scale, electronically interconnected cognitive la
 actively building. Now, when you look at that sequence, planets, to life, to complex animals,
 to language, to the global internet, it is very tempting to see a conscious goal. It looks like the
 universe wants to build higher and higher intelligence. But Johnny Smart refers to this
-strictly as developmental directionality. And Fliction's paper is extraordinarily careful to
+strictly as developmental directionality. And Flyxion's paper is extraordinarily careful to
 mathematically prove that this is not intelligent design. It is a critical distinction. The RSVP
 framework is entirely non-teleological. There is no grand designer, no conscious entity pulling the
 universe toward a predetermined goal. Developmental directionality is simply an unavoidable mathematical
@@ -516,7 +516,7 @@ skepticism. A beautiful, mathematically elegant theory is ultimately only as goo
 proven in the messy real world. A theoretical framework of this magnitude must generate empirically
 testable predictions. Exactly. We aren't just engaging in high-level philosophy here. We want to see the
 receipts. And that brings us to our final section, Part 7, Testing the Theory, Predictions, and Limitations.
-Fliction doesn't just drop this massive unified equation on the physics community and walk away. The paper
+Flyxion doesn't just drop this massive unified equation on the physics community and walk away. The paper
 outlines several highly specific operational ways to test if the RSVP framework is actually describing
 physical reality. Let's start with chemistry. How do we prove this in a laboratory setting?
 In the realm of physical chemistry, the framework predicts that complex, self-organizing systems,
@@ -526,7 +526,7 @@ mathematically measurable balance between the rate of entropy production by the 
 and the rate of diffusive dissipation. So we can measure it. This is empirically testable.
 Researchers can utilize high-precision calorimetry and advanced spectroscopic measurements on chemical
 systems as they self-organize and verify if the energetic thermal outputs perfectly match the
-dimensionless parameters dictated by Fliction's equations. What about biology? If an embryo is actually
+dimensionless parameters dictated by Flyxion's equations. What about biology? If an embryo is actually
 falling into a lampron attractor basin rather than just executing a genetic code, how do we measure that?
 In developmental biology, the paper predicts a strict correlation between morphogenetic robustness,
 which is the measure of how reliably an organism grows into its correct functional shape,
@@ -543,7 +543,7 @@ and uncoordinated data, h sub i, and divided by the square of the informational 
 coordinated directed data flow, j sub i, that mathematical ratio should scale predictably according to the RSVP
 parameters as the network grows in size. Data scientists can literally scrape massive data sets from global social networks,
 mathematically quantify the noise versus the coordinated flow, and test if the internet is
-fundamentally obeying the thermodynamics of the affliction model. And there is one final empirical
+fundamentally obeying the thermodynamics of the Flyxion model. And there is one final empirical
 prediction here, which is frankly a little terrifying, but incredibly important for understanding our
 current era. It involves a phenomenon called critical slowing down. What exactly is that?
 In dynamical systems theory, critical slowing down is a well-known mathematical signature.

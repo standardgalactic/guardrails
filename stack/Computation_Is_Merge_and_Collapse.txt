@@ -14,7 +14,7 @@ Hot off the presses.
 And I have to be honest with you, when I first read that title, I thought we were going to be
 talking about database transactions, you know, like commit and roll back.
 Which is a totally reasonable assumption given the terminology.
-But Flixten is going for something much, much bigger here.
+But Flyxion is going for something much, much bigger here.
 Yeah. This isn't about databases at all. This text claims to be a pedagogical base layer.
 It's essentially an argument that that we have been teaching computer science wrong
 for the last 70 years.
@@ -25,7 +25,7 @@ It says that everything we think we know, syntax, variables, functions, loops.
 Yeah.
 That's all just the crust, the surface level.
 Right. It's the user interface of math, basically.
-But Flixion wants to show us the engine underneath all that.
+But Flyxion wants to show us the engine underneath all that.
 Exactly. The central thesis here is that computation is not really about manipulating symbols.
 We think it is because, you know, we type code, we move text around on a screen.
 We write out the letters.
@@ -71,7 +71,7 @@ It feels very linguistic, very language-based.
 Precisely.
 We teach coding like we teach a language.
 We teach grammar, syntax, vocabulary.
-But Flixson is saying that is fundamentally backwards.
+But Flyxion is saying that is fundamentally backwards.
 How so?
 Think about it this way.
 Before you can write the symbol X, you have to have a place for it to live.
@@ -277,7 +277,7 @@ You can't go back.
 Once you flip those tiles down, the information about who those people were is effectively gone from the active set.
 Collapse is fundamentally lossy.
 You're throwing away information to get to the truth.
-So, computation, according to this Flickshan character, is just this cycle.
+So, computation, according to this Flyxion character, is just this cycle.
 It's a heartbeat.
 Expansion via merge gathering data, defining variables, opening files.
 Then constraint via collapse filtering lists, running calculations, resolving logic.
@@ -307,7 +307,7 @@ But to do that, it has to radically redefine what a variable is.
 Because in my head, and I think in most people's heads, a variable like X is a box.
 I put a value in the box.
 Later, I open the box and take it out.
-Infliction argues that is a pernicious metaphor.
+Flyxion argues that is a pernicious metaphor.
 Those are their exact words.
 In SpherePop, a variable isn't a blank space.
 It is a minimal structural commitment.
@@ -484,7 +484,7 @@ So a Unix pipeline is really just a function that is heavily curried.
 It's waiting for the data stream to complete the collapse.
 Structurally, yes.
 They are the exact same geometry.
-And Fliction says this applies to stack-based languages, too, like fourth or postscript.
+And Flyxion says this applies to stack-based languages, too, like fourth or postscript.
 A stack is just a region with positional constraints.
 It's a vertical bucket instead of a Y one.
 When you push, you merge a new item onto the top.
@@ -495,7 +495,7 @@ We usually think of functional coding, shell scripting, and stack manipulation a
 But here they are, dialects of the exact same mother tongue.
 And that mother tongue is fundamentally the management of state, which brings us to the real drama of Section 5, the villain of the piece.
 Every good story needs a villain.
-And in the story of functional programming, according to Fliction, the villain is mutation.
+And in the story of functional programming, according to Flyxion, the villain is mutation.
 Mutation.
 The enemy of reason.
 Understand why it's the villain, though.
@@ -646,7 +646,7 @@ If you had to summarize the calculus of commitment on a single bumper sticker, w
 What is the main takeaway?
 Computation is geometric.
 Computation is geometric.
-Flixixion's final point is that we really need to stop thinking of code as a linear recipe.
+Flyxion's final point is that we really need to stop thinking of code as a linear recipe.
 You know, do step one, then do step two.
 We need to start thinking of it as the disciplined reorganization of structural freedom.
 We are literally building shapes in a mathematical space.
@@ -661,7 +661,7 @@ Structure precedes symbol.
 I think I really finally get it.
 The symbol is just the cheap label we put on the structure after we already built it.
 Exactly.
-Well, Fluxian, whoever you are, whether you're a time traveler from the future, an alien intelligence, or just a very bored PhD student in a basement somewhere, you have given us a massive amount to think about.
+Well, Flyxion, whoever you are, whether you're a time traveler from the future, an alien intelligence, or just a very bored PhD student in a basement somewhere, you have given us a massive amount to think about.
 Indeed.
 It's the kind of theory that makes you want to go back and rewrite all your old cud from scratch.
 Or at least profusely apologize to it.

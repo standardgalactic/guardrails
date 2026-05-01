@@ -152,7 +152,7 @@ But today, we are going to challenge that assumption from the ground up.
 
 39
 00:02:31,860 --> 00:02:40,960
-Our deep dive today is powered by a fascinating, honestly incredibly dense, 61-page academic paper by a researcher writing under the name Fliction.
+Our deep dive today is powered by a fascinating, honestly incredibly dense, 61-page academic paper by a researcher writing under the name Flyxion.
 
 40
 00:02:41,360 --> 00:02:42,320
@@ -2220,7 +2220,7 @@ When the machine supplies the concepts, the risk of homogenization is real.
 
 556
 00:36:48,720 --> 00:36:54,060
-However, Fliction notes a vital caveat that limits the force of this concern, at least based on current evidence.
+However, Flyxion notes a vital caveat that limits the force of this concern, at least based on current evidence.
 
 557
 00:36:54,140 --> 00:36:54,760
@@ -2632,7 +2632,7 @@ The final section flips the script entirely.
 
 659
 00:43:56,140 --> 00:44:01,780
-The author, Fliction, reveals that there are I, a massive existential ecological risk.
+The author, Flyxion, reveals that there are I, a massive existential ecological risk.
 
 660
 00:44:01,900 --> 00:44:03,360
