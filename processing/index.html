@@ -6,272 +6,393 @@
 <title>Lava Thought Visualizer</title>
 
 <style>
-html, body {
-  margin: 0;
-  height: 100%;
-  background: #020802;
-  overflow: hidden;
-  font-family: monospace;
-  color: #aaffaa;
+body{
+margin:0;
+background:#000;
+color:#7cff7c;
+font-family:monospace;
+display:flex;
+flex-direction:column;
+align-items:center;
+justify-content:center;
+height:100vh;
 }
 
-canvas {
-  position: fixed;
-  inset: 0;
+.screen{
+position:relative;
+padding:20px;
+border:2px solid #0f0;
+background:#001000;
+box-shadow:
+0 0 10px #0f0,
+inset 0 0 40px rgba(0,255,0,0.12);
 }
 
-#subtitle {
-  position: fixed;
-  bottom: 70px;
-  width: 100%;
-  text-align: center;
-  font-size: 15px;
-  text-shadow: 0 0 10px #00ff66;
-  padding: 0 20px;
+/* scanlines */
+.screen::after{
+content:"";
+position:absolute;
+inset:0;
+pointer-events:none;
+background:repeating-linear-gradient(
+to bottom,
+rgba(0,255,0,0.04) 0px,
+rgba(0,255,0,0.04) 1px,
+transparent 2px,
+transparent 4px
+);
 }
 
-.track {
-  position: fixed;
-  bottom: 10px;
-  width: 120px;
-  height: 120px;
-  border: 1px solid rgba(120,255,120,0.4);
-  display: grid;
-  place-items: center;
-  cursor: pointer;
-  background: rgba(0,40,0,0.5);
+/* main display */
+
+canvas{
+width:420px;
+height:420px;
+border-radius:50%;
+background:#000;
+margin-bottom:15px;
+box-shadow:
+0 0 40px rgba(0,255,120,0.2) inset;
 }
 
-#left { left: 20px; }
-#right { right: 20px; }
+/* top toggle */
 
-.track canvas {
-  width: 80px;
-  height: 80px;
+#shapeToggle{
+position:absolute;
+top:-50px;
+left:50%;
+transform:translateX(-50%);
+width:50px;
+height:50px;
+cursor:pointer;
 }
 
-.active {
-  box-shadow: 0 0 20px #00ff66;
+#shapeToggle canvas{
+width:50px;
+height:50px;
+border-radius:0;
+box-shadow:none;
+}
+
+/* controls */
+
+.controls{
+display:flex;
+gap:10px;
+justify-content:center;
+}
+
+button{
+background:#001400;
+border:1px solid #00ff00;
+color:#7cff7c;
+padding:8px 12px;
+cursor:pointer;
+font-family:monospace;
+}
+
+/* subtitles */
+
+.subs{
+margin-top:12px;
+max-width:600px;
+min-height:2em;
+opacity:.9;
+text-align:center;
+text-shadow:0 0 6px #00ff66;
 }
 </style>
 </head>
 
 <body>
 
-<canvas id="main"></canvas>
-<div id="subtitle"></div>
+<div class="screen">
 
-<div id="left" class="track"></div>
-<div id="right" class="track"></div>
+<div id="shapeToggle"></div>
 
-<audio id="audio"></audio>
+<canvas id="viz"></canvas>
+
+<div class="controls">
+<button id="play">Play</button>
+<button id="subsBtn">Subs On</button>
+</div>
+
+<div id="subs" class="subs"></div>
+
+</div>
+
+<audio id="audio">
+<source id="src">
+<track id="trackEl" kind="subtitles" default>
+</audio>
 
 <script>
-const canvas = document.getElementById("main");
-const ctx = canvas.getContext("2d");
 
-const audio = document.getElementById("audio");
-const subtitleEl = document.getElementById("subtitle");
+/* ===== TRACKS ===== */
 
 const tracks = [
-  {
-    file: "The_Geometry_of_Human_Thought_Trajectories.mp3",
-    vtt: "The_Geometry_of_Human_Thought_Trajectories.vtt",
-    shape: "triangle"
-  },
-  {
-    file: "The_Rhythmic_Geometry_of_Human_Thought.mp3",
-    vtt: "The_Rhythmic_Geometry_of_Human_Thought.vtt",
-    shape: "circle"
-  }
-];
+"The_Geometry_of_Human_Thought_Trajectories.mp3",
+"The_Rhythmic_Geometry_of_Human_Thought.mp3"
+]
 
-let audioCtx, analyser, data;
-let blobs = [];
-let currentTrack = 0;
-let cues = [];
+let index = 0
 
-function resize() {
-  const dpr = devicePixelRatio || 1;
-  canvas.width = innerWidth * dpr;
-  canvas.height = innerHeight * dpr;
-  ctx.setTransform(dpr,0,0,dpr,0,0);
+/* ===== ELEMENTS ===== */
+
+const audio = document.getElementById("audio")
+const src = document.getElementById("src")
+const trackEl = document.getElementById("trackEl")
+const play = document.getElementById("play")
+const subsBtn = document.getElementById("subsBtn")
+const subs = document.getElementById("subs")
+const toggleDiv = document.getElementById("shapeToggle")
+
+let subsOn = true
+
+/* ===== SHAPE TOGGLE ===== */
+
+const shapeCanvas = document.createElement("canvas")
+shapeCanvas.width = 50
+shapeCanvas.height = 50
+const sc = shapeCanvas.getContext("2d")
+toggleDiv.appendChild(shapeCanvas)
+
+function drawShape(){
+sc.clearRect(0,0,50,50)
+sc.strokeStyle="#00ff66"
+sc.lineWidth=2
+
+if(index===0){
+/* triangle */
+sc.beginPath()
+sc.moveTo(25,5)
+sc.lineTo(45,45)
+sc.lineTo(5,45)
+sc.closePath()
+sc.stroke()
+}else{
+/* circle */
+sc.beginPath()
+sc.arc(25,25,18,0,Math.PI*2)
+sc.stroke()
 }
-resize();
-addEventListener("resize", resize);
-
-function initAudio() {
-  if (audioCtx) return;
-  audioCtx = new AudioContext();
-  analyser = audioCtx.createAnalyser();
-  analyser.fftSize = 1024;
-  data = new Uint8Array(analyser.frequencyBinCount);
-
-  const src = audioCtx.createMediaElementSource(audio);
-  src.connect(analyser);
-  analyser.connect(audioCtx.destination);
-}
-
-function loadTrack(i) {
-  currentTrack = i;
-  audio.src = tracks[i].file;
-  loadVTT(tracks[i].vtt);
-  blobs = createBlobs(8);
-  document.querySelectorAll(".track").forEach((el, idx)=>{
-    el.classList.toggle("active", idx===i);
-  });
-}
-
-function loadVTT(file) {
-  fetch(file).then(r=>r.text()).then(text=>{
-    const lines = text.split("\n");
-    cues = [];
-    for (let i=0;i<lines.length;i++) {
-      if (lines[i].includes("-->")) {
-        const [start,end] = lines[i].split(" --> ");
-        cues.push({
-          start: parseTime(start),
-          end: parseTime(end),
-          text: lines[i+1] || ""
-        });
-      }
-    }
-  });
 }
 
-function parseTime(t) {
-  const p = t.split(":");
-  return (+p[0])*3600 + (+p[1])*60 + parseFloat(p[2]);
+toggleDiv.onclick = ()=>{
+load(index+1,true)
 }
 
-function updateSubs() {
-  const t = audio.currentTime;
-  for (let c of cues) {
-    if (t >= c.start && t <= c.end) {
-      subtitleEl.textContent = c.text;
-      return;
-    }
-  }
-  subtitleEl.textContent = "";
+/* ===== LOAD TRACK ===== */
+
+function load(i,auto=false){
+
+index = i % tracks.length
+const file = tracks[index]
+
+src.src = file
+trackEl.src = file.replace(".mp3",".vtt")
+
+audio.load()
+
+audio.onloadedmetadata = ()=>{
+
+const t = audio.textTracks[0]
+
+if(t){
+t.mode="hidden"
+
+t.oncuechange = ()=>{
+if(!subsOn){ subs.textContent=""; return }
+
+const cue = t.activeCues[0]
+subs.textContent = cue ? cue.text : ""
+}
 }
 
-function createBlobs(n) {
-  const arr = [];
-  for (let i=0;i<n;i++) {
-    arr.push({
-      x: Math.random()*2-1,
-      y: Math.random()*2-1,
-      vx: (Math.random()-0.5)*0.002,
-      vy: (Math.random()-0.5)*0.002,
-      size: 0.2+Math.random()*0.3
-    });
-  }
-  return arr;
+if(auto){
+audio.play()
+play.textContent="Pause"
 }
 
-function getEnergy() {
-  if (!analyser) return 0;
-  analyser.getByteFrequencyData(data);
-  let sum=0;
-  for (let i=0;i<200;i++) sum+=data[i];
-  return sum/(200*255);
+drawShape()
+}
 }
 
-function drawBlobs(w,h,t) {
-  const energy = getEnergy();
-  const cohesion = 1 - energy;
+load(0)
 
-  ctx.fillStyle="rgba(0,5,0,0.25)";
-  ctx.fillRect(0,0,w,h);
+/* ===== CONTROLS ===== */
 
-  const cx = w/2;
-  const cy = h/2;
-  const scale = Math.min(w,h)*0.35;
-
-  ctx.save();
-  ctx.translate(cx,cy);
-
-  ctx.shadowBlur = 20;
-  ctx.shadowColor = "#00ff66";
-
-  ctx.beginPath();
-
-  for (let b of blobs) {
-    // motion
-    b.vx += (Math.random()-0.5)*0.0002;
-    b.vy += (Math.random()-0.5)*0.0002;
-
-    b.x += b.vx;
-    b.y += b.vy;
-
-    // cohesion pulls inward
-    b.x *= 0.995 + cohesion*0.01;
-    b.y *= 0.995 + cohesion*0.01;
-
-    // expansion when energetic
-    b.x += (Math.random()-0.5)*energy*0.02;
-    b.y += (Math.random()-0.5)*energy*0.02;
-
-    const x = b.x * scale;
-    const y = b.y * scale;
-    const r = b.size * scale * (0.7 + energy);
-
-    ctx.moveTo(x+r,y);
-    ctx.arc(x,y,r,0,Math.PI*2);
-  }
-
-  ctx.fillStyle="rgba(120,255,140,0.6)";
-  ctx.fill();
-
-  ctx.restore();
+play.onclick = ()=>{
+initAudio()
+if(audio.paused){
+audio.play()
+play.textContent="Pause"
+}else{
+audio.pause()
+play.textContent="Play"
+}
 }
 
-function animate(t) {
-  const w = innerWidth;
-  const h = innerHeight;
-
-  drawBlobs(w,h,t);
-  updateSubs();
-
-  requestAnimationFrame(animate);
+subsBtn.onclick = ()=>{
+subsOn = !subsOn
+subsBtn.textContent = subsOn ? "Subs On":"Subs Off"
+if(!subsOn) subs.textContent=""
 }
 
-function setupButtons() {
-  tracks.forEach((t,i)=>{
-    const el = document.getElementById(i===0?"left":"right");
-    const c = document.createElement("canvas");
-    c.width = 80;
-    c.height = 80;
-    const cx = c.getContext("2d");
+audio.onended = ()=> load(index+1,true)
 
-    // draw shape
-    cx.strokeStyle="#00ff66";
-    cx.lineWidth=2;
+/* ===== AUDIO ANALYSIS ===== */
 
-    cx.beginPath();
-    if (t.shape==="triangle") {
-      cx.moveTo(40,10);
-      cx.lineTo(70,70);
-      cx.lineTo(10,70);
-      cx.closePath();
-    } else {
-      cx.arc(40,40,28,0,Math.PI*2);
-    }
-    cx.stroke();
+let ctx, analyser, buf
+let energy=0, smoothEnergy=0
 
-    el.appendChild(c);
-    el.onclick = async ()=>{
-      initAudio();
-      await audioCtx.resume();
-      loadTrack(i);
-      audio.play();
-    };
-  });
+function initAudio(){
+if(ctx) return
+ctx = new (window.AudioContext||window.webkitAudioContext)()
+analyser = ctx.createAnalyser()
+analyser.fftSize = 512
+const srcNode = ctx.createMediaElementSource(audio)
+srcNode.connect(analyser)
+analyser.connect(ctx.destination)
+buf = new Uint8Array(analyser.fftSize)
 }
 
-setupButtons();
-loadTrack(0);
-requestAnimationFrame(animate);
+function updateEnergy(){
+if(analyser){
+analyser.getByteTimeDomainData(buf)
+let e=0
+for(let i=0;i<buf.length;i++){
+let d=buf[i]-128
+e+=d*d
+}
+e/=buf.length
+energy=Math.min(e/4000,1)
+smoothEnergy += (energy - smoothEnergy)*0.05
+}
+}
+
+/* ===== CANVAS ===== */
+
+const canvas = document.getElementById("viz")
+const c = canvas.getContext("2d")
+
+const size = 260
+canvas.width = size
+canvas.height = size
+
+/* ===== BLOBS ===== */
+
+const blobs = Array.from({length:7},()=>({
+x:Math.random()*size,
+y:Math.random()*size,
+vx:0,
+vy:0,
+baseR:14+Math.random()*14,
+r:0
+}))
+
+let globalPhase = 0
+
+function flowField(x,y){
+
+const cx=size*0.5
+const dx=(x-cx)/size
+
+const updraft = Math.exp(-dx*dx*8)*0.03
+const downdraft = -Math.exp(-Math.abs(dx)*3)*0.015
+
+const vy = updraft + downdraft
+
+const swirl =
+Math.sin(y*0.04 + globalPhase)*0.02 +
+Math.sin(x*0.03 - globalPhase)*0.015
+
+return { vx: swirl, vy: vy }
+}
+
+/* ===== DRAW ===== */
+
+function draw(){
+
+updateEnergy()
+globalPhase += 0.0003
+
+c.clearRect(0,0,size,size)
+
+const img = c.createImageData(size,size)
+
+for(let x=0;x<size;x++){
+for(let y=0;y<size;y++){
+
+let sum=0
+
+for(const b of blobs){
+let dx=x-b.x
+let dy=y-b.y
+sum += b.r*b.r/(dx*dx+dy*dy+20)
+}
+
+/* circular mask */
+const cx=size/2
+const cy=size/2
+const dist=Math.hypot(x-cx,y-cy)/(size/2)
+const mask = Math.max(0,1 - dist*dist*0.8)
+
+sum *= mask
+
+let i=(y*size+x)*4
+
+if(sum>0.9){
+let t=Math.min(sum/3,1)
+img.data[i]   = 180*t + 70*smoothEnergy
+img.data[i+1] = 255
+img.data[i+2] = 40*(1-t)
+img.data[i+3] = 255
+}else{
+img.data[i+3]=0
+}
+}
+}
+
+c.putImageData(img,0,0)
+
+/* motion */
+
+for(const b of blobs){
+
+const f = flowField(b.x,b.y)
+
+const temp = 1 - (b.y/size)
+const phase = temp*0.7 + smoothEnergy*0.5
+
+b.r = b.baseR*(0.7+phase)
+
+b.vx += f.vx*(1+smoothEnergy)
+b.vy += f.vy*(1+smoothEnergy)
+
+b.vx *= 0.96
+b.vy *= 0.96
+
+const turb=0.0015*(0.3+smoothEnergy)
+b.vx += (Math.random()-0.5)*turb
+b.vy += (Math.random()-0.5)*turb
+
+b.x += b.vx
+b.y += b.vy
+
+if(b.x<0) b.x+=size
+if(b.x>size) b.x-=size
+
+if(b.y<0){ b.y=0; b.vy=Math.abs(b.vy)*0.5 }
+if(b.y>size){ b.y=size; b.vy=-Math.abs(b.vy)*0.5 }
+
+}
+
+requestAnimationFrame(draw)
+}
+
+draw()
+
 </script>
 
 </body>
