@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Lava Thought Visualizer</title>
+
+<style>
+html, body {
+  margin: 0;
+  height: 100%;
+  background: #020802;
+  overflow: hidden;
+  font-family: monospace;
+  color: #aaffaa;
+}
+
+canvas {
+  position: fixed;
+  inset: 0;
+}
+
+#subtitle {
+  position: fixed;
+  bottom: 70px;
+  width: 100%;
+  text-align: center;
+  font-size: 15px;
+  text-shadow: 0 0 10px #00ff66;
+  padding: 0 20px;
+}
+
+.track {
+  position: fixed;
+  bottom: 10px;
+  width: 120px;
+  height: 120px;
+  border: 1px solid rgba(120,255,120,0.4);
+  display: grid;
+  place-items: center;
+  cursor: pointer;
+  background: rgba(0,40,0,0.5);
+}
+
+#left { left: 20px; }
+#right { right: 20px; }
+
+.track canvas {
+  width: 80px;
+  height: 80px;
+}
+
+.active {
+  box-shadow: 0 0 20px #00ff66;
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="main"></canvas>
+<div id="subtitle"></div>
+
+<div id="left" class="track"></div>
+<div id="right" class="track"></div>
+
+<audio id="audio"></audio>
+
+<script>
+const canvas = document.getElementById("main");
+const ctx = canvas.getContext("2d");
+
+const audio = document.getElementById("audio");
+const subtitleEl = document.getElementById("subtitle");
+
+const tracks = [
+  {
+    file: "The_Geometry_of_Human_Thought_Trajectories.mp3",
+    vtt: "The_Geometry_of_Human_Thought_Trajectories.vtt",
+    shape: "triangle"
+  },
+  {
+    file: "The_Rhythmic_Geometry_of_Human_Thought.mp3",
+    vtt: "The_Rhythmic_Geometry_of_Human_Thought.vtt",
+    shape: "circle"
+  }
+];
+
+let audioCtx, analyser, data;
+let blobs = [];
+let currentTrack = 0;
+let cues = [];
+
+function resize() {
+  const dpr = devicePixelRatio || 1;
+  canvas.width = innerWidth * dpr;
+  canvas.height = innerHeight * dpr;
+  ctx.setTransform(dpr,0,0,dpr,0,0);
+}
+resize();
+addEventListener("resize", resize);
+
+function initAudio() {
+  if (audioCtx) return;
+  audioCtx = new AudioContext();
+  analyser = audioCtx.createAnalyser();
+  analyser.fftSize = 1024;
+  data = new Uint8Array(analyser.frequencyBinCount);
+
+  const src = audioCtx.createMediaElementSource(audio);
+  src.connect(analyser);
+  analyser.connect(audioCtx.destination);
+}
+
+function loadTrack(i) {
+  currentTrack = i;
+  audio.src = tracks[i].file;
+  loadVTT(tracks[i].vtt);
+  blobs = createBlobs(8);
+  document.querySelectorAll(".track").forEach((el, idx)=>{
+    el.classList.toggle("active", idx===i);
+  });
+}
+
+function loadVTT(file) {
+  fetch(file).then(r=>r.text()).then(text=>{
+    const lines = text.split("\n");
+    cues = [];
+    for (let i=0;i<lines.length;i++) {
+      if (lines[i].includes("-->")) {
+        const [start,end] = lines[i].split(" --> ");
+        cues.push({
+          start: parseTime(start),
+          end: parseTime(end),
+          text: lines[i+1] || ""
+        });
+      }
+    }
+  });
+}
+
+function parseTime(t) {
+  const p = t.split(":");
+  return (+p[0])*3600 + (+p[1])*60 + parseFloat(p[2]);
+}
+
+function updateSubs() {
+  const t = audio.currentTime;
+  for (let c of cues) {
+    if (t >= c.start && t <= c.end) {
+      subtitleEl.textContent = c.text;
+      return;
+    }
+  }
+  subtitleEl.textContent = "";
+}
+
+function createBlobs(n) {
+  const arr = [];
+  for (let i=0;i<n;i++) {
+    arr.push({
+      x: Math.random()*2-1,
+      y: Math.random()*2-1,
+      vx: (Math.random()-0.5)*0.002,
+      vy: (Math.random()-0.5)*0.002,
+      size: 0.2+Math.random()*0.3
+    });
+  }
+  return arr;
+}
+
+function getEnergy() {
+  if (!analyser) return 0;
+  analyser.getByteFrequencyData(data);
+  let sum=0;
+  for (let i=0;i<200;i++) sum+=data[i];
+  return sum/(200*255);
+}
+
+function drawBlobs(w,h,t) {
+  const energy = getEnergy();
+  const cohesion = 1 - energy;
+
+  ctx.fillStyle="rgba(0,5,0,0.25)";
+  ctx.fillRect(0,0,w,h);
+
+  const cx = w/2;
+  const cy = h/2;
+  const scale = Math.min(w,h)*0.35;
+
+  ctx.save();
+  ctx.translate(cx,cy);
+
+  ctx.shadowBlur = 20;
+  ctx.shadowColor = "#00ff66";
+
+  ctx.beginPath();
+
+  for (let b of blobs) {
+    // motion
+    b.vx += (Math.random()-0.5)*0.0002;
+    b.vy += (Math.random()-0.5)*0.0002;
+
+    b.x += b.vx;
+    b.y += b.vy;
+
+    // cohesion pulls inward
+    b.x *= 0.995 + cohesion*0.01;
+    b.y *= 0.995 + cohesion*0.01;
+
+    // expansion when energetic
+    b.x += (Math.random()-0.5)*energy*0.02;
+    b.y += (Math.random()-0.5)*energy*0.02;
+
+    const x = b.x * scale;
+    const y = b.y * scale;
+    const r = b.size * scale * (0.7 + energy);
+
+    ctx.moveTo(x+r,y);
+    ctx.arc(x,y,r,0,Math.PI*2);
+  }
+
+  ctx.fillStyle="rgba(120,255,140,0.6)";
+  ctx.fill();
+
+  ctx.restore();
+}
+
+function animate(t) {
+  const w = innerWidth;
+  const h = innerHeight;
+
+  drawBlobs(w,h,t);
+  updateSubs();
+
+  requestAnimationFrame(animate);
+}
+
+function setupButtons() {
+  tracks.forEach((t,i)=>{
+    const el = document.getElementById(i===0?"left":"right");
+    const c = document.createElement("canvas");
+    c.width = 80;
+    c.height = 80;
+    const cx = c.getContext("2d");
+
+    // draw shape
+    cx.strokeStyle="#00ff66";
+    cx.lineWidth=2;
+
+    cx.beginPath();
+    if (t.shape==="triangle") {
+      cx.moveTo(40,10);
+      cx.lineTo(70,70);
+      cx.lineTo(10,70);
+      cx.closePath();
+    } else {
+      cx.arc(40,40,28,0,Math.PI*2);
+    }
+    cx.stroke();
+
+    el.appendChild(c);
+    el.onclick = async ()=>{
+      initAudio();
+      await audioCtx.resume();
+      loadTrack(i);
+      audio.play();
+    };
+  });
+}
+
+setupButtons();
+loadTrack(0);
+requestAnimationFrame(animate);
+</script>
+
+</body>
+</html>
