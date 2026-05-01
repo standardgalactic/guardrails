@@ -1,0 +1,292 @@
+1
+00:00:00,240 --> 00:00:05,600
+Today, every time you load a web page or stream a video, you rely on a routing architecture
+
+2
+00:00:05,600 --> 00:00:07,800
+designed in the 1970s.
+
+3
+00:00:07,800 --> 00:00:13,320
+The TCP IP protocol handles all of your data exactly like a postal service sorting millions
+
+4
+00:00:13,320 --> 00:00:15,000
+of blank boxes.
+
+5
+00:00:15,000 --> 00:00:20,800
+It routes traffic based on geographic coordinates, the IP addresses of the sender and the receiver.
+
+6
+00:00:20,800 --> 00:00:25,280
+The network moving the package is completely blind to its actual contents.
+
+7
+00:00:25,280 --> 00:00:29,560
+This location-based model is increasingly mismatched with how we use the Internet, where
+
+8
+00:00:29,560 --> 00:00:32,760
+over 90% of traffic is content retrieval.
+
+9
+00:00:32,760 --> 00:00:37,120
+We are typically asking the network for a specific piece of data, regardless of which physical
+
+10
+00:00:37,120 --> 00:00:39,240
+server it currently sits on.
+
+11
+00:00:39,240 --> 00:00:41,560
+This leads to massive inefficiencies.
+
+12
+00:00:41,560 --> 00:00:46,400
+We secure the connection rather than the data itself, and routers cannot distinguish a critical
+
+13
+00:00:46,400 --> 00:00:49,700
+medical alert from a routine social media update.
+
+14
+00:00:49,700 --> 00:00:52,700
+This is the architectural pivot for the 6G era.
+
+15
+00:00:52,700 --> 00:00:56,400
+On the left, traditional TCP IP searches for a physical host.
+
+16
+00:00:56,400 --> 00:01:01,760
+On the right, memnet uses information-centric networking to route traffic based on a hierarchical
+
+17
+00:01:01,760 --> 00:01:03,800
+name assigned to the data.
+
+18
+00:01:03,800 --> 00:01:08,720
+By identifying data by its name, the network can present information as structured semantic
+
+19
+00:01:08,720 --> 00:01:09,800
+primitives.
+
+20
+00:01:09,800 --> 00:01:14,560
+This provides the organized inputs that AI models require for real-time reasoning, rather
+
+21
+00:01:14,560 --> 00:01:17,780
+than a raw, unorganized stream of bits.
+
+22
+00:01:17,780 --> 00:01:20,400
+Memnet communication uses two new primitives.
+
+23
+00:01:20,400 --> 00:01:24,600
+An application broadcasts an interest packet, a request for a specific data name.
+
+24
+00:01:24,600 --> 00:01:27,860
+The network finds the nearest data packet.
+
+25
+00:01:27,860 --> 00:01:32,380
+It contains the content and a cryptographic signature, following the interest's trail directly
+
+26
+00:01:32,380 --> 00:01:34,040
+back to the user.
+
+27
+00:01:34,040 --> 00:01:36,940
+Every memnet router also contains a content store.
+
+28
+00:01:36,940 --> 00:01:40,780
+This is an in-network memory cache built directly into the routing hardware.
+
+29
+00:01:40,780 --> 00:01:44,940
+If thousands of people request the same file, the data doesn't cross the backbone thousands
+
+30
+00:01:44,940 --> 00:01:46,080
+of times.
+
+31
+00:01:46,080 --> 00:01:50,760
+The first router that retrieves the data saves a version in its content store, and serves
+
+32
+00:01:50,760 --> 00:01:54,160
+its own copy to every subsequent user.
+
+33
+00:01:54,160 --> 00:01:58,040
+Distributing memory into the routing fabric eliminates backhaul bottlenecks by turning the
+
+34
+00:01:58,040 --> 00:02:02,020
+network into a globally distributed content delivery system.
+
+35
+00:02:02,020 --> 00:02:06,340
+Because memnet routes my name, it can assign priority based on the specific type of information
+
+36
+00:02:06,340 --> 00:02:07,680
+being carried.
+
+37
+00:02:07,680 --> 00:02:11,560
+This allows the network to natively guarantee performance for critical data.
+
+38
+00:02:11,560 --> 00:02:16,960
+In scalable video coding, video splits into a required base layer and optional enhancements.
+
+39
+00:02:16,960 --> 00:02:20,120
+The router places the base layer in a high-speed protected lane.
+
+40
+00:02:20,120 --> 00:02:24,640
+During congestion, it drops enhancement packets, while the base layer continues uninterrupted.
+
+41
+00:02:24,640 --> 00:02:26,260
+The stream never stops.
+
+42
+00:02:26,260 --> 00:02:30,060
+For life-critical information, memnet uses a TSN proxy.
+
+43
+00:02:30,060 --> 00:02:34,860
+This translates ICN data names into time-sensitive networking reservations, which are guaranteed hardware
+
+44
+00:02:34,860 --> 00:02:37,200
+paths across the network backbone.
+
+45
+00:02:37,200 --> 00:02:42,460
+Fusing data names with time-sensitive networking creates zero-congestion hardware contracts for
+
+46
+00:02:42,460 --> 00:02:48,800
+critical data, a level of reliability that was previously impossible on standard Ethernet.
+
+47
+00:02:48,800 --> 00:02:53,300
+This architectural shift also changes how the network defends itself against distributed
+
+48
+00:02:53,300 --> 00:02:58,240
+denial-of-service, or DDoS attacks, where massive floods of garbage traffic are used to
+
+49
+00:02:58,240 --> 00:03:00,480
+crash systems.
+
+50
+00:03:00,480 --> 00:03:04,600
+Memnet integrates the marine algorithm directly into the hardware of the router.
+
+51
+00:03:04,600 --> 00:03:11,100
+It identifies anomalies in O1 constant time, performing detection at line-rate speeds.
+
+52
+00:03:11,100 --> 00:03:15,780
+Instead of heavy processing, the algorithm monitors traffic behavior by analyzing jitter,
+
+53
+00:03:15,780 --> 00:03:18,360
+the timing deviations between packets.
+
+54
+00:03:18,360 --> 00:03:22,080
+A DDoS attack is a chaotic explosion of erratic jitter.
+
+55
+00:03:22,080 --> 00:03:26,200
+The switch instantly drops these malicious packets into a background queue before they tax
+
+56
+00:03:26,200 --> 00:03:27,780
+the system.
+
+57
+00:03:27,780 --> 00:03:32,200
+Treating jitter as a behavioral signature allows the network to identify and neutralize threats
+
+58
+00:03:32,200 --> 00:03:33,200
+at the hardware level.
+
+59
+00:03:33,200 --> 00:03:39,700
+This efficiency extends to edge devices through a power-aware strategy that utilizes multiple
+
+60
+00:03:39,700 --> 00:03:40,700
+radios.
+
+61
+00:03:40,700 --> 00:03:46,260
+A sensor can stay in a low-power sleep state, using only a tiny LoRa radio to listen for
+
+62
+00:03:46,260 --> 00:03:47,760
+an interest ping.
+
+63
+00:03:47,760 --> 00:03:52,260
+It only wakes up its high-bandwidth Wi-Fi chip when there is a specific request for a heavy
+
+64
+00:03:52,260 --> 00:03:53,260
+data payload.
+
+65
+00:03:53,260 --> 00:03:58,720
+To maintain security in these large-scale meshes, Memnet integrates a peer-to-peer reputation
+
+66
+00:03:58,720 --> 00:04:01,700
+system directly into the routing logic.
+
+67
+00:04:01,700 --> 00:04:03,940
+Routers constantly evaluate their neighbors.
+
+68
+00:04:03,940 --> 00:04:09,020
+If a node is identified as malicious or refuses to cooperate, the network lowers its reputation
+
+69
+00:04:09,020 --> 00:04:11,080
+score and automatically avoids it.
+
+70
+00:04:11,080 --> 00:04:16,520
+Memnet transforms telecommunications from a system that blindly transmits bits into a semantic
+
+71
+00:04:16,520 --> 00:04:20,260
+substrate that natively prioritizes and authenticates information.
+
+72
+00:04:20,260 --> 00:04:25,640
+This 6G infrastructure coordinates data based on its internal semantic value, allowing the
+
+73
+00:04:25,640 --> 00:04:29,100
+internet to function as a globally distributed, self-aware memory.
+

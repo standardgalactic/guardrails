@@ -1,0 +1,3744 @@
+1
+00:00:00,000 --> 00:00:04,860
+Welcome back to the Deep Dive. I want to start today by asking you to do something a little weird.
+
+2
+00:00:06,100 --> 00:00:09,780
+Wherever you are, unless you're driving, please keep your hands on the wheel if you're driving.
+
+3
+00:00:10,200 --> 00:00:14,100
+But if you can, I want you to look at your hand. Just hold it up in front of your face,
+
+4
+00:00:14,280 --> 00:00:16,600
+wiggle your fingers, look at the thumb, really look at it.
+
+5
+00:00:16,660 --> 00:00:21,180
+Okay, I'm looking at mine. It's a hand. Five fingers, palm, lines.
+
+6
+00:00:21,320 --> 00:00:24,220
+It's a marvel of engineering, right? The dexterity, the grip strength.
+
+7
+00:00:24,560 --> 00:00:28,380
+But it's also a biological machine with very real linets.
+
+8
+00:00:28,380 --> 00:00:33,040
+It has muscles that get tired. It has nerves that have a maximum transmission speed.
+
+9
+00:00:33,160 --> 00:00:36,800
+It has a specific range of motion. It cramps up if you use it too much in one position.
+
+10
+00:00:37,060 --> 00:00:43,080
+And today, we're going to talk about how that biological machine, that fleshy, cramping, energy-burning tool,
+
+11
+00:00:43,340 --> 00:00:45,940
+actually shaped the way we think and the way we communicate.
+
+12
+00:00:46,260 --> 00:00:51,580
+We're talking about writing, but not in the way you usually hear about it in history class or literature class.
+
+13
+00:00:51,620 --> 00:00:57,860
+We aren't talking about the content of the books. We are talking about the physical act of putting ink on paper.
+
+14
+00:00:57,860 --> 00:01:03,160
+Right. Usually when we talk about the alphabet, it's this very abstract intellectual history.
+
+15
+00:01:03,580 --> 00:01:08,660
+Like, the Phoenicians invented the letter A, and then the Greeks rotated it, and the Romans standardized it.
+
+16
+00:01:08,780 --> 00:01:14,380
+It feels very clean, very academic. It feels like a decision made by minds floating in a void.
+
+17
+00:01:14,480 --> 00:01:19,420
+As if it were designed by a committee of graphic designers sitting in a pristine white room
+
+18
+00:01:19,420 --> 00:01:23,720
+with unlimited time and resources trying to make the most logical system possible.
+
+19
+00:01:23,720 --> 00:01:27,820
+Exactly. But the source material we have today argues the complete opposite.
+
+20
+00:01:28,700 --> 00:01:33,240
+It argues that logic had very little to do with it, and biology had everything to do with it.
+
+21
+00:01:34,140 --> 00:01:40,200
+We are diving into a fascinating paper titled Embodied Constraint and Minimal Assembly by Affliction,
+
+22
+00:01:40,600 --> 00:01:43,320
+published just this year, February 14, 2026.
+
+23
+00:01:43,560 --> 00:01:47,620
+And the core argument here is that writing is messy. It is a physical struggle.
+
+24
+00:01:47,760 --> 00:01:52,580
+It's a struggle between your hand, which is fundamentally lazy, and your eye, which is fundamentally picky.
+
+25
+00:01:52,580 --> 00:01:55,160
+I love that framing. Laziness versus pickiness.
+
+26
+00:01:56,260 --> 00:02:03,540
+And the battlefield where this war took place, the case study for this deep dive, is the Arabic script.
+
+27
+00:02:04,540 --> 00:02:06,580
+Now, I want to be clear to everyone listening.
+
+28
+00:02:07,440 --> 00:02:12,780
+Even if you do not speak a word of Arabic, even if you've never tried to read it, you need to stick around.
+
+29
+00:02:13,180 --> 00:02:15,020
+Because this isn't really a linguistics lesson.
+
+30
+00:02:15,300 --> 00:02:19,640
+It's a story about human physiology, thermodynamics, and information theory colliding.
+
+31
+00:02:19,900 --> 00:02:21,600
+It's about how we optimize energy.
+
+32
+00:02:21,600 --> 00:02:24,720
+The paper uses this term embodied constraint.
+
+33
+00:02:25,200 --> 00:02:28,360
+It sounds heavy, almost philosophical, but it's actually quite intuitive.
+
+34
+00:02:28,800 --> 00:02:30,460
+Embodied just means in the body.
+
+35
+00:02:30,720 --> 00:02:33,840
+Writing isn't magic. It's a motor act. It happens in the meat of your hand.
+
+36
+00:02:34,300 --> 00:02:35,820
+And constraint means limits.
+
+37
+00:02:36,220 --> 00:02:38,940
+You can only move your pen so fast before you lose control.
+
+38
+00:02:39,160 --> 00:02:41,440
+You can only write so small before your muscles cramp.
+
+39
+00:02:41,760 --> 00:02:45,060
+You can only remember so many complex shapes before your brain gets overloaded.
+
+40
+00:02:45,280 --> 00:02:49,040
+And the paper pairs that with the second concept in the title, minimal assembly,
+
+41
+00:02:49,040 --> 00:02:51,160
+which immediately made me think of furniture.
+
+42
+00:02:51,160 --> 00:02:54,060
+It is the IKEA principle of language, in a way.
+
+43
+00:02:54,220 --> 00:02:57,820
+Explain that. How is an ancient alphabet like a flat-packed bookshelf?
+
+44
+00:02:58,180 --> 00:02:59,720
+Well, think about IKEA furniture.
+
+45
+00:03:00,360 --> 00:03:05,180
+They don't give you a custom-carved Baroque chair that was sculpted from a single giant log.
+
+46
+00:03:05,440 --> 00:03:07,360
+That would be expensive and hard to transport.
+
+47
+00:03:07,360 --> 00:03:10,580
+Instead, they give you a few standardized parts.
+
+48
+00:03:11,020 --> 00:03:13,260
+A screw, a dowel, a plank, a bracket.
+
+49
+00:03:13,660 --> 00:03:17,180
+And by combining those few cheap standardized parts in different ways,
+
+50
+00:03:17,300 --> 00:03:20,380
+you can build a bed, a desk, a chair, or a shelf.
+
+51
+00:03:20,960 --> 00:03:23,620
+The paper argues that writing systems evolve the same way.
+
+52
+00:03:23,980 --> 00:03:28,040
+You don't have a unique, complex painting for every single word in the language.
+
+53
+00:03:28,040 --> 00:03:29,580
+That would be impossible to learn.
+
+54
+00:03:30,000 --> 00:03:31,240
+Instead, you have a kit of parts.
+
+55
+00:03:31,620 --> 00:03:33,780
+A curve, a line, a dot, a loop.
+
+56
+00:03:33,920 --> 00:03:34,500
+That's it.
+
+57
+00:03:34,900 --> 00:03:38,840
+And you have to assemble those cheap parts to capture the entire universe of human thought.
+
+58
+00:03:39,440 --> 00:03:41,100
+And the driving force behind this assembly,
+
+59
+00:03:41,540 --> 00:03:44,240
+and this is the part that really blew my mind, is thermodynamics.
+
+60
+00:03:44,840 --> 00:03:46,680
+The author actually brings physics into this.
+
+61
+00:03:46,820 --> 00:03:47,120
+Yes.
+
+62
+00:03:47,660 --> 00:03:49,580
+This is where Flitchin gets really interesting.
+
+63
+00:03:49,720 --> 00:03:52,240
+He calls writing a dissipative act.
+
+64
+00:03:52,240 --> 00:03:54,480
+Which is a fancy way of saying it burns calories.
+
+65
+00:03:55,040 --> 00:03:55,960
+It burns calories.
+
+66
+00:03:56,300 --> 00:03:56,620
+Literally.
+
+67
+00:03:56,620 --> 00:04:01,300
+Every stroke of the pen requires adenosine triphosphate ATP.
+
+68
+00:04:01,900 --> 00:04:03,320
+It requires metabolic energy.
+
+69
+00:04:03,700 --> 00:04:06,720
+Your heart has to pump blood to the muscles in your forearm.
+
+70
+00:04:06,840 --> 00:04:08,100
+Your neurons have to fire.
+
+71
+00:04:08,760 --> 00:04:13,340
+And the human body is wired through millions of years of evolution to conserve energy.
+
+72
+00:04:13,880 --> 00:04:15,680
+We are biological misers.
+
+73
+00:04:16,040 --> 00:04:18,400
+We hate spending calories if we don't have to.
+
+74
+00:04:18,520 --> 00:04:21,620
+Because for most of human history, calories were scarce.
+
+75
+00:04:21,920 --> 00:04:24,600
+So if you can do something with less effort, you will.
+
+76
+00:04:24,720 --> 00:04:25,200
+Exactly.
+
+77
+00:04:25,200 --> 00:04:29,720
+So if you leave a writer alone for a thousand years, their handwriting will naturally degrade.
+
+78
+00:04:29,940 --> 00:04:32,420
+It will get simpler, faster, and messier.
+
+79
+00:04:32,840 --> 00:04:34,020
+Curves will straighten out.
+
+80
+00:04:34,260 --> 00:04:35,940
+Distinct shapes will merge together.
+
+81
+00:04:36,300 --> 00:04:37,580
+That's the thermodynamic pressure.
+
+82
+00:04:37,700 --> 00:04:38,380
+That's the entropy.
+
+83
+00:04:38,620 --> 00:04:39,620
+That's the laziness.
+
+84
+00:04:39,760 --> 00:04:40,440
+But here's the catch.
+
+85
+00:04:40,920 --> 00:04:44,540
+If you let that laziness win completely, if you go for 100% efficiency,
+
+86
+00:04:45,140 --> 00:04:46,740
+your writing just becomes a straight line.
+
+87
+00:04:46,940 --> 00:04:47,640
+It becomes a hump.
+
+88
+00:04:47,680 --> 00:04:50,180
+And a straight line contains zero information.
+
+89
+00:04:50,320 --> 00:04:50,620
+Zero.
+
+90
+00:04:50,620 --> 00:04:54,960
+If I hand you a paper with a single horizontal line on it, you have no idea if I'm saying,
+
+91
+00:04:55,100 --> 00:04:57,140
+hello, I love you, or war is declared.
+
+92
+00:04:57,360 --> 00:04:58,580
+It's completely ambiguous.
+
+93
+00:04:58,580 --> 00:05:04,220
+So you have this opposing force, the eye, the reader, or really the decoder.
+
+94
+00:05:04,220 --> 00:05:06,200
+The reader demands distinctness.
+
+95
+00:05:07,080 --> 00:05:09,860
+The reader needs the shapes to be different enough to tell them apart.
+
+96
+00:05:10,380 --> 00:05:16,100
+So the script we see today, specifically the Arabic script, is describing the paper as a
+
+97
+00:05:16,100 --> 00:05:17,540
+stabilized equilibrium.
+
+98
+00:05:17,780 --> 00:05:18,540
+It's a truce line.
+
+99
+00:05:18,640 --> 00:05:24,000
+It's the exact point where the hand does the minimum amount of work possible without the eye losing the
+
+100
+00:05:24,000 --> 00:05:24,900
+ability to read it.
+
+101
+00:05:25,140 --> 00:05:26,520
+It's an economic negotiation.
+
+102
+00:05:27,080 --> 00:05:30,300
+I will spend this many calories to make this curve, but not a single calorie more.
+
+103
+00:05:30,840 --> 00:05:32,740
+If I spend less, you can't read it.
+
+104
+00:05:32,840 --> 00:05:34,520
+If I spend more, I'm wasting energy.
+
+105
+00:05:34,740 --> 00:05:40,640
+So the alphabet basically evolved to save calories while keeping us from misreading a text.
+
+106
+00:05:40,740 --> 00:05:42,360
+That is essentially the thesis, yes.
+
+107
+00:05:42,420 --> 00:05:45,740
+And what's amazing is looking at how that negotiation played out over history.
+
+108
+00:05:45,880 --> 00:05:47,880
+Because it wasn't a straight line of progress.
+
+109
+00:05:48,160 --> 00:05:50,380
+It was a messy, tiered process.
+
+110
+00:05:50,380 --> 00:05:54,440
+It involved mistakes, patches, and updates, just like software.
+
+111
+00:05:54,840 --> 00:05:55,720
+Let's get into that history.
+
+112
+00:05:56,160 --> 00:05:57,620
+The source breaks this down into segments.
+
+113
+00:05:57,940 --> 00:06:00,520
+The first one is about the skeleton of the script, the rasm.
+
+114
+00:06:00,860 --> 00:06:01,480
+The rasm.
+
+115
+00:06:01,760 --> 00:06:03,560
+This is the primitive layer of the script.
+
+116
+00:06:04,120 --> 00:06:09,060
+If you go back to the 7th century, to the very earliest manuscripts of the Quran, or the
+
+117
+00:06:09,060 --> 00:06:12,320
+early administrative papyri, what you see is stunning.
+
+118
+00:06:12,500 --> 00:06:13,620
+It's visually beautiful.
+
+119
+00:06:13,840 --> 00:06:17,420
+It's these sweeping, long, curvy lines.
+
+120
+00:06:17,660 --> 00:06:19,560
+It looks like waves on an ocean.
+
+121
+00:06:19,560 --> 00:06:21,020
+But there's a massive problem with it.
+
+122
+00:06:21,220 --> 00:06:22,000
+A massive problem.
+
+123
+00:06:22,320 --> 00:06:24,940
+It's almost unreadable by modern standards.
+
+124
+00:06:25,060 --> 00:06:27,920
+In fact, even experts struggle with it sometimes without context.
+
+125
+00:06:28,280 --> 00:06:28,320
+Why?
+
+126
+00:06:28,480 --> 00:06:30,540
+If it's the same language, why is it unreadable?
+
+127
+00:06:30,680 --> 00:06:32,960
+Because of that motor efficiency we just talked about.
+
+128
+00:06:33,320 --> 00:06:34,660
+The collabs were writing fast.
+
+129
+00:06:34,760 --> 00:06:35,400
+They were flowing.
+
+130
+00:06:35,700 --> 00:06:39,540
+And because they were flowing, they allowed the shapes of different letters to collapse
+
+131
+00:06:39,540 --> 00:06:40,240
+into each other.
+
+132
+00:06:40,680 --> 00:06:44,000
+They optimized the distinctness right out of the letters.
+
+133
+00:06:44,000 --> 00:06:47,420
+The source mentioned specifically the letters for B, T, and TH.
+
+134
+00:06:48,020 --> 00:06:50,680
+In Arabic, that's Ba, Ta, and Tai.
+
+135
+00:06:51,020 --> 00:06:51,300
+Right.
+
+136
+00:06:51,700 --> 00:06:53,340
+So let's think about the sounds first.
+
+137
+00:06:54,180 --> 00:06:56,300
+B is a voiced sound using the lips.
+
+138
+00:06:56,660 --> 00:06:58,480
+T is a sharp stop behind the teeth.
+
+139
+00:06:58,820 --> 00:06:59,760
+The is a fricative.
+
+140
+00:07:00,520 --> 00:07:02,180
+They sound totally different.
+
+141
+00:07:02,280 --> 00:07:05,480
+If I say bat, tat, and that, those are clearly different words.
+
+142
+00:07:05,960 --> 00:07:10,500
+But in the rasm, the skeletal script, the symbols for these sounds are identical.
+
+143
+00:07:10,500 --> 00:07:13,240
+They're just a little tooth, a little bump on the line.
+
+144
+00:07:13,460 --> 00:07:13,540
+Wait.
+
+145
+00:07:13,620 --> 00:07:18,160
+So if I'm reading a text from the year 650 and I see a bump, just a little ripple in
+
+146
+00:07:18,160 --> 00:07:20,360
+the line, it could be a B, a T, or a TH.
+
+147
+00:07:20,780 --> 00:07:21,120
+Yes.
+
+148
+00:07:21,520 --> 00:07:22,380
+And it gets worse.
+
+149
+00:07:22,820 --> 00:07:28,220
+That same bump shape is also used for N, none, and Y, yeah, in the beginning or middle
+
+150
+00:07:28,220 --> 00:07:28,660
+of a word.
+
+151
+00:07:28,840 --> 00:07:33,360
+So you have five different letters sharing the exact same chassis, the exact same skeleton.
+
+152
+00:07:33,560 --> 00:07:34,320
+That sounds like a nightmare.
+
+153
+00:07:35,020 --> 00:07:39,360
+Imagine reading English where B, B, Q, and G were all just written as a circle, and you
+
+154
+00:07:39,360 --> 00:07:44,560
+had to figure out if the word was bad, dad, pad, or gag, just by guessing.
+
+155
+00:07:44,840 --> 00:07:45,940
+That is a perfect analogy.
+
+156
+00:07:46,060 --> 00:07:47,540
+You're relying entirely on context.
+
+157
+00:07:47,680 --> 00:07:50,800
+The man sat on the, well, it's probably pad or bed, not dad.
+
+158
+00:07:50,860 --> 00:07:51,000
+Yeah.
+
+159
+00:07:51,680 --> 00:07:52,940
+You act as a detective.
+
+160
+00:07:53,200 --> 00:07:54,240
+You aren't just reading.
+
+161
+00:07:54,380 --> 00:07:55,280
+You are deciphering.
+
+162
+00:07:55,520 --> 00:07:57,760
+But that requires a lot of cognitive energy.
+
+163
+00:07:57,960 --> 00:08:01,300
+We were talking about saving physical energy, but now we're burning brain power.
+
+164
+00:08:01,720 --> 00:08:02,900
+Huge cognitive load.
+
+165
+00:08:02,900 --> 00:08:07,900
+And it works fine if you already know the text by heart, which, to be fair, many early
+
+166
+00:08:07,900 --> 00:08:09,820
+readers of the Quran did.
+
+167
+00:08:10,080 --> 00:08:11,720
+It was an oral tradition first.
+
+168
+00:08:11,960 --> 00:08:14,760
+The writing was just a mnemonic device, a memory aid.
+
+169
+00:08:14,940 --> 00:08:19,280
+Ah, so the text was just a reminder of what you already knew, like sheet music for a song
+
+170
+00:08:19,280 --> 00:08:19,940
+you've already memorized.
+
+171
+00:08:20,260 --> 00:08:20,420
+Yeah.
+
+172
+00:08:20,440 --> 00:08:22,000
+You just need to see the shape of the melody.
+
+173
+00:08:22,300 --> 00:08:22,700
+Exactly.
+
+174
+00:08:23,160 --> 00:08:24,300
+But then history happens.
+
+175
+00:08:24,440 --> 00:08:25,300
+The empire grows.
+
+176
+00:08:25,560 --> 00:08:30,980
+You have non-native speakers in Persia, in Egypt, in Spain, converting to Islam and trying
+
+177
+00:08:30,980 --> 00:08:31,620
+to learn Arabic.
+
+178
+00:08:32,280 --> 00:08:33,620
+They don't have the text memorized.
+
+179
+00:08:34,100 --> 00:08:37,240
+They don't have that native intuition to guess the context.
+
+180
+00:08:37,560 --> 00:08:39,760
+They look at these bumps and they are lost.
+
+181
+00:08:40,140 --> 00:08:41,760
+The ambiguity becomes too expensive.
+
+182
+00:08:42,240 --> 00:08:43,540
+The system is failing.
+
+183
+00:08:43,920 --> 00:08:45,520
+So the pressure for clarity spikes.
+
+184
+00:08:46,260 --> 00:08:47,540
+The laziness has gone too far.
+
+185
+00:08:47,740 --> 00:08:48,960
+The equilibrium is broken.
+
+186
+00:08:49,420 --> 00:08:50,200
+How do they fix it?
+
+187
+00:08:50,480 --> 00:08:54,380
+This is where the concept of minimal assembly really shines.
+
+188
+00:08:55,300 --> 00:08:59,040
+If this were a modern software project, you might say, okay, this code is broken.
+
+189
+00:08:59,040 --> 00:09:01,220
+Let's delete it and rewrite the whole thing.
+
+190
+00:09:01,380 --> 00:09:05,620
+Let's invent 28 totally new shapes so B looks nothing like T.
+
+191
+00:09:05,820 --> 00:09:06,940
+But they didn't do that.
+
+192
+00:09:07,020 --> 00:09:07,980
+That would be a hard fork.
+
+193
+00:09:08,220 --> 00:09:10,120
+No, that's too expensive.
+
+194
+00:09:10,420 --> 00:09:13,800
+That requires retraining an entire civilization.
+
+195
+00:09:14,160 --> 00:09:16,900
+It requires throwing away all the books you've already written.
+
+196
+00:09:17,020 --> 00:09:18,340
+Instead, they patched it.
+
+197
+00:09:18,400 --> 00:09:20,040
+They introduced incremental augmentation.
+
+198
+00:09:20,860 --> 00:09:21,220
+The dot.
+
+199
+00:09:21,360 --> 00:09:21,740
+The dot.
+
+200
+00:09:21,940 --> 00:09:22,740
+The humble dot.
+
+201
+00:09:23,100 --> 00:09:27,520
+It is perhaps the most important technological invention in the history of the Arabic script.
+
+202
+00:09:27,520 --> 00:09:30,720
+I really loved the economics of the dot section in the paper.
+
+203
+00:09:31,120 --> 00:09:33,740
+It treats the dot like a piece of high-tech engineering.
+
+204
+00:09:33,980 --> 00:09:34,920
+It is a piece of technology.
+
+205
+00:09:35,080 --> 00:09:36,640
+Think about the motor cost of a dot.
+
+206
+00:09:36,880 --> 00:09:39,760
+It is the smallest possible mark you can make with a pen.
+
+207
+00:09:39,860 --> 00:09:40,640
+It's just a tap.
+
+208
+00:09:40,820 --> 00:09:43,000
+Pen down, pen up, zero drag.
+
+209
+00:09:43,680 --> 00:09:44,680
+Minimal ink usage.
+
+210
+00:09:45,300 --> 00:09:46,900
+It's cheap energy-wise.
+
+211
+00:09:47,140 --> 00:09:50,020
+You aren't drawing a complex drag and you're just tapping the page.
+
+212
+00:09:50,120 --> 00:09:52,360
+But the informational return is massive.
+
+213
+00:09:52,820 --> 00:09:53,460
+Infinite return.
+
+214
+00:09:53,460 --> 00:09:58,360
+By adding one cheap dot below that ambiguous bump, it becomes a B.
+
+215
+00:09:59,120 --> 00:09:59,960
+Two dots above.
+
+216
+00:10:00,100 --> 00:10:00,560
+It's a T.
+
+217
+00:10:01,140 --> 00:10:01,900
+Three dots.
+
+218
+00:10:01,980 --> 00:10:02,440
+It's a T.
+
+219
+00:10:03,060 --> 00:10:03,780
+One dot above.
+
+220
+00:10:03,860 --> 00:10:04,280
+It's an N.
+
+221
+00:10:04,400 --> 00:10:05,180
+Two dots below.
+
+222
+00:10:05,300 --> 00:10:05,860
+It's a Y.
+
+223
+00:10:06,680 --> 00:10:11,380
+You have resolved the ambiguity of five different letters without breaking the flow of the script.
+
+224
+00:10:11,380 --> 00:10:14,980
+So you keep the lazy flowing skeleton because it's fast to write.
+
+225
+00:10:15,100 --> 00:10:15,760
+That's layer one.
+
+226
+00:10:15,920 --> 00:10:21,880
+And then you come back and add these tiny high-fidelity data packets, the dots to specify the meaning.
+
+227
+00:10:22,200 --> 00:10:23,180
+That's layer two.
+
+228
+00:10:23,500 --> 00:10:24,580
+It's a dual-layer system.
+
+229
+00:10:24,700 --> 00:10:25,600
+It's incredibly sophisticated.
+
+230
+00:10:25,920 --> 00:10:28,040
+It's like a compression algorithm in your computer.
+
+231
+00:10:28,300 --> 00:10:36,060
+You transmit the low-res version first, the skeleton, and then you sharpen the image with the high-res details, the dots, only where you need them.
+
+232
+00:10:36,120 --> 00:10:38,360
+It's amazing that this wasn't designed by a committee.
+
+233
+00:10:38,480 --> 00:10:39,380
+It just happened.
+
+234
+00:10:39,380 --> 00:10:42,180
+It evolved. It's survival of the fittest features.
+
+235
+00:10:42,380 --> 00:10:46,240
+Now, this is where the paper takes a turn that I found absolutely fascinating.
+
+236
+00:10:47,060 --> 00:10:51,460
+We know that they use dots, but the source talks about where the dots go and how many dots.
+
+237
+00:10:51,780 --> 00:10:53,060
+Because it turns out it's not random.
+
+238
+00:10:53,460 --> 00:10:57,540
+There's a deep, hidden connection between the dots on the page and the physics of your mouth.
+
+239
+00:10:57,840 --> 00:10:58,140
+Yes.
+
+240
+00:10:58,540 --> 00:11:00,700
+This is the phonological markedness argument.
+
+241
+00:11:01,220 --> 00:11:03,800
+This is where linguistics and graphic design merge.
+
+242
+00:11:03,980 --> 00:11:05,020
+Break that down for us.
+
+243
+00:11:05,400 --> 00:11:05,840
+Markedness.
+
+244
+00:11:05,940 --> 00:11:06,520
+What does that mean?
+
+245
+00:11:06,780 --> 00:11:07,920
+It's a linguistics term.
+
+246
+00:11:07,920 --> 00:11:11,920
+In any language, there are sounds that are easy or default.
+
+247
+00:11:12,240 --> 00:11:13,540
+We call those unmarked.
+
+248
+00:11:13,700 --> 00:11:15,980
+They are the path of least resistance for the human mouth.
+
+249
+00:11:16,380 --> 00:11:18,100
+They are the sounds a baby makes first.
+
+250
+00:11:18,220 --> 00:11:19,080
+Da, da, da, da.
+
+251
+00:11:19,240 --> 00:11:19,700
+Exactly.
+
+252
+00:11:19,980 --> 00:11:21,540
+And then there are sounds that are marked.
+
+253
+00:11:21,840 --> 00:11:22,920
+They require something extra.
+
+254
+00:11:23,000 --> 00:11:24,040
+They require extra effort.
+
+255
+00:11:24,480 --> 00:11:30,500
+You have to buzz your vocal cords or blow more air or twist your tongue in a weird way or hold the sound longer.
+
+256
+00:11:30,500 --> 00:11:36,520
+So, unmarked is the default setting and marked is the upgrade package that costs extra energy.
+
+257
+00:11:36,620 --> 00:11:36,980
+Correct.
+
+258
+00:11:37,780 --> 00:11:43,860
+And the fliction paper argues that the Arabic script unconsciously mapped this physical reality onto the paper.
+
+259
+00:11:44,500 --> 00:11:47,540
+Extra effort in the mouth equals extra ink on the page.
+
+260
+00:11:47,540 --> 00:11:50,400
+Let's look at the examples because this is where you can really see it.
+
+261
+00:11:50,740 --> 00:11:54,500
+The paper brings up D versus D-H, dell and dell.
+
+262
+00:11:54,660 --> 00:11:54,960
+Right.
+
+263
+00:11:55,260 --> 00:11:57,120
+So, I want everyone listening to try this.
+
+264
+00:11:57,340 --> 00:12:00,400
+Say the letter D, da, door, day.
+
+265
+00:12:00,840 --> 00:12:01,740
+Where is your tongue?
+
+266
+00:12:01,960 --> 00:12:04,060
+It's just tapping the roots of my mouth behind my teeth.
+
+267
+00:12:04,320 --> 00:12:04,680
+Duh.
+
+268
+00:12:04,980 --> 00:12:05,640
+It's a stop.
+
+269
+00:12:05,860 --> 00:12:06,540
+You block the air.
+
+270
+00:12:06,640 --> 00:12:07,360
+Then you release it.
+
+271
+00:12:07,420 --> 00:12:08,720
+It's very simple ballistics.
+
+272
+00:12:09,160 --> 00:12:11,860
+In the script, the letter dell has no dot.
+
+273
+00:12:12,200 --> 00:12:13,200
+It is just a curve.
+
+274
+00:12:13,380 --> 00:12:15,160
+It is the unmarked basic shape.
+
+275
+00:12:15,280 --> 00:12:15,540
+Okay.
+
+276
+00:12:15,880 --> 00:12:17,020
+Simple sound, simple shape.
+
+277
+00:12:17,300 --> 00:12:18,200
+Now, say D-H.
+
+278
+00:12:18,800 --> 00:12:21,620
+This is the sound in the words the or this or that.
+
+279
+00:12:21,900 --> 00:12:23,080
+In Arabic, it's dell.
+
+280
+00:12:23,960 --> 00:12:24,400
+The.
+
+281
+00:12:25,180 --> 00:12:25,620
+This.
+
+282
+00:12:25,960 --> 00:12:27,060
+What is your tongue doing now?
+
+283
+00:12:27,160 --> 00:12:28,280
+It's sliding forward.
+
+284
+00:12:28,420 --> 00:12:31,720
+It's actually between my teeth and I'm blowing air through it.
+
+285
+00:12:31,740 --> 00:12:33,180
+You are creating turbulence.
+
+286
+00:12:33,180 --> 00:12:34,920
+That is an interdental fricative.
+
+287
+00:12:35,180 --> 00:12:39,360
+You are engaging the tongue and the breath and the teeth and you have to sustain it.
+
+288
+00:12:39,520 --> 00:12:42,280
+It is physically more complex than a simple D.
+
+289
+00:12:42,740 --> 00:12:43,740
+It is marked.
+
+290
+00:12:43,920 --> 00:12:44,520
+And in the script.
+
+291
+00:12:45,000 --> 00:12:45,660
+It gets a dot.
+
+292
+00:12:45,920 --> 00:12:48,240
+The dell shape plus a dot equals dell.
+
+293
+00:12:48,660 --> 00:12:52,780
+The extra physical friction of the tongue is represented by the extra mark of the pen.
+
+294
+00:12:53,040 --> 00:12:53,760
+That is so cool.
+
+295
+00:12:53,840 --> 00:12:56,180
+It's like the script is a diagram of the effort.
+
+296
+00:12:56,500 --> 00:12:58,880
+Here is the base move and here is the extra friction.
+
+297
+00:12:59,000 --> 00:12:59,380
+Exactly.
+
+298
+00:12:59,500 --> 00:13:00,160
+Give us another one.
+
+299
+00:13:00,220 --> 00:13:00,380
+Okay.
+
+300
+00:13:00,420 --> 00:13:01,540
+Let's take R versus Z.
+
+301
+00:13:01,540 --> 00:13:02,420
+Ra and Zay.
+
+302
+00:13:02,580 --> 00:13:05,600
+They look exactly the same in the skeleton, but Zay has a dot.
+
+303
+00:13:05,600 --> 00:13:09,660
+So the R in Arabic is a tap or a trill.
+
+304
+00:13:10,320 --> 00:13:10,460
+Ra.
+
+305
+00:13:10,800 --> 00:13:11,620
+It's quick.
+
+306
+00:13:11,800 --> 00:13:13,760
+The tongue just flaps against the roof of the mouth.
+
+307
+00:13:13,960 --> 00:13:14,440
+No dot.
+
+308
+00:13:14,880 --> 00:13:15,480
+But the Z.
+
+309
+00:13:15,920 --> 00:13:16,260
+Z.
+
+310
+00:13:16,380 --> 00:13:18,040
+I can feel my throat buzzing.
+
+311
+00:13:18,140 --> 00:13:19,520
+That's your vocal cords vibrating.
+
+312
+00:13:19,700 --> 00:13:20,520
+That's called voicing.
+
+313
+00:13:20,960 --> 00:13:24,020
+You have to sustain the air pressure and engage the larynx.
+
+314
+00:13:24,120 --> 00:13:26,640
+It costs more energy to say zizz than ra.
+
+315
+00:13:27,380 --> 00:13:28,360
+So what happens?
+
+316
+00:13:28,460 --> 00:13:29,540
+The Z gets a dot.
+
+317
+00:13:29,620 --> 00:13:31,180
+Extra ink equals extra sound.
+
+318
+00:13:31,260 --> 00:13:32,100
+It's so consistent.
+
+319
+00:13:32,100 --> 00:13:36,560
+And the ultimate example is the S versus the shish, the sin and the shin.
+
+320
+00:13:36,640 --> 00:13:38,400
+Oh, the shin has the most dots, right?
+
+321
+00:13:38,640 --> 00:13:40,480
+It has three dots, the maximum payload.
+
+322
+00:13:40,660 --> 00:13:41,840
+So let's trace the physics.
+
+323
+00:13:42,240 --> 00:13:44,100
+The S sound sin is a hiss.
+
+324
+00:13:44,800 --> 00:13:45,760
+It's a strident.
+
+325
+00:13:46,460 --> 00:13:48,720
+It's a sharp, clear stream of air.
+
+326
+00:13:49,120 --> 00:13:51,340
+The letter shape looks like three little teeth.
+
+327
+00:13:51,640 --> 00:13:52,220
+No dots.
+
+328
+00:13:52,280 --> 00:13:53,280
+It's the standard hiss.
+
+329
+00:13:53,480 --> 00:13:56,180
+And the sh-shin, like in shu or shout.
+
+330
+00:13:56,420 --> 00:13:56,680
+Shh.
+
+331
+00:13:57,000 --> 00:13:57,300
+Do it.
+
+332
+00:13:57,380 --> 00:13:57,860
+Feel your mouth.
+
+333
+00:13:58,080 --> 00:13:59,060
+You have to pull your tongue back.
+
+334
+00:13:59,060 --> 00:14:03,560
+You have to dome the middle of your tongue up towards the hard palate that's called postal violer.
+
+335
+00:14:03,840 --> 00:14:06,360
+And you had to blow a huge volume of turbulent air.
+
+336
+00:14:06,460 --> 00:14:09,040
+It is a chaotic, high-energy sound.
+
+337
+00:14:09,140 --> 00:14:10,300
+It washes over everything.
+
+338
+00:14:10,660 --> 00:14:13,180
+And the script responds by dumping three dots on it.
+
+339
+00:14:13,340 --> 00:14:14,460
+It's like a warning label.
+
+340
+00:14:14,940 --> 00:14:15,340
+Caution.
+
+341
+00:14:16,220 --> 00:14:17,580
+Heavy turbulence ahead.
+
+342
+00:14:18,460 --> 00:14:21,920
+It's the most complex sound in that group, so it gets the most complex marking.
+
+343
+00:14:22,220 --> 00:14:23,640
+Do you think the scribes knew this?
+
+344
+00:14:23,640 --> 00:14:28,700
+Do they sit down and say, well, the postal violer fricative is complex, so let's add three dots?
+
+345
+00:14:29,060 --> 00:14:30,200
+Almost certainly not.
+
+346
+00:14:30,260 --> 00:14:31,500
+They didn't have MRI machines.
+
+347
+00:14:31,720 --> 00:14:34,120
+They didn't have the vocabulary of modern linguistics.
+
+348
+00:14:34,380 --> 00:14:35,760
+But they had their bodies.
+
+349
+00:14:35,920 --> 00:14:36,740
+They felt the difference.
+
+350
+00:14:36,900 --> 00:14:38,920
+They felt that she was heavier than S.
+
+351
+00:14:39,020 --> 00:14:41,120
+They felt that Z was buzzier than R.
+
+352
+00:14:41,580 --> 00:14:45,660
+And that somatic bodily intuition guided the evolution of the script.
+
+353
+00:14:46,220 --> 00:14:49,540
+They added weight to the letter because they felt weight in the mouth.
+
+354
+00:14:49,540 --> 00:14:52,040
+It really drives home the main point of the deep dive.
+
+355
+00:14:52,620 --> 00:14:54,480
+The script is a recording of the body.
+
+356
+00:14:54,640 --> 00:14:56,000
+It's not arbitrary squiggles.
+
+357
+00:14:56,240 --> 00:14:57,300
+It's anatomical.
+
+358
+00:14:57,300 --> 00:14:59,580
+It is the body leaving a trail in the sand.
+
+359
+00:15:00,080 --> 00:15:03,060
+Speaking of anatomy, this leads us perfectly into segment two.
+
+360
+00:15:03,520 --> 00:15:07,420
+Because if markedness is about the throat and the vocal cords, this next part is about
+
+361
+00:15:07,420 --> 00:15:08,200
+the tongue itself.
+
+362
+00:15:08,740 --> 00:15:10,720
+We need to talk about the sun and moon letters.
+
+363
+00:15:10,920 --> 00:15:11,660
+Ah, yes.
+
+364
+00:15:12,000 --> 00:15:15,120
+The bane of every Arabic student's existence.
+
+365
+00:15:15,520 --> 00:15:16,400
+I remember trying to learn this.
+
+366
+00:15:16,740 --> 00:15:18,020
+The teacher just hands you a list.
+
+367
+00:15:18,680 --> 00:15:19,580
+Here are 14 letters.
+
+368
+00:15:20,400 --> 00:15:22,640
+If the word starts with these, you pronounce the L.
+
+369
+00:15:23,220 --> 00:15:24,740
+If it starts with those, you don't.
+
+370
+00:15:24,900 --> 00:15:25,360
+Good luck.
+
+371
+00:15:25,500 --> 00:15:26,220
+Memorize it.
+
+372
+00:15:26,220 --> 00:15:27,060
+Don't ask why.
+
+373
+00:15:27,280 --> 00:15:27,440
+Right.
+
+374
+00:15:27,540 --> 00:15:31,920
+So for the listeners who don't know, in Arabic, the word for the is al.
+
+375
+00:15:32,540 --> 00:15:35,280
+Like Al Jazeera or Al Qaeda or Al Qaeda.
+
+376
+00:15:35,960 --> 00:15:37,360
+You hear the L. Clearly.
+
+377
+00:15:37,720 --> 00:15:37,980
+Al.
+
+378
+00:15:38,040 --> 00:15:38,880
+Those are the moon letters.
+
+379
+00:15:39,140 --> 00:15:40,280
+The L stays strong.
+
+380
+00:15:40,380 --> 00:15:40,900
+It behaves.
+
+381
+00:15:41,300 --> 00:15:42,860
+But then you have words like the sun.
+
+382
+00:15:43,400 --> 00:15:44,940
+In Arabic, sun is shams.
+
+383
+00:15:45,100 --> 00:15:45,960
+You don't say al shams.
+
+384
+00:15:46,040 --> 00:15:47,040
+You say ash shams.
+
+385
+00:15:47,180 --> 00:15:48,160
+The L disappears.
+
+386
+00:15:48,380 --> 00:15:48,820
+It melts.
+
+387
+00:15:49,040 --> 00:15:50,040
+And the she gets doubled.
+
+388
+00:15:50,260 --> 00:15:50,920
+Or the people.
+
+389
+00:15:51,840 --> 00:15:52,200
+Anas.
+
+390
+00:15:52,800 --> 00:15:53,600
+Not Elnas.
+
+391
+00:15:53,600 --> 00:15:54,860
+The L becomes an N.
+
+392
+00:15:55,100 --> 00:15:55,280
+Why?
+
+393
+00:15:55,480 --> 00:15:59,960
+Why does the L surrender to the S or the N or the T, but it stands its ground against
+
+394
+00:15:59,960 --> 00:16:00,760
+the K or the B?
+
+395
+00:16:01,340 --> 00:16:05,240
+If you ask a traditional grammarian, they might give you a poetic answer about the sun burning
+
+396
+00:16:05,240 --> 00:16:05,900
+up the stars.
+
+397
+00:16:06,240 --> 00:16:08,200
+But Flixian says, look at the mouth.
+
+398
+00:16:08,320 --> 00:16:08,980
+It's not poetry.
+
+399
+00:16:09,160 --> 00:16:09,600
+It's biomechanics.
+
+400
+00:16:10,220 --> 00:16:11,100
+It's the tongue map.
+
+401
+00:16:11,320 --> 00:16:11,640
+Exactly.
+
+402
+00:16:11,820 --> 00:16:12,420
+Let's do the anatomy.
+
+403
+00:16:12,580 --> 00:16:13,520
+Where is the sound L made?
+
+404
+00:16:13,900 --> 00:16:14,500
+Say so.
+
+405
+00:16:14,800 --> 00:16:18,340
+My tongue is touching the roof of my mouth right behind my front teeth.
+
+406
+00:16:18,640 --> 00:16:18,960
+Correct.
+
+407
+00:16:18,960 --> 00:16:21,820
+That is the coronal region, the crown of the tongue.
+
+408
+00:16:21,900 --> 00:16:24,300
+Now, let's look at the sun letters, the ones that make the L melt.
+
+409
+00:16:24,780 --> 00:16:28,800
+T, D, S, Z, N, R, S, H. Go through them.
+
+410
+00:16:29,140 --> 00:16:29,780
+Where is your tongue?
+
+411
+00:16:30,260 --> 00:16:31,540
+T, right behind the teeth.
+
+412
+00:16:32,580 --> 00:16:33,440
+D, same spot.
+
+413
+00:16:33,700 --> 00:16:34,400
+S, same spot.
+
+414
+00:16:34,760 --> 00:16:35,700
+N, same spot.
+
+415
+00:16:35,940 --> 00:16:37,340
+They are all coronal sounds.
+
+416
+00:16:37,500 --> 00:16:38,140
+They are all neighbors.
+
+417
+00:16:38,360 --> 00:16:41,360
+They all live in the same tiny apartment complex right behind your teeth.
+
+418
+00:16:41,560 --> 00:16:43,540
+So what's happening when I try to say L shams?
+
+419
+00:16:43,800 --> 00:16:44,840
+Think about the gymnastics.
+
+420
+00:16:44,840 --> 00:16:50,160
+Your tongue goes up to the teeth for L, then it has to pull back a millimeter for shh.
+
+421
+00:16:50,620 --> 00:16:51,760
+It's a stutter step.
+
+422
+00:16:52,240 --> 00:16:54,580
+It's a rapid fire double tap in the same zone.
+
+423
+00:16:54,680 --> 00:16:55,240
+It's inefficient.
+
+424
+00:16:55,780 --> 00:16:56,700
+The tongue is lazy.
+
+425
+00:16:56,880 --> 00:16:58,420
+It says, look, I'm already right here.
+
+426
+00:16:58,480 --> 00:17:01,020
+Why don't I just skip the L and lean harder into the shit?
+
+427
+00:17:01,160 --> 00:17:01,740
+It's a shortcut.
+
+428
+00:17:02,300 --> 00:17:03,300
+It is assimilation.
+
+429
+00:17:03,620 --> 00:17:08,200
+The tongue merges the two movements into one fluid gesture, ashams.
+
+430
+00:17:08,440 --> 00:17:09,020
+It flows.
+
+431
+00:17:09,200 --> 00:17:09,980
+It saves energy.
+
+432
+00:17:10,140 --> 00:17:12,220
+With a moon letter like K or B.
+
+433
+00:17:12,340 --> 00:17:13,480
+Say K, Alkitab.
+
+434
+00:17:13,480 --> 00:17:15,920
+K is made way back in the throat, the vellum.
+
+435
+00:17:16,200 --> 00:17:17,300
+It is far away from the L.
+
+436
+00:17:17,660 --> 00:17:18,940
+So the tongue has to move anyway.
+
+437
+00:17:19,420 --> 00:17:19,820
+Exactly.
+
+438
+00:17:20,040 --> 00:17:23,060
+You have to travel from the teeth, L, to the throat, K.
+
+439
+00:17:23,220 --> 00:17:24,440
+There is no shortcut available.
+
+440
+00:17:25,020 --> 00:17:28,840
+Since you have to make the trip across the mouth anyway, you might as well pronounce the L.
+
+441
+00:17:29,120 --> 00:17:30,320
+Oh, that makes so much sense.
+
+442
+00:17:30,420 --> 00:17:33,840
+So the moon letters are just sounds that are geographically distant from the L.
+
+443
+00:17:34,500 --> 00:17:36,720
+And sun letters are the neighbors.
+
+444
+00:17:37,000 --> 00:17:38,160
+It's not a grammar rule.
+
+445
+00:17:38,260 --> 00:17:40,380
+It's a tongue cramp prevention strategy.
+
+446
+00:17:40,380 --> 00:17:43,940
+It's your mouth naturally optimizing the path of motion.
+
+447
+00:17:44,100 --> 00:17:44,700
+I love that.
+
+448
+00:17:44,880 --> 00:17:48,380
+And the source points out a visual coincidence here that I find really funny.
+
+449
+00:17:48,840 --> 00:17:49,560
+It's a heuristic.
+
+450
+00:17:49,840 --> 00:17:50,160
+Yes.
+
+451
+00:17:50,480 --> 00:17:51,440
+The toothy theory.
+
+452
+00:17:51,900 --> 00:17:56,600
+Many of these sun letters, these tip of the tongue sounds, actually look like teeth in the script.
+
+453
+00:17:56,900 --> 00:17:57,800
+Ideally, yes.
+
+454
+00:17:58,120 --> 00:17:59,320
+The sin has three teeth.
+
+455
+00:17:59,800 --> 00:18:01,400
+The sad has a loop and a tooth.
+
+456
+00:18:01,700 --> 00:18:02,800
+The shin has teeth.
+
+457
+00:18:02,800 --> 00:18:08,040
+Even the ta and ta are basically wide, shallow dishes with dots that look like eyes or teeth.
+
+458
+00:18:08,360 --> 00:18:10,440
+Now, the paper is careful to say this wasn't designed.
+
+459
+00:18:11,000 --> 00:18:14,600
+The scribes didn't say, let's draw teeth because it's a tooth sound.
+
+460
+00:18:14,940 --> 00:18:16,340
+No, that would be teleological.
+
+461
+00:18:16,860 --> 00:18:17,960
+It would imply a plan.
+
+462
+00:18:18,340 --> 00:18:20,700
+But it is a happy accident of evolution.
+
+463
+00:18:21,620 --> 00:18:25,680
+Visually, the script inadvertently grouped these sounds into similar looking shapes.
+
+464
+00:18:25,880 --> 00:18:27,720
+It matches the coronal clustering.
+
+465
+00:18:27,720 --> 00:18:33,880
+It reminds me of the IPA chart, the International Phonetic Alphabet, where they map vowels based on where your tongue is.
+
+466
+00:18:33,960 --> 00:18:34,320
+Exactly.
+
+467
+00:18:34,760 --> 00:18:37,600
+Modern linguistics maps sounds by tongue position.
+
+468
+00:18:38,140 --> 00:18:44,340
+Arabic orthography, the way it's written, intuitively group these consonants by articulatory proximity.
+
+469
+00:18:44,780 --> 00:18:46,700
+It's like the script knows your mouth better than you do.
+
+470
+00:18:47,040 --> 00:18:49,400
+I will never look at a sun letter the same way again.
+
+471
+00:18:49,600 --> 00:18:50,780
+It's just my tongue being lazy.
+
+472
+00:18:50,960 --> 00:18:51,300
+Efficient.
+
+473
+00:18:51,580 --> 00:18:51,880
+Efficient.
+
+474
+00:18:52,100 --> 00:18:52,280
+Okay.
+
+475
+00:18:52,640 --> 00:18:53,780
+Moving on to segment three.
+
+476
+00:18:54,300 --> 00:18:56,660
+We've talked about the skeleton, the dots, and the tongue.
+
+477
+00:18:56,660 --> 00:19:01,700
+Now let's talk about the movement, the flow, the physics of cursive.
+
+478
+00:19:02,260 --> 00:19:04,080
+This brings us back to that energy equation.
+
+479
+00:19:04,520 --> 00:19:06,100
+Why do we write cursively at all?
+
+480
+00:19:06,220 --> 00:19:06,960
+Why join letters?
+
+481
+00:19:07,160 --> 00:19:09,100
+We take it for granted, but we don't have to.
+
+482
+00:19:09,320 --> 00:19:11,820
+We could write like a typewriter, one letter at a time.
+
+483
+00:19:11,960 --> 00:19:12,280
+Speed.
+
+484
+00:19:12,480 --> 00:19:13,440
+Speed is the result.
+
+485
+00:19:13,680 --> 00:19:16,280
+But the mechanism is reducing pen lifts.
+
+486
+00:19:16,400 --> 00:19:16,800
+Pen lifts.
+
+487
+00:19:16,920 --> 00:19:17,820
+Think about it physically.
+
+488
+00:19:18,240 --> 00:19:21,900
+Every time you lift the pen off the paper, you are decelerating to zero.
+
+489
+00:19:22,100 --> 00:19:23,020
+You have to stop.
+
+490
+00:19:23,100 --> 00:19:23,820
+You have to hover.
+
+491
+00:19:24,100 --> 00:19:25,820
+You have to re-aim to the next spot.
+
+492
+00:19:25,820 --> 00:19:27,980
+You have to accelerate again to touch the paper.
+
+493
+00:19:28,180 --> 00:19:30,240
+That is a massive waste of momentum.
+
+494
+00:19:30,640 --> 00:19:33,340
+It's like driving in stop-and-go traffic versus driving on the highway.
+
+495
+00:19:33,580 --> 00:19:33,980
+Exactly.
+
+496
+00:19:34,440 --> 00:19:35,280
+Cursive is the highway.
+
+497
+00:19:35,700 --> 00:19:36,680
+You keep the pen down.
+
+498
+00:19:36,860 --> 00:19:37,880
+You preserve momentum.
+
+499
+00:19:38,360 --> 00:19:39,820
+The ink flows continuously.
+
+500
+00:19:40,680 --> 00:19:44,820
+Mathematically, more joins equals fewer lifts equals lower energy costs.
+
+501
+00:19:44,940 --> 00:19:50,560
+So pure laziness, sorry, efficiency, would dictate that we join absolutely everything.
+
+502
+00:19:50,680 --> 00:19:51,820
+We should never lift the pen.
+
+503
+00:19:52,140 --> 00:19:54,780
+One continuous line from the start of the book to the end.
+
+504
+00:19:54,780 --> 00:19:56,840
+That would be the thermodynamic ideal.
+
+505
+00:19:57,240 --> 00:19:58,020
+But there's a trap.
+
+506
+00:19:58,380 --> 00:19:59,020
+The overshoot.
+
+507
+00:19:59,240 --> 00:20:00,520
+What happens if you join everything?
+
+508
+00:20:00,740 --> 00:20:02,880
+The letters lose their structural integrity.
+
+509
+00:20:03,380 --> 00:20:08,220
+If you connect every loop to every line at high speed, everything starts to look like
+
+510
+00:20:08,220 --> 00:20:08,780
+a sine wave.
+
+511
+00:20:09,120 --> 00:20:09,620
+Just a wiggle.
+
+512
+00:20:09,940 --> 00:20:12,860
+We've all seen someone's handwriting that looks like a seismograph reading.
+
+513
+00:20:12,860 --> 00:20:14,560
+My doctor's prescription pad.
+
+514
+00:20:14,660 --> 00:20:17,700
+I have no idea if it says ibuprofen or amputation.
+
+515
+00:20:18,320 --> 00:20:18,760
+Exactly.
+
+516
+00:20:19,380 --> 00:20:22,560
+You have maximized flow, but you have destroyed clarity.
+
+517
+00:20:22,800 --> 00:20:25,600
+You have minimized energy, but you've maximized confusion.
+
+518
+00:20:25,920 --> 00:20:27,460
+So how does Arabic handle this?
+
+519
+00:20:27,700 --> 00:20:29,920
+Because Arabic is extremely cursive.
+
+520
+00:20:30,320 --> 00:20:31,720
+It flows more than English cursive.
+
+521
+00:20:32,260 --> 00:20:34,620
+It is, but it has a built-in braking system.
+
+522
+00:20:34,860 --> 00:20:35,600
+And this is genius.
+
+523
+00:20:36,220 --> 00:20:40,700
+There are six specific letters in the Arabic alphabet that refuse to connect to the left.
+
+524
+00:20:40,900 --> 00:20:42,000
+The non-connecting letters.
+
+525
+00:20:42,000 --> 00:20:45,580
+They connect to the right, so you can flow into them from the previous letter, but you
+
+526
+00:20:45,580 --> 00:20:46,560
+cannot flow out of them.
+
+527
+00:20:46,940 --> 00:20:50,340
+You hit the letter, and the script forces you to lift the pen.
+
+528
+00:20:50,800 --> 00:20:58,860
+These are the letters A, ELIF, D, DAO, DHDAO, R, R, Z, Z, and W, Y.
+
+529
+00:20:59,120 --> 00:20:59,420
+Correct.
+
+530
+00:21:00,000 --> 00:21:01,360
+Now, why these six?
+
+531
+00:21:01,540 --> 00:21:02,200
+Is it random?
+
+532
+00:21:02,500 --> 00:21:04,140
+The expert in the paper says no.
+
+533
+00:21:04,360 --> 00:21:06,400
+They act as structural boundary markers.
+
+534
+00:21:06,700 --> 00:21:08,960
+The source calls them controlled interruptions.
+
+535
+00:21:09,060 --> 00:21:11,020
+I love that term, controlled interruptions.
+
+536
+00:21:11,020 --> 00:21:11,960
+Look at the ALIF.
+
+537
+00:21:12,080 --> 00:21:13,180
+It's a vertical line.
+
+538
+00:21:13,280 --> 00:21:14,520
+Just a stick, up and down.
+
+539
+00:21:14,820 --> 00:21:18,080
+If you let that stick connect to the left, and you're writing quickly, it would look
+
+540
+00:21:18,080 --> 00:21:21,900
+exactly like the letter LAM, L, which is also a vertical line that connects.
+
+541
+00:21:22,220 --> 00:21:25,420
+So if ALIF connected, you wouldn't know if you were reading an A or an L.
+
+542
+00:21:25,560 --> 00:21:25,820
+Right.
+
+543
+00:21:26,000 --> 00:21:30,340
+And since A and L are two of the most common letters, that would be a disaster.
+
+544
+00:21:30,900 --> 00:21:35,280
+By forcing a pen lift after the ALIF, the script creates a patch of white space.
+
+545
+00:21:35,280 --> 00:21:37,780
+That white space signals to the I.
+
+546
+00:21:38,200 --> 00:21:40,200
+This vertical line stands alone.
+
+547
+00:21:40,520 --> 00:21:41,240
+This is an A.
+
+548
+00:21:41,240 --> 00:21:43,260
+And what about the D, the DAL?
+
+549
+00:21:43,520 --> 00:21:44,200
+Same issue.
+
+550
+00:21:44,460 --> 00:21:46,380
+The DAL is a small curved shape.
+
+551
+00:21:46,800 --> 00:21:50,220
+If it connected to the left, it would look like a little tooth in the middle of a word,
+
+552
+00:21:50,320 --> 00:21:52,340
+exactly like a B, T, N, or Y.
+
+553
+00:21:52,340 --> 00:21:54,060
+It would disappear into the wave.
+
+554
+00:21:54,720 --> 00:21:58,180
+By forcing a break, the script preserves the silhouette of the D.
+
+555
+00:21:58,560 --> 00:22:00,120
+It says, this curve is important.
+
+556
+00:22:00,440 --> 00:22:01,120
+Stop here.
+
+557
+00:22:01,420 --> 00:22:06,320
+So these non-connecting letters are basically the script saying, whoa, slow down, lift the
+
+558
+00:22:06,320 --> 00:22:07,500
+pen, reset the I.
+
+559
+00:22:07,620 --> 00:22:08,820
+It's a negotiated peace treaty.
+
+560
+00:22:09,200 --> 00:22:10,340
+The hand wants to keep moving.
+
+561
+00:22:10,440 --> 00:22:11,520
+It wants to connect everything.
+
+562
+00:22:11,740 --> 00:22:14,000
+The I says, if you connect that, I can't read it.
+
+563
+00:22:14,000 --> 00:22:19,380
+So the compromise is, connect most things, but break the circuit at these six specific
+
+564
+00:22:19,380 --> 00:22:21,580
+points to maintain structural integrity.
+
+565
+00:22:22,020 --> 00:22:26,640
+It's fascinating to think of white space, the empty space between letters, as a functional
+
+566
+00:22:26,640 --> 00:22:27,560
+part of the system.
+
+567
+00:22:28,060 --> 00:22:30,460
+Usually we think of the ink as the information.
+
+568
+00:22:31,160 --> 00:22:33,440
+But the lack of ink is also information.
+
+569
+00:22:34,140 --> 00:22:35,600
+Silence is part of the music.
+
+570
+00:22:36,100 --> 00:22:37,460
+White space is part of the code.
+
+571
+00:22:37,920 --> 00:22:42,160
+The paper makes a really interesting comparison here between Arabic and Hebrew.
+
+572
+00:22:42,560 --> 00:22:43,940
+Because they're cousins, right?
+
+573
+00:22:44,000 --> 00:22:44,840
+Very close cousins.
+
+574
+00:22:45,140 --> 00:22:48,560
+They both come from the same Semitic ancestor, the Phoenician-Aramaic tradition.
+
+575
+00:22:48,860 --> 00:22:50,760
+They share the same roots, the same logic.
+
+576
+00:22:51,300 --> 00:22:54,700
+But they chose completely different strategies for this stability.
+
+577
+00:22:55,000 --> 00:22:55,280
+Also.
+
+578
+00:22:55,660 --> 00:22:58,080
+Hebrew chose the strategy of discreteness.
+
+579
+00:22:58,420 --> 00:23:03,080
+If you look at the Hebrew script, the square script used in Torah scrolls, the letters are
+
+580
+00:23:03,080 --> 00:23:03,780
+separate blocks.
+
+581
+00:23:03,960 --> 00:23:05,080
+They generally don't touch.
+
+582
+00:23:05,080 --> 00:23:07,300
+It looks very architectural, like bricks and a wall.
+
+583
+00:23:07,480 --> 00:23:08,020
+It is.
+
+584
+00:23:08,320 --> 00:23:09,860
+This maximizes clarity.
+
+585
+00:23:10,120 --> 00:23:13,940
+It is very hard to confuse Hebrew letters because they are so distinct and separated.
+
+586
+00:23:14,000 --> 00:23:16,060
+But the cost is high energy.
+
+587
+00:23:16,180 --> 00:23:17,760
+You are lifting the pen constantly.
+
+588
+00:23:18,080 --> 00:23:19,200
+It's a high friction script.
+
+589
+00:23:19,560 --> 00:23:20,500
+It is slow to write.
+
+590
+00:23:21,040 --> 00:23:22,020
+And Arabic went the other way.
+
+591
+00:23:22,180 --> 00:23:23,520
+Arabic chose continuity.
+
+592
+00:23:24,000 --> 00:23:25,020
+It maximized the flow.
+
+593
+00:23:25,160 --> 00:23:25,400
+It said,
+
+594
+00:23:25,560 --> 00:23:30,300
+We will accept the risk of ambiguity letters looking alike, and we will fix it with dots and
+
+595
+00:23:30,300 --> 00:23:34,340
+context in exchange for the speed and low energy of cursive writing.
+
+596
+00:23:34,340 --> 00:23:36,580
+That is a fascinating divergence.
+
+597
+00:23:37,140 --> 00:23:38,880
+One went for stability through separation.
+
+598
+00:23:39,520 --> 00:23:41,220
+The other for stability through flow.
+
+599
+00:23:41,480 --> 00:23:43,280
+And you can even see it in the culture of the scripts.
+
+600
+00:23:43,880 --> 00:23:47,460
+Hebrew feels monumental, timeless, static.
+
+601
+00:23:47,900 --> 00:23:49,580
+It's carved in stone.
+
+602
+00:23:50,420 --> 00:23:52,640
+Arabic feels kinetic, gestural.
+
+603
+00:23:52,840 --> 00:23:53,700
+It's a fluid line.
+
+604
+00:23:53,800 --> 00:23:54,840
+It's wind or water.
+
+605
+00:23:55,080 --> 00:23:57,860
+It's like the difference between building a stone wall and flowing water.
+
+606
+00:23:58,120 --> 00:24:00,680
+Both are strong, but in very different ways.
+
+607
+00:24:00,940 --> 00:24:01,700
+Beautifully put.
+
+608
+00:24:01,840 --> 00:24:03,600
+And that fluidity isn't just in the script.
+
+609
+00:24:03,740 --> 00:24:04,880
+It's in the language itself.
+
+610
+00:24:05,100 --> 00:24:07,040
+Which brings us to the engine under the hood.
+
+611
+00:24:07,180 --> 00:24:07,460
+Yes.
+
+612
+00:24:07,700 --> 00:24:08,260
+Segment four.
+
+613
+00:24:09,020 --> 00:24:09,460
+Morphology.
+
+614
+00:24:09,740 --> 00:24:12,180
+This is where we get into the generative aspect of the language.
+
+615
+00:24:12,300 --> 00:24:14,000
+This might sound technical, but stay with us.
+
+616
+00:24:14,120 --> 00:24:15,940
+Because it's like unlocking a secret code.
+
+617
+00:24:16,140 --> 00:24:19,040
+This connects back to the minimal assembly concept.
+
+618
+00:24:19,340 --> 00:24:19,480
+Yeah.
+
+619
+00:24:19,520 --> 00:24:22,060
+How do you build a lot of meaning with very few parts?
+
+620
+00:24:22,160 --> 00:24:25,540
+The source starts with a quick detour into numbers, which I thought was a great way to
+
+621
+00:24:25,540 --> 00:24:26,300
+visualize this.
+
+622
+00:24:26,600 --> 00:24:26,960
+Yes.
+
+623
+00:24:27,220 --> 00:24:28,920
+Numerals as motor programs.
+
+624
+00:24:29,620 --> 00:24:30,480
+Look at the number one.
+
+625
+00:24:30,580 --> 00:24:31,120
+One stroke.
+
+626
+00:24:31,200 --> 00:24:32,360
+Look at the Roman numeral, or three.
+
+627
+00:24:32,580 --> 00:24:33,140
+Two strokes.
+
+628
+00:24:33,260 --> 00:24:33,720
+Three strokes.
+
+629
+00:24:33,840 --> 00:24:34,580
+It's tally logic.
+
+630
+00:24:34,880 --> 00:24:36,120
+One mark for one thing.
+
+631
+00:24:36,220 --> 00:24:36,660
+Exactly.
+
+632
+00:24:36,820 --> 00:24:37,280
+It's additive.
+
+633
+00:24:38,100 --> 00:24:41,020
+But try drawing nine lines every time you want to write the number nine.
+
+634
+00:24:41,140 --> 00:24:41,760
+It's exhausting.
+
+635
+00:24:42,900 --> 00:24:43,640
+The eye gets lost.
+
+636
+00:24:43,740 --> 00:24:44,520
+You have to recount them.
+
+637
+00:24:44,740 --> 00:24:45,660
+High energy cost.
+
+638
+00:24:46,000 --> 00:24:47,100
+High error rate.
+
+639
+00:24:47,900 --> 00:24:50,620
+So as the numbers get higher, the symbols become abstract.
+
+640
+00:24:51,020 --> 00:24:53,460
+The shape of nine doesn't look like nine things.
+
+641
+00:24:53,600 --> 00:24:55,020
+It's just a symbol we agreed on.
+
+642
+00:24:55,020 --> 00:24:58,240
+Because drawing nine lines is too expensive energetically.
+
+643
+00:24:58,520 --> 00:24:58,640
+Right.
+
+644
+00:24:58,940 --> 00:25:03,480
+So the system uses tally logic for the low numbers, where it's cheap and switches to
+
+645
+00:25:03,480 --> 00:25:05,880
+abstract symbolic logic for the high numbers.
+
+646
+00:25:06,240 --> 00:25:06,700
+It's efficient.
+
+647
+00:25:06,960 --> 00:25:10,420
+And the paper argues that the Arabic language itself works the same way.
+
+648
+00:25:11,080 --> 00:25:12,440
+The root and pattern system.
+
+649
+00:25:12,640 --> 00:25:14,640
+This is the crown jewel of Semitic languages.
+
+650
+00:25:15,100 --> 00:25:16,460
+And it's very different from English.
+
+651
+00:25:16,820 --> 00:25:22,100
+In English, if I want to say write, writer, book, and office, those words sound totally different.
+
+652
+00:25:22,160 --> 00:25:23,900
+You just have to memorize them as separate items.
+
+653
+00:25:23,900 --> 00:25:24,300
+Right.
+
+654
+00:25:24,420 --> 00:25:28,260
+There's no logical sound connection between write and office.
+
+655
+00:25:28,900 --> 00:25:30,200
+They're just random labels.
+
+656
+00:25:30,720 --> 00:25:32,860
+In Arabic, there is a deep logical connection.
+
+657
+00:25:33,140 --> 00:25:35,220
+You have a root, a semantic skeleton.
+
+658
+00:25:36,320 --> 00:25:39,460
+For anything related to writing, that root is K-T-B.
+
+659
+00:25:40,580 --> 00:25:42,460
+Kaf, ta, ba.
+
+660
+00:25:43,260 --> 00:25:45,820
+Those three consonants hold the idea of writing.
+
+661
+00:25:46,160 --> 00:25:47,440
+So K-T-B isn't a word.
+
+662
+00:25:47,520 --> 00:25:48,140
+It's a concept.
+
+663
+00:25:48,380 --> 00:25:49,080
+It's the DNA.
+
+664
+00:25:49,320 --> 00:25:50,280
+It's the raw material.
+
+665
+00:25:50,280 --> 00:25:55,120
+Now, to make a word, you drop that root into a pattern or a template.
+
+666
+00:25:55,480 --> 00:25:58,580
+Think of it like an algebraic formula or a function in code.
+
+667
+00:25:58,660 --> 00:25:59,280
+Give us an example.
+
+668
+00:25:59,440 --> 00:26:00,300
+Walk us through the algebra.
+
+669
+00:26:00,520 --> 00:26:00,680
+Okay.
+
+670
+00:26:00,900 --> 00:26:03,020
+There is a pattern for someone who does the action.
+
+671
+00:26:03,380 --> 00:26:04,820
+That pattern is fa-el.
+
+672
+00:26:05,320 --> 00:26:08,340
+You insert K-T-B into that pattern and you get kai-tib writer.
+
+673
+00:26:08,620 --> 00:26:08,860
+Okay.
+
+674
+00:26:09,100 --> 00:26:09,460
+K-T-B.
+
+675
+00:26:09,500 --> 00:26:11,840
+There is a pattern for place where the action happens.
+
+676
+00:26:11,980 --> 00:26:13,280
+That pattern is mat-f-el.
+
+677
+00:26:13,360 --> 00:26:13,480
+True.
+
+678
+00:26:13,480 --> 00:26:17,220
+You drop in K-T-B and you get mat-k-a-tib office or desk.
+
+679
+00:26:17,320 --> 00:26:17,700
+The cup.
+
+680
+00:26:18,220 --> 00:26:19,020
+The place of writing.
+
+681
+00:26:19,180 --> 00:26:19,520
+Exactly.
+
+682
+00:26:19,860 --> 00:26:20,980
+There is a pattern for instrument.
+
+683
+00:26:21,180 --> 00:26:22,160
+A pattern for passive.
+
+684
+00:26:22,640 --> 00:26:26,180
+If I want to say it was written, the pattern is fula-kutiba.
+
+685
+00:26:26,460 --> 00:26:29,360
+And if I want to make it reciprocal, like writing to each other.
+
+686
+00:26:29,540 --> 00:26:30,680
+There is a pattern for that too.
+
+687
+00:26:30,820 --> 00:26:31,340
+Form three.
+
+688
+00:26:31,580 --> 00:26:31,980
+Kataba.
+
+689
+00:26:32,420 --> 00:26:32,860
+To correspond.
+
+690
+00:26:33,220 --> 00:26:33,960
+To write back and forth.
+
+691
+00:26:34,040 --> 00:26:34,860
+It's like a code.
+
+692
+00:26:34,980 --> 00:26:35,980
+It's incredibly logical.
+
+693
+00:26:36,400 --> 00:26:37,860
+It is a generative engine.
+
+694
+00:26:37,860 --> 00:26:41,460
+You don't have to memorize a dictionary of random sounds.
+
+695
+00:26:41,460 --> 00:26:45,540
+You memorize the roots, the meanings, and the patterns, the functions.
+
+696
+00:26:46,080 --> 00:26:49,200
+Once you have the code, you can build words you've never even heard before.
+
+697
+00:26:49,940 --> 00:26:55,880
+If you know the root for drink, S-H-R-B, and you know the pattern for place, make F-A-L,
+
+698
+00:26:56,120 --> 00:26:59,360
+you can guess that mashrob means a place to drink.
+
+699
+00:26:59,600 --> 00:27:02,060
+And the paper connects us back to the writing script.
+
+700
+00:27:02,200 --> 00:27:02,480
+Yes.
+
+701
+00:27:02,780 --> 00:27:06,400
+Just as the script uses a base shape plus dot to make a letter,
+
+702
+00:27:06,720 --> 00:27:09,600
+the language uses root plus pattern to make a word.
+
+703
+00:27:09,600 --> 00:27:12,620
+It's the same minimal assembly philosophy.
+
+704
+00:27:13,220 --> 00:27:18,940
+You take a stable substrate, the skeleton, and you modify it slightly to create massive amounts of new meaning.
+
+705
+00:27:19,080 --> 00:27:20,040
+It's incredibly elegant.
+
+706
+00:27:20,160 --> 00:27:22,580
+It's like the language and the script are running on the same operating system.
+
+707
+00:27:22,660 --> 00:27:23,040
+They are.
+
+708
+00:27:23,160 --> 00:27:28,800
+And there's one specific mark the author mentions that perfectly encapsulates this time-stretching generative power.
+
+709
+00:27:29,280 --> 00:27:29,720
+The Shada.
+
+710
+00:27:29,860 --> 00:27:31,040
+The little W mark.
+
+711
+00:27:31,380 --> 00:27:31,740
+Yes.
+
+712
+00:27:31,920 --> 00:27:33,920
+The little W that sits on top of a letter.
+
+713
+00:27:34,500 --> 00:27:38,240
+We talked about laziness earlier, but sometimes you need to emphasize something.
+
+714
+00:27:38,240 --> 00:27:41,480
+The Shada indicates gemination, or doubling.
+
+715
+00:27:42,120 --> 00:27:46,560
+If you see a Shada on a K, it's not a K. It's a KK. You hold the sound.
+
+716
+00:27:46,720 --> 00:27:49,300
+Like in the word bookkeeper in English, that double K.
+
+717
+00:27:49,500 --> 00:27:49,940
+Exactly.
+
+718
+00:27:50,320 --> 00:27:52,720
+But in English, we usually rush through it.
+
+719
+00:27:53,160 --> 00:27:54,760
+In Arabic, you must hold it.
+
+720
+00:27:54,840 --> 00:27:56,120
+It creates a rhythmic stop.
+
+721
+00:27:56,560 --> 00:28:00,440
+But here is the magic that doubling changes the meaning entirely.
+
+722
+00:28:00,800 --> 00:28:01,560
+Give me an example.
+
+723
+00:28:01,560 --> 00:28:03,580
+Take the root D-R-S.
+
+724
+00:28:04,360 --> 00:28:05,740
+D-R-S means he studied.
+
+725
+00:28:06,060 --> 00:28:07,260
+Just a simple past tense.
+
+726
+00:28:07,440 --> 00:28:07,920
+D-R-S.
+
+727
+00:28:08,200 --> 00:28:08,860
+He studied.
+
+728
+00:28:09,000 --> 00:28:10,860
+Now put a Shada on the middle letter.
+
+729
+00:28:11,200 --> 00:28:11,660
+D-R-S.
+
+730
+00:28:11,780 --> 00:28:12,520
+You double the R.
+
+731
+00:28:12,660 --> 00:28:13,000
+D-R-S.
+
+732
+00:28:13,060 --> 00:28:13,980
+That means he taught.
+
+733
+00:28:14,180 --> 00:28:14,660
+Wait, really?
+
+734
+00:28:14,940 --> 00:28:16,820
+He learned versus he taught.
+
+735
+00:28:16,920 --> 00:28:17,820
+Those are opposites.
+
+736
+00:28:18,020 --> 00:28:20,100
+And the only difference is holding the consonant longer.
+
+737
+00:28:20,340 --> 00:28:20,740
+Yes.
+
+738
+00:28:21,240 --> 00:28:24,120
+He studied implies he did the action to himself.
+
+739
+00:28:24,640 --> 00:28:26,520
+He taught implies he made someone else study.
+
+740
+00:28:26,940 --> 00:28:30,900
+That concept causative is triggered just by doubling the middle root letter.
+
+741
+00:28:30,900 --> 00:28:33,120
+So physically, what does the Shada represent?
+
+742
+00:28:33,660 --> 00:28:35,740
+It represents extending the sound in time.
+
+743
+00:28:36,400 --> 00:28:37,160
+You hold the closure.
+
+744
+00:28:37,820 --> 00:28:44,300
+It's a tiny, mark-minimal ink that indicates a major structural change in the timing of the word.
+
+745
+00:28:44,880 --> 00:28:47,680
+A minimal mark for a major manipulation of time.
+
+746
+00:28:48,020 --> 00:28:48,960
+That is poetic.
+
+747
+00:28:49,900 --> 00:28:55,840
+A tiny, squiggly W that stretches time and reverses the flow of action from learning to teaching.
+
+748
+00:28:56,080 --> 00:28:57,740
+That's the beauty of this system.
+
+749
+00:28:57,740 --> 00:29:00,880
+It packs so much information into such small gestures.
+
+750
+00:29:01,180 --> 00:29:02,520
+We're heading into segment five now.
+
+751
+00:29:02,740 --> 00:29:03,680
+And I want to zoom out a bit.
+
+752
+00:29:04,060 --> 00:29:07,500
+We've been very technical physics, anatomy, morphology.
+
+753
+00:29:07,700 --> 00:29:09,460
+But writing is also cultural.
+
+754
+00:29:09,640 --> 00:29:10,200
+It's historical.
+
+755
+00:29:10,380 --> 00:29:11,780
+It carries the ghosts of the past.
+
+756
+00:29:11,880 --> 00:29:12,260
+It does.
+
+757
+00:29:12,340 --> 00:29:13,100
+It carries memory.
+
+758
+00:29:13,240 --> 00:29:16,560
+Every time you write, you are reenacting thousands of years of history.
+
+759
+00:29:16,860 --> 00:29:19,080
+The source talks about the ancestry of the alphabet.
+
+760
+00:29:19,400 --> 00:29:20,460
+Where does this all come from?
+
+761
+00:29:20,620 --> 00:29:23,320
+It traces back to the Phoenician and Proto-Sinaitic scripts.
+
+762
+00:29:23,440 --> 00:29:24,560
+This was the compression event.
+
+763
+00:29:24,600 --> 00:29:26,020
+Before this, we had hieroglyphs.
+
+764
+00:29:26,660 --> 00:29:27,720
+Hieroglyphs in Egypt.
+
+765
+00:29:28,220 --> 00:29:29,680
+Cuneiform and Mesopotamia.
+
+766
+00:29:29,880 --> 00:29:31,480
+These are magnificent systems.
+
+767
+00:29:31,780 --> 00:29:33,640
+But they were incredibly complex.
+
+768
+00:29:33,840 --> 00:29:35,100
+You had thousands of symbols.
+
+769
+00:29:35,520 --> 00:29:36,580
+Some stood for sounds.
+
+770
+00:29:36,740 --> 00:29:37,620
+Some for whole words.
+
+771
+00:29:37,740 --> 00:29:38,460
+Some for concepts.
+
+772
+00:29:39,000 --> 00:29:41,200
+You had to be an elite scribe to learn them.
+
+773
+00:29:41,280 --> 00:29:43,120
+You had to devote your life to it.
+
+774
+00:29:43,200 --> 00:29:44,680
+It was proprietary technology.
+
+775
+00:29:44,880 --> 00:29:46,560
+It kept the power in the hands of the few.
+
+776
+00:29:46,560 --> 00:29:47,160
+Exactly.
+
+777
+00:29:47,880 --> 00:29:52,660
+The invention of the alphabet around 1500 BC was a massive data compression.
+
+778
+00:29:53,680 --> 00:30:02,040
+Some geniuses in the Sinai Peninsula, probably miners or workers, not elites, realized, wait, we don't need a picture for every word.
+
+779
+00:30:02,120 --> 00:30:04,120
+We just need a symbol for every sound.
+
+780
+00:30:04,260 --> 00:30:07,400
+So they compressed thousands of glyphs down to what?
+
+781
+00:30:07,620 --> 00:30:08,940
+About 22 sounds.
+
+782
+00:30:09,140 --> 00:30:09,940
+22 symbols.
+
+783
+00:30:10,140 --> 00:30:11,840
+That is the ultimate minimal assembly.
+
+784
+00:30:12,000 --> 00:30:12,920
+It changed the world.
+
+785
+00:30:13,080 --> 00:30:14,420
+It democratized literacy.
+
+786
+00:30:14,420 --> 00:30:16,480
+You could teach a kid the alphabet in a week.
+
+787
+00:30:16,580 --> 00:30:17,860
+You couldn't do that with hieroglyphs.
+
+788
+00:30:18,060 --> 00:30:19,920
+It broke the monopoly on knowledge.
+
+789
+00:30:20,640 --> 00:30:21,660
+But here's the cool part.
+
+790
+00:30:22,360 --> 00:30:27,840
+Even though they stripped away the pictures, the ghosts of the pictures remained in the names of the letters.
+
+791
+00:30:28,060 --> 00:30:30,660
+This is the midrashic memory the paper discusses.
+
+792
+00:30:31,120 --> 00:30:31,640
+Midrashic.
+
+793
+00:30:32,060 --> 00:30:35,120
+That refers to the tradition of interpreting biblical text, right?
+
+794
+00:30:35,380 --> 00:30:35,700
+Yes.
+
+795
+00:30:36,280 --> 00:30:39,200
+It's finding deep symbolic meanings in the details.
+
+796
+00:30:40,080 --> 00:30:43,420
+Take the first letter, Aleph, or Elif in Arabic.
+
+797
+00:30:43,420 --> 00:30:45,260
+It comes from the word for ox, right?
+
+798
+00:30:45,940 --> 00:30:47,540
+Alp or Aleph meant ox.
+
+799
+00:30:48,160 --> 00:30:50,340
+The original drawing was an ox head with horns.
+
+800
+00:30:50,980 --> 00:30:54,760
+Over centuries, it rotated and simplified into the letter A we use today.
+
+801
+00:30:55,220 --> 00:30:57,020
+Turn a capital A upside down.
+
+802
+00:30:57,360 --> 00:30:58,260
+You see the horns.
+
+803
+00:30:58,460 --> 00:30:58,980
+I see it.
+
+804
+00:30:59,040 --> 00:31:00,260
+It's a triangle with legs.
+
+805
+00:31:00,480 --> 00:31:03,260
+So the form became abstract, but the meaning stuck.
+
+806
+00:31:03,600 --> 00:31:06,820
+The ox implies strength, leadership, the first one.
+
+807
+00:31:06,960 --> 00:31:09,200
+And the second letter, bet or bat.
+
+808
+00:31:09,400 --> 00:31:10,500
+Bet means house.
+
+809
+00:31:10,700 --> 00:31:12,200
+So you have the ox and the house.
+
+810
+00:31:12,200 --> 00:31:15,380
+And the paper mentions a narrative about the ox entering the house.
+
+811
+00:31:15,580 --> 00:31:15,680
+Right.
+
+812
+00:31:16,040 --> 00:31:21,520
+Midrashic interpretation might say, the strong leader, ox, enters the enclosure, house.
+
+813
+00:31:21,920 --> 00:31:23,020
+It creates a story.
+
+814
+00:31:23,600 --> 00:31:25,820
+Now, the expert insight here is crucial.
+
+815
+00:31:26,360 --> 00:31:30,540
+The scribes probably didn't plan this narrative when they were simplifying the shapes.
+
+816
+00:31:30,640 --> 00:31:31,940
+They were just trying to write faster.
+
+817
+00:31:32,060 --> 00:31:33,920
+They weren't trying to write a philosophy book in the alphabet.
+
+818
+00:31:34,100 --> 00:31:35,360
+So it wasn't a deliberate code.
+
+819
+00:31:35,720 --> 00:31:36,400
+Likely not.
+
+820
+00:31:36,400 --> 00:31:41,660
+But, and this is big, the fact that people interpreted it that way helped the alphabet survive.
+
+821
+00:31:41,820 --> 00:31:43,180
+It's cultural stabilization.
+
+822
+00:31:43,560 --> 00:31:44,240
+Ah, I see.
+
+823
+00:31:44,680 --> 00:31:48,320
+If you believe the letter A is just a random line, you might change it.
+
+824
+00:31:48,620 --> 00:31:51,220
+You might decide to draw it as a circle tomorrow because you're bored.
+
+825
+00:31:51,340 --> 00:31:51,700
+Exactly.
+
+826
+00:31:51,920 --> 00:31:56,080
+But if you believe A is the sacred ox of leadership, you don't touch it.
+
+827
+00:31:56,200 --> 00:31:56,920
+You preserve it.
+
+828
+00:31:57,000 --> 00:31:57,860
+It becomes sacred.
+
+829
+00:31:58,380 --> 00:32:01,080
+This symbolic layering acts as a cultural glue.
+
+830
+00:32:01,080 --> 00:32:05,520
+It kept the shape stable for thousands of years, even as languages changed.
+
+831
+00:32:05,880 --> 00:32:06,680
+That's fascinating.
+
+832
+00:32:06,800 --> 00:32:09,420
+So the physics, laziness, kept it efficient.
+
+833
+00:32:09,700 --> 00:32:12,980
+But the stories, symbolism, kept it protected.
+
+834
+00:32:13,220 --> 00:32:13,660
+Exactly.
+
+835
+00:32:13,860 --> 00:32:15,320
+A dual layer of survival.
+
+836
+00:32:15,920 --> 00:32:19,580
+The biological pressure to simplify and the cultural pressure to preserve.
+
+837
+00:32:19,980 --> 00:32:22,780
+There is one last historical point in this segment about ligatures.
+
+838
+00:32:23,280 --> 00:32:27,620
+We talked about how the script flows, but in the early days, it flowed a little too wildly.
+
+839
+00:32:28,140 --> 00:32:29,920
+It was combinatorial explosion.
+
+840
+00:32:29,920 --> 00:32:34,500
+In early manuscripts, the shape of a letter could change drastically depending on what
+
+841
+00:32:34,500 --> 00:32:36,580
+letter came before it and what letter came after it.
+
+842
+00:32:36,780 --> 00:32:41,120
+So an N might look one way next to a B and totally different next to an R.
+
+843
+00:32:41,360 --> 00:32:41,640
+Right.
+
+844
+00:32:42,060 --> 00:32:46,680
+And if you have 28 letters and each one changes based on its neighbors, you have thousands
+
+845
+00:32:46,680 --> 00:32:48,000
+of possible combinations.
+
+846
+00:32:48,700 --> 00:32:50,860
+That is a huge cognitive load for a writer.
+
+847
+00:32:51,040 --> 00:32:53,020
+You have to remember too many shapes.
+
+848
+00:32:53,300 --> 00:32:54,140
+So how did they fix it?
+
+849
+00:32:54,840 --> 00:32:55,320
+Standardization.
+
+850
+00:32:55,320 --> 00:32:57,960
+They boiled it down to just four positions.
+
+851
+00:32:58,700 --> 00:33:04,760
+Initial, start of word, medial, middle, final, end, and isolated, alone.
+
+852
+00:33:04,980 --> 00:33:05,380
+That's it.
+
+853
+00:33:05,600 --> 00:33:06,100
+Just four.
+
+854
+00:33:06,320 --> 00:33:06,780
+Just four.
+
+855
+00:33:07,100 --> 00:33:10,680
+Instead of infinite variations, you only need to learn four shapes per letter.
+
+856
+00:33:11,160 --> 00:33:14,760
+And honestly, for most letters, the initial and medial are basically the same.
+
+857
+00:33:15,180 --> 00:33:17,140
+This was another massive optimization.
+
+858
+00:33:17,560 --> 00:33:19,500
+It reduced the search space for the brain.
+
+859
+00:33:19,500 --> 00:33:23,180
+It's like they were constantly patching the software to make it run smoother on the human
+
+860
+00:33:23,180 --> 00:33:23,560
+hardware.
+
+861
+00:33:23,860 --> 00:33:24,940
+That is the perfect metaphor.
+
+862
+00:33:25,100 --> 00:33:26,820
+The hardware is our hand and eye.
+
+863
+00:33:27,080 --> 00:33:28,240
+The software is the script.
+
+864
+00:33:28,620 --> 00:33:32,880
+And for centuries, they were optimizing the code to run as efficiently as possible on that
+
+865
+00:33:32,880 --> 00:33:33,920
+biological machine.
+
+866
+00:33:34,300 --> 00:33:38,840
+So bringing this all together, we started with the mission to understand how laziness and
+
+867
+00:33:38,840 --> 00:33:40,220
+clarity fought each other.
+
+868
+00:33:40,400 --> 00:33:44,100
+And we found that the Arabic script is essentially a peace treaty between them.
+
+869
+00:33:44,380 --> 00:33:45,160
+It is an equilibrium.
+
+870
+00:33:45,600 --> 00:33:46,880
+Let's recap the balance points.
+
+871
+00:33:46,880 --> 00:33:52,020
+It balances speed, cursive, against legibility, dots, and non-connecting letters.
+
+872
+00:33:52,300 --> 00:33:57,980
+It balances the skeleton, the motor flow, against the augmentation, the specific information.
+
+873
+00:33:58,340 --> 00:34:02,700
+It balances the root, the concept, against the pattern, the function.
+
+874
+00:34:02,960 --> 00:34:07,580
+It really is a durable residue of embodied production, to quote the paper again.
+
+875
+00:34:08,020 --> 00:34:11,660
+It looks the way it does because human hands are lazy and human eyes are picky.
+
+876
+00:34:11,800 --> 00:34:12,700
+And because it worked.
+
+877
+00:34:13,060 --> 00:34:13,860
+It survived.
+
+878
+00:34:13,860 --> 00:34:17,280
+It transmitted knowledge across empires and centuries.
+
+879
+00:34:17,560 --> 00:34:20,020
+It is an incredibly successful piece of technology.
+
+880
+00:34:20,680 --> 00:34:24,980
+Now, before we go, the expert in the source poses a final provocative thought.
+
+881
+00:34:25,280 --> 00:34:28,200
+And this is something I want our listeners to really mull over.
+
+882
+00:34:28,420 --> 00:34:28,800
+Yes.
+
+883
+00:34:29,140 --> 00:34:31,800
+We've spent this whole hour talking about embodied constraint.
+
+884
+00:34:32,080 --> 00:34:35,080
+The ink flow, the friction of the pen, the cramp of the hand.
+
+885
+00:34:35,280 --> 00:34:35,460
+But...
+
+886
+00:34:35,460 --> 00:34:36,480
+We don't write like that anymore.
+
+887
+00:34:36,600 --> 00:34:37,060
+We type.
+
+888
+00:34:37,220 --> 00:34:39,580
+I am tapping on glass or clicking plastic keys.
+
+889
+00:34:39,740 --> 00:34:40,820
+The friction is gone.
+
+890
+00:34:41,100 --> 00:34:42,000
+The ink is gone.
+
+891
+00:34:42,000 --> 00:34:44,380
+The motor constraint of the curve is gone.
+
+892
+00:34:44,520 --> 00:34:45,100
+Think about it.
+
+893
+00:34:45,340 --> 00:34:50,240
+The energy cost of typing a Z is the exact same as typing an A. It's just a keystroke.
+
+894
+00:34:50,520 --> 00:34:55,240
+The energy cost of typing a complex letter like shin is the same as a simple letter like ba.
+
+895
+00:34:55,400 --> 00:34:55,880
+Whoa.
+
+896
+00:34:56,220 --> 00:35:00,640
+So the economic pressure that shaped the script has evaporated.
+
+897
+00:35:00,740 --> 00:35:01,780
+It has shifted entirely.
+
+898
+00:35:02,000 --> 00:35:03,880
+The thermodynamic landscape has changed.
+
+899
+00:35:03,880 --> 00:35:11,740
+So the question is, if writing systems evolve like biological organisms under pressure, what happens now that the pressure is gone?
+
+900
+00:35:12,320 --> 00:35:12,980
+Or changed?
+
+901
+00:35:13,360 --> 00:35:15,240
+Will our scripts lose their efficiency?
+
+902
+00:35:15,620 --> 00:35:16,560
+Will they become bloated?
+
+903
+00:35:16,780 --> 00:35:19,280
+Or will we see new forms of dots and ligatures?
+
+904
+00:35:19,500 --> 00:35:20,400
+Think about emojis.
+
+905
+00:35:20,780 --> 00:35:21,220
+Emojis.
+
+906
+00:35:21,340 --> 00:35:22,280
+Think about a text message.
+
+907
+00:35:22,560 --> 00:35:23,960
+It's often ambiguous, right?
+
+908
+00:35:24,240 --> 00:35:25,700
+Tone is hard to read in plain text.
+
+909
+00:35:26,040 --> 00:35:26,360
+Fine.
+
+910
+00:35:26,420 --> 00:35:28,080
+Does that mean I'm good or I'm angry?
+
+911
+00:35:28,320 --> 00:35:30,300
+It's the RASM problem all over again.
+
+912
+00:35:30,440 --> 00:35:33,900
+It's ambiguous, the letters are clear, but the intent is blurry.
+
+913
+00:35:34,180 --> 00:35:34,900
+So what do we do?
+
+914
+00:35:35,100 --> 00:35:36,480
+We add a smiley face.
+
+915
+00:35:37,120 --> 00:35:38,380
+Or a thumbs up.
+
+916
+00:35:38,480 --> 00:35:39,420
+Or a spell emoji.
+
+917
+00:35:39,600 --> 00:35:40,300
+We add a dot.
+
+918
+00:35:40,540 --> 00:35:41,220
+We add a dot.
+
+919
+00:35:41,840 --> 00:35:43,760
+The emoji is the new diacritic.
+
+920
+00:35:44,320 --> 00:35:48,380
+It is a minimal assembly added to the text to clarify the emotional intent.
+
+921
+00:35:48,760 --> 00:35:53,800
+It's cheap energy-wise, just a click, but it has high informational return.
+
+922
+00:35:54,120 --> 00:35:55,080
+That is a wild thought.
+
+923
+00:35:55,360 --> 00:35:56,820
+Emojis are the new vowel marks.
+
+924
+00:35:56,820 --> 00:35:59,900
+We might be watching a new stabilization happen in real time.
+
+925
+00:36:00,520 --> 00:36:04,760
+The digital age is a new environment, and the organism of language is adapting again.
+
+926
+00:36:05,240 --> 00:36:08,860
+It's finding a new equilibrium between speed and clarity.
+
+927
+00:36:09,320 --> 00:36:11,560
+I'm going to be thinking about that every time I'm in the text message now.
+
+928
+00:36:12,220 --> 00:36:15,580
+Every time I hesitate and add a lull, just to make sure I don't sound mean.
+
+929
+00:36:15,700 --> 00:36:19,160
+That lull is you being an efficient scribe, preventing ambiguity.
+
+930
+00:36:19,660 --> 00:36:20,920
+You are part of the evolution.
+
+931
+00:36:21,460 --> 00:36:24,120
+Well, on that note, we are going to wrap up this deep dive.
+
+932
+00:36:24,120 --> 00:36:28,360
+I hope you look at the next piece of writing you see, whether it's Arabic, English, or
+
+933
+00:36:28,360 --> 00:36:32,420
+a text message, and see the invisible history of muscles and nerves behind it.
+
+934
+00:36:32,500 --> 00:36:34,800
+It's all just human energy, preserved in ink and pixels.
+
+935
+00:36:35,140 --> 00:36:35,760
+Thanks for listening.
+
+936
+00:36:36,000 --> 00:36:37,200
+We'll see you in the next deep dive.
+

@@ -1,0 +1,1740 @@
+1
+00:00:00,000 --> 00:00:12,680
+Lecture 3, Divine Predestination and Foreknowledge
+
+2
+00:00:12,680 --> 00:00:24,680
+In the last lecture, we looked at two forms of necessity, fate and karma.
+
+3
+00:00:24,680 --> 00:00:30,480
+Today, we'll look at notions of necessity that have arisen more recently from the Judeo-Christian
+
+4
+00:00:30,480 --> 00:00:31,380
+religious tradition.
+
+5
+00:00:31,940 --> 00:00:34,840
+And once again, we'll look at two different forms of necessity.
+
+6
+00:00:35,340 --> 00:00:41,440
+One idea is the idea of predestination, the idea that God has pre-planned everything that's
+
+7
+00:00:41,440 --> 00:00:42,080
+going to happen.
+
+8
+00:00:42,660 --> 00:00:48,460
+A very different idea that's related to questions about free will is the idea of divine omniscience,
+
+9
+00:00:48,560 --> 00:00:52,640
+that maybe God didn't plan everything that would happen, but he at least knows everything
+
+10
+00:00:52,640 --> 00:00:53,300
+that will happen.
+
+11
+00:00:53,300 --> 00:00:58,380
+And we'll look at both of these issues and how they relate to the idea of free will,
+
+12
+00:00:58,500 --> 00:01:03,600
+both divine predestination in relation to free will and divine omniscience in relation to
+
+13
+00:01:03,600 --> 00:01:04,040
+free will.
+
+14
+00:01:05,140 --> 00:01:11,480
+The major religious movements in the Judeo-Christian tradition, Judaism, Christianity and Islam,
+
+15
+00:01:12,120 --> 00:01:17,260
+at least some parts of them, some sects within those religions have embraced the idea of divine
+
+16
+00:01:17,260 --> 00:01:18,160
+predestination.
+
+17
+00:01:18,160 --> 00:01:23,300
+And on that view, again, the idea is that God determined what would happen to each of
+
+18
+00:01:23,300 --> 00:01:23,600
+us.
+
+19
+00:01:24,220 --> 00:01:30,400
+And we find this in, not in the sort of broad traditions, that it isn't the case that the
+
+20
+00:01:30,400 --> 00:01:36,580
+entire religious tradition in Judaism or Christianity or Islam accepts predestination, but there are
+
+21
+00:01:36,580 --> 00:01:38,580
+representative sects in each case.
+
+22
+00:01:38,580 --> 00:01:45,700
+So, in Judaism, the early Jewish sect, the Essenes, accepted some form of predestination.
+
+23
+00:01:46,300 --> 00:01:51,660
+The Essenes were active around the time of Jesus, and it's thought that the Dead Sea Scrolls were
+
+24
+00:01:51,660 --> 00:01:53,620
+written by members of the Essenes.
+
+25
+00:01:54,200 --> 00:01:59,560
+Most of what we know about the Essenes comes from the Bible and from the Jewish historian,
+
+26
+00:01:59,560 --> 00:02:03,840
+Josephus, who lived from about 37 to 101 CE.
+
+27
+00:02:04,540 --> 00:02:10,960
+And Josephus says that the sect of the Essenes affirm that fate governs all things and that
+
+28
+00:02:10,960 --> 00:02:13,960
+nothing befalls men but what is according to its determination.
+
+29
+00:02:14,920 --> 00:02:20,780
+So, the Essenes think that God has set everything out, that everything that happens to us has already
+
+30
+00:02:20,780 --> 00:02:22,400
+been pre-planned by God.
+
+31
+00:02:22,400 --> 00:02:30,020
+In the Islamic tradition, a minor sect known as the Jabirites also maintained that God determines
+
+32
+00:02:30,020 --> 00:02:30,480
+everything.
+
+33
+00:02:30,920 --> 00:02:36,800
+The issue of predestination in Islam is vexed, that many people in Islam are worried about
+
+34
+00:02:36,800 --> 00:02:38,660
+the possibility that everything is predestined.
+
+35
+00:02:39,080 --> 00:02:43,320
+The one sect that we know fully embrace predestination is the Jabirites.
+
+36
+00:02:44,100 --> 00:02:49,960
+But the best-known version of predestination comes in the Christian tradition with Calvinism.
+
+37
+00:02:49,960 --> 00:02:55,160
+Most famously, the Calvinists accepted some form of predestination.
+
+38
+00:02:55,800 --> 00:03:02,500
+John Calvin was a Protestant theologian who lived from 1509 to 1564, and he developed an
+
+39
+00:03:02,500 --> 00:03:05,100
+extremely influential form of Protestantism.
+
+40
+00:03:05,740 --> 00:03:11,760
+And a critical part of this version of Protestantism was the doctrine of predestination.
+
+41
+00:03:12,300 --> 00:03:15,100
+Calvin explains the view as follows.
+
+42
+00:03:15,100 --> 00:03:21,060
+He says, by predestination, we mean the eternal decree of God, by which he determined with
+
+43
+00:03:21,060 --> 00:03:24,500
+himself whatever he wished to happen with regard to every man.
+
+44
+00:03:25,060 --> 00:03:30,580
+All are not created on equal terms, but some are preordained to eternal life, others to eternal
+
+45
+00:03:30,580 --> 00:03:31,200
+damnation.
+
+46
+00:03:32,000 --> 00:03:37,880
+So, Calvin thinks that God pre-planned everything, including whether a particular individual would
+
+47
+00:03:37,880 --> 00:03:39,780
+go to heaven or to hell.
+
+48
+00:03:40,380 --> 00:03:43,460
+Now, you might wonder, why does Calvin adopt this view?
+
+49
+00:03:43,460 --> 00:03:44,940
+And he's very confident about it.
+
+50
+00:03:45,080 --> 00:03:52,100
+Much of it has to do with the idea of original sin, that we're all born tainted with original
+
+51
+00:03:52,100 --> 00:03:52,520
+sin.
+
+52
+00:03:53,000 --> 00:03:57,300
+Calvin thought that that was a crucial part of the Christian faith.
+
+53
+00:03:57,800 --> 00:04:03,920
+As a result, because we're all tainted by sin, none of us deserve salvation because we're
+
+54
+00:04:03,920 --> 00:04:04,940
+all really wretched.
+
+55
+00:04:05,440 --> 00:04:08,300
+Salvation doesn't get earned by our activity.
+
+56
+00:04:08,300 --> 00:04:12,920
+Rather, if we're going to be saved, if we're going to be saved and sent to heaven, it would
+
+57
+00:04:12,920 --> 00:04:16,380
+only be because God elects us through his grace.
+
+58
+00:04:16,500 --> 00:04:22,060
+God decides he's going to give us a gift and let us have a pleasant afterlife as opposed
+
+59
+00:04:22,060 --> 00:04:23,120
+to eternal damnation.
+
+60
+00:04:24,440 --> 00:04:31,880
+Another part of Calvin's reason for promoting predestination is biblical texts that can be
+
+61
+00:04:31,880 --> 00:04:34,540
+interpreted as supporting divine predestination.
+
+62
+00:04:34,540 --> 00:04:40,600
+For example, we find a passage in the book of Romans that suggests that God loved Jacob
+
+63
+00:04:40,600 --> 00:04:46,700
+and hated Esau, but then the text continues, quote, though they were not yet born and had
+
+64
+00:04:46,700 --> 00:04:48,960
+done nothing, either good or bad.
+
+65
+00:04:49,580 --> 00:04:53,920
+So, God has decided that he doesn't like one and he likes the other, even before they've
+
+66
+00:04:53,920 --> 00:04:54,420
+done anything.
+
+67
+00:04:55,140 --> 00:05:01,520
+So, in the passage in Romans, this is connected with the idea that what matters for God's favors
+
+68
+00:05:01,520 --> 00:05:07,060
+is not the deeds of the individual, but the election made by God, God's decision, yes,
+
+69
+00:05:07,120 --> 00:05:08,580
+I'm going to save this individual.
+
+70
+00:05:10,940 --> 00:05:16,440
+These religious movements that embrace predestination, you might wonder, well, what do they think about
+
+71
+00:05:16,440 --> 00:05:17,040
+responsibility?
+
+72
+00:05:17,420 --> 00:05:20,060
+What do they think about whether people deserve to be punished?
+
+73
+00:05:20,500 --> 00:05:22,100
+That's a really interesting question.
+
+74
+00:05:22,240 --> 00:05:24,020
+Historically, how did they react to this?
+
+75
+00:05:24,140 --> 00:05:27,300
+So, they think people are predestined for various activities.
+
+76
+00:05:27,780 --> 00:05:30,960
+Do they think that they still deserve to be punished or rewarded?
+
+77
+00:05:30,960 --> 00:05:37,060
+Do they think their actions still merit some kind of responsibility attribution, some kind
+
+78
+00:05:37,060 --> 00:05:39,240
+of sense of deserving activities?
+
+79
+00:05:39,840 --> 00:05:45,460
+And in all three cases, the Essenes, the Jabberites, and the Calvinists, the answer is yes.
+
+80
+00:05:45,500 --> 00:05:48,160
+They think that people still do deserve to be punished.
+
+81
+00:05:48,460 --> 00:05:54,280
+So, Josephus says that the Essenes allot to bad souls a dark and tempestuous den full of
+
+82
+00:05:54,280 --> 00:05:55,680
+never-ceasing punishments.
+
+83
+00:05:56,260 --> 00:05:59,580
+So, they think that people should be punished if they do bad things.
+
+84
+00:05:59,580 --> 00:06:04,800
+And in the Dead Sea Scrolls, which, as I said, is presumed to have been written by Essenes,
+
+85
+00:06:05,100 --> 00:06:10,920
+we find a description of an initiation rite that includes the following curse on evildoers.
+
+86
+00:06:11,500 --> 00:06:14,140
+Be cursed because of all your guilty wickedness.
+
+87
+00:06:14,580 --> 00:06:17,740
+May he deliver you up for torture at the hands of the vengeful Avengers.
+
+88
+00:06:18,400 --> 00:06:21,940
+May he visit you with destruction by the hand of all the reekers of revenge.
+
+89
+00:06:22,460 --> 00:06:25,440
+Be cursed without mercy because of the darkness of your deeds.
+
+90
+00:06:25,440 --> 00:06:28,620
+Be damned in the shadowy place of everlasting fire.
+
+91
+00:06:29,300 --> 00:06:33,920
+So, these guys thought, yeah, when somebody does something bad, God should punish them
+
+92
+00:06:33,920 --> 00:06:38,200
+and he should punish them severely, damning them to the shadowy place of everlasting fire.
+
+93
+00:06:39,320 --> 00:06:45,340
+When we turn to Islam, although there's variation, as I said, on whether predestination is true
+
+94
+00:06:45,340 --> 00:06:51,080
+in Islam, all parties, all Islamic sects agree that divine justice is guaranteed.
+
+95
+00:06:51,080 --> 00:06:56,120
+That anything God does, any punishment he meets out, is appropriate.
+
+96
+00:06:56,380 --> 00:06:57,480
+It's a just punishment.
+
+97
+00:06:58,540 --> 00:07:06,280
+Now, we don't know what the Jabberites in Islam or the Essenes in Judaism said about the apparent conflict.
+
+98
+00:07:06,440 --> 00:07:11,160
+How did they think about this apparent conflict between responsibility and predestination?
+
+99
+00:07:11,540 --> 00:07:14,040
+A lot of people think that there is this conflict between those.
+
+100
+00:07:14,040 --> 00:07:20,020
+We don't know what the Essenes or the Jabberites thought about this, but Calvin faces the issue
+
+101
+00:07:20,020 --> 00:07:22,420
+head on and discusses it at some length.
+
+102
+00:07:23,040 --> 00:07:30,260
+So, at one point in his works, he writes, none perish without deserving it, and the reprobates
+
+103
+00:07:30,260 --> 00:07:33,500
+suffer nothing which is not accordant with the most perfect justice.
+
+104
+00:07:33,960 --> 00:07:37,140
+So, he says, people deserve eternal damnation.
+
+105
+00:07:37,720 --> 00:07:40,360
+He goes on to say something that I find kind of remarkable.
+
+106
+00:07:40,360 --> 00:07:46,140
+He says, and there is not the least occasion for our cavilling, cavilling, that's like minor
+
+107
+00:07:46,140 --> 00:07:46,800
+complaints.
+
+108
+00:07:47,460 --> 00:07:55,260
+So, questioning the propriety of being predestined to an eternal bout of suffering in hell, that's
+
+109
+00:07:55,260 --> 00:07:57,280
+likened to whining about trivialities.
+
+110
+00:07:57,420 --> 00:08:02,620
+That seems a little harsh to me, but Calvin thinks that people are just wretched, and so
+
+111
+00:08:02,620 --> 00:08:04,120
+they deserve punishment.
+
+112
+00:08:04,620 --> 00:08:09,080
+So, if a person is saved, it's only because God is granting them a gift.
+
+113
+00:08:09,080 --> 00:08:14,380
+But his point is that that doesn't affect the idea that people deserve their punishment.
+
+114
+00:08:14,780 --> 00:08:16,840
+Everybody deserves to go to hell, he thinks.
+
+115
+00:08:16,980 --> 00:08:19,140
+It's just that God will save some of us.
+
+116
+00:08:20,180 --> 00:08:26,360
+These kinds of views of predestination do seem to be troubling for the way we think about
+
+117
+00:08:26,360 --> 00:08:27,000
+responsibility.
+
+118
+00:08:27,380 --> 00:08:33,500
+The idea that God has predetermined everything comes in some kind of intuitive conflict with
+
+119
+00:08:33,500 --> 00:08:36,580
+the idea of divine justice and moral responsibility.
+
+120
+00:08:36,580 --> 00:08:44,800
+And the major Abrahamic religions, Judaism, Christianity, and Islam, have on the whole largely rejected
+
+121
+00:08:44,800 --> 00:08:46,980
+predestination views about God.
+
+122
+00:08:47,480 --> 00:08:53,460
+And part of the reason for this seems to come from the worry that it's unclear how it could
+
+123
+00:08:53,460 --> 00:08:59,580
+be just for God to create someone who, by God's own plan, is condemned to hell.
+
+124
+00:08:59,580 --> 00:09:04,520
+That's something that a lot of philosophers and theologians and ordinary people find really
+
+125
+00:09:04,520 --> 00:09:04,960
+difficult.
+
+126
+00:09:05,660 --> 00:09:10,240
+And there is a long history of debate about this, particularly in Christianity.
+
+127
+00:09:10,900 --> 00:09:13,640
+And I want to give you some idea of how this played out.
+
+128
+00:09:13,740 --> 00:09:15,340
+It's intrinsically interesting anyway.
+
+129
+00:09:15,480 --> 00:09:23,460
+But in the fourth century, the theologian Pelagius, who lived from about 360 to 420, rejected the
+
+130
+00:09:23,460 --> 00:09:29,700
+doctrine of original sin, which again is the view that according to which everybody is born with
+
+131
+00:09:29,700 --> 00:09:30,920
+sin on their souls.
+
+132
+00:09:31,680 --> 00:09:38,220
+And in addition, Pelagius argued that our own free choices play a key role in whether we get
+
+133
+00:09:38,220 --> 00:09:38,820
+to go to heaven.
+
+134
+00:09:39,020 --> 00:09:42,020
+So how we choose determines whether we go to heaven.
+
+135
+00:09:43,400 --> 00:09:49,480
+Pelagius's overall view was opposed by Augustine, who was one of the most important theologians in
+
+136
+00:09:49,480 --> 00:09:50,560
+the history of Christianity.
+
+137
+00:09:51,080 --> 00:09:58,520
+Augustine lived from 354 to 430, and he defended the doctrine of original sin, as well as the
+
+138
+00:09:58,520 --> 00:10:03,440
+doctrine that we only get salvation through an act of God's grace, not through anything
+
+139
+00:10:03,440 --> 00:10:04,720
+we can do ourselves.
+
+140
+00:10:05,680 --> 00:10:08,720
+This was the idea that Calvin was drawing on and building on.
+
+141
+00:10:09,100 --> 00:10:15,180
+Well before Calvin, Augustine maintained that what we all deserve is eternal damnation, and
+
+142
+00:10:15,180 --> 00:10:18,040
+there's nothing we can do to make us deserve anything else.
+
+143
+00:10:18,040 --> 00:10:22,960
+But God, through his grace, elects to provide salvation for some of us.
+
+144
+00:10:24,160 --> 00:10:25,400
+Now, back to Pelagius.
+
+145
+00:10:26,080 --> 00:10:31,700
+According to some versions of the history, the catalyst for Pelagius's view, his view that
+
+146
+00:10:31,700 --> 00:10:36,960
+we have free will, and it's an important part of what gets us into heaven, was Pelagius
+
+147
+00:10:36,960 --> 00:10:41,620
+was dismayed at the lack of moral rectitude among practicing Christians.
+
+148
+00:10:42,420 --> 00:10:47,700
+According to this story, he blamed the moral failings of Christians in the contemporary world
+
+149
+00:10:47,700 --> 00:10:54,200
+partly on their belief that salvation depended entirely on God's grace, and not at all on
+
+150
+00:10:54,200 --> 00:10:55,340
+what we choose to do.
+
+151
+00:10:55,540 --> 00:11:02,120
+His own proposal, that our own free choices determine our ultimate end, our own free choices
+
+152
+00:11:02,120 --> 00:11:07,040
+fix whether we go to heaven, that seemed much more likely to inspire good behavior.
+
+153
+00:11:07,040 --> 00:11:14,680
+At any rate, Pelagius was accused of heresy, largely for denying original sin, and indeed he was
+
+154
+00:11:14,680 --> 00:11:20,840
+ultimately excommunicated, and the Catholic Church declared Pelagianism, the theology that
+
+155
+00:11:20,840 --> 00:11:22,640
+he was promoting, to be a heresy.
+
+156
+00:11:23,320 --> 00:11:30,700
+But his defense of free will against predestination presaged further defenses from subsequent theologians.
+
+157
+00:11:30,700 --> 00:11:41,460
+More than a millennium later, the Dutch theologian Jacob Arminius, who lived from 1560 to 1609, retained
+
+158
+00:11:41,460 --> 00:11:42,980
+the idea of original sin.
+
+159
+00:11:43,080 --> 00:11:45,580
+That is a large part of what got Pelagius in trouble.
+
+160
+00:11:46,260 --> 00:11:53,340
+But like Pelagius, Arminius rejected predestination and defended the view that people make free choices,
+
+161
+00:11:53,920 --> 00:11:58,000
+and that God elects for salvation the ones who make the right choices.
+
+162
+00:11:58,000 --> 00:12:03,720
+So, you make your choices, and God will decide whether you go to heaven based on those choices.
+
+163
+00:12:04,540 --> 00:12:10,560
+The school of thought that arose from Arminius' ideas was called Arminianism, and it was in direct
+
+164
+00:12:10,560 --> 00:12:12,160
+conflict with Calvinism.
+
+165
+00:12:13,380 --> 00:12:17,720
+Arminianism kept most of the Protestant theology that Calvin was promoting.
+
+166
+00:12:18,320 --> 00:12:21,640
+It rejected this crucial tenet, though, of predestination.
+
+167
+00:12:21,640 --> 00:12:29,780
+It's worth noting, emphasizing, that Arminianism is consistent with the idea that God knows
+
+168
+00:12:29,780 --> 00:12:30,180
+everything.
+
+169
+00:12:30,720 --> 00:12:35,720
+God can know how a person will exercise their free will, and God might accordingly know
+
+170
+00:12:35,720 --> 00:12:38,300
+well ahead of time whether they'll go to hell.
+
+171
+00:12:38,940 --> 00:12:44,280
+But what Arminius insisted on was that their choices will play a crucial part in where they
+
+172
+00:12:44,280 --> 00:12:44,540
+go.
+
+173
+00:12:44,640 --> 00:12:49,300
+So God will know whether they're going to go to hell, but what they choose will be an important
+
+174
+00:12:49,300 --> 00:12:50,960
+part of what fixes that.
+
+175
+00:12:52,260 --> 00:12:57,280
+So, Arminians maintain that God knows where each of his children would spend eternity, whether
+
+176
+00:12:57,280 --> 00:12:59,000
+they would be in heaven or hell.
+
+177
+00:12:59,380 --> 00:13:05,020
+But what choice the person makes, that's a crucial part of what determines where they'll
+
+178
+00:13:05,020 --> 00:13:06,220
+end up spending eternity.
+
+179
+00:13:07,800 --> 00:13:14,040
+There's a really interesting historical episode on this in 18th century American religious history,
+
+180
+00:13:14,040 --> 00:13:19,720
+an episode that looks at the difference between Arminian views and Calvinist views.
+
+181
+00:13:20,200 --> 00:13:25,340
+And this is because the Calvinist Puritans were probably the most important initial Christian
+
+182
+00:13:25,340 --> 00:13:26,860
+presence in the New World.
+
+183
+00:13:27,960 --> 00:13:30,000
+They were the dominant religion in the New World.
+
+184
+00:13:30,800 --> 00:13:37,540
+But a number of ministers began promoting Arminianism about predestination, the view that predestination
+
+185
+00:13:37,540 --> 00:13:40,060
+was false, that God didn't predestine everybody.
+
+186
+00:13:40,060 --> 00:13:46,740
+Rather, we make our own free choices, and those choices help determine whether we go to heaven
+
+187
+00:13:46,740 --> 00:13:47,180
+or hell.
+
+188
+00:13:47,880 --> 00:13:53,840
+And interestingly, Arminianism came to overtake Calvinism as the dominant Protestant position
+
+189
+00:13:53,840 --> 00:13:56,460
+about predestination in the New World.
+
+190
+00:13:57,080 --> 00:14:02,340
+Now, I think that what's interesting about this is that the people, the people who were
+
+191
+00:14:02,340 --> 00:14:05,100
+practicing their religion, were voting with their feet.
+
+192
+00:14:05,100 --> 00:14:11,440
+The idea that our salvation depends on free will is a much more palatable option than the
+
+193
+00:14:11,440 --> 00:14:13,660
+predestinarianism that we got from Calvin.
+
+194
+00:14:14,220 --> 00:14:19,140
+This is, of course, just one episode in religious history, but we know more generally that there
+
+195
+00:14:19,140 --> 00:14:23,600
+was a great historical shift away from the idea of predestination.
+
+196
+00:14:25,360 --> 00:14:30,740
+Many philosophers, then, and theologians were troubled by the apparent conflict between
+
+197
+00:14:30,740 --> 00:14:32,760
+predestination and free will.
+
+198
+00:14:32,760 --> 00:14:38,640
+But, perhaps more impressively, ordinary people seem to have been greatly moved by this as
+
+199
+00:14:38,640 --> 00:14:38,900
+well.
+
+200
+00:14:39,420 --> 00:14:45,380
+So much so that the predestinarian views did not get preserved nearly so well as the upstart
+
+201
+00:14:45,380 --> 00:14:48,020
+rivals that emphasized the existence of free will.
+
+202
+00:14:48,140 --> 00:14:53,560
+So far, we've been focusing on the strong claim that God preordained everything, that God
+
+203
+00:14:53,560 --> 00:14:55,080
+set everything up in advance.
+
+204
+00:14:55,080 --> 00:15:01,200
+Even if we give up on that idea, there's still a threat to free will and responsibility in
+
+205
+00:15:01,200 --> 00:15:03,360
+contemporary Judeo-Christian beliefs.
+
+206
+00:15:03,920 --> 00:15:08,320
+And that threat comes from the idea that God knows everything that we will do.
+
+207
+00:15:08,660 --> 00:15:10,860
+That's the thesis of divine omniscience.
+
+208
+00:15:11,500 --> 00:15:18,060
+And divine omniscience is more widely adopted among the Judeo-Christian tradition, and it does
+
+209
+00:15:18,060 --> 00:15:20,820
+seem to provide some kind of threat to free will.
+
+210
+00:15:20,820 --> 00:15:26,300
+So, according to many Abrahamic religions, many of the Christian groups, Islamic groups,
+
+211
+00:15:26,440 --> 00:15:32,380
+and Judaism itself, God doesn't pre-plan every event, but he does know everything.
+
+212
+00:15:32,740 --> 00:15:35,900
+And that means that God knows all of our future actions.
+
+213
+00:15:36,060 --> 00:15:38,180
+So, God knows what I'll choose for dinner tonight.
+
+214
+00:15:38,320 --> 00:15:40,540
+He knows what band I'll like next.
+
+215
+00:15:40,640 --> 00:15:42,480
+He knows when I'll decide to go to the movies.
+
+216
+00:15:42,620 --> 00:15:44,920
+He knows whether I'll decide to take a nap on the airplane.
+
+217
+00:15:45,420 --> 00:15:46,860
+He knows all of that stuff.
+
+218
+00:15:46,860 --> 00:15:52,780
+And that has been thought to be central to the religion, to the Abrahamic religions, because
+
+219
+00:15:52,780 --> 00:15:57,260
+to say that God doesn't know everything is to impose a limitation on God.
+
+220
+00:15:57,340 --> 00:16:00,360
+And God is supposed to be unlimited, and so God should know everything.
+
+221
+00:16:01,740 --> 00:16:06,640
+Now, unlike the doctrine of predestination, the doctrine of omniscience is central to the
+
+222
+00:16:06,640 --> 00:16:12,520
+Abrahamic religion, and yet it seems like there is some kind of tension between this view
+
+223
+00:16:12,520 --> 00:16:20,120
+and free will, because even if God doesn't dictate my choices, the choices seem already
+
+224
+00:16:20,120 --> 00:16:21,000
+to be mapped out.
+
+225
+00:16:21,160 --> 00:16:26,240
+They're pre-planned in that sense, that they're already, God already knows everything I'm going
+
+226
+00:16:26,240 --> 00:16:26,660
+to do.
+
+227
+00:16:26,800 --> 00:16:29,340
+And that at least creates an initial worry.
+
+228
+00:16:29,860 --> 00:16:34,780
+So, the initial worry is, if God knows everything I'm going to do, how can I really be free?
+
+229
+00:16:34,780 --> 00:16:41,080
+And the theologian I mentioned a moment ago, Augustine, provided one important point.
+
+230
+00:16:41,200 --> 00:16:46,560
+He made one important point about this, that at least starts to allay the worries.
+
+231
+00:16:46,760 --> 00:16:52,240
+So, he points out that even if God knows what we're going to decide, that doesn't mean that
+
+232
+00:16:52,240 --> 00:16:53,600
+God forced the decision.
+
+233
+00:16:54,740 --> 00:16:58,900
+God is predicting what we'll do, because he can see ahead to our free choices.
+
+234
+00:16:58,900 --> 00:17:05,320
+He sees the choices we'll make, but Augustine says, we still make the choices for ourselves.
+
+235
+00:17:05,980 --> 00:17:08,520
+And Augustine uses an analogy to make the point.
+
+236
+00:17:09,180 --> 00:17:15,080
+He says, I can remember what I chose in the past, and there is no way for me to alter those
+
+237
+00:17:15,080 --> 00:17:15,540
+decisions.
+
+238
+00:17:15,740 --> 00:17:21,200
+So, I remember what I had for dinner last night, and I can remember deciding to take a job at
+
+239
+00:17:21,200 --> 00:17:24,800
+the University of Arizona, and I can remember deciding to have children.
+
+240
+00:17:24,900 --> 00:17:26,600
+I can remember all of those decisions.
+
+241
+00:17:26,600 --> 00:17:30,060
+There's no way I can change the fact that I made those decisions.
+
+242
+00:17:30,300 --> 00:17:33,880
+I wouldn't want to change those decisions, except maybe about what I had for dinner.
+
+243
+00:17:34,340 --> 00:17:38,040
+But that doesn't mean that those decisions in the past weren't free.
+
+244
+00:17:38,620 --> 00:17:40,360
+Maybe those decisions were still free.
+
+245
+00:17:40,720 --> 00:17:44,720
+It's just that I can remember, I can know what the decisions were.
+
+246
+00:17:45,980 --> 00:17:49,280
+Something similar can be said, then, about God's foreknowledge.
+
+247
+00:17:49,620 --> 00:17:51,560
+He knows for a fact what we'll do.
+
+248
+00:17:51,560 --> 00:17:56,340
+But this is no more a threat to our freedom, Augustine says, than is the memory of our past
+
+249
+00:17:56,340 --> 00:17:56,780
+choices.
+
+250
+00:17:57,180 --> 00:18:00,560
+It's a fact that I decided to move to the University of Arizona.
+
+251
+00:18:00,780 --> 00:18:03,540
+But that doesn't mean that the choice wasn't free.
+
+252
+00:18:04,080 --> 00:18:10,080
+So, to take an example of someone else, a popular figure, a well-known figure, we all
+
+253
+00:18:10,080 --> 00:18:14,320
+know that Gerald Ford decided to pardon Richard Nixon.
+
+254
+00:18:14,320 --> 00:18:20,620
+But the fact that we know about Ford's decision doesn't mean that Ford's decision wasn't free.
+
+255
+00:18:21,260 --> 00:18:28,140
+So, just because God knows what my future decisions are, doesn't mean that my future decisions
+
+256
+00:18:28,140 --> 00:18:28,880
+are unfree.
+
+257
+00:18:30,260 --> 00:18:37,180
+At a minimum, it seems that divine omniscience isn't quite so troubling as divine predestination.
+
+258
+00:18:37,640 --> 00:18:43,340
+For God, knowing what I will decide, is a far cry from God causing me to make the decision.
+
+259
+00:18:43,340 --> 00:18:48,880
+Although this is somewhat comforting, many philosophers continue to think that there is
+
+260
+00:18:48,880 --> 00:18:49,740
+a problem here.
+
+261
+00:18:50,540 --> 00:18:55,400
+And the problem was brought out recently by the philosopher Nelson Pike, who's at the
+
+262
+00:18:55,400 --> 00:18:57,040
+University of California, Irvine.
+
+263
+00:18:57,400 --> 00:19:02,860
+And he's developed an influential argument that is aimed at showing that divine omniscience
+
+264
+00:19:02,860 --> 00:19:09,220
+continues to be a problem, even if you acknowledge Augustine's point that God is not causing
+
+265
+00:19:09,220 --> 00:19:09,900
+our decisions.
+
+266
+00:19:09,900 --> 00:19:15,620
+So, let's start with the assumption that God is everlasting.
+
+267
+00:19:16,220 --> 00:19:19,680
+That means God existed before the earth was created.
+
+268
+00:19:20,160 --> 00:19:25,360
+God will continue to exist after the earth is swallowed by the sun, that God continues to
+
+269
+00:19:25,360 --> 00:19:26,900
+exist throughout time.
+
+270
+00:19:27,880 --> 00:19:33,380
+That means that since God is always omniscient, God always knows everything, then God knew before
+
+271
+00:19:33,380 --> 00:19:37,760
+the earth was created that I would be giving these lectures on this particular day.
+
+272
+00:19:37,760 --> 00:19:40,380
+God also knew what I would be doing for a living.
+
+273
+00:19:40,560 --> 00:19:41,960
+He knew whether I would believe in God.
+
+274
+00:19:42,040 --> 00:19:43,000
+He knew all of that.
+
+275
+00:19:43,440 --> 00:19:48,860
+For any action that we perform, for any decision we make, God knew before he created the earth
+
+276
+00:19:48,860 --> 00:19:49,600
+that we would do it.
+
+277
+00:19:50,560 --> 00:19:56,660
+We can call this divine foreknowledge because the idea is that God knew what I would do before
+
+278
+00:19:56,660 --> 00:19:57,400
+I did it.
+
+279
+00:19:57,980 --> 00:20:00,240
+Now, that is all just background.
+
+280
+00:20:00,600 --> 00:20:05,180
+That's just clarifying what was already implicit in what we've discussed so far.
+
+281
+00:20:05,180 --> 00:20:08,420
+But now we can get to the nub of Pike's argument.
+
+282
+00:20:09,180 --> 00:20:15,640
+Pike says, if God knew before the earth existed that I would deliver this lecture today, then
+
+283
+00:20:15,640 --> 00:20:19,700
+it was not in my power to do anything other than deliver this lecture today.
+
+284
+00:20:20,160 --> 00:20:22,920
+I couldn't have refrained from presenting this lecture.
+
+285
+00:20:23,500 --> 00:20:28,800
+For if it was in my power to do that, then it would have been in my power to make it the
+
+286
+00:20:28,800 --> 00:20:32,000
+case that some of what God thought he knew was false.
+
+287
+00:20:32,000 --> 00:20:34,680
+But that's impossible, Pike says.
+
+288
+00:20:35,360 --> 00:20:38,100
+It would mean that I could make God not be omniscient.
+
+289
+00:20:38,520 --> 00:20:41,920
+So I would have the power to make God have a false belief.
+
+290
+00:20:42,060 --> 00:20:44,640
+And that, Pike says, is out of the question.
+
+291
+00:20:45,680 --> 00:20:50,620
+Now, this is kind of a fancy argument because it depends on the idea that it couldn't even
+
+292
+00:20:50,620 --> 00:20:53,460
+be possible that God has a false belief.
+
+293
+00:20:53,460 --> 00:20:59,200
+But for our purposes, we can probably make do with something less formal and more intuitive.
+
+294
+00:20:59,640 --> 00:21:05,220
+And that is, if God knows what I'm going to do before I do it, then all of my behavior
+
+295
+00:21:05,220 --> 00:21:07,200
+is fixed before I do it.
+
+296
+00:21:08,080 --> 00:21:12,800
+Crucially, I don't have the power to do anything that departs from God's foreknowledge.
+
+297
+00:21:12,960 --> 00:21:15,100
+I'm completely and utterly predictable.
+
+298
+00:21:15,900 --> 00:21:18,240
+At a minimum, this is really disorienting.
+
+299
+00:21:18,240 --> 00:21:22,700
+It also suggests that my actions are not open in the way I might have thought.
+
+300
+00:21:23,400 --> 00:21:27,320
+And this is really the core worry that philosophers continued to have.
+
+301
+00:21:27,800 --> 00:21:30,580
+I think of my actions as being genuinely open.
+
+302
+00:21:31,000 --> 00:21:33,480
+I can raise my hand or not raise my hand.
+
+303
+00:21:34,120 --> 00:21:39,240
+But if God already knows whether I'll raise my hand, then it seems that it is not really
+
+304
+00:21:39,240 --> 00:21:41,680
+open to me to raise or not raise my hand.
+
+305
+00:21:41,920 --> 00:21:45,300
+I have to do whatever it is that God believes that I'll do.
+
+306
+00:21:45,300 --> 00:21:51,740
+There is, though, a more powerful response to the problem of divine omniscience.
+
+307
+00:21:52,200 --> 00:21:56,820
+And it comes from the idea that God's relation to time is very different from ours.
+
+308
+00:21:57,980 --> 00:22:04,220
+The problem of divine omniscience is really a problem for free will because God knows what
+
+309
+00:22:04,220 --> 00:22:06,240
+we'll do before we do it.
+
+310
+00:22:06,660 --> 00:22:12,840
+That's why I tried to emphasize the idea of foreknowledge and that God exists in an
+
+311
+00:22:12,840 --> 00:22:13,880
+everlasting sense.
+
+312
+00:22:13,880 --> 00:22:18,340
+So if God knows what we'll do before we do it, then we arrive at these worries about
+
+313
+00:22:18,340 --> 00:22:22,480
+whether I really have the power to act other than God believes I will.
+
+314
+00:22:23,480 --> 00:22:28,540
+By contrast, to know about a person's choice as soon as they make the choice isn't a problem
+
+315
+00:22:28,540 --> 00:22:29,000
+at all.
+
+316
+00:22:29,420 --> 00:22:32,060
+So let's say I see you quickly swat a mosquito.
+
+317
+00:22:32,600 --> 00:22:35,180
+I know about your choice roughly as it happens.
+
+318
+00:22:35,720 --> 00:22:38,240
+But obviously, that's no barrier to free will.
+
+319
+00:22:38,320 --> 00:22:41,800
+It's not like we say, well, I saw you make that decision so it wasn't free.
+
+320
+00:22:41,800 --> 00:22:45,700
+Knowing your choice as you make it doesn't pose any problem at all.
+
+321
+00:22:46,700 --> 00:22:51,340
+So knowledge of someone's present choices doesn't suggest that their choice isn't free.
+
+322
+00:22:52,280 --> 00:22:58,700
+This kind of knowledge, the knowledge we have of a companion's present choices, some philosophers
+
+323
+00:22:58,700 --> 00:23:02,960
+say that's the appropriate analogy for how God knows about our actions.
+
+324
+00:23:02,960 --> 00:23:08,580
+And that's because God isn't everlasting as suggested in the foregoing argument.
+
+325
+00:23:08,820 --> 00:23:13,540
+That is, it isn't the case that God existed before the earth, then created the earth, then
+
+326
+00:23:13,540 --> 00:23:14,580
+watched what happened next.
+
+327
+00:23:14,940 --> 00:23:18,640
+God isn't like a spectator watching as things occur in time.
+
+328
+00:23:19,360 --> 00:23:22,700
+Rather, these philosophers suggested God is eternal.
+
+329
+00:23:23,240 --> 00:23:25,840
+And that means literally outside of time.
+
+330
+00:23:25,840 --> 00:23:31,140
+And this was the idea that was promoted by the philosopher Boethius, who lived from 480
+
+331
+00:23:31,140 --> 00:23:32,040
+to 524.
+
+332
+00:23:33,160 --> 00:23:39,560
+The appeal to the notion of eternity does seem to provide an interesting solution to the
+
+333
+00:23:39,560 --> 00:23:41,720
+problem of divine omniscience and free will.
+
+334
+00:23:42,320 --> 00:23:48,200
+For in that case, we should think of God as perceiving our choices as they happen, not
+
+335
+00:23:48,200 --> 00:23:49,780
+before he creates the earth.
+
+336
+00:23:50,200 --> 00:23:54,680
+When God perceives our choices from God's perspective, it's always the present.
+
+337
+00:23:54,680 --> 00:23:57,180
+So, for God, everything is simultaneous.
+
+338
+00:23:58,100 --> 00:24:03,800
+So, just as it's no threat to your free will, if I see you choose vanilla right now, it's
+
+339
+00:24:03,800 --> 00:24:09,640
+no threat to free will when God sees you choose vanilla in five years, because God's perception
+
+340
+00:24:09,640 --> 00:24:14,180
+of that doesn't occur at some time prior to your choice, because that isn't how God is.
+
+341
+00:24:14,260 --> 00:24:17,540
+God doesn't exist in this way that's stretched out across time.
+
+342
+00:24:17,900 --> 00:24:21,480
+Everything for God occurs simultaneous, simultaneously.
+
+343
+00:24:21,480 --> 00:24:28,140
+You might think that this is an unprincipled response to the objection, just trying to figure
+
+344
+00:24:28,140 --> 00:24:32,260
+out some way to get out of the problem without any kind of principled basis.
+
+345
+00:24:33,020 --> 00:24:37,660
+But in fact, Boethius thought that there was independent reason to believe that God should
+
+346
+00:24:37,660 --> 00:24:40,820
+be thought of as eternal rather than everlasting.
+
+347
+00:24:40,820 --> 00:24:47,980
+And the core idea is that the notion of being everlasting is just kind of beneath God.
+
+348
+00:24:48,300 --> 00:24:53,100
+God is supposed to be perfectly simple, not somehow spread out across time.
+
+349
+00:24:53,860 --> 00:24:59,500
+Rather, Boethius said, God possesses his existence, quote, completely and simultaneously.
+
+350
+00:25:00,220 --> 00:25:06,540
+So, it can't be that God is somehow a composite made up of all of these different points on a
+
+351
+00:25:06,540 --> 00:25:06,960
+timeline.
+
+352
+00:25:06,960 --> 00:25:13,340
+Another way that Boethius made the point was to say, if God existed in time, he would always
+
+353
+00:25:13,340 --> 00:25:18,120
+be tied to the, quote, so-called present of the short and fleeting moment.
+
+354
+00:25:18,780 --> 00:25:24,420
+And the general idea here is that being everlasting, existing in time, is inferior.
+
+355
+00:25:25,160 --> 00:25:27,780
+God doesn't have to count the minutes until the next event.
+
+356
+00:25:27,880 --> 00:25:31,820
+He doesn't have to say, boy, look at his watch and say, geez, I can't wait until the movie
+
+357
+00:25:31,820 --> 00:25:32,140
+starts.
+
+358
+00:25:32,180 --> 00:25:36,100
+He doesn't have to do that, because everything appears simultaneously to God.
+
+359
+00:25:36,100 --> 00:25:40,800
+His existence in time is very, very different from our existence in time.
+
+360
+00:25:42,160 --> 00:25:47,240
+In addition, some philosophers have thought that God can't change, that if God is perfect,
+
+361
+00:25:47,340 --> 00:25:50,600
+he can't change, because perfection is supposed to be singular.
+
+362
+00:25:51,240 --> 00:25:55,260
+And existing throughout time would involve God in some kinds of changes.
+
+363
+00:25:55,760 --> 00:26:01,280
+At a minimum, if God existed in time, God would change his relation to what counts as in the
+
+364
+00:26:01,280 --> 00:26:03,400
+past as he passes through time.
+
+365
+00:26:03,400 --> 00:26:09,080
+Although the eternity response seems to solve the problem, it's actually quite an ingenious
+
+366
+00:26:09,080 --> 00:26:09,560
+solution.
+
+367
+00:26:10,040 --> 00:26:12,380
+A number of philosophers have resisted this solution.
+
+368
+00:26:12,980 --> 00:26:19,240
+And one reason is because it seems to conflict with biblical texts that suggest that God is
+
+369
+00:26:19,240 --> 00:26:21,500
+really everlasting rather than eternal.
+
+370
+00:26:22,320 --> 00:26:28,680
+So most scriptural accounts of God portray God as interacting in the world in ways that seem
+
+371
+00:26:28,680 --> 00:26:31,160
+to conflict with the eternity interpretation.
+
+372
+00:26:31,360 --> 00:26:36,940
+Just to take one familiar example, God notices that people are behaving in bad ways.
+
+373
+00:26:37,240 --> 00:26:38,740
+He plans to produce a flood.
+
+374
+00:26:38,960 --> 00:26:40,400
+He tells Noah to build an ark.
+
+375
+00:26:40,740 --> 00:26:43,860
+After Noah builds the ark, God then produces the flood that he promised.
+
+376
+00:26:44,380 --> 00:26:48,300
+It sure looks like God exists in time if we're to believe this story.
+
+377
+00:26:48,300 --> 00:26:55,380
+Some theologians maintain that there's a mistake here in suggesting that this shows that God
+
+378
+00:26:55,380 --> 00:27:01,340
+exists in time, because what's really going on is God's actions are in time for us.
+
+379
+00:27:01,520 --> 00:27:02,940
+That's how we understand them.
+
+380
+00:27:03,100 --> 00:27:05,320
+But that doesn't mean that they're in time for God.
+
+381
+00:27:05,840 --> 00:27:11,480
+So while in Noah's case there was a particular day on which Noah heard from God, it needn't
+
+382
+00:27:11,480 --> 00:27:16,200
+have been the case that from God's perspective this happened at a particular moment in time
+
+383
+00:27:16,200 --> 00:27:19,540
+that he existed before and after which he still existed.
+
+384
+00:27:21,240 --> 00:27:26,940
+According to some contemporary philosophers, though, the view of God as eternal seems particularly
+
+385
+00:27:26,940 --> 00:27:29,960
+clearly in conflict with Christian views.
+
+386
+00:27:30,520 --> 00:27:36,740
+Because in Christianity, God sends his son to redeem mankind after the fall, after they
+
+387
+00:27:36,740 --> 00:27:38,560
+have come into sin.
+
+388
+00:27:38,560 --> 00:27:43,440
+In this case, it seems like God is responding to what happened in the world.
+
+389
+00:27:43,840 --> 00:27:49,300
+Indeed, it seems like what's going on is God is responding to the free choices of people.
+
+390
+00:27:50,760 --> 00:27:57,360
+And the Yale philosopher Nicholas Wolterstorff articulates this view as follows.
+
+391
+00:27:57,480 --> 00:28:01,700
+He said, God was not content to leave man in the mire of his misery.
+
+392
+00:28:02,300 --> 00:28:07,040
+Aware of what is going on, he has resolved, in response to man's sin and its resultant evils,
+
+393
+00:28:07,040 --> 00:28:08,380
+to bring about renewal.
+
+394
+00:28:08,380 --> 00:28:13,660
+He has indeed already been acting in accord with that resolve centrally and decisively
+
+395
+00:28:13,660 --> 00:28:16,780
+in the life, death, and resurrection of Jesus Christ.
+
+396
+00:28:17,840 --> 00:28:22,680
+So Wolterstorff certainly thinks that this doesn't fit with standard Christian theology,
+
+397
+00:28:22,820 --> 00:28:24,460
+the idea of God being eternal.
+
+398
+00:28:25,460 --> 00:28:30,460
+But this isn't the end of the story because it might be that our own limited understanding
+
+399
+00:28:30,460 --> 00:28:34,440
+that forces us into these kinds of interpretations.
+
+400
+00:28:34,840 --> 00:28:40,940
+Maybe God is standing outside of time, but we perceive his actions as being in time simply
+
+401
+00:28:40,940 --> 00:28:44,480
+because they're happening to us, beings who are in time.
+
+402
+00:28:44,980 --> 00:28:49,780
+Or, depending on one's views about the Bible, maybe the authors of the Bible were presenting
+
+403
+00:28:49,780 --> 00:28:52,600
+the events through their own limited understanding of the truth.
+
+404
+00:28:52,600 --> 00:28:58,520
+The Bible might present things in ways that we can easily grasp, even though their true
+
+405
+00:28:58,520 --> 00:29:01,220
+nature might be very different from our understanding.
+
+406
+00:29:02,280 --> 00:29:09,060
+But this defense of the eternity solution leads us directly into another main reason some philosophers
+
+407
+00:29:09,060 --> 00:29:11,780
+are dissatisfied with the eternity solution.
+
+408
+00:29:12,360 --> 00:29:15,820
+And that is that it's not clear what eternity is.
+
+409
+00:29:16,360 --> 00:29:20,040
+This notion of eternity is very difficult for us to comprehend.
+
+410
+00:29:20,040 --> 00:29:25,760
+And so the worry is that what Boethius has done is he's taken this difficult problem of
+
+411
+00:29:25,760 --> 00:29:28,920
+divine omniscience, and he's just thrown a mystery out of it.
+
+412
+00:29:28,960 --> 00:29:30,560
+He's just said, well, here's the solution.
+
+413
+00:29:30,840 --> 00:29:34,960
+Something you don't understand, eternity, explains why God can do this.
+
+414
+00:29:35,860 --> 00:29:40,640
+Now, a number of philosophers and theologians find this very discouraging, that trying to
+
+415
+00:29:40,640 --> 00:29:47,080
+solve a problem by invoking a mystery doesn't seem like it gets us very far advanced in the
+
+416
+00:29:47,080 --> 00:29:47,800
+dialectic.
+
+417
+00:29:47,800 --> 00:29:53,580
+But you may think that since the notion of God is already mysterious in important ways,
+
+418
+00:29:53,840 --> 00:29:59,000
+if you believe in God, you might not find it all that far-fetched to add to the mystery
+
+419
+00:29:59,000 --> 00:30:03,100
+that, in addition to the other things that are mysterious about God, God is eternal.
+
+420
+00:30:04,500 --> 00:30:10,960
+Now, if God is eternal in the way suggested by Boethius, this does seem to make the problem
+
+421
+00:30:10,960 --> 00:30:14,160
+of divine omniscience much less of a threat to our free will.
+
+422
+00:30:14,160 --> 00:30:18,940
+This is a case where a philosopher really came up with a pretty interesting idea about
+
+423
+00:30:18,940 --> 00:30:20,200
+how to solve the problem.
+
+424
+00:30:21,340 --> 00:30:29,040
+So, we've seen that in the kinds of views of religious determinism that we've had, or
+
+425
+00:30:29,040 --> 00:30:34,200
+religious necessity that we've looked at, divine predestination and divine omniscience
+
+426
+00:30:34,200 --> 00:30:37,040
+provide two different kinds of threats to free will.
+
+427
+00:30:37,040 --> 00:30:43,720
+But most philosophers, most theologians, most believers in religion reject the divine
+
+428
+00:30:43,720 --> 00:30:44,860
+predestination view.
+
+429
+00:30:44,860 --> 00:30:50,200
+And the divine omniscience view seems like it doesn't force us into a full-scale rejection
+
+430
+00:30:50,200 --> 00:30:50,900
+of free will.
+
+431
+00:30:51,040 --> 00:30:52,720
+There are moves that can be made.
+
+432
+00:30:53,700 --> 00:30:57,880
+In the next lecture, though, we'll look at views that suggest that every single action
+
+433
+00:30:57,880 --> 00:31:03,920
+we perform is determined globally, and it has nothing to do with God knowing things.
+
+434
+00:31:03,980 --> 00:31:07,120
+It's just a fact about the way the world is constructed.
+
+435
+00:31:07,120 --> 00:31:07,160
+Thank you.
+

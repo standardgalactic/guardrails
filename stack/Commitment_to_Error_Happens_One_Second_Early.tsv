@@ -1,0 +1,566 @@
+start	end	text
+0	4740	Welcome back to The Deep Dive. Today, we are really going under the hood, looking at some
+4740	9380	source material that I think fundamentally changes how you have to view your own mind.
+9620	10220	It really does.
+10300	13540	We're doing a deep dive into the very core of how we make decisions,
+13860	16620	and maybe more importantly, why we make mistakes.
+16820	21300	And that's such a crucial point, because for, I mean, for decades in neuroscience,
+21540	27920	whenever a researcher saw an error, you know, a wrong button press, a bad choice.
+27940	28360	Like a slip up.
+28360	35460	A slip up. Exactly. It was always treated as a side effect. It was seen as a failure of the main
+35460	36060	system.
+36340	36440	Noise.
+36960	40540	Right. It was either noise in the signal, or the brain didn't have enough evidence yet,
+40600	44240	or maybe it was some kind of failure of control that happened right at the last second.
+44340	49460	So the basic idea was, a successful brain is a computer running the right program.
+50000	53220	A brain that makes a mistake is a computer that just crashed for a moment.
+53420	55120	That's the classical view in a nutshell.
+55120	59120	But the sources we're digging into today, and this is some pretty groundbreaking stuff,
+59260	63180	using these incredible biomimetic models of the corticosteroidal system,
+63320	65800	and then validated with macaque data.
+65960	68420	Yeah, the Pathak et al. paper from 2025.
+68760	69100	That's the one.
+69280	69460	Yeah.
+69540	73300	It just suggests that this entire classical view is, well, fundamentally wrong.
+73640	78280	It's not just wrong. It presents a genuine crisis for how we think about decision-making.
+78280	83220	The research suggests errors aren't these sloppy, last-minute accidents.
+83580	83720	No.
+84120	90460	No. They're predictable. They are internally coherent, robust plans of action that the brain
+90460	93460	commits to right at the very beginning of the process.
+93580	94620	Okay. That changes everything.
+94680	94980	That changes everything.
+94980	99620	I mean, what does that do to our ideas about rationality or agency? If the choice is locked
+99620	103460	in before we're even aware of it, what does self-control even mean?
+103460	108700	That is the mission for this deep dive. We are going to unpack the discovery of these incredible
+108700	111820	cells, the incongruent neurons, or ICNs for short.
+112040	113000	ICNs. Got it.
+113020	116100	And then we'll get into the theoretical framework that this discovery supports,
+116180	120720	which is called the admissible histories approach. We really have to restructure how we think about
+120720	123180	time and choice in the brain. It's an ontological shift.
+123400	126440	And just to frame this whole conversation for you, get this staggering fact.
+126700	126880	Yeah.
+127740	133140	The researchers found a group of neurons that can reliably predict that you're going to make a
+133140	138420	mistake. A full behavioral error. More than one second before you actually do it.
+138420	143760	Just think about that. A full second. These neurons fire off within the first 200 milliseconds
+143760	144860	of you seeing something.
+145240	149500	200 milliseconds is nothing. That's barely the time it takes for the light to hit your eye and get
+149500	149900	processed.
+150100	155800	Exactly. And yet in that tiny window, the outcome of a complex choice that takes another one,
+156020	161100	two, maybe three seconds to unfold is already fixed. The mistake is already authorized and on its way
+161100	163180	before you've even had a chance to really think.
+163520	164760	A second of predetermination.
+165080	165420	Wow.
+165620	167580	That's wild. Okay. Let's unpack this.
+167660	167800	Yeah.
+168060	171220	So how did they even find these ICNs? What was the breakthrough?
+171420	175800	Well, the initial discovery actually came from a computational model, a really sophisticated,
+176160	180780	biologically grounded model of these circuits called corticostreatal microassemblies.
+180960	183820	Okay. Let's break that down. Corticostreatal. What are we talking about here?
+183820	189000	So think of it as the main highway for action in your brain. It's the communication link between
+189000	194220	your cortex, the outer thinking part, and the striatum, which is this deep structure that's all
+194220	197580	about action selection, habits, learning from rewards.
+197880	203720	So it's the circuit that turns a thought or a goal into an actual physical movement.
+203720	209040	Precisely. And by modeling the complex dynamics of how these cells talk to each other,
+209400	214240	the researchers could start to isolate different patterns of activity, different populations of neurons.
+214540	218880	And one of these populations was the ICNs. Why incongruent?
+219220	223080	They called them that because their firing pattern was really strong, really clear,
+223280	228720	and it was obviously driving an action. But that action was incongruous with the goal of the task.
+228820	232120	In other words, it was the wrong action. It led to no reward.
+232120	236520	Exactly. The action was perfectly formed, but externally, it was a mistake.
+237040	241400	And this brings us back to that temporal paradox, which is the finding that just breaks all the old
+241400	246380	models. Let's walk through the sequence of events they saw in the macaques, step by step.
+246600	253720	Okay. So the stimulus appears on the screen. Then, within just 200 milliseconds, a fifth of a second,
+254520	259560	this population of ICNs associated with the incorrect choice fires, and it fires strongly.
+259800	260120	Wow.
+260120	264540	But the task itself, you know, gathering evidence, planning, and making the movement,
+265000	269160	that often takes a lot longer. Sometimes 1.2 seconds, sometimes two full seconds.
+269280	274440	And the actual mistake, the monkey pressing the wrong button, happens way at the end of that period.
+274500	278020	A huge delay. The neural commitment happens at 200 milliseconds,
+278720	281280	but the behavioral expression is over a second later.
+281280	286540	So this is the big question. What on earth is happening in that 1,000 millisecond gap?
+286700	286940	Mm-hmm.
+287020	291560	Because if the outcome is already locked in, the brain can't be doing what we always thought it was
+291560	296740	doing, which is, you know, carefully weighing the evidence, deliberating, still making up its mind.
+296800	299800	It's not deliberating. That's the key insult. It's unfolding.
+300300	300700	Unfold.
+300700	306000	Think of it like a lint fuse. The ICN activity at 200 milliseconds isn't a prediction that a mistake
+306000	310800	might happen. It's the signal that the fuse has been lit. The system has entered a state where the
+310800	311900	outcome is already determined.
+311900	318320	So the rest of that time, that full second, is just the time it takes for the fuse to burn down to
+318320	319080	the firecracker.
+319240	324400	That's a great analogy. It's just the necessary biological time it takes for that cascade of
+324400	329520	neural signals to travel through all the motor pathways and physically express itself as a
+329520	333420	movement. The decision is done. The rest is just execution.
+333960	339160	And the sources are really clear on this point. These ICNs aren't just some random flicker of noise
+339160	343340	because the old models would just say, oh, that's just some ambiguous early activity.
+343580	349440	Right. They dismiss it. But the ICN signal is incredibly robust. It has these key properties
+349440	353500	that make it functionally identical to the neurons that drive the correct response.
+353640	354740	Okay. What are those properties?
+354880	359000	Well, first, they're stable. They show up reliably from one trial to the next in the same context.
+359000	364900	Second, they're highly selective. An ICN doesn't just fire randomly. It fires for a specific
+364900	367940	stimulus leading to a specific incorrect answer.
+367940	373680	Ah, so it's not just a general oops signal. It's a signal for do this specific wrong thing.
+373980	380000	Exactly. Third, it's causal. They've shown it's upstream of the error. It helps drive the physical
+380000	383400	mistake. And fourth, and this is maybe the most important part.
+383500	384160	The robustness.
+384280	389080	The robustness. The level of activity, the firing rate of an ICN that leads to a mistake
+389080	393320	is just as strong as the firing rate of a correct neuron that leads to a reward.
+393480	396800	So from the brain's internal point of view, it's not making an error.
+396800	402980	Not at all. From inside the system, this is a perfectly legitimate, well-formed, high-confidence
+402980	410000	action plan. The only thing that labels it an error is the outside world, the rules of the
+410000	412840	experiment, which says, sorry, no reward for that one.
+412940	416980	This is forcing us to make a really sharp distinction then between two separate moments
+416980	419280	in time, commitment and expression.
+419540	423860	That's the core distinction. Commitment is that point of no return. It's the moment the internal
+423860	428280	dynamics of the brain push the neural state into a valley where there's only one way
+428280	432760	out, only one possible outcome. The ICNs are the flag that marks that moment.
+433180	437260	And expression is just the final act, the observable behavior that happens much later.
+437820	444500	The ICNs are the smoking gun, showing that for mistakes, commitment happens way, way before
+444500	444960	expression.
+444960	449080	And, you know, this idea does have some history. People might remember the famous
+449080	450780	Libet experiments from the 80s.
+450780	452520	Right. The readiness potential.
+452720	458440	Exactly. Libet showed that general brain activity predicting a movement happens before you're
+458440	460920	consciously aware of your intention to move.
+461040	463180	But this is different. This feels much more specific.
+463560	468220	It's way more specific and far more predictive. Libet was about voluntary action in general.
+468220	475500	The ICN finding applies this logic to a specific, evaluated outcome, an error. And it predicts
+475500	478540	the specific, incorrect choice with near certainty.
+478920	484020	So Libet showed activity comes before general intention. This shows that a specific commitment
+484020	487760	to a mistake is made, deterministically, a full second before it happens.
+488020	492840	It's like we're watching the brain commit to a plan in slow motion. Once those ICNs fire,
+492980	496940	the verdict is in. The rest is just the system waiting for the clock to run out before the
+496940	502040	action takes place. Okay. So that deep dive into what ICNs are and what they do,
+502340	507980	it makes it painfully obvious why the old models of decision-making just can't cope with this.
+508060	512940	They really can't. Let's talk about why. Why does this classical framework,
+513260	517300	which has been the dominant way of thinking for so long, just fall apart here?
+517300	521820	Well, we can call that whole framework the state-first ontology. And it's all built around
+521820	526740	the idea that a decision is a single computation happening either instantly or gradually over
+526740	530400	time that can be described by a single evolving state.
+530600	534780	And errors in that view are just a failure to compute the right state.
+534920	536140	A failure to compute. Exactly.
+536380	540180	Probably the most famous, and I mean, honestly, the most successful model in all of cognitive
+540180	546000	science is the drift diffusion model, the DDM. Can you give us a quick refresher on how that works?
+546140	552140	Sure. The DDM is beautiful in its simplicity. It imagines a decision as a process of accumulating
+552140	557280	evidence for one of two choices. Think of a little particle drifting between two lines or two
+557280	559380	thresholds. One for correct and one for incorrect.
+559640	564400	Exactly. And the evidence you get from the world pushes the particle toward the correct line,
+564720	568240	but there's always some noise, so it jitters around. Whichever line it hits first,
+568500	569680	that's the decision you make.
+570040	574900	And time in that model is just how long it takes for the particle to finally hit a threshold.
+575140	579780	Right. And it explains the speed accuracy trade-off perfectly. If you lower the threshold,
+579780	584360	you decide faster, but you're more likely to hit the wrong one by accident. It's incredibly
+584360	590340	elegant. But the ICN finding creates a huge problem for it. A fatal incompatibility, you could
+590340	595160	say. It creates a temporal dilemma that the DDM just can't solve without basically making itself
+595160	600820	useless. Okay, lay it out for us. We've got this idea of a gradual drift of evidence on one hand,
+601000	605100	and then we've got this decisive neural commitment at 200 milliseconds on the other.
+605220	609480	And you can't have both. So if you try to map the ICN activity onto the DDM,
+609480	615940	you hit a wall. Here's the first problem. If the decision variable, that drifting particle,
+616300	621680	is still somewhere in the middle at 200 milliseconds, which it should be in any slow task.
+621760	623160	Yeah, it's still accumulating evidence.
+623400	628760	Then any neural activity at that point should be ambiguous. It should be weak or noisy. But the
+628760	633260	ICN signal isn't weak or noisy. It's powerful and highly predictive.
+633260	636600	Okay. So what's the other horn of the dilemma?
+637080	642360	The other problem is, what if you say, okay, maybe the model is wrong and the threshold was
+642360	647360	already crossed at 200 milliseconds? To explain the certainty of the ICN signal.
+647460	647580	Right.
+647920	652360	Well, if that's true, then what is the brain doing for the next full second? That entire
+652360	654980	stretch of processing time becomes completely meaningless.
+655260	657800	It becomes epiphenomenal. A ghost in the machine.
+657800	662520	Exactly. If the decision is already made, then the BDM has to include the system as just sitting
+662520	667320	there twiddling its thumbs for a second. And that collapses the entire purpose of the model,
+667460	671760	which is to describe this gradual, time-consuming process of deliberation.
+671860	674800	Now, I can hear someone thinking, well, couldn't you just tweak the model?
+675720	681720	What if the ICNs just represent some kind of early bias and the accumulation continues after that?
+681720	686620	People have tried, but the problem goes deeper than just the timing. It's a problem of language,
+686780	688380	of representational vocabulary.
+688560	689320	What do you mean by that?
+689580	695620	The DDM describes how a single value estate evolves over time, but it has no way to describe
+695620	701100	the commitment to a whole complex, time-extended sequence of future states. It can't talk about
+701100	702420	a pre-authorized trajectory.
+702640	706540	So it can describe the rate of change right now, but it can't capture the commitment to
+706540	708300	the entire shape of the path ahead.
+708300	712740	You've got it. That representational vacuum means the DBM, while it's still useful for
+712740	717940	some things, just fails to capture the core neural reality that this new research has uncovered.
+718580	722440	What about other big models, like the Bayesian or inference-based models? They seem a bit
+722440	723020	more sophisticated.
+723640	729120	They are, but they run into a very similar problem with time. In a Bayesian world, you make errors
+729120	734280	because you don't have enough evidence, or because you have a really strong, incorrect prior belief.
+734460	736180	Your internal assumption is just wrong.
+736180	741600	Right. Now, for the system to commit to an error in just 200 milliseconds, that Bayesian
+741600	743740	explanation has to become really extreme.
+743900	744280	How so?
+744480	749700	It would have to mean that your internal prior belief was so overwhelmingly powerful that
+749700	752920	it just instantly steamrolled any sensory evidence coming in.
+753180	757960	Or that the brain just made a snap judgment based on a tiny, compressed piece of information
+757960	760400	and then ignored everything else that came after.
+760400	766040	Right. But even if you accept that, you're still stuck with the same problem as the DDM.
+766820	772000	Why does the trial keep going for another second? If the inference is complete, why is the system
+772000	773020	still processing?
+773460	775520	And this is where the new framework has an answer.
+775820	780920	It has a powerful answer. The old models all assume that the future is something you simulate
+780920	786180	or predict. The new framework says, no, the future is something that is ontologically realized.
+786340	790660	It's not a hypothetical path. It's a real physical path the brain has already started walking down.
+790980	796520	Exactly. The choice to walk down that path has been made, and the ICN is the signpost at the entrance.
+796520	802680	So this isn't just about tweaking a parameter in an old model. This is a signal that we need a whole new way of thinking.
+803180	807820	We have to stop seeing time as just a clock that measures how long a decision takes.
+807880	813800	I start seeing time as the very fabric of the decision itself. The decision is the entire trajectory through time.
+813880	815440	Which brings us to this new way of thinking.
+815580	815740	Yeah.
+815880	817660	The trajectory-first ontology.
+818040	825320	That's the paradigm shift that this research is forcing on us. We have to change our fundamental unit of analysis.
+825320	832200	It's no longer the instantaneous neural state or some abstract value of accumulated evidence.
+832320	834560	It's the whole movie, not just a single frame.
+834740	838340	Exactly. The fundamental unit is the temporally extended history.
+838580	844060	Okay. Let's be really clear for everyone listening. What do you mean by a history with a capital H?
+844320	851660	A history, which the paper calls dollar, is just the complete ordered sequence of neural states from the very beginning,
+851660	856660	from the stimulus popping up on the screen all the way to the very end, the physical action being completed.
+856960	859240	So it's the entire neural journey for a single decision.
+859420	865940	The entire journey. And the power of this framework is that it lets us make a really clean separation between two different concepts.
+866120	868260	A separation that the old models couldn't make.
+868380	868900	And that is?
+868960	871980	The separation between what the system can do and what the system should do.
+872160	874680	Internal possibility versus external value.
+874680	877680	Precisely. We start with internal coherence.
+878340	882140	This is the set of all admissible histories, which we can call dollar.
+882740	893060	A history is admissible if the brain's wiring its architecture, its synaptic weights, its dynamics, can actually produce that sequence of states.
+893060	900380	So this is just a physics question. Can the machine do this, yes or no? It has nothing to do with whether it's a good or bad action.
+900440	910160	And nothing at all. It's purely structural. So if you've trained your brain to pick option A 90% of the time, the path to pick option B is still an admissible history.
+910680	915180	The wiring for it still exists. It's still possible for the system to go down that path.
+915260	917180	Okay. So that's admissibility. What's the other half?
+917180	921880	The other half is external valuation or valuation ballers. And this is a sign by the outside world.
+922300	926780	This is the part where the experimenter says that action gets a reward or that action gets you nothing.
+927160	930020	This is where the labels correct and incorrect finally come into play.
+930240	934940	Exactly. And this separation immediately solves the puzzle of the ICNs.
+935260	937140	It lets us have error without failure.
+937580	941540	The ICNs represent trajectories that are perfectly admissible.
+941540	946760	They are part of the set dollars. They are computationally coherent. They're dynamically robust.
+947180	950320	The system is not failing when it executes them.
+950920	953840	But they get a negative valuation. They're punched by the outside world.
+953960	956900	Right. They are not failures of the system's mechanics.
+957420	961780	They are simply selections of an alternative future that turns out to be a bad one.
+962260	964540	So the ICN isn't encoding error.
+965080	970040	It's encoding a perfectly good action plan that just happens to be the wrong one for the current rules.
+970320	973840	It's like having a perfectly functional car with a GPS that can take you anywhere.
+974200	976200	The car never breaks down. That's the admissibility.
+976200	978620	But if you type in the wrong address...
+978620	980020	The car will drive you there perfectly.
+980400	984000	The mechanics were flawless, but the valuation of your destination was poor.
+984520	986880	The ICN is like the GPS confidently saying,
+987100	989480	now turning left towards the wrong address.
+989580	990400	That's a great analogy.
+990880	993760	It really decouples the internal success of the computation
+993760	996080	from the external success of the outcome.
+996320	997700	It's a profound move.
+997980	1000120	Now, let's connect this back to the timing,
+1000420	1002000	to that 200 millisecond commitment.
+1002000	1005620	The sources talk about a concept called prefix closure.
+1006300	1009160	That sounds a little jargony, so let's really break that down.
+1009260	1010840	It sounds more complicated than it is.
+1011080	1014900	Prefix closure is a really simple but powerful idea about sequences.
+1015460	1018980	It just means that if a whole complete history is possible...
+1018980	1021360	So the whole trip from start to finish is admissible.
+1021560	1024700	Then every initial part of that trip must also be admissible.
+1024860	1026620	You can't magically get to the end of the journey
+1026620	1028560	without having completed the beginning parts of it.
+1028560	1031260	Right. If making a cake is an admissible history,
+1031560	1034020	then the first step, mixing the flour and sugar,
+1034300	1036780	has to be an admissible prefix of that history.
+1036900	1041120	Exactly. And the crucial insight here is that the ICN activity,
+1041320	1043400	that flash of firing at 200 milliseconds,
+1044080	1045700	represents a decisive prefix.
+1045960	1047060	A decisive prefix.
+1047260	1050340	Yes. The brain's activity has entered an initial state,
+1050340	1054420	a particular pattern, that is only a prefix for one possible future.
+1055000	1057740	It's structurally connected only to the sequence of states
+1057740	1058860	that leads to the error.
+1059300	1060860	So it's like entering a one-way street.
+1061200	1063860	The moment you make that turn at the 200 millisecond mark,
+1064020	1066480	the rest of your path is completely determined.
+1066820	1069500	Even if it takes you five more minutes to get to the end of the road,
+1070020	1072640	that turn is the decisive prefix.
+1072800	1073680	That's it, precisely.
+1073820	1076460	Once the system enters that ICN marked prefix,
+1077020	1079300	all the other possible futures collapse,
+1079720	1082440	the multiplicity of what could happen just disappears,
+1082680	1085620	and you're locked onto a single predetermined branch.
+1085620	1088820	The probability of making a mistake, given you've entered that prefix,
+1089000	1090580	shoots up to basically 100%.
+1090580	1091100	Pretty much.
+1091460	1094920	And so that long one-second delay suddenly makes sense again.
+1095100	1096740	The brain isn't sitting around deliberating.
+1096860	1097460	It's busy.
+1097940	1101240	It's executing all the necessary sequential steps of the history
+1101240	1102500	it has already committed to.
+1102680	1105280	And that just happens to take a second of biological time.
+1105460	1109160	Okay, but this raises a really obvious and, I think, critical question.
+1109160	1113740	If these error trajectories, these dollar histories, are always punished,
+1114120	1115680	why doesn't the brain just get rid of them?
+1115980	1120040	Why don't we learn our way to perfection and eliminate the ICNs and the paths they represent?
+1120400	1120600	Right.
+1121000	1125340	If the brain is this amazing learning machine, why can't it just delete the bad code?
+1125440	1130120	Why don't we ever reach 100% accuracy, even on a task we've practiced a thousand times?
+1130200	1130560	Exactly.
+1130560	1136640	And the answer comes down to the physical, biological constraints of how learning actually works.
+1136800	1142360	We often think of the brain as this ideal optimization machine, but it's a physical object.
+1142620	1146980	And biological learning, like reinforcement learning, it's an incremental process, right?
+1147260	1147380	Yeah.
+1147380	1150280	It's not like a programmer going in and deleting a line of code.
+1150460	1151620	It's not deletion at all.
+1151720	1153800	It's all about adjusting synaptic weights.
+1154200	1159840	When a pathway leads to a reward, the connections along that path get a little bit stronger.
+1159840	1163080	When a path leads to nothing, it gets a little bit weaker.
+1163260	1164420	That's amplification and suppression.
+1164600	1165920	It's amplification and suppression.
+1166480	1170520	So the correct pathways, the dollar pluses issues, they get amplified and become these
+1170520	1174360	huge, wide superhighways that are overwhelmingly likely to be taken.
+1174600	1177340	But the alternative paths, the dollar histories...
+1177340	1179600	They just become these tiny, narrow back roads.
+1179760	1179980	Yeah.
+1180220	1180940	But they're still there.
+1181220	1182060	They're still on the map.
+1182540	1187000	As long as those synaptic weights are not absolute zero, and they never are,
+1187000	1189840	the pathways remain dynamically available.
+1190460	1193740	They exist as latent possibilities within the structure.
+1194020	1195540	And this isn't a bug in the system.
+1195660	1197360	You're saying this is actually a feature.
+1197580	1201980	It's a necessary feature, and it's driven by the very nature of our brain's architecture.
+1202480	1203560	I mean, think about the cortex.
+1203760	1205400	It's a massively competitive environment.
+1205700	1208340	You have neurons constantly trying to inhibit their neighbors.
+1208520	1209140	All the time.
+1209140	1214740	It's called lateral inhibition, and it's how the brain forces a clear winner-take-all outcome
+1214740	1217900	instead of just having a murky average of activity.
+1218340	1223000	So in that competition, even a tiny bit of random noise at the beginning could be enough
+1223000	1223900	to tip the scales.
+1224240	1228380	It could be just enough to give the ICN-associated pathway an early advantage.
+1228540	1232920	And once it wins that initial competition, the whole trajectory is set in motion.
+1233200	1237000	Those ICNs are the neural embodiment of those latent alternative futures.
+1237160	1238440	The paths that could be taken.
+1238440	1241860	The paths that could be taken, but which are usually suppressed.
+1242420	1247180	And the reason they are never fully erased by learning is because erasing them would
+1247180	1249160	come at a catastrophic cost.
+1249280	1250540	And that cost is flexibility.
+1250840	1251800	That's the cost.
+1252100	1253220	This is so important.
+1253680	1258880	The persistence of these error-prone histories is not a failure of learning.
+1259200	1263160	It is the structural necessity that allows us to be adaptable.
+1263360	1263640	Okay.
+1263900	1264400	Explain that.
+1264400	1268740	How does the ability to make a mistake help us adapt?
+1269080	1271840	Imagine a brain that had optimized itself to perfection.
+1272180	1276020	It has deleted every single pathway except the one that leads to the current reward.
+1276200	1277680	It's 100% accurate.
+1277800	1278340	Sounds pretty good.
+1278540	1279300	It sounds great.
+1279380	1280800	Until the rules of the world change.
+1281380	1284420	Suddenly, the reward is switched from option A to option B.
+1284940	1287320	What does our perfect, brittle system do?
+1287420	1288160	It's stuck.
+1288160	1292940	It has no pathway to B. It would have to slowly and painfully build a whole new road from scratch.
+1293060	1293420	Exactly.
+1293580	1294560	It's incredibly inefficient.
+1294880	1298720	But our actual brains, which have kept those other pathways around, they're just suppressed
+1298720	1301260	and narrow, can adapt much faster.
+1301540	1305300	All it has to do is start strengthening an existing road, not build a new one.
+1305300	1311260	So the capacity for error is the physiological price we pay for being able to learn quickly
+1311260	1313020	and survive in a changing world.
+1313020	1314460	That is the essence of it.
+1314740	1319120	The reason your error rate never truly hits zero is because those mistakes are the system
+1319120	1322420	occasionally taking a valid but disfavored path.
+1322620	1327740	And keeping those paths open is essential for rapid reconfiguration when the world throws
+1327740	1328460	you a curveball.
+1328580	1332740	So the mistakes we make are actually a sign that our brains are still flexible, still ready
+1332740	1333860	to learn something new.
+1333860	1339020	You can't have perfect adaptability without retaining the capacity to sometimes enter a
+1339020	1342300	perfectly admissible but currently incorrect trajectory.
+1342800	1345980	It's the cost of doing business for a biological brain.
+1346100	1348800	Okay, this is where things get really, really interesting for me.
+1348880	1349380	The intervention.
+1349600	1350660	The intervention experiment.
+1350800	1355720	Because it's one thing to show a correlation to say, hey, these ICNs fire before a mistake.
+1356200	1359120	But it's another thing entirely to prove causation.
+1359280	1362960	And this is the empirical high point of the research, where they actually manipulate the
+1362960	1363900	system in real time.
+1363900	1369680	So they took this incredible insight that the die is cast at 200 milliseconds, and they
+1369680	1370540	decided to intervene.
+1371240	1372060	How did they do it?
+1372680	1375460	So they didn't just sit back and record the ICN activity.
+1375780	1381780	They built a system that could detect that specific neural signature, that decisive prefix,
+1382120	1383360	the moment it happened.
+1383460	1385200	Within that first 200 milliseconds.
+1385200	1386280	In real time.
+1386540	1390360	And as soon as they detected it, they immediately halted the trial that has stopped everything
+1390360	1393160	before the monkey could actually make the incorrect movement.
+1393480	1398800	So the commitment to the error has happened inside the brain, but the external expression
+1398800	1400260	of the error is prevented.
+1401000	1403540	It's like they cut the trajectory off midstream.
+1403680	1404160	What happened?
+1404160	1408860	The result was a significant improvement in the overall accuracy for the entire session.
+1409440	1413660	By catching and stopping the error trajectories before they could complete, the net performance
+1413660	1414660	of the system went up.
+1414760	1418320	And this result just completely torpedoes the classical models.
+1418440	1418960	It does.
+1419320	1422900	Because in an old model like the DDM, what would this intervention be doing?
+1423000	1426760	You're just stopping a trial where the evidence happens to be drifting the wrong way.
+1426840	1429480	It shouldn't fundamentally change the system's overall behavior.
+1429800	1430880	It's not error correction.
+1431180	1431800	That's the key.
+1431800	1432440	It can't be.
+1432580	1434040	There was no error to correct yet.
+1434260	1436400	The monkey never actually pressed the wrong button.
+1437160	1440360	The intervention is purely perspective, not reactive.
+1440760	1445780	It's proof that the future was already determined because by erasing that specific future, they
+1445780	1447760	improved the system's present performance.
+1447760	1452240	And that means the intervention wasn't acting on a momentary, ambiguous state.
+1452380	1454060	It was acting on a whole trajectory.
+1454980	1459460	By stopping the trial, what they were really doing was defining a pruned set of histories.
+1459760	1461580	Crooning the tree of possibilities.
+1461580	1466380	They were systematically snipping off the branches that led to the negatively valued outcomes,
+1466480	1469200	the dollar histories, before they could fully grow.
+1469900	1474020	And what's really crucial is that this didn't change the internal dynamics of the correct
+1474020	1475080	histories at all.
+1475320	1478180	The brain didn't magically get better at the task.
+1478580	1482880	They just externally prevented it from executing its occasional admissible mistakes.
+1482880	1486400	And that is the slam dunk causal evidence.
+1487040	1491540	It proves that these error trajectories are not just some statistical pattern we see after
+1491540	1492020	the fact.
+1492020	1497960	They are fully specified and causally real things inside the brain with momentum long before
+1497960	1499180	any behavior happens.
+1499180	1503280	This has to completely change how we think about the idea of cognitive control.
+1503600	1503960	Completely.
+1504200	1507860	We've always had this idea of control as, you know, an internal brake pedal.
+1508000	1512100	A little supervisor in your head that catches a mistake at the last second and says, whoa,
+1512280	1512720	stop.
+1512880	1514100	A last ditch correction.
+1514300	1515460	A last ditch effort.
+1515960	1520220	But what this research shows is that by that point, it's almost always too late.
+1520520	1522540	The system is past the decisive prefix.
+1522920	1525260	It's already in irreversible execution mode.
+1525260	1528160	So real cognitive control isn't about hitting the brakes.
+1528360	1529860	It's about something that happens much earlier.
+1530180	1533820	It's the proactive, early suppression of disfavored trajectories.
+1534080	1537080	It's about pruning the future before it even starts to unfold.
+1537500	1540520	This reframes the whole idea of self-control in our daily lives.
+1541020	1544380	We think of it as this epic battle wrestling with the temptation in the moment.
+1544700	1544980	Right.
+1545300	1549100	If you're trying not to eat a cookie, we think self-control is the fight your hand is having
+1549100	1549960	on the way to your mouth.
+1550380	1551720	But that's the expression phase.
+1552120	1553660	The commitment was made long before.
+1553660	1559140	True self-control was what happened or failed to happen in that first 200 milliseconds when
+1559140	1560820	the thought cookie first popped into your head.
+1560940	1561340	Exactly.
+1561860	1565080	It's about whether you let that initial prefix gain momentum.
+1565920	1569080	A failure of self-control is a failure of early pruning.
+1569720	1574580	It's allowing a coherent, admissible, but ultimately bad trajectory to get going.
+1574840	1579140	So the intervention experiment is like an externalized form of perfect self-control.
+1579520	1580700	That's a perfect way to put it.
+1580700	1585620	It shows that if we could somehow internally replicate that process veto, that decisive
+1585620	1591200	prefix before the clock runs down, we could achieve incredible accuracy, even while the
+1591200	1594340	structural possibility for error still exists within us.
+1594440	1596680	Okay, let's pull the camera back and look at the big picture.
+1596860	1601280	We've got this time gap, this trajectory first idea, the causal proof from pruning.
+1601280	1605800	What does this do to the big philosophical ideas that we use to understand ourselves?
+1606300	1607300	Let's start with agency.
+1607760	1610460	Agency takes a big hit, at least in its traditional form.
+1610900	1615500	If the decision is effectively fixed a full second before the action, you can't really
+1615500	1619000	locate your free will or your choice in that final moment.
+1619340	1622780	So my feeling of choosing to press the button right now is sort of an illusion.
+1622780	1628420	The decisive selection happened much earlier, and it was heavily constrained by the structure
+1628420	1629820	and history of your brain.
+1630520	1634000	So agency in this new framework has to be something different.
+1634500	1635100	What does it become?
+1635280	1639880	It becomes the capacity to shape the space of possible futures over the long term.
+1640340	1645800	It's the ongoing work of learning, of practicing, of paying attention, all the things that slowly
+1645800	1647540	change the underlying probabilities.
+1647860	1651100	It's about pruning some paths and widening others.
+1651100	1653380	So agency isn't a single event in time.
+1653840	1658600	It's the slow, continuous process of being an architect for your own brain's possibility
+1658600	1659100	space.
+1659220	1659580	Exactly.
+1659820	1663860	It's less about the choice and more about structuring the potential for future choices.
+1664040	1664320	Wow.
+1664620	1665860	Okay, what about rationality?
+1666200	1670680	We tend to think of being rational as, you know, computing the best answer.
+1670740	1670960	Right.
+1671120	1673300	Maximizing your utility, getting the most reward.
+1673540	1675640	But this framework seems to suggest something else.
+1675820	1676340	It does.
+1676340	1682560	It suggests that rationality isn't an active computation as much as it is an emergent property
+1682560	1683920	of successful suppression.
+1684440	1685120	What do you mean by that?
+1685560	1689920	You are rational not because you calculated the single best path, but because you successfully
+1689920	1695140	avoided entering the thousands of other perfectly possible but suboptimal paths.
+1695260	1697500	So rationality is defined by what you don't do.
+1697820	1700320	It becomes a fundamentally negative definition.
+1700980	1705040	A rational person is someone whose brain is very, very good at early pruning.
+1705040	1710200	If you manage your money well, your rationality isn't just in the one good investment you
+1710200	1716000	made, it's in the hundreds of terrible, impulsive spending trajectories that you successfully
+1716000	1717800	suppressed before they ever got started.
+1718120	1720020	That is a stunning way to reframe it.
+1720480	1723220	Success is defined by the failures you manage to avoid.
+1723340	1725140	It really turns the definition on its head.
+1725380	1729340	Now, how does all of this connect with other big, complex theories out there?
+1729640	1732720	The one that comes to mind is Active Infants, Kari Friston's work.
+1732720	1735100	Yeah, that's a really important connection to make.
+1735280	1737180	Active Inference is hugely influential.
+1737680	1743120	This idea that the brain is always trying to minimize surprise or free energy by making
+1743120	1744340	inferences about the future.
+1744540	1747720	And it talks about policies, which are future action sequences.
+1747960	1748840	It's already temporal.
+1749380	1752260	Why doesn't it fully capture this ICN finding?
+1752860	1758000	Well, Active Inference is forward-looking, but it often still comes from a state-first perspective.
+1758000	1763180	It views those future policies as hypothetical things that are simulated and weighed from
+1763180	1763900	your current state.
+1764440	1765920	The key difference is ontological.
+1766560	1768560	In AI, the future is inferred.
+1769040	1770640	And in the admissible history framework?
+1771020	1772500	The future history is realized.
+1772760	1775740	It's a physically possible path encoded in the brain's wiring.
+1776220	1780280	The admissible history framework basically provides the structural foundation on which Active
+1780280	1781260	Inference has to operate.
+1781260	1782520	Ah, okay.
+1782880	1787240	So the set of admissible histories, dollar, tells you which policies or trajectories even
+1787240	1789320	exist to be considered in the first place.
+1789740	1790160	Exactly.
+1790400	1793340	Sawade defines the set of physically possible futures.
+1793780	1798540	And then Active Inference comes in and provides a beautiful mathematical story for how the brain
+1798540	1803320	might weigh and prune those available futures to select the best one.
+1803700	1805060	They actually work together beautifully.
+1805060	1809060	This really solidifies the idea that we need a new unit of cognition.
+1809660	1813340	We have to stop looking at the snapshot, at the instantaneous neural state.
+1813540	1816660	The true unit of analysis has to be the authorized trajectory.
+1817340	1818200	The entire history.
+1818540	1821320	The ICNs are so important because they show us that boundary line.
+1821540	1825420	The point where a mere prediction about the future turns into an irreversible commitment
+1825420	1826020	to a future.
+1826500	1828260	The brain doesn't just guess what might happen.
+1828480	1830820	It enters a path that ensures what will happen.
+1831800	1833420	Hashtag tagged tag hag outro.
+1833420	1838260	So after this deep dive, we've really moved our whole understanding of what a mistake is.
+1838440	1841260	It's not just a computational glitch, a bit of noise in the machine.
+1841520	1841980	Not at all.
+1842240	1846980	We land on this really radical idea that an error is the successful execution of a legitimate,
+1847220	1851340	internally coherent plan that the outside world just happens to penalize.
+1851540	1853000	The brain doesn't stumble into error.
+1853460	1854340	It commits to it.
+1854820	1858300	Early, confidently, and with full dynamic certainty.
+1858540	1862660	Which means accuracy getting things right isn't about running the correct calculation.
+1862660	1868500	It's about the constant, active, and successful suppression of all the other admissible but
+1868500	1869880	incorrect trajectories.
+1869880	1872680	So let's leave our listeners with a final provocative thought.
+1873780	1878980	If the capacity to make mistakes, to have these dollar histories, is a structural necessity
+1878980	1880920	for a flexible, adaptable mind.
+1880920	1886100	And if our commitments to these mistakes are made so far in advance of our conscious awareness,
+1886840	1890040	then where can we find our real leverage for control?
+1890700	1896080	It suggests that the most profound form of control isn't found in that last-second white-knuckled
+1896080	1897240	struggle with temptation.
+1897760	1899580	That moment is almost always too late.
+1899680	1900180	So where is it?
+1900180	1904320	The highest form of self-control might be something much quieter happening in the background.
+1904740	1908580	It's the slow, patient work of cultivating your own neural architecture, adjusting the
+1908580	1914020	dynamics, the biases, the learning rates, in a way that physically prunes the set of bad,
+1914180	1916200	but possible, futures you can even enter.
+1916560	1921840	You control your future, not by fighting it in the moment, but by sculpting the landscape
+1921840	1924660	of your own mind, long before the choice ever appears.

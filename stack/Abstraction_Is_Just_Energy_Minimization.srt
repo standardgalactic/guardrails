@@ -1,0 +1,2316 @@
+1
+00:00:00,000 --> 00:00:05,440
+Welcome back to the Deep Dive. Today we are doing something a little, uh, a little different.
+
+2
+00:00:05,580 --> 00:00:06,480
+A lot different, I'd say.
+
+3
+00:00:06,480 --> 00:00:10,720
+Yeah, that's fair. Usually we take a topic, say, you know, the history of the shipping container
+
+4
+00:00:10,720 --> 00:00:15,840
+or the nuances of microbiome science, and we really drill down into the specifics.
+
+5
+00:00:16,020 --> 00:00:18,060
+Right, we find one thread and pull on it.
+
+6
+00:00:18,100 --> 00:00:24,440
+Exactly. But today we're going to try to drill down into, well, everything. All of it.
+
+7
+00:00:25,260 --> 00:00:27,120
+The machinery of reality itself.
+
+8
+00:00:27,240 --> 00:00:29,000
+It's ambitious, to say the least.
+
+9
+00:00:29,000 --> 00:00:35,240
+That is putting it mildly. The source material for this Deep Dive is a dense, sprawling monograph
+
+10
+00:00:35,240 --> 00:00:41,020
+titled, Abstraction as Reduction, a Unified Account of Evaluation, Structure, and Proof.
+
+11
+00:00:41,600 --> 00:00:45,340
+And I have to admit, when I first saw that title, my eyes kind of glazed over. I thought,
+
+12
+00:00:45,440 --> 00:00:51,440
+okay, great, another dry academic slog through obscure computer science theory. I was, uh,
+
+13
+00:00:51,460 --> 00:00:53,080
+I was ready to cancel the recording session.
+
+14
+00:00:53,260 --> 00:00:56,660
+I don't blame you. Abstraction as Reduction sounds like the kind of thing you'd read if
+
+15
+00:00:56,660 --> 00:00:59,300
+you're having trouble sleeping. It just sounds incredibly dry.
+
+16
+00:00:59,300 --> 00:01:04,780
+It does. But then I started reading the notes you sent over, and I realized my initial reaction was,
+
+17
+00:01:05,380 --> 00:01:07,960
+well, it was exactly the problem the book is trying to solve.
+
+18
+00:01:08,040 --> 00:01:08,800
+Oh, how so?
+
+19
+00:01:08,880 --> 00:01:12,720
+I was looking at the surface and just completely ignoring the engine underneath.
+
+20
+00:01:12,720 --> 00:01:15,280
+This isn't just about code, is it?
+
+21
+00:01:15,440 --> 00:01:20,360
+No, not at all. It uses code as a language, sure. It has to use some language. But the argument here
+
+22
+00:01:20,360 --> 00:01:26,280
+is that the principles governing how a computer program runs are the exact same principles
+
+23
+00:01:26,280 --> 00:01:32,820
+governing how your brain processes trauma, how a magnet organizes its fields, and even how we make
+
+24
+00:01:32,820 --> 00:01:33,600
+ethical decisions.
+
+25
+00:01:33,840 --> 00:01:34,040
+Oh.
+
+26
+00:01:34,040 --> 00:01:36,660
+It's a grand unified theory of structure.
+
+27
+00:01:37,020 --> 00:01:41,400
+That's the hook that got me. The idea that there is a single mathematical move,
+
+28
+00:01:42,160 --> 00:01:46,760
+one specific action that explains all these different layers of reality. So let's start
+
+29
+00:01:46,760 --> 00:01:48,880
+with that title concept, abstraction.
+
+30
+00:01:49,180 --> 00:01:49,440
+Okay.
+
+31
+00:01:49,640 --> 00:01:52,660
+When I use that word in, you know, just casual conversation, I usually mean vague,
+
+32
+00:01:52,920 --> 00:01:57,020
+or I mean a shortcut. Like I drive a car, he's a steering wheel on the pedals. That's the
+
+33
+00:01:57,020 --> 00:02:01,440
+abstraction. I don't need to know how the fuel injection timing works or the thermodynamics of
+
+34
+00:02:01,440 --> 00:02:06,700
+the combustion chamber. The abstraction hides the messy details so I can just get to the grocery
+
+35
+00:02:06,700 --> 00:02:07,040
+store.
+
+36
+00:02:07,280 --> 00:02:11,020
+That is the conventional view. That is what you'll find in almost every computer science
+
+37
+00:02:11,020 --> 00:02:15,620
+textbook or, you know, philosophy intro. We tend to think of abstraction as a shield.
+
+38
+00:02:15,780 --> 00:02:16,500
+A shield, yeah.
+
+39
+00:02:16,560 --> 00:02:22,440
+It's a protective layer that hides complexity. You treat the car as a single object car,
+
+40
+00:02:22,640 --> 00:02:25,420
+so you don't have to treat it as 10,000 moving parts.
+
+41
+00:02:25,480 --> 00:02:28,120
+Right. It's a mental coping mechanism.
+
+42
+00:02:28,120 --> 00:02:32,240
+But the author of this monograph, a researcher who goes by fliction,
+
+43
+00:02:33,100 --> 00:02:37,980
+he argues that this view is fundamentally backward, or at least it's missing the mechanism.
+
+44
+00:02:38,340 --> 00:02:38,700
+Backward.
+
+45
+00:02:38,840 --> 00:02:43,580
+He argues that abstraction isn't just hiding details. It is a reductional act.
+
+46
+00:02:43,800 --> 00:02:44,680
+A reductional act.
+
+47
+00:02:44,740 --> 00:02:49,400
+It is a physical, almost destructive process where degrees of freedom are eliminated.
+
+48
+00:02:49,660 --> 00:02:53,380
+Destructive is a strong word. You're saying that when I abstract the car,
+
+49
+00:02:53,580 --> 00:02:55,120
+I am destroying something.
+
+50
+00:02:55,120 --> 00:02:59,720
+In a sense, yes. Think about it energetically. You said you don't need to know about the engine
+
+51
+00:02:59,720 --> 00:03:00,920
+to drive. Why?
+
+52
+00:03:01,040 --> 00:03:01,900
+Because it just works.
+
+53
+00:03:02,260 --> 00:03:06,960
+Because the engine has been engineered. It has been constrained. The pistons can only move
+
+54
+00:03:06,960 --> 00:03:12,460
+in a specific way. The fuel can only ignite at a specific time. The abstraction of the steering
+
+55
+00:03:12,460 --> 00:03:18,760
+wheel is only possible because the utter chaos of a controlled explosion has been ruthlessly
+
+56
+00:03:18,760 --> 00:03:20,340
+reduced into linear motion.
+
+57
+00:03:20,340 --> 00:03:25,940
+You can't abstract a pile of burning gasoline. You can only abstract an engine.
+
+58
+00:03:26,160 --> 00:03:30,620
+I see. So abstraction isn't about me ignoring the details. It's about the system itself having
+
+59
+00:03:30,620 --> 00:03:34,180
+crushed those details into a stable shape that allows me to ignore them.
+
+60
+00:03:34,400 --> 00:03:39,240
+Precisely. And that brings us to the core thesis. You cannot abstract something that is still
+
+61
+00:03:39,240 --> 00:03:45,260
+thinking or still resolving its internal conflicts. Abstraction is what happens after the conflict
+
+62
+00:03:45,260 --> 00:03:45,900
+is resolved.
+
+63
+00:03:45,900 --> 00:03:47,740
+So that's the mission of this deep dive then.
+
+64
+00:03:47,860 --> 00:03:53,500
+Exactly. To trace this single principle that to abstract is to reduce from the simplest math
+
+65
+00:03:53,500 --> 00:03:56,600
+all the way up to high dimensional physics and even ethics.
+
+66
+00:03:56,820 --> 00:04:02,180
+And there's an equation for this, right? I know, you know, audio format, math is hard. But this one
+
+67
+00:04:02,180 --> 00:04:04,600
+seems simple enough that even I could wrap my head around it.
+
+68
+00:04:04,760 --> 00:04:09,320
+It is the backbone of the entire work. And it's more of an equivalence, really. The equation is
+
+69
+00:04:09,320 --> 00:04:14,640
+abstraction equals reduction equals computation equals energy minimization.
+
+70
+00:04:14,640 --> 00:04:20,080
+Okay. Abstraction, reduction, computation, and then energy minimization. That's where it
+
+71
+00:04:20,080 --> 00:04:20,740
+gets weird for me.
+
+72
+00:04:20,800 --> 00:04:22,960
+Yeah. That's where it leaves the computer lab.
+
+73
+00:04:23,020 --> 00:04:27,700
+Right. I get that computation is reduction. I think we'll get into that. But are we really
+
+74
+00:04:27,700 --> 00:04:32,420
+saying that solving a math problem is the same thing as a ball rolling down a hill?
+
+75
+00:04:32,560 --> 00:04:37,340
+We are. The source argues they are structurally identical. Whether it is a student solving for
+
+76
+00:04:37,340 --> 00:04:42,940
+X, a neuron firing to recognize a face, or a physical system settling into a crystal lattice,
+
+77
+00:04:42,940 --> 00:04:44,520
+the process is the same.
+
+78
+00:04:44,660 --> 00:04:45,080
+Which is what?
+
+79
+00:04:45,560 --> 00:04:49,600
+High complexity, high energy, and high uncertainty collapse into a stable,
+
+80
+00:04:49,960 --> 00:04:54,140
+simpler, low energy form. That collapse, that is abstraction.
+
+81
+00:04:54,500 --> 00:04:58,700
+Okay. That is a massive claim. To prove it, we have to start at the very bottom.
+
+82
+00:04:58,740 --> 00:04:59,160
+The beginning.
+
+83
+00:04:59,300 --> 00:05:03,680
+The source takes us back to the 1930s, before modern computers even existed,
+
+84
+00:05:03,940 --> 00:05:08,660
+to something called the lambda calculus. Now, I know the name sounds like a fraternity,
+
+85
+00:05:08,660 --> 00:05:14,600
+but this is Alonzo Church's work. Why do we start here? Why not with, say, Turing machines?
+
+86
+00:05:15,020 --> 00:05:19,740
+It's a great question. Because Turing machines, which are the model for standard computers,
+
+87
+00:05:20,000 --> 00:05:24,300
+are mechanical. They have tape. They have heads that read and write. They have states.
+
+88
+00:05:24,500 --> 00:05:25,360
+They feel like machines?
+
+89
+00:05:25,580 --> 00:05:30,380
+They do. They feel like little factories. Lambda calculus is different. The source calls it the
+
+90
+00:05:30,380 --> 00:05:35,560
+embryo of computation. It has no hard drive. It has no loops. It has no data types. It doesn't
+
+91
+00:05:35,560 --> 00:05:38,740
+even have numbers, strictly speaking. So what does it have? What's left?
+
+92
+00:05:38,960 --> 00:05:44,120
+It just has functions. And it has variables. And it has the ability to apply a function to a
+
+93
+00:05:44,120 --> 00:05:46,700
+variable. That's it. It's pure substitution.
+
+94
+00:05:47,080 --> 00:05:48,920
+It sounds almost too simple to be useful.
+
+95
+00:05:49,260 --> 00:05:51,740
+And yet, it can compute anything that can be computed.
+
+96
+00:05:52,020 --> 00:05:52,180
+Yeah.
+
+97
+00:05:52,220 --> 00:05:55,680
+But the reason the source focuses on it is because of how it handles work. Work.
+
+98
+00:05:56,180 --> 00:06:02,180
+In lambda calculus, there is a concept called the redex. That's R-E-D-E-X. It stands for
+
+99
+00:06:02,180 --> 00:06:08,240
+Reducible Expression. A redex. Imagine a box that contains a rule, a function. And sitting
+
+100
+00:06:08,240 --> 00:06:13,000
+right next to it is a value. That pairing the rule and the input waiting to be processed
+
+101
+00:06:13,000 --> 00:06:15,320
+is a redex. So it's potential energy?
+
+102
+00:06:15,600 --> 00:06:18,360
+Exactly. It represents work that needs to be done.
+
+103
+00:06:18,480 --> 00:06:19,700
+So it's like a loaded spring.
+
+104
+00:06:19,980 --> 00:06:20,380
+Hmm.
+
+105
+00:06:20,660 --> 00:06:22,000
+Or a mousetrap that's been set.
+
+106
+00:06:22,180 --> 00:06:27,620
+A loaded spring is the perfect analogy. And the act of computation in the system is called
+
+107
+00:06:27,620 --> 00:06:30,020
+better reduction. Beta reduction.
+
+108
+00:06:30,100 --> 00:06:30,640
+Beta reduction.
+
+109
+00:06:30,640 --> 00:06:35,180
+It's the act of triggering the spring. You take the value, you shove it into the function,
+
+110
+00:06:35,540 --> 00:06:41,200
+you execute the rule, and the box, the function, and the value disappears. You are left with
+
+111
+00:06:41,200 --> 00:06:42,100
+just the result.
+
+112
+00:06:42,340 --> 00:06:44,940
+So you're destroying the instruction and replacing it with the answer.
+
+113
+00:06:45,020 --> 00:06:50,560
+Yes. And you keep doing this. If the answer you get contains another redex, another loaded
+
+114
+00:06:50,560 --> 00:06:52,420
+spring, you trigger that one too.
+
+115
+00:06:52,560 --> 00:06:52,820
+Right.
+
+116
+00:06:52,960 --> 00:06:58,440
+You keep collapsing these boxes one by one until there are no more redexes left.
+
+117
+00:06:58,440 --> 00:07:00,160
+And what happens when you run out of redexes?
+
+118
+00:07:00,160 --> 00:07:00,360
+Yeah.
+
+119
+00:07:00,680 --> 00:07:01,940
+When all the springs have sprung.
+
+120
+00:07:02,240 --> 00:07:09,000
+You reach what is called normal form. This is a critical concept. A term is in normal form when it
+
+121
+00:07:09,000 --> 00:07:14,180
+can no longer be reduced. It is, for all intents and purposes, dead. It is static.
+
+122
+00:07:14,380 --> 00:07:16,500
+That sounds kind of grim. Dead.
+
+123
+00:07:16,740 --> 00:07:19,920
+It's grim if you're a romantic, but it's wonderful if you're a mathematician.
+
+124
+00:07:20,520 --> 00:07:22,820
+Normal form is just another name for the answer.
+
+125
+00:07:23,400 --> 00:07:23,740
+Okay.
+
+126
+00:07:23,740 --> 00:07:29,080
+When you asked, what is 2 plus 2? 2 plus 2 is the redex. It's the tension. It's the loaded
+
+127
+00:07:29,080 --> 00:07:31,700
+spring. 4 is the normal form.
+
+128
+00:07:31,800 --> 00:07:32,100
+I see.
+
+129
+00:07:32,360 --> 00:07:38,060
+4 isn't a computation. 4 is a value. The source says it is the corpse of a computation that
+
+130
+00:07:38,060 --> 00:07:38,520
+has finished.
+
+131
+00:07:38,600 --> 00:07:40,680
+So to abstract something is to kill it.
+
+132
+00:07:40,900 --> 00:07:45,260
+To abstract something is to resolve it, to finish the work. The source argues that you
+
+133
+00:07:45,260 --> 00:07:50,160
+can only treat 4 as a stable, reliable object because you aren't constantly recalculating
+
+134
+00:07:50,160 --> 00:07:54,660
+it. If 4 was unstable, if it sometimes equaled 5, you couldn't build anything on top of it.
+
+135
+00:07:54,720 --> 00:07:55,520
+You couldn't do accounting.
+
+136
+00:07:55,780 --> 00:08:00,340
+This connects directly to the next section, which uses an analogy everyone will hype but
+
+137
+00:08:00,340 --> 00:08:02,400
+everyone understands. Algebra homework.
+
+138
+00:08:02,740 --> 00:08:06,960
+Algebra as interface literacy. It's brilliant because it takes this high theory of computer
+
+139
+00:08:06,960 --> 00:08:08,680
+science and puts it right in a classroom.
+
+140
+00:08:08,820 --> 00:08:15,520
+Right. So say I had the equation $3 plus 5 equals 21er. When I was in school, I just thought
+
+141
+00:08:15,520 --> 00:08:19,640
+of this as a puzzle. I need to move the numbers around until I get X alone.
+
+142
+00:08:19,640 --> 00:08:24,340
+And that moving numbers around is literally manual beta reduction. You are the computer.
+
+143
+00:08:24,560 --> 00:08:24,880
+Oh, wow.
+
+144
+00:08:24,960 --> 00:08:30,100
+You write $3 equals 15 one eyes. That's one reduction step. You write sex X, it was 5,
+
+145
+00:08:30,160 --> 00:08:33,140
+5. That's the final reduction. You have reached normal form.
+
+146
+00:08:33,400 --> 00:08:37,840
+But the source makes a point here about showing your work. My teachers were obsessed with that.
+
+147
+00:08:37,920 --> 00:08:39,960
+I always thought they were just being sadistic, you know.
+
+148
+00:08:39,980 --> 00:08:44,220
+They were asking you to expose the intermediate reduction steps. They wanted to see the red Xs
+
+149
+00:08:44,220 --> 00:08:49,060
+before they collapsed. But there is a deeper philosophical point here that the source makes.
+
+150
+00:08:49,060 --> 00:08:52,160
+The equation $3 plus 5 isn't just a puzzle.
+
+151
+00:08:52,560 --> 00:08:53,040
+What is it then?
+
+152
+00:08:53,580 --> 00:08:55,060
+It is a functional contract.
+
+153
+00:08:55,720 --> 00:08:56,220
+A contract.
+
+154
+00:08:56,400 --> 00:09:02,940
+Yes. Think about it. That equation defines a relationship. It defines a constraint on reality.
+
+155
+00:09:03,140 --> 00:09:08,620
+It says, I will only accept a value for X that when you triple it and add 5 to it yields
+
+156
+00:09:08,620 --> 00:09:10,620
+exactly 20. It's like a lock.
+
+157
+00:09:10,620 --> 00:09:13,540
+It's a strict gateway, a very specific lock.
+
+158
+00:09:14,020 --> 00:09:18,700
+Solving the equation is the process of finding the one thing in the universe that can satisfy
+
+159
+00:09:18,700 --> 00:09:20,880
+that contract, the one key that fits.
+
+160
+00:09:21,000 --> 00:09:25,380
+So the answer 5 is the only thing that fits the shape of the hole created by the question.
+
+161
+00:09:25,500 --> 00:09:29,980
+Exactly. And once you have the answer 5, you can throw away the equation. You don't need
+
+162
+00:09:29,980 --> 00:09:33,880
+the complexity of $3 plus 5 equals $20 anymore. You can just use 5.
+
+163
+00:09:33,940 --> 00:09:34,920
+That is the abstraction.
+
+164
+00:09:34,920 --> 00:09:40,620
+That's it. You have replaced a complex relationship with a simple identity. You have reduced the
+
+165
+00:09:40,620 --> 00:09:45,860
+degrees of freedom from any number in existence down to this specific number.
+
+166
+00:09:46,080 --> 00:09:49,600
+This feels like it bridges really nicely into the world of software engineering. Because
+
+167
+00:09:49,600 --> 00:09:53,480
+if Algebra is doing this manually, coding is just automating it.
+
+168
+00:09:53,580 --> 00:09:53,780
+Right.
+
+169
+00:09:53,780 --> 00:09:59,260
+The source spends a lot of time on the programming language, Haskell, and this idea of type classes.
+
+170
+00:09:59,600 --> 00:10:03,040
+Now, I know our audience isn't all software engineers, so let's keep this conceptual.
+
+171
+00:10:03,620 --> 00:10:06,840
+What does a type class tell us about the nature of reality?
+
+172
+00:10:07,060 --> 00:10:12,900
+Well, it tells us about how we define things. In the old way of thinking, maybe the platonic
+
+173
+00:10:12,900 --> 00:10:15,480
+way we define things by what they are. Their essence.
+
+174
+00:10:15,740 --> 00:10:21,740
+Yeah, their essence. A chair is wood and fabric. A duck is a bird with feathers that quacks.
+
+175
+00:10:21,740 --> 00:10:22,180
+Sure.
+
+176
+00:10:22,360 --> 00:10:27,680
+But in Haskell, and in this theory of abstraction, we define things by what they do. The source
+
+177
+00:10:27,680 --> 00:10:30,400
+calls this an affordance-based ontology.
+
+178
+00:10:30,700 --> 00:10:36,680
+Affordance. That's a design term, right? A door handle affords pulling. A button affords pushing.
+
+179
+00:10:37,100 --> 00:10:42,100
+Correct. So in programming, a type class is just a collection of affordances. It's a contract.
+
+180
+00:10:42,760 --> 00:10:47,040
+For example, take the concept of EQ, which is short for equality.
+
+181
+00:10:47,360 --> 00:10:47,620
+Okay.
+
+182
+00:10:47,620 --> 00:10:51,780
+In Haskell, to belong to the EQ class, a thing just needs to be able to answer one
+
+183
+00:10:51,780 --> 00:10:54,940
+question. Are you equal to this other thing?
+
+184
+00:10:55,080 --> 00:10:58,580
+And it doesn't matter if it's a number, a string of text, or a picture of a cat.
+
+185
+00:10:58,660 --> 00:11:02,740
+Doesn't matter at all. As long as it has a defined method for checking equality, it is
+
+186
+00:11:02,740 --> 00:11:06,980
+an EQ. The source uses a great example from mathematics. A ring.
+
+187
+00:11:07,300 --> 00:11:08,000
+Like a wedding ring.
+
+188
+00:11:08,140 --> 00:11:12,960
+No, a mathematical one. A ring isn't a specific title of numbers. A ring is anything that allows
+
+189
+00:11:12,960 --> 00:11:17,840
+you to add, multiply, and negate. If you can do those three things, you are a ring. It doesn't
+
+190
+00:11:17,840 --> 00:11:18,620
+matter what you're made of.
+
+191
+00:11:18,960 --> 00:11:23,260
+So if I'm building a system, I don't need to know what the data is made of. I just need to know it's
+
+192
+00:11:23,260 --> 00:11:24,480
+behavioral certificate.
+
+193
+00:11:24,820 --> 00:11:30,680
+Behavioral certificate. That is the key phrase. A type signature in code like map, A, B, A, B,
+
+194
+00:11:30,920 --> 00:11:32,660
+is a guarantee. It's a promise.
+
+195
+00:11:32,800 --> 00:11:33,760
+Okay. What's that one promise?
+
+196
+00:11:33,760 --> 00:11:41,660
+It promises. If you give me a function that turns an A into a B and a list of A's, I promise
+
+197
+00:11:41,660 --> 00:11:45,040
+I will give you back a list of B's. It doesn't tell you how it does it.
+
+198
+00:11:45,180 --> 00:11:45,280
+Right.
+
+199
+00:11:45,400 --> 00:11:50,480
+It doesn't tell you if it uses a loop or recursion or magic elves in the background. It just guarantees
+
+200
+00:11:50,480 --> 00:11:53,340
+the interaction. It specifies the interface.
+
+201
+00:11:53,420 --> 00:11:58,200
+And this goes right back to the car dashboard. The dashboard is the type signature of the car.
+
+202
+00:11:58,460 --> 00:12:03,740
+It says, I afford steering and accelerating. It doesn't say I am a V6 engine with a specific
+
+203
+00:12:03,740 --> 00:12:04,480
+torque curve.
+
+204
+00:12:04,740 --> 00:12:09,980
+Yes. But remember the warning from the beginning. You can only have that stable dashboard if
+
+205
+00:12:09,980 --> 00:12:12,180
+the engine obeys the laws of physics.
+
+206
+00:12:12,400 --> 00:12:13,880
+Right. If it doesn't just explode.
+
+207
+00:12:14,180 --> 00:12:19,780
+The source makes a profound metaphysical claim here. An interface is a boundary. It's a wall.
+
+208
+00:12:20,160 --> 00:12:22,380
+But you cannot build a wall on quicksand.
+
+209
+00:12:22,380 --> 00:12:26,300
+The quicksand being the messy details underneath. The implementation.
+
+210
+00:12:26,660 --> 00:12:32,480
+Exactly. If the implementation is unstable, if the engine sometimes explodes, or if the code
+
+211
+00:12:32,480 --> 00:12:37,340
+sometimes returns a number and sometimes returns a ham sandwich, you cannot have a type
+
+212
+00:12:37,340 --> 00:12:43,200
+signature. You cannot have an interface. Abstraction requires that the layer below it has stabilized.
+
+213
+00:12:43,480 --> 00:12:46,180
+It has reached its own normal form.
+
+214
+00:12:46,180 --> 00:12:50,620
+This brings us to a really physical example. I mean, we've been talking about math and code,
+
+215
+00:12:50,700 --> 00:12:51,900
+which are, you know, abstract.
+
+216
+00:12:52,120 --> 00:12:52,340
+Right.
+
+217
+00:12:52,740 --> 00:12:57,600
+But the source pivots to hardware, the actual silicon chips. And it talks about something
+
+218
+00:12:57,600 --> 00:13:03,160
+called null convention logic, or NCL. This part fascinated me because it challenges the
+
+219
+00:13:03,160 --> 00:13:08,220
+most basic thing I know about computers, that they run on binary, zero and one.
+
+220
+00:13:08,720 --> 00:13:12,480
+In standard synchronous logic, which is what's inside your laptop right now, that is true.
+
+221
+00:13:12,480 --> 00:13:16,100
+You have a wire. If it has high voltage, it's a one. If it has low voltage, it's a zero.
+
+222
+00:13:16,220 --> 00:13:16,500
+Simple.
+
+223
+00:13:16,680 --> 00:13:21,280
+But there's a problem. A huge one, actually. How do you know when the answer is ready?
+
+224
+00:13:22,100 --> 00:13:22,700
+What do you mean?
+
+225
+00:13:23,160 --> 00:13:28,160
+Electrons take time to move. They don't teleport. If you check the wire too early, the voltage
+
+226
+00:13:28,160 --> 00:13:32,180
+might still be rising. It might be halfway up. Is that a zero or a one?
+
+227
+00:13:32,180 --> 00:13:37,960
+So we use a clock, right? A master clock that ticks and tells everyone, okay, read the data.
+
+228
+00:13:38,380 --> 00:13:38,940
+N-O-W.
+
+229
+00:13:38,940 --> 00:13:44,620
+Yes. That's the governor. It imposes order. But as chips get faster and bigger, keeping
+
+230
+00:13:44,620 --> 00:13:49,160
+that clock synchronized across billions of transistors is a nightmare. It burns a huge
+
+231
+00:13:49,160 --> 00:13:49,780
+amount of energy.
+
+232
+00:13:49,900 --> 00:13:50,140
+Okay.
+
+233
+00:13:50,440 --> 00:13:53,640
+NCL is different. It gets rid of the clock entirely. It's asynchronous.
+
+234
+00:13:54,080 --> 00:13:55,240
+Delay-insensitive logic.
+
+235
+00:13:55,400 --> 00:14:01,700
+Exactly. And it does this by changing what a bit is. Instead of one wire being a zero or
+
+236
+00:14:01,700 --> 00:14:05,000
+one, NCL uses two wires to represent a single bit.
+
+237
+00:14:05,240 --> 00:14:06,660
+Two wires. How does that help?
+
+238
+00:14:06,660 --> 00:14:11,800
+Well, imagine two wires. Let's call them A and B. If wire A is on and B is off, that
+
+239
+00:14:11,800 --> 00:14:15,340
+means zero. If wire B is on and A is off, that means one.
+
+240
+00:14:15,460 --> 00:14:18,500
+Okay. That covers zero and one. What if both are off? You didn't mention that.
+
+241
+00:14:18,520 --> 00:14:22,820
+That is the magic. If both are off, it means null. It means no data. It means I'm thinking.
+
+242
+00:14:23,260 --> 00:14:26,420
+So the computer has a physical state for, I don't know yet.
+
+243
+00:14:26,420 --> 00:14:33,980
+Yes. It has a state for process. In a standard computer, there is no process state, just values
+
+244
+00:14:33,980 --> 00:14:40,480
+that might be wrong until the clock ticks. In NCL, the circuit explicitly waits. It sits
+
+245
+00:14:40,480 --> 00:14:44,980
+in the null state until all the input signals arrive and settle. Only when the computation
+
+246
+00:14:44,980 --> 00:14:48,260
+is finished does it flip to data, either a zero or a one.
+
+247
+00:14:48,260 --> 00:14:52,980
+That sounds suspiciously like the lambda calculus again. The null state is the redex. It's the
+
+248
+00:14:52,980 --> 00:14:53,660
+loaded spring.
+
+249
+00:14:54,060 --> 00:14:58,440
+It is the physical incarnation of the redex. The null state represents the tension, the
+
+250
+00:14:58,440 --> 00:15:04,160
+potential of the calculation. The transition to data is the beta reduction. It's the collapse.
+
+251
+00:15:04,380 --> 00:15:04,640
+Wow.
+
+252
+00:15:04,780 --> 00:15:07,400
+This proves that abstraction is fundamentally temporal.
+
+253
+00:15:07,740 --> 00:15:09,180
+Temporal. You mean it takes time.
+
+254
+00:15:09,440 --> 00:15:13,560
+You cannot abstract something that is instantaneous. Abstraction takes time. It is an event.
+
+255
+00:15:13,560 --> 00:15:19,100
+The system must move from null, which is chaos, potential, to data, which is order and stability.
+
+256
+00:15:19,500 --> 00:15:23,520
+You cannot know the answer until the electrons have physically traversed the gate and settled.
+
+257
+00:15:23,780 --> 00:15:25,900
+Meaning takes time to form.
+
+258
+00:15:26,000 --> 00:15:30,700
+That's a great way to put it. Meaning isn't just there. It has to settle, like sediment in
+
+259
+00:15:30,700 --> 00:15:31,080
+water.
+
+260
+00:15:31,420 --> 00:15:34,000
+Or like concrete setting. You can't build on it until it's hard.
+
+261
+00:15:34,480 --> 00:15:34,920
+Exactly.
+
+262
+00:15:35,320 --> 00:15:39,560
+Okay, so we've seen the math with lambda, the code with Haskell, and the hardware with NCL.
+
+263
+00:15:39,560 --> 00:15:45,840
+Now the source gets, well, it gets visual. It introduces a custom geometric language called
+
+264
+00:15:45,840 --> 00:15:46,880
+sphere pop calculus.
+
+265
+00:15:47,140 --> 00:15:52,080
+This is where we leave the traditional textbooks far behind. Sphere pop is the author's attempt
+
+266
+00:15:52,080 --> 00:15:56,400
+to visualize this universal reduction process in 3D space.
+
+267
+00:15:56,520 --> 00:15:59,300
+It sounds like a genre of music, but describe the visual for us.
+
+268
+00:15:59,440 --> 00:16:04,800
+Okay, imagine a vast empty space. In this space, you have spheres. These aren't just balls.
+
+269
+00:16:05,000 --> 00:16:07,920
+They are regions of validity. They are bubbles of information.
+
+270
+00:16:07,920 --> 00:16:09,240
+Like a Venn diagram.
+
+271
+00:16:09,620 --> 00:16:14,520
+Sort of, but dynamic and in 3D. The language has two fundamental moves. Just two.
+
+272
+00:16:14,760 --> 00:16:15,560
+Merge and collapse.
+
+273
+00:16:15,720 --> 00:16:18,780
+Merge and collapse. It sounds like the heartbeat of this entire universe.
+
+274
+00:16:19,020 --> 00:16:24,640
+It effectively is. Merge is the act of bringing things together. Interaction. You take two
+
+275
+00:16:24,640 --> 00:16:29,080
+separate spheres. Maybe one represents the concept red, and the other represents the concept
+
+276
+00:16:29,080 --> 00:16:32,200
+apple, and you push them together. They overlap. They interact.
+
+277
+00:16:32,320 --> 00:16:34,340
+And collapse. I think I know where this is going.
+
+278
+00:16:34,340 --> 00:16:39,200
+Collapse is the reduction. It's when that complex, overlapping shape snaps into a new,
+
+279
+00:16:39,420 --> 00:16:45,520
+simpler shape. It's the decision. It's the beta reduction. The complex region of red plus
+
+280
+00:16:45,520 --> 00:16:49,200
+apple collapses into a single, stable object. Red apple.
+
+281
+00:16:49,480 --> 00:16:55,080
+The source mentions piping these spheres through something called semantic DAGs. That's a mouthful.
+
+282
+00:16:55,200 --> 00:17:00,480
+Let's break it down. DAG stands for directed acyclic graph. It basically means a one-way flow.
+
+283
+00:17:00,480 --> 00:17:05,760
+So imagine a river. Okay. I'm picturing a river. Now imagine putting a series of filters or maybe
+
+284
+00:17:05,760 --> 00:17:12,100
+water wheels in that river. That is the pipeline. You pour raw, messy, data muddy water into the
+
+285
+00:17:12,100 --> 00:17:17,600
+top. That's your input. Yeah. As it flows down, it passes through these sphere pop filters. Each
+
+286
+00:17:17,600 --> 00:17:22,040
+filter merges the data with some rule, some other sphere, and then collapses it. So it filters out the
+
+287
+00:17:22,040 --> 00:17:26,140
+noise, cleans the water. It refines the meaning. The source uses a really interesting topological
+
+288
+00:17:26,140 --> 00:17:31,900
+metaphor here. It says these filters twist and scale the data. Imagine the data is a lump of
+
+289
+00:17:31,900 --> 00:17:37,780
+Play-Doh. The pipeline stretches it, twists it, folds it, and squashes it. This sounds a lot like what
+
+290
+00:17:37,780 --> 00:17:43,580
+I've heard about neural networks. They talk about manifold manipulation. Exactly. That's precisely what
+
+291
+00:17:43,580 --> 00:17:50,820
+a deep learning model does. It takes the dough of raw pixel data from thousands of images, which is a
+
+292
+00:17:50,820 --> 00:17:58,820
+complete mess. And it needs it layer by layer until all the pictures of dogs are in one nice smooth lump
+
+293
+00:17:58,820 --> 00:18:04,740
+over here and all the pictures of cats are in another lump over there. And that separation, that's the
+
+294
+00:18:04,740 --> 00:18:11,760
+abstraction. Yes. You have abstracted dogness and catness out of the raw pixels by physically, or I
+
+295
+00:18:11,760 --> 00:18:16,780
+guess geometrically, crushing the space until the distinction becomes clear and simple. You've
+
+296
+00:18:16,780 --> 00:18:21,580
+minimized the energy required to tell them apart. You got it. Which leads us perfectly to the wetware,
+
+297
+00:18:22,140 --> 00:18:27,580
+the brain. Because if this is how computers work and this is how math works, the claim is that this
+
+298
+00:18:27,580 --> 00:18:33,000
+is how we work. The source dives into predictive coding. This is a really hot topic in neuroscience
+
+299
+00:18:33,000 --> 00:18:37,780
+right now. The idea is that the brain is not a passive camera. It doesn't just sit there and record
+
+300
+00:18:37,780 --> 00:18:42,480
+what it sees. No, it is an active prediction engine. It's guessing what it's going to see next.
+
+301
+00:18:42,480 --> 00:18:47,760
+Constantly. Every single moment. The brain maintains a mental model of the world. It
+
+302
+00:18:47,760 --> 00:18:52,940
+projects that model outward. I expect to see a floor under my feet. I expect to hear your voice.
+
+303
+00:18:53,440 --> 00:18:56,820
+I expect this coffee to be hot. And what happens when the prediction is wrong?
+
+304
+00:18:57,860 --> 00:19:04,260
+That is called surprise or prediction error. In information theory, this is surprisingly pun intended,
+
+305
+00:19:04,720 --> 00:19:11,800
+linked to entropy and free energy. Surprise is expensive. Expensive how? If I predict a floor and I fall into a
+
+306
+00:19:11,800 --> 00:19:17,420
+hole, that is a massive spike in neural activity. It's a crisis. The whole system has to reevaluate.
+
+307
+00:19:17,760 --> 00:19:22,740
+It burns a lot of metabolic energy. So the brain wants to minimize surprise. It wants to be right.
+
+308
+00:19:22,920 --> 00:19:29,580
+Yes. And guess what minimizes surprise? Abstraction. Abstraction. How so? If I have a very detailed,
+
+309
+00:19:29,840 --> 00:19:35,180
+messy model of the world, I'm going to be surprised constantly. Every shadow, every twitch of a leaf is new
+
+310
+00:19:35,180 --> 00:19:40,940
+data that violates my prediction. But if I abstract the world, if I reduce that tree to just tree,
+
+311
+00:19:40,940 --> 00:19:45,640
+then the twitching leaf doesn't surprise me. It fits the model of what trees do. I have compressed
+
+312
+00:19:45,640 --> 00:19:52,360
+the data. So we ignore details to save energy. We ignore details to survive. We reduce the infinite
+
+313
+00:19:52,360 --> 00:19:57,460
+complexity of the sensory world into manageably simple objects so that we can predict what they
+
+314
+00:19:57,460 --> 00:20:01,960
+will do. But the most fascinating part of this section is what it says about the self.
+
+315
+00:20:02,100 --> 00:20:05,580
+The predictive self. This part tripped me out a little.
+
+316
+00:20:05,580 --> 00:20:11,120
+The source argues that you, your identity, your personality is just the highest level
+
+317
+00:20:11,120 --> 00:20:14,900
+of this prediction hierarchy. You are the ultimate abstraction.
+
+318
+00:20:15,140 --> 00:20:16,800
+I am a summary of my own data.
+
+319
+00:20:17,060 --> 00:20:22,300
+Think about the time scales. Your sensory data, the photons hitting your retina changes every
+
+320
+00:20:22,300 --> 00:20:27,500
+millisecond. Your motor commands change every second. Your mood might change every hour or
+
+321
+00:20:27,500 --> 00:20:31,560
+every day. But you, your name, your core values, your memories.
+
+322
+00:20:31,640 --> 00:20:33,040
+Those stay pretty constant, yeah.
+
+323
+00:20:33,040 --> 00:20:38,060
+They are the slowest moving variables in the system. The self is the stable invariant that
+
+324
+00:20:38,060 --> 00:20:42,740
+explains all the faster moving data below it. It is the normal form of your life's experiences.
+
+325
+00:20:42,940 --> 00:20:46,580
+So I am just a story my brain tells itself to make sense of the chaos.
+
+326
+00:20:46,740 --> 00:20:50,940
+You are the generative model. And here is the kicker. We don't just predict the world.
+
+327
+00:20:51,260 --> 00:20:53,380
+We act to make the world match our predictions.
+
+328
+00:20:53,720 --> 00:20:55,000
+Wait, explain that. I don't follow.
+
+329
+00:20:55,140 --> 00:21:00,580
+It's called active inference. If my model says I am holding a cup of coffee, but my hand is
+
+330
+00:21:00,580 --> 00:21:02,660
+empty, I have a prediction error, a surprise.
+
+331
+00:21:02,980 --> 00:21:03,260
+Right.
+
+332
+00:21:03,420 --> 00:21:08,500
+I have two choices. I can change my model, which is hard. It means admitting I have no
+
+333
+00:21:08,500 --> 00:21:11,280
+coffee, which is sad. Or I can change the world.
+
+334
+00:21:11,360 --> 00:21:12,160
+Go pick up a cup.
+
+335
+00:21:12,280 --> 00:21:13,040
+Go kick up a cup.
+
+336
+00:21:13,100 --> 00:21:17,100
+So when I brew coffee in the morning, I'm just trying to resolve a math error in my head.
+
+337
+00:21:17,440 --> 00:21:23,020
+Fundamentally, yes. You are acting to minimize the free energy difference between your internal
+
+338
+00:21:23,020 --> 00:21:29,580
+abstraction and external reality. We literally terraform the world to fit our abstractions.
+
+339
+00:21:29,800 --> 00:21:35,200
+That is profound. And it explains why it's so painful when our identity gets challenged.
+
+340
+00:21:35,760 --> 00:21:40,000
+If I am just a geometric model, what happens when that model breaks?
+
+341
+00:21:40,480 --> 00:21:46,000
+The force calls that dissociation. It describes trauma as a fracture in the geometric manifold
+
+342
+00:21:46,000 --> 00:21:46,660
+of the self.
+
+343
+00:21:46,800 --> 00:21:47,300
+A fracture.
+
+344
+00:21:47,300 --> 00:21:52,480
+Imagine your life is a smooth path, what mathematicians call a geodesic, through this state space.
+
+345
+00:21:53,000 --> 00:21:58,300
+A traumatic event is a discontinuity, a cliff. The model can't predict across the gap.
+
+346
+00:21:58,580 --> 00:21:59,880
+So the path just stops.
+
+347
+00:22:00,220 --> 00:22:04,820
+The self literally breaks apart. You lose the connection between who I was before the event
+
+348
+00:22:04,820 --> 00:22:10,260
+and who I am now. It's a failure of abstraction. You can no longer reduce your experience to
+
+349
+00:22:10,260 --> 00:22:12,000
+a single coherent story.
+
+350
+00:22:12,140 --> 00:22:14,620
+So healing is geometry repair.
+
+351
+00:22:14,620 --> 00:22:20,000
+It's rebuilding the manifold, finding a new path that connects the pieces. It's a reduction
+
+352
+00:22:20,000 --> 00:22:22,960
+of the trauma into a new, stable narrative.
+
+353
+00:22:23,200 --> 00:22:28,800
+Wow. Okay, take a breath. Because we are about to jump from the brain into the absolute deep end.
+
+354
+00:22:28,900 --> 00:22:29,280
+We are.
+
+355
+00:22:29,360 --> 00:22:31,220
+Section 6. The Grand Unification.
+
+356
+00:22:31,480 --> 00:22:32,080
+The physics.
+
+357
+00:22:32,360 --> 00:22:36,520
+The physics. The source stops playing around with metaphors and goes straight for the throat
+
+358
+00:22:36,520 --> 00:22:43,540
+of the universe. It introduces 5D RSVP Ising models. Now, I read this section three times,
+
+359
+00:22:43,540 --> 00:22:46,800
+and I still feel like I need a PhD to parse it. Let's break it down gently.
+
+360
+00:22:46,980 --> 00:22:47,120
+Okay.
+
+361
+00:22:47,380 --> 00:22:48,920
+First, what is an Ising model?
+
+362
+00:22:49,500 --> 00:22:53,960
+Forget the 5D for a second. An Ising model is a tool physicists use to understand magnetism.
+
+363
+00:22:54,320 --> 00:22:57,460
+Imagine a crowded dance floor. Everyone is standing on a perfect grid.
+
+364
+00:22:57,740 --> 00:22:59,000
+Okay, dance floor. Got it.
+
+365
+00:22:59,240 --> 00:23:03,160
+Each person can face either north or south. That's it. Those are the two states.
+
+366
+00:23:03,520 --> 00:23:07,900
+Now, imagine there is peer pressure. Everyone wants to face the same direction as their neighbors.
+
+367
+00:23:07,900 --> 00:23:11,040
+If I'm facing north, I want my four neighbors to face north.
+
+368
+00:23:11,120 --> 00:23:11,680
+The informity.
+
+369
+00:23:11,880 --> 00:23:18,320
+Right. Energetically, it is cheaper to align. If I face north and you, my neighbor, face south,
+
+370
+00:23:18,560 --> 00:23:23,920
+there is tension. There is energy between us. The system naturally wants to relax into a state
+
+371
+00:23:23,920 --> 00:23:25,300
+where everyone is aligned.
+
+372
+00:23:25,440 --> 00:23:26,660
+All north or all south.
+
+373
+00:23:26,800 --> 00:23:32,660
+Right. That relaxation, that alignment is the Ising model solving itself. It's finding its lowest energy
+
+374
+00:23:32,660 --> 00:23:33,140
+state.
+
+375
+00:23:33,140 --> 00:23:37,660
+Okay, so magnets work by peer pressure. Atoms lining up to reduce tension.
+
+376
+00:23:37,880 --> 00:23:43,700
+Exactly. Now, the source takes the simple grid and explodes it. It adds dimensions. It says,
+
+377
+00:23:43,860 --> 00:23:48,480
+our reality isn't just a 3D grid of space. It proposes a five-dimensional lattice.
+
+378
+00:23:48,800 --> 00:23:49,860
+What are the extra dimensions?
+
+379
+00:23:50,000 --> 00:23:53,660
+You have the three spatial dimensions we all know. Up, down, left, right, forward, back.
+
+380
+00:23:53,980 --> 00:23:55,540
+Then you have time. That's the fourth.
+
+381
+00:23:55,720 --> 00:23:56,520
+Usual suspect.
+
+382
+00:23:56,600 --> 00:23:59,160
+And the fifth dimension is semantic depth.
+
+383
+00:23:59,280 --> 00:24:00,320
+Semantic depth, meaning?
+
+384
+00:24:00,680 --> 00:24:02,960
+Yes. The scale of the abstraction.
+
+385
+00:24:03,360 --> 00:24:06,060
+Remember the sphere pop collapse or the neural network layers?
+
+386
+00:24:06,860 --> 00:24:12,860
+The movement from raw pixels to concept of a dog is a movement through the fifth dimension.
+
+387
+00:24:13,260 --> 00:24:15,220
+It's movement from detail to abstract.
+
+388
+00:24:15,740 --> 00:24:18,140
+So in this model, thinking is a physical movement.
+
+389
+00:24:18,380 --> 00:24:20,700
+Yes. And this is the RSVP part.
+
+390
+00:24:20,840 --> 00:24:23,840
+It defines three fields that permeate this 5D lattice.
+
+391
+00:24:24,500 --> 00:24:28,820
+There's sieve leafy, which is a scalar field. Think of it like pressure or temperature.
+
+392
+00:24:28,820 --> 00:24:32,160
+There's vulva nu, which is a vector field. Think of it like flow or momentum.
+
+393
+00:24:32,540 --> 00:24:35,100
+And there's civilly, which is entropy.
+
+394
+00:24:35,380 --> 00:24:35,660
+Bula.
+
+395
+00:24:35,900 --> 00:24:38,200
+The plenum. The background stuff of the universe.
+
+396
+00:24:38,660 --> 00:24:42,880
+The source argues that computation, whether it's in a silicon chip or your brain,
+
+397
+00:24:43,100 --> 00:24:45,820
+is just this 5D fluid relaxing.
+
+398
+00:24:46,540 --> 00:24:49,240
+Just like the magnets on the dance floor want to align to minimize tension.
+
+399
+00:24:49,500 --> 00:24:51,240
+Your thoughts want to align to minimize entropy.
+
+400
+00:24:51,240 --> 00:24:56,260
+And, well, surprise, when you are confused, your mental state is high energy.
+
+401
+00:24:56,540 --> 00:24:57,880
+It's jagged. It's unaligned.
+
+402
+00:24:58,080 --> 00:25:04,200
+When you have an aha moment, when you understand that is the system physically collapsing into a lower energy state.
+
+403
+00:25:04,320 --> 00:25:06,680
+So understanding is literally a form of cooling down.
+
+404
+00:25:06,960 --> 00:25:07,240
+Yes.
+
+405
+00:25:08,000 --> 00:25:11,060
+The source uses the term Lamford dynamic smoothing.
+
+406
+00:25:11,600 --> 00:25:12,420
+It's a great phrase.
+
+407
+00:25:12,580 --> 00:25:14,140
+The universe wants to be smooth.
+
+408
+00:25:14,140 --> 00:25:18,260
+It hates jagged, high-complexity states.
+
+409
+00:25:18,520 --> 00:25:21,740
+It constantly tries to smooth them out into abstractions.
+
+410
+00:25:21,820 --> 00:25:23,660
+This ties right back to the original equation.
+
+411
+00:25:23,880 --> 00:25:24,020
+Yeah.
+
+412
+00:25:24,100 --> 00:25:26,020
+Abstraction equals energy minimization.
+
+413
+00:25:26,320 --> 00:25:27,380
+It's the same force.
+
+414
+00:25:28,040 --> 00:25:29,820
+Gravity pulls a ball down a hill.
+
+415
+00:25:30,060 --> 00:25:32,940
+The Ising interaction pulls a magnet into alignment.
+
+416
+00:25:33,420 --> 00:25:37,260
+And abstraction pulls a raw data stream into a coherent concept.
+
+417
+00:25:37,680 --> 00:25:41,380
+It is all just the universe trying to find the path of least resistance.
+
+418
+00:25:41,380 --> 00:25:44,640
+That's incredibly beautiful and also makes me feel very, very small.
+
+419
+00:25:45,000 --> 00:25:49,020
+But wait, there was a throwaway line in there about unistochastic matrices and quantum mechanics.
+
+420
+00:25:49,280 --> 00:25:51,560
+The critique we got said we glossed over this.
+
+421
+00:25:51,700 --> 00:25:52,920
+What is the connection there?
+
+422
+00:25:53,020 --> 00:25:54,500
+It's a dense connection, but let's try it.
+
+423
+00:25:54,520 --> 00:25:55,160
+Think of it this way.
+
+424
+00:25:55,740 --> 00:25:56,680
+You know Plato's cave.
+
+425
+00:25:57,000 --> 00:25:57,600
+The allegory.
+
+426
+00:25:58,300 --> 00:25:59,960
+Prisoners watching shadows on a wall.
+
+427
+00:26:00,060 --> 00:26:00,260
+Right.
+
+428
+00:26:00,460 --> 00:26:03,520
+The shadows are 2D, but the objects casting them are 3D.
+
+429
+00:26:03,800 --> 00:26:07,700
+You can't see the 3D object, but you can infer its properties from the shadow.
+
+430
+00:26:07,700 --> 00:26:17,720
+The source suggests that classical logic, the step-by-step deduction we do, the A implies B implies C, is just the shadow of a deeper quantum process.
+
+431
+00:26:17,940 --> 00:26:21,080
+So our logical thoughts are just the shadows of quantum events.
+
+432
+00:26:21,180 --> 00:26:21,840
+Roughly, yes.
+
+433
+00:26:22,360 --> 00:26:30,700
+A unistochastic matrix is a mathematical tool that connects classical probability, like rolling dice with quantum amplitude, like waves interfering.
+
+434
+00:26:30,700 --> 00:26:39,100
+The source implies that the semantic depth dimension, that fifth dimension, allows quantum effects to project down into our classical reality.
+
+435
+00:26:39,420 --> 00:26:39,820
+Thracis.
+
+436
+00:26:40,080 --> 00:26:44,460
+Our choices might be the collapse of a quantum wave function occurring in that fifth dimension.
+
+437
+00:26:44,940 --> 00:26:51,980
+Our seemingly logical thought process could be the shadow cast by a much richer probabilistic computation happening at a deeper level.
+
+438
+00:26:52,040 --> 00:26:53,420
+My brain is officially full.
+
+439
+00:26:53,600 --> 00:26:53,840
+Yeah.
+
+440
+00:26:53,840 --> 00:27:03,020
+But we can't stop here, because if we accept all this, that abstraction is this powerful universal force of smoothing and reducing, we have to talk about the cost.
+
+441
+00:27:03,140 --> 00:27:03,420
+Right.
+
+442
+00:27:03,520 --> 00:27:05,560
+Section 7, the ethics of abstraction.
+
+443
+00:27:05,820 --> 00:27:11,660
+This is where the rubber really meets the road, because if abstraction is reduction, that means something is being lost.
+
+444
+00:27:11,960 --> 00:27:12,920
+Something is being deleted.
+
+445
+00:27:13,280 --> 00:27:20,120
+The source makes a really important distinction between computational abstraction and phenomenological reduction.
+
+446
+00:27:20,120 --> 00:27:24,320
+That sounds like jargon, but the difference is life and death, isn't it?
+
+447
+00:27:24,640 --> 00:27:24,980
+It is.
+
+448
+00:27:25,140 --> 00:27:29,720
+Computational abstraction, what we've been praising this whole time, is about making the world useful.
+
+449
+00:27:30,500 --> 00:27:33,900
+You strip away the details of the tree to calculate its lumber yield.
+
+450
+00:27:34,340 --> 00:27:37,400
+You strip away the details of the driver to design the traffic system.
+
+451
+00:27:37,700 --> 00:27:40,300
+You make the map smaller than the territory so you can use it.
+
+452
+00:27:40,360 --> 00:27:40,560
+Right.
+
+453
+00:27:40,940 --> 00:27:41,340
+Useful.
+
+454
+00:27:41,900 --> 00:27:42,300
+Efficient.
+
+455
+00:27:42,920 --> 00:27:44,560
+Phenomenological reduction is the opposite.
+
+456
+00:27:45,160 --> 00:27:48,040
+It's what philosophers like Husserl and Heidegger talked about.
+
+457
+00:27:48,040 --> 00:27:52,220
+It's about stripping away your assumptions to see the world as it truly is.
+
+458
+00:27:52,620 --> 00:27:54,140
+So it's not about making the map smaller.
+
+459
+00:27:54,320 --> 00:27:56,000
+No, it's about making the map bigger.
+
+460
+00:27:56,360 --> 00:28:04,540
+It's about seeing the tree not as lumber, but as a living, breathing, complex entity with roots and fungi and a place in an ecosystem.
+
+461
+00:28:04,920 --> 00:28:10,020
+So one makes the world simple and you could say dead, and the other makes the world complex and alive.
+
+462
+00:28:10,380 --> 00:28:10,760
+Exactly.
+
+463
+00:28:10,760 --> 00:28:16,060
+And the dark genealogy the source warns about is what happens when we use computational abstraction on people.
+
+464
+00:28:16,440 --> 00:28:17,680
+The bureaucratic fallacy.
+
+465
+00:28:18,040 --> 00:28:19,800
+Reducing a human being to a number.
+
+466
+00:28:20,400 --> 00:28:20,880
+A statistic.
+
+467
+00:28:21,460 --> 00:28:22,520
+It's more than just a number.
+
+468
+00:28:22,680 --> 00:28:23,640
+It's a functional reduction.
+
+469
+00:28:24,380 --> 00:28:26,700
+The source uses the image of the broken back.
+
+470
+00:28:27,060 --> 00:28:28,160
+Yeah, that was visceral.
+
+471
+00:28:28,380 --> 00:28:30,400
+Imagine a pharaoh building a pyramid.
+
+472
+00:28:31,100 --> 00:28:33,520
+To the pharaoh, the slave is an abstraction.
+
+473
+00:28:34,180 --> 00:28:35,780
+The slave is a force unit.
+
+474
+00:28:36,340 --> 00:28:38,060
+The interface is movestone.
+
+475
+00:28:38,060 --> 00:28:39,780
+The implementation details.
+
+476
+00:28:39,780 --> 00:28:41,840
+The slave's pain.
+
+477
+00:28:41,840 --> 00:28:42,720
+Their family.
+
+478
+00:28:42,900 --> 00:28:45,200
+Their snapped spine are hidden.
+
+479
+00:28:45,560 --> 00:28:46,820
+They're irrelevant to the function.
+
+480
+00:28:47,020 --> 00:28:49,020
+They are encapsulated, to use the coding term.
+
+481
+00:28:49,060 --> 00:28:49,800
+They're encapsulated.
+
+482
+00:28:49,960 --> 00:28:51,840
+And to the pharaoh, the system is working perfectly.
+
+483
+00:28:51,960 --> 00:28:52,880
+The stone moved.
+
+484
+00:28:52,880 --> 00:28:54,460
+The contract was satisfied.
+
+485
+00:28:54,680 --> 00:28:56,240
+The normal form was achieved.
+
+486
+00:28:56,680 --> 00:28:59,760
+But the reality is a broken human body.
+
+487
+00:29:00,120 --> 00:29:01,700
+This is the danger of a clean interface.
+
+488
+00:29:01,860 --> 00:29:02,620
+It hides the blood.
+
+489
+00:29:03,020 --> 00:29:04,080
+It hides the dependencies.
+
+490
+00:29:04,540 --> 00:29:06,020
+This is what the source calls extraction.
+
+491
+00:29:06,620 --> 00:29:11,520
+Extraction is when you abstract a resource, like a forest, into a simple commodity like timber,
+
+492
+00:29:11,760 --> 00:29:14,660
+and you delete the ecological web that keeps the forest alive.
+
+493
+00:29:14,780 --> 00:29:14,980
+Right.
+
+494
+00:29:15,160 --> 00:29:17,360
+You ignore the soil, the fungi, the water cycle.
+
+495
+00:29:17,600 --> 00:29:20,580
+You extract the timber, and then the underlying reality collapses.
+
+496
+00:29:20,980 --> 00:29:21,860
+The forest dies.
+
+497
+00:29:22,260 --> 00:29:27,380
+Because you tried to run a get timber function on a system that was actually a live forest system.
+
+498
+00:29:28,020 --> 00:29:29,060
+The abstraction lied.
+
+499
+00:29:29,280 --> 00:29:30,700
+The abstraction was leaky.
+
+500
+00:29:31,120 --> 00:29:32,340
+It was a bad model.
+
+501
+00:29:32,340 --> 00:29:37,120
+It didn't account for the interdependencies that allowed the timber to exist in the first place.
+
+502
+00:29:37,280 --> 00:29:38,580
+So how do we fix this?
+
+503
+00:29:38,820 --> 00:29:41,000
+We can't just stop abstracting.
+
+504
+00:29:41,300 --> 00:29:44,480
+We can't process every atom of the universe individually.
+
+505
+00:29:44,780 --> 00:29:45,960
+We need maps.
+
+506
+00:29:46,240 --> 00:29:47,080
+We need models.
+
+507
+00:29:47,340 --> 00:29:47,680
+We do.
+
+508
+00:29:47,960 --> 00:29:49,780
+And the source doesn't advocate for that.
+
+509
+00:29:49,960 --> 00:29:52,260
+Instead, it proposes an ethics of reduction.
+
+510
+00:29:52,800 --> 00:29:54,780
+It calls for responsible interfaces.
+
+511
+00:29:55,220 --> 00:29:57,060
+What does a responsible interface look like?
+
+512
+00:29:57,140 --> 00:29:59,320
+It looks like an interface that remembers what it deleted.
+
+513
+00:29:59,320 --> 00:30:02,600
+It stores a memory of the complexity it collapsed.
+
+514
+00:30:03,220 --> 00:30:07,300
+And crucially, it allows the underlying reality to veto the abstraction.
+
+515
+00:30:07,500 --> 00:30:08,600
+Give me an example of a veto.
+
+516
+00:30:08,860 --> 00:30:10,580
+Think about an AI hiring system.
+
+517
+00:30:10,940 --> 00:30:13,000
+It abstracts candidates into a set of scores.
+
+518
+00:30:13,200 --> 00:30:13,720
+That's efficient.
+
+519
+00:30:14,000 --> 00:30:14,940
+But a veto would be.
+
+520
+00:30:15,340 --> 00:30:18,400
+If the system notices that it's rejecting all female candidates,
+
+521
+00:30:18,820 --> 00:30:21,460
+the underlying reality, the fact of discrimination,
+
+522
+00:30:22,040 --> 00:30:24,060
+overrides the abstraction of efficiency.
+
+523
+00:30:24,440 --> 00:30:26,360
+The territory says your map is wrong.
+
+524
+00:30:26,860 --> 00:30:27,380
+Exactly.
+
+525
+00:30:27,380 --> 00:30:29,000
+The territory gets to speak.
+
+526
+00:30:29,400 --> 00:30:30,760
+You have to listen to the friction.
+
+527
+00:30:31,220 --> 00:30:33,580
+If the engine is screaming, you don't just turn up the radio.
+
+528
+00:30:34,060 --> 00:30:34,960
+You look under the hood.
+
+529
+00:30:35,680 --> 00:30:37,900
+We have to be willing to break the abstraction
+
+530
+00:30:37,900 --> 00:30:40,360
+and look at the mess when people are getting hurt.
+
+531
+00:30:41,000 --> 00:30:42,920
+That feels like the ultimate lesson here.
+
+532
+00:30:43,440 --> 00:30:47,160
+Abstraction is a tool, a powerful one, but it's not a truth.
+
+533
+00:30:47,280 --> 00:30:48,360
+It is a method of compression.
+
+534
+00:30:48,820 --> 00:30:50,360
+It is not reality itself.
+
+535
+00:30:50,360 --> 00:30:52,560
+We have covered a staggering amount of ground today.
+
+536
+00:30:53,420 --> 00:30:58,380
+From the redexes of lambda calculus to the null states of NCL chips.
+
+537
+00:30:58,540 --> 00:31:01,100
+From the kneading of dough in sphere pop space.
+
+538
+00:31:01,180 --> 00:31:03,420
+To the five-dimensional physics of the soul.
+
+539
+00:31:03,600 --> 00:31:04,240
+It's a lot.
+
+540
+00:31:04,460 --> 00:31:05,900
+But I hope the listener sees the thread.
+
+541
+00:31:06,120 --> 00:31:06,920
+It's all the same thing.
+
+542
+00:31:07,400 --> 00:31:08,320
+The grand equivalence.
+
+543
+00:31:08,960 --> 00:31:12,700
+Abstraction equals reduction equals evaluation equals energy minimization.
+
+544
+00:31:12,940 --> 00:31:14,260
+We are reduction engines.
+
+545
+00:31:14,600 --> 00:31:15,420
+That is what we are.
+
+546
+00:31:15,740 --> 00:31:19,380
+We take the infinite noise of the universe and we collapse it into habitable order.
+
+547
+00:31:19,380 --> 00:31:22,480
+We build a floor to stand on over an abyss of chaos.
+
+548
+00:31:22,800 --> 00:31:23,420
+Beautifully put.
+
+549
+00:31:23,780 --> 00:31:26,040
+But we have to remember that the floor is artificial.
+
+550
+00:31:26,700 --> 00:31:29,060
+And sometimes we need to look through the cracks.
+
+551
+00:31:29,260 --> 00:31:29,580
+We do.
+
+552
+00:31:29,840 --> 00:31:31,740
+You always leave us with a thought to chew on.
+
+553
+00:31:31,880 --> 00:31:33,960
+Something to, you know, keep us up at night.
+
+554
+00:31:34,320 --> 00:31:38,300
+What does the 5D RSVP Ising model have for us?
+
+555
+00:31:38,540 --> 00:31:42,620
+Well, let's combine the predictive self with the energy minimization of physics.
+
+556
+00:31:42,780 --> 00:31:42,980
+Okay.
+
+557
+00:31:43,160 --> 00:31:46,280
+We said that your self is just a model trying to minimize surprise.
+
+558
+00:31:46,280 --> 00:31:50,320
+And we said that computation is just the universe naturally falling into a lower energy state.
+
+559
+00:31:50,940 --> 00:31:50,960
+Okay.
+
+560
+00:31:51,380 --> 00:31:51,960
+I'm following.
+
+561
+00:31:52,380 --> 00:31:56,600
+So usually we think, I am thinking a thought.
+
+562
+00:31:56,900 --> 00:31:58,280
+I am the agent.
+
+563
+00:31:58,580 --> 00:31:59,960
+I am doing the work.
+
+564
+00:32:00,120 --> 00:32:00,260
+Right.
+
+565
+00:32:00,380 --> 00:32:01,180
+I am the thinker.
+
+566
+00:32:01,320 --> 00:32:10,140
+But if your thought is just the universe relaxing, if it's just the inevitable slide of that 5D field into a lower energy valley, then are you thinking?
+
+567
+00:32:10,540 --> 00:32:13,840
+Or are your thoughts just the sound the universe makes as it settles?
+
+568
+00:32:14,000 --> 00:32:14,280
+Whoa.
+
+569
+00:32:14,420 --> 00:32:20,620
+Is you, your entire identity, just the specific geometric shape where the universe found the path of least resistance?
+
+570
+00:32:21,100 --> 00:32:23,240
+Are you the sculptor or are you just the clay?
+
+571
+00:32:23,540 --> 00:32:26,280
+Am I the thinker or am I just the place where the thinking happens?
+
+572
+00:32:26,640 --> 00:32:27,040
+Exactly.
+
+573
+00:32:27,160 --> 00:32:27,400
+I think.
+
+574
+00:32:27,520 --> 00:32:30,520
+I think I need to go lie down and minimize my own energy state for a while.
+
+575
+00:32:30,640 --> 00:32:31,860
+Go find your normal form.
+
+576
+00:32:32,200 --> 00:32:33,680
+Thank you so much for this journey.
+
+577
+00:32:34,040 --> 00:32:35,520
+It has been a true deep dive.
+
+578
+00:32:35,760 --> 00:32:38,300
+To our listeners, good luck with your own reductions.
+
+579
+00:32:38,740 --> 00:32:39,560
+We'll see you next time.
+

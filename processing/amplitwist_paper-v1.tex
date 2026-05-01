@@ -1,0 +1,1326 @@
+\documentclass[12pt, a4paper]{article}
+
+% ---------- packages ----------
+\usepackage[T1]{fontenc}
+\usepackage{mathpazo}
+\usepackage{textcomp}
+\usepackage{microtype}
+\usepackage{geometry}
+\geometry{a4paper, top=2.5cm, bottom=2.5cm, left=3cm, right=3cm}
+
+\usepackage{amsmath, amssymb, amsthm, mathtools}
+
+\usepackage{setspace}
+\setstretch{1.15}
+
+\usepackage{titlesec}
+\titleformat{\section}{\large\bfseries}{\thesection.}{0.75em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\thesubsection.}{0.5em}{}
+\titlespacing*{\section}{0pt}{1.6ex plus 0.4ex minus 0.2ex}{0.8ex plus 0.2ex}
+\titlespacing*{\subsection}{0pt}{1.2ex plus 0.3ex}{0.5ex plus 0.1ex}
+
+\usepackage{parskip}
+\setlength{\parskip}{0.55em}
+\setlength{\parindent}{0pt}
+
+\usepackage[hidelinks]{hyperref}
+\usepackage{booktabs, array, enumitem}
+\setlist[itemize]{noitemsep, topsep=0.3em, leftmargin=1.6em}
+
+% ---------- theorem environments ----------
+\newtheorem{theorem}{Theorem}[section]
+\newtheorem{definition}[theorem]{Definition}
+\newtheorem{proposition}[theorem]{Proposition}
+\theoremstyle{remark}
+\newtheorem{remark}[theorem]{Remark}
+
+\theoremstyle{definition}
+\newtheorem{principle}[theorem]{Principle}
+
+% ---------- operators and shorthands ----------
+\DeclareMathOperator{\Vol}{Vol}
+\newcommand{\A}{\mathcal{A}}
+\newcommand{\Rk}{\mathfrak{R}}
+\newcommand{\vv}{\mathbf{v}}
+\newcommand{\Phif}{\Phi}
+
+% ---------- metadata ----------
+\title{\textbf{Amplitwist Cascades, Biological Priors,\\[0.3ex]
+and the Geometry of Cognitive Transformation}}
+\author{Flyxion\\[0.5ex]
+\small Independent Researcher}
+\date{May 2026}
+
+% ==========================================================
+\begin{document}
+\maketitle
+
+\begin{abstract}
+\noindent
+This essay develops a geometric account of cognitive transformation grounded in the
+amplitwist operator formalism.  The central thesis is that cognition operates within a
+structured transformation algebra whose expressive capacity exceeds its biological use,
+and that this gap---far from being incidental---encodes the prior that shapes how biological
+systems actually compute.  We formalize the amplitwist cascade as a universal transformation
+language, embed it within RSVP-style field dynamics, and derive efficiency bounds from the
+spectral geometry of the representational manifold.  We then introduce a biological prior
+modelled on hierarchical central-pattern-generator (CPG)-like dynamics, which constrains
+the system to low-dimensional, rhythmically stable trajectories.  Propositional
+representation is reconceived as an equivalence class of perturbation-stable trajectories
+rather than as static encoding.  The two-layer structure---expressive envelope versus
+biological prior---generates falsifiable predictions about phase alignment, vorticity
+convergence, and cascade ordering in both human behaviour and neural population dynamics.
+An experimental design using compositional and non-compositional morphological
+transformation tasks is proposed to test these predictions, and an alignment loss metric is
+defined to compare operator geometry between humans and language models.
+\end{abstract}
+
+\tableofcontents
+\bigskip
+
+% ==========================================================
+\section{Introduction: From Expressivity to Constraint}
+\label{sec:intro}
+
+The central thesis of this essay is not merely that cognition is nonlinear or
+compositional, but that it operates within a structured transformation algebra whose
+expressive capacity strictly exceeds its biological use.  The distinction that matters is
+between what a system \emph{could} compute and what it \emph{actually} computes, between
+the envelope of possible transformations and the narrow, prior-shaped corridor through which
+biological computation travels.
+
+Standard accounts of neural computation tend to focus on one side of this distinction or
+the other.  Representational accounts emphasise the richness of what the brain can encode.
+Dynamical systems accounts emphasise the constrained, low-dimensional structure of what it
+actually does.  The position developed here holds that both sides are necessary, and that
+the relationship between them---the gap between expressive capacity and biological
+implementation---is itself the primary theoretical object.
+
+This gap is not a residual to be explained away.  It encodes the prior that shapes
+cognition: the preference for rhythmically stable, compositionally ordered, dynamically
+supportable trajectories over the vast space of transformations that the underlying operator
+algebra could in principle compute.  Formalising this gap, and making it empirically
+testable, is the aim of the essay.
+
+The argument proceeds in four stages.  Sections~\ref{sec:operator}--\ref{sec:spectral}
+develop the mathematical core: the amplitwist operator as a universal transformation basis,
+its embedding in field dynamics, and the spectral constraints governing efficiency.
+Sections~\ref{sec:prior}--\ref{sec:representation} introduce the biological prior and
+reformulate propositional representation as trajectory equivalence.
+Sections~\ref{sec:predictions}--\ref{sec:comparison} derive empirical predictions and
+propose an experimental design.  Sections~\ref{sec:interpretation}--\ref{sec:conclusion}
+interpret the framework and assess its falsifiability.
+
+% ==========================================================
+\section{The Amplitwist Operator as a Universal Transformation Basis}
+\label{sec:operator}
+
+\subsection{Operator definition}
+
+The starting point is the classical result from complex analysis.  For a holomorphic
+function $f \colon \mathbb{C} \to \mathbb{C}$, the derivative at a point $z_0$ takes the
+form $f'(z_0) = \rho\, e^{i\theta}$, encoding a local similarity transformation that
+simultaneously scales by $\rho > 0$ and rotates by $\theta \in [0,2\pi)$.  Tristan
+Needham's \emph{Visual Complex Analysis} gives this decomposition the name
+\emph{amplitwist}, capturing the dual action of amplitude and twist on infinitesimal
+neighbourhoods.
+
+Generalising to a smooth $n$-dimensional representational manifold $M$, we define the
+\emph{amplitwist operator} at a point $x \in M$ as the triplet
+\begin{equation}
+  \A(x) \;=\; \rho(x)\, e^{i\theta(x)}\, \pi(x),
+  \label{eq:operator}
+\end{equation}
+where $\rho(x) \in \mathbb{R}_{>0}$ is an amplitude modulation (gain or precision),
+$\theta(x) \in \mathbb{R}$ is a phase encoding the direction of transformation in the
+tangent space $T_x M$, and $\pi(x)$ is a nonlinear projection or contraction that
+introduces the nonlinearity required for function approximation beyond the affine regime.
+
+\subsection{Cascade composition}
+
+Under sequential application, amplitwist operators compose into cascades.  Given a sequence
+of operators $\A_1, \ldots, \A_N$ acting at successive stages, the composed transformation
+is
+\begin{equation}
+  \A^{(N)} \;=\; \A_N \circ \cdots \circ \A_1.
+  \label{eq:cascade}
+\end{equation}
+With sufficient depth and nonlinearity, this compositional system defines a dense function
+class over smooth maps $M \to \mathbb{R}^n$.  The amplitwist cascade is therefore
+analogous in expressive power to neural network universal approximation theorems, but
+grounded in geometrically interpretable local operators rather than in abstract activation
+functions.  This is the \emph{capacity layer}: the formal claim that the operator algebra,
+given unconstrained composition, can approximate any sufficiently regular transformation.
+
+\subsection{Two regimes of operation}
+
+The capacity claim must be distinguished from any claim about how biological systems
+actually use this capacity.  Formally, two regimes are identified.  In \emph{Regime~A}
+(universal approximation), the system exploits the full depth of the cascade to approximate
+arbitrary continuous functions; intermediate states are determined solely by the
+approximation target.  In \emph{Regime~B} (constrained control), the system operates
+through a small number of structured generators---rhythmic, hierarchical,
+embodied---and computation is compositional in the sense that each stage stabilises before
+the next is engaged.  The central claim of this essay is that biological cognition
+predominantly occupies Regime~B, and that the entropy weighting introduced in
+Section~\ref{sec:field} implements the corresponding prior.
+
+% ==========================================================
+\section{Field-Theoretic Embedding and Phase Alignment}
+\label{sec:field}
+
+\subsection{RSVP fields as state space}
+
+The amplitwist operator acts on a structured state space defined by three coupled fields
+over $M$.  The \emph{scalar field} $\Phif \colon M \to \mathbb{R}$ represents semantic
+salience or potential.  The \emph{vector field} $\vv \colon M \to TM$ represents
+conceptual velocity, encoding the direction and speed of representational change.  The
+\emph{entropy field} $S \colon M \to \mathbb{R}_{>0}$ represents cognitive uncertainty or
+the admissibility of a transformation under the biological prior.  This triplet is the
+state space of the Relativistic Scalar--Vector Plenum (RSVP) framework adapted to the
+cognitive setting.
+
+\subsection{Phase alignment and the amplitwist angle}
+
+The central geometric quantity is the angle between the vector field $\vv$ and the gradient
+of the scalar field $\Phif$.  This angle measures the degree to which the direction of
+representational motion aligns with the direction of increasing salience.  Formally,
+\begin{equation}
+  \theta(x) \;=\; \arccos\!\left(
+    \frac{\vv(x) \cdot \nabla\Phif(x)}{\|\vv(x)\|\,\|\nabla\Phif(x)\| + \epsilon}
+  \right),
+  \label{eq:phase}
+\end{equation}
+where $\epsilon > 0$ is a small numerical stabiliser.  When $\theta \approx 0$, the system
+moves directly along the salience gradient: the transformation is maximally coherent.  When
+$\theta \approx \pi/2$, motion is orthogonal to the gradient, generating rotational
+structure without progress.  The quantity $\xi = |\nabla \times \hat{\vv}|$, where
+$\hat{\vv} = (\cos\theta, \sin\theta)$, is the \emph{vorticity} of the phase-weighted
+field.  High vorticity signals inefficiency or instability in the transformation cascade.
+
+\subsection{Entropy weighting as biological prior}
+
+The layer-$k$ amplitwist, weighted by entropy, is
+\begin{equation}
+  \A^{(k)}(x) \;=\; w_k(x)\cdot \A\!\left(\Rk_k(x)\right), \qquad
+  w_k(x) \;=\; \exp\!\bigl(-\lambda S(x)\bigr),
+  \label{eq:weighted}
+\end{equation}
+where $\Rk_k$ is the semantic deformation applied at layer $k$.  The weight $w_k$
+suppresses transformations in regions of high entropy.  Interpreted as a regulariser, this
+is a standard smoothing device.  Interpreted as a biological prior, it is a hypothesis
+about what the nervous system computes: it continuously evaluates which transformations can
+be supported by available dynamical primitives, and down-weights trajectories that exceed
+that support.  This interpretation is the key conceptual move of Section~\ref{sec:prior}.
+
+% ==========================================================
+\section{Hybrid Dynamics and Convergence}
+\label{sec:hybrid}
+
+Amplitwist cascades do not operate in isolation from temporal dynamics.  Between discrete
+operator applications, the state evolves continuously according to the RSVP field
+equations.  The combined system is a \emph{hybrid dynamical system}: continuous semigroup
+evolution punctuated by discrete transformation events.
+
+Let $T(t)$ denote the semigroup of continuous field evolution, and let $P_k$ denote the
+operator applied at event time $t_k$.  The hybrid trajectory takes the form
+\begin{equation}
+  T(t_N - t_{N-1})\, P_{N-1}\, \cdots\, T(t_1 - t_0)\, P_0\, T(t_0).
+  \label{eq:hybrid}
+\end{equation}
+A Trotter--Kato-style approximation theorem ensures that, as event spacing shrinks to zero
+and the discrete grid refines, the hybrid trajectory converges:
+\begin{equation}
+  \lim_{h \to 0,\, \delta t \to 0}
+  \bigl(S_h(\delta t)\bigr)^{\lfloor t/\delta t\rfloor}
+  \;=\; T(t) \circ P_t
+  \label{eq:trotterkato}
+\end{equation}
+in the operator norm on the relevant Sobolev space.  This convergence result grounds the
+discrete cascade model in functional analysis, ensuring that operator composition inherits
+stability guarantees from the continuous semigroup.  The cascade is not an algorithmic
+approximation to some underlying process; in the continuum limit, it \emph{is} the process.
+
+% ==========================================================
+\section{Spectral Geometry and Efficiency Constraints}
+\label{sec:spectral}
+
+\subsection{Eigenmode structure}
+
+The efficiency of transformation propagation across $M$ is constrained by its spectral
+geometry.  The Laplace--Beltrami operator $\Delta_M$ admits a spectral decomposition whose
+eigenmodes $\psi_n$ and eigenvalues $0 = \lambda_0 < \lambda_1 \le \lambda_2 \le \cdots$
+organise the possible patterns of activation on $M$.  Low-frequency modes (small
+$\lambda_n$) are broad and spatially integrative; high-frequency modes are local and
+transient.  A transformation event excites these modes with amplitude proportional to the
+overlap of the event kernel with each eigenfunction.  Sequential cascades correspond to
+traversals in eigenmode space, with each layer engaging progressively deeper or
+higher-frequency structure.
+
+\subsection{Efficiency bound}
+
+The epistemic efficiency ratio $\eta^{(N)}$, defined as the ratio of useful phase alignment
+to total cascade cost, satisfies
+\begin{equation}
+  \eta^{(N)} \;\geq\;
+  \frac{\lambda_1(M)}{N \cdot \max_j \|\epsilon_j T_j\|_\infty},
+  \label{eq:efficiency}
+\end{equation}
+where $\lambda_1(M)$ is the first nonzero Laplacian eigenvalue of $M$, $N$ is the cascade
+depth, $\epsilon_j$ are the deformation intensities, and $T_j \in \mathfrak{so}(n)$ are
+the Lie-algebra generators of the semantic rotations at each layer.  The bound has a
+transparent interpretation: the higher the spectral gap of the manifold, the more easily
+transformations propagate between regions and the more efficient the cascade.  Conversely,
+a manifold with a small spectral gap offers geometric resistance to propagation, requiring
+deeper cascades or larger deformations to achieve the same alignment.  This connects local
+operator structure to global manifold geometry via eigenmodes and traveling waves, in
+direct correspondence with empirical observations of cortical dynamics in ECoG and MEG.
+
+% ==========================================================
+\section{The Biological Prior: Dynamical Constraint via CPG-Like Structures}
+\label{sec:prior}
+
+\subsection{The capacity--implementation gap}
+
+The formal capacity established in Section~\ref{sec:operator} is unlimited: given
+sufficient depth, amplitwist cascades can approximate any sufficiently regular function.
+But biological systems do not search this space uniformly.  The central empirical fact is
+that neural computation is strikingly low-dimensional relative to the dimensionality of the
+spaces it nominally acts upon.  Population dynamics occupy a small number of modes; motor
+trajectories are organised around rhythmic generators; perceptual representations cluster
+into stable attractors.  The capacity--implementation gap is not a deficiency but a
+structural signature: it reveals the shape of the prior that biological systems bring to
+computation.
+
+\subsection{CPG-like dynamics as a trajectory prior}
+
+The natural model for this prior is a hierarchy of central pattern generators (CPGs) or
+CPG-like oscillatory structures.  CPGs are neural circuits capable of producing
+coordinated, rhythmic output without requiring continuous sensory input.  Hierarchically
+composed CPG chains generate low-dimensional, stable, perturbation-resistant trajectories
+through the high-dimensional neural state space.  The amplitwist cascade, from the
+perspective of biological implementation, is not searching the full function class: it
+preferentially occupies trajectories that can be parameterised and stabilised by such
+generators.
+
+This is the \emph{biological prior layer}.  Formally, the prior assigns high probability
+to trajectories that satisfy three conditions: they are low-dimensional relative to the
+ambient space of $M$; they are rhythmically structured, admitting a generator
+decomposition; and they are stable under perturbation, meaning small displacements return
+to the trajectory rather than diverging.  The entropy weighting $w_k = \exp(-\lambda S)$
+implements this prior in the operator algebra: regions of high entropy correspond to
+transformations that cannot be stabilised by available dynamical primitives and are
+accordingly suppressed.
+
+\subsection{Errors under the prior}
+
+A key prediction follows from the direction of failure.  When a task requires a
+transformation that cannot be decomposed into CPG-supportable stages---a genuinely
+non-compositional jump through semantic space---biological systems should not fail randomly.
+They should fail in the direction of the nearest decomposable transformation, because
+entropy weighting continuously pulls the trajectory toward the highest-prior path even when
+that path is incorrect.  This directional failure is qualitatively distinct from the
+behaviour of a pure function approximator, and it constitutes a falsifiable signature of
+the prior.
+
+% ==========================================================
+\section{Representation as Trajectory Equivalence}
+\label{sec:representation}
+
+\subsection{Against static encoding}
+
+The standard view of propositional representation treats semantic content as a property of
+a state: a pattern of activation, a point in a representational space, a configuration of
+features.  This view is ill-suited to a transformation-first framework, because it makes
+the content of a representation independent of how the representation behaves under
+perturbation.  Two states that activate the same features but respond differently to the
+same sequence of transformations would count as representing the same proposition under
+the standard view.  That is the wrong result.
+
+\subsection{Trajectory equivalence}
+
+The alternative proposed here grounds propositional identity in transformation behaviour.
+
+\begin{definition}[Propositional equivalence]
+\label{def:equiv}
+Let $\Pi = (P_1, \ldots, P_k)$ be a sequence of operator perturbations.  Two states
+$x, x' \in M$ are \emph{$\Pi$-equivalent}, written $x \sim_\Pi x'$, if
+\[
+  \A^{(j)}(x) \;=\; \A^{(j)}(x') \quad \text{for all } j \le |\Pi|.
+\]
+A \emph{proposition} is an equivalence class $[x]_\Pi = \{x' \in M : x' \sim_\Pi x\}$.
+\end{definition}
+
+This is a behavioural criterion for semantic content, not a representational one.  Meaning
+is constituted by transformation invariance rather than by any intrinsic property of the
+state.  The connection to inferential role semantics---specifically, Brandom's account of
+meaning as constituted by normative inferential commitment---is immediate, but the present
+formulation provides a geometric implementation that the purely linguistic account lacks:
+$\Pi$-equivalence is in principle measurable, whereas inferential role has historically
+resisted quantification.
+
+\subsection{CPG dynamics as a trajectory basis}
+
+The trajectory-equivalence account avoids the overclaim that CPG chains directly encode
+arbitrary propositions.  Instead, CPG-like dynamics provide the primitive trajectory basis
+from which propositional invariants can be constructed.  A proposition is not mapped to a
+single motor pattern: it is represented by the equivalence class of all states that respond
+identically to the relevant sequence of cascade perturbations, where that sequence is
+grounded in, though not reducible to, the CPG-generated trajectory basis.
+
+% ==========================================================
+\section{Predictions About Cognitive Dynamics}
+\label{sec:predictions}
+
+The two-layer model---expressive capacity plus biological prior---generates a set of strong,
+specific predictions.
+
+Within a single transformation layer, as a participant learns the relevant rule, phase
+alignment $\theta_t$ should improve monotonically over trials: the participant's
+representational trajectory should come to point increasingly in the direction of the task
+gradient.  Vorticity $\xi^{(N)}$ should decrease and stabilise within the layer, converging
+as the cascade becomes ordered.  These within-layer predictions follow from the attractor
+stability theorem, which ensures vorticity convergence given small enough deformation
+intensities.
+
+Across transformation layers, the cascade should compose in a lawful order.  Participants
+should stabilise layer $\Rk_1$ before $\Rk_2$ becomes coherent, and $\Rk_2$ before
+$\Rk_3$.  This ordering is a direct prediction of the biological prior: CPG-like dynamics
+engage one level of the hierarchy at a time, and entropy weighting suppresses premature
+engagement of higher layers before lower ones are stable.
+
+The failure modes of the framework are as diagnostic as its successes.  A participant who
+shortcuts---who moves directly from layer $\Rk_1$ to the final output without passing
+through $\Rk_2$---should show a phase discontinuity at layer~2: a sudden high-amplitude
+jump with poor alignment between $\vv$ and $\nabla\Phif$ at that boundary.  A participant
+confronted with a genuinely non-compositional transformation should either impose a
+spurious intermediate stage or show high phase error and boundary-localised vorticity.
+These signatures distinguish structured cascades from generic nonlinear learning, because
+a generic nonlinear model predicts smooth but arbitrarily shaped trajectories rather than
+vorticity specifically localised at decomposition boundaries.
+
+% ==========================================================
+\section{Experimental Design: Compositional vs Non-Compositional Tasks}
+\label{sec:experiment}
+
+\subsection{Controlled transformation domain}
+
+The experimental domain is designed to be deliberately artificial, low-dimensional, and
+over-instrumented.  The goal at this stage is not ecological validity but falsifiability:
+the domain must be rich enough that participants can discover structure rather than memorise
+labels, while simple enough that the true transformation geometry can be computed in
+advance and used as ground truth.  Linguistic morphology with nonce words satisfies both
+conditions.
+
+A fixed feature manifold is defined prior to data collection, using phonological feature
+vectors from a standard inventory, morphological role vectors drawn from Universal
+Dependencies, and semantic-pragmatic features established through a norming study on the
+nonce items.  The ground-truth $\Phif$ and $\nabla\Phif$ are computed from this manifold
+and held fixed throughout.  This non-circularity is methodologically essential: if the
+embedding space were reconstructed from participant responses, the test of phase alignment
+would be vacuous.
+
+\subsection{Compositional task family}
+
+The first family presents transformations smoothly decomposable across three layers.
+Layer~$\Rk_1$ involves \emph{phonological change} (feature scaling): a nonce stem undergoes
+a regular phonological modification, describable as a small-magnitude movement in
+phonological feature space.  Layer~$\Rk_2$ involves \emph{morphological role change}
+(rotation): the item is recategorised---from noun to verb, agent to instrument, or singular
+to plural---requiring a directional reorientation in role-feature space without necessarily
+changing magnitude.  Layer~$\Rk_3$ involves \emph{semantic-pragmatic shift}
+(entropy-weighted transformation): the item acquires a contextually modulated meaning such
+as a diminutive, augmentative, or metaphorical extension, where the correct transformation
+depends on contextual entropy and is accordingly suppressed by high uncertainty.
+
+A representative cascade might run: \emph{blick} $\to$ \emph{blicken} $\to$
+\emph{blicker} $\to$ \emph{tool-for-blicking}.  The lexical items are irrelevant; what
+matters is that each layer has a known target direction in the pre-defined feature space
+and that participants' responses can be embedded and measured against that direction.
+
+\subsection{Non-compositional task family}
+
+The second family requires discontinuous jumps through semantic space.  These tasks have
+correct answers that cannot be reached by any smooth decomposition into the three layers
+above.  The correct transformation is opaque from the standpoint of the cascade structure:
+it requires moving to a point in the manifold with no stable intermediate under available
+dynamical primitives.  The biological prior predicts that humans will either fail
+(showing high vorticity and poor alignment) or succeed by imposing a spurious intermediate
+stage not present in the task structure.  A pure function approximator makes neither
+prediction: it should succeed or fail based solely on output accuracy, with no
+characteristic geometric signature.
+
+\subsection{Trajectory measurement}
+
+From participant responses across trials, the following quantities are computed at each
+time step $t$:
+\begin{equation}
+  \vv_t \;=\; x_{t+1} - x_t, \qquad
+  \theta_t \;=\; \angle(\vv_t,\, \nabla\Phif), \qquad
+  \rho_t \;=\; \|\vv_t\|,
+  \label{eq:measures}
+\end{equation}
+where $x_t$ is the embedding of the participant's response at trial $t$ and $\nabla\Phif$
+is the pre-defined task gradient.  The triplet $(\vv_t, \theta_t, \rho_t)$ constitutes the
+empirical estimate of the amplitwist operator at time $t$.  Vorticity is estimated from the
+curl of the phase-weighted field across the trial sequence.
+
+% ==========================================================
+\section{Human vs Model Comparison}
+\label{sec:comparison}
+
+\subsection{Alignment loss}
+
+To compare operator geometry between human participants and language models, we define the
+\emph{alignment loss}
+\begin{equation}
+  \mathcal{L}_A \;=\; \sum_{k=1}^{N}
+  \bigl\|\A^{(k)}_{\text{model}}(\mathbf{x}) -
+         \A^{(k)}_{\text{human}}(\mathbf{x})\bigr\|^2.
+  \label{eq:alignloss}
+\end{equation}
+The critical comparison is not whether the model and the human produce the same final
+answer, but whether they traverse the transformation space through the same local
+rotation-scaling path.  Endpoint equivalence with path divergence is the key empirical
+signature: if a model consistently matches human outputs while exhibiting disordered
+intermediate operator geometry, it has learned to produce the same results without learning
+the underlying transformation structure.
+
+\subsection{Predicted asymmetries}
+
+The framework predicts three distinct patterns.  Humans on compositional tasks should show
+low vorticity, improving phase alignment, and ordered cascade composition, with each layer
+stabilising before the next is engaged.  Humans on non-compositional tasks should show
+high vorticity or the characteristic signature of imposed spurious structure: a phase
+discontinuity followed by an intermediate state that reduces vorticity before the
+discontinuous jump is completed.  Language models, given either task family, should show
+correct or near-correct outputs but weaker geometric coherence: higher vorticity at layer
+boundaries, less stable intermediate operator structure, and entropy insensitivity (because
+models lack anything analogous to the biological prior implemented by entropy weighting).
+
+The asymmetry between human failure modes---directional, prior-shaped, localised at
+decomposition boundaries---and model failure modes---random, entropy-insensitive, uniformly
+distributed across layers---is the central empirical contrast.  If this asymmetry is not
+observed, the biological prior interpretation is falsified independently of the operator
+formalism.
+
+% ==========================================================
+\section{Interpretation: Geometry as the Invariant Substrate}
+\label{sec:interpretation}
+
+If the predicted invariants are confirmed, the framework supports the following
+interpretation.  Cognition, perception, and semantic processing are governed by shared
+transformation operators whose local structure is captured by the amplitwist formalism.
+Biological systems restrict the expressive envelope of these operators via dynamical priors
+that reflect the rhythmic, hierarchical, embodied structure of the nervous system.  Meaning
+is not stored in states but emerges from the invariant structure of transformations: two
+states mean the same thing when they behave the same way under the same cascade of
+perturbations.
+
+The same formalism describes local computation (individual operator applications), global
+coherence (cascade composition and eigenmode propagation), and cross-domain transfer (the
+alignment loss between human and model transformation geometry).  This unified description
+is not merely analogical: it is grounded in the functional-analytic convergence of hybrid
+dynamics (Section~\ref{sec:hybrid}) and the spectral geometry of the manifold
+(Section~\ref{sec:spectral}).
+
+The framework also clarifies a connection to the geometry of conscious states without
+presupposing any particular answer to the hard problem.  If conscious states are
+characterised by particularly stable, low-entropy, high-phase-alignment trajectories
+through the representational manifold---a claim consistent with integrated information
+theory and the entropic brain hypothesis---then the amplitwist formalism provides a
+language for describing the geometric structure that distinguishes such states from
+non-conscious processing.
+
+% ==========================================================
+\section{Falsifiability and Outcomes}
+\label{sec:falsifiability}
+
+The theory is falsified by any of the following outcomes.  If human trajectories on
+compositional tasks do not exhibit improving phase alignment and converging vorticity, the
+within-layer prediction fails.  If compositional tasks do not produce ordered cascade
+composition---if participants show no tendency to stabilise lower layers before engaging
+higher ones---the across-layer prediction fails.  If non-compositional tasks do not produce
+the characteristic signature of high vorticity or imposed spurious structure, the
+biological prior prediction fails.  If the alignment loss metric does not discriminate
+human from model operator geometry despite output-level accuracy differences, the
+transformation-coherence hypothesis is not supported.
+
+Partial failures are informative rather than merely negative.  If within-layer alignment
+improves but across-layer ordering does not appear, it suggests the biological prior
+operates within layers but not across them---a finding that would call for revision of the
+CPG-hierarchy account.  If the alignment loss discriminates humans from models on
+compositional tasks but not on non-compositional ones, it suggests the prior is doing
+discriminative work only where it has traction, which would refine rather than refute the
+framework.
+
+If the predictions are confirmed, the consequences are precise.  Transformation coherence
+is a real, measurable dimension of cognitive processing, distinct from output accuracy.
+Biological systems operate as constrained operator cascades with a specific geometric
+signature.  Current language models capture output statistics without capturing the
+operator geometry that generates human outputs.  The amplitwist cascade is not an elegant
+reinterpretation of known ideas under a new vocabulary: it identifies structure in data
+that output-level models do not.
+
+% ==========================================================
+\section{Conclusion}
+\label{sec:conclusion}
+
+The amplitwist cascade is simultaneously a universal transformation language and a
+description of biological constraint.  As a universal language, it encompasses the full
+expressive envelope of local rotation-scaling-projection operators under entropic
+regularisation.  As a description of biological constraint, it formalises the prior that
+shapes cognition: the preference for CPG-supportable, rhythmically stable, compositionally
+ordered trajectories over the vast space of transformations the algebra could in principle
+compute.
+
+The critical insight is the separation: capacity defines possibility; constraint defines
+reality.  The gap between them is not an embarrassment to be minimised but the primary
+theoretical object---the structure that encodes the biological prior, generates the
+falsifiable predictions, and grounds the alignment loss metric that distinguishes human from
+model operator geometry.
+
+The next step is empirical.  The toy-domain experiment proposed in
+Section~\ref{sec:experiment} is designed to be small enough that the true transformation
+geometry can be computed and used as ground truth, but rich enough that participants must
+discover structure rather than memorise labels.  Running the experiment, computing phase
+alignment and vorticity trajectories, and comparing human and model operator geometry will
+determine whether transformation coherence is a real cognitive variable or an elegant
+fiction.  The decisive outcome is not whether the framework is elegant, but whether it
+identifies structure in data that other models miss.
+
+\bigskip
+\noindent\textbf{Acknowledgements.}\quad
+This essay was developed as part of the RSVP\slash Amplitwistor research programme.
+
+\clearpage
+\appendix
+
+% Reformat appendix section headings to match body style
+\titleformat{\section}{\large\bfseries}{Appendix \Alph{section}:}{0.75em}{}
+\titleformat{\subsection}{\normalsize\bfseries}{\Alph{section}.\arabic{subsection}}{0.6em}{}
+
+% ==========================================================
+\section{Amplitwist Operator Algebra}
+\label{app:algebra}
+
+\subsection{Local Operator Definition}
+
+Let $M$ be a smooth $n$-dimensional manifold and $x \in M$.  Let $T_x M$ denote the tangent
+space at $x$.
+
+\begin{definition}[Amplitwist Operator]
+An \emph{amplitwist operator} at $x$ is a triple
+\[
+\mathcal{A}_x = (\rho_x,\, R_x,\, \pi_x),
+\]
+where $\rho_x \in \mathbb{R}_{>0}$ is a scalar gain (amplitude), $R_x \in SO(n)$ is a
+rotation acting on $T_x M$, and $\pi_x \colon T_x M \to T_x M$ is a (possibly nonlinear)
+projection map.
+\end{definition}
+
+The action of $\mathcal{A}_x$ on a vector $u \in T_x M$ is
+\[
+\mathcal{A}_x(u) = \pi_x\!\bigl(\rho_x\, R_x u\bigr).
+\]
+
+\subsection{Composition Law}
+
+Let $\mathcal{A}_1 = (\rho_1, R_1, \pi_1)$ and $\mathcal{A}_2 = (\rho_2, R_2, \pi_2)$.
+Define composition by
+\[
+(\mathcal{A}_2 \circ \mathcal{A}_1)(u)
+= \pi_2\!\Bigl(\rho_2 R_2\,\pi_1(\rho_1 R_1 u)\Bigr).
+\]
+
+\begin{proposition}
+The set of amplitwist operators equipped with composition forms a nonlinear semigroup
+$(\mathcal{A}, \circ)$.
+\end{proposition}
+
+\begin{proof}
+Closure follows from closure of scalar multiplication, rotations, and function composition.
+Associativity follows from associativity of function composition.  Nonlinearity arises from
+the presence of $\pi_x$.
+\end{proof}
+
+\begin{remark}
+In general $\mathcal{A}_2 \circ \mathcal{A}_1 \neq \mathcal{A}_1 \circ \mathcal{A}_2$,
+due to non-commutativity of both the rotation group ($R_2 R_1 \neq R_1 R_2$ for $n \ge 3$)
+and the projection maps ($\pi_2 \circ \pi_1 \neq \pi_1 \circ \pi_2$ in general).
+\end{remark}
+
+\subsection{Local Linearization}
+
+If $\pi_x$ is differentiable, the Jacobian of $\mathcal{A}_x$ at $u$ is
+\[
+D\mathcal{A}_x(u) = D\pi_x(\rho_x R_x u)\cdot \rho_x R_x.
+\]
+In the linear case $\pi_x = \mathrm{Id}$, this reduces to $D\mathcal{A}_x = \rho_x R_x$,
+a similarity transformation.
+
+\subsection{Density in Function Space}
+
+Let $K \subset \mathbb{R}^n$ be compact and let $C(K)$ denote the space of continuous
+functions equipped with the uniform norm.
+
+\begin{theorem}[Expressive Density]
+\label{thm:density}
+Suppose $\pi_x$ contains a non-polynomial nonlinearity and amplitwist operators are
+composed in finite depth.  Then the set of functions representable as
+$f(x) = (\mathcal{A}_N \circ \cdots \circ \mathcal{A}_1)(x)$
+is dense in $C(K)$.
+\end{theorem}
+
+\begin{proof}[Sketch]
+Each amplitwist layer can be written locally as $u \mapsto \pi(Wu + b)$ with $W = \rho R$.
+Since compositions of affine maps and non-polynomial nonlinearities are dense in $C(K)$,
+the result follows from standard universal approximation arguments.
+\end{proof}
+
+\subsection{Cascades as Operator Sequences}
+
+Define an \emph{amplitwist cascade} of depth $N$ as
+$\mathcal{A}^{(N)} = \mathcal{A}_N \circ \cdots \circ \mathcal{A}_1$.
+Given an initial state $u_0$, the induced trajectory is $u_{k+1} = \mathcal{A}_{k+1}(u_k)$,
+defining a discrete dynamical system on $T_x M$.
+
+\subsection{Separation of Capacity and Implementation}
+
+\begin{definition}[Expressive Capacity]
+$\mathcal{F}_{\mathrm{all}} = \overline{\{\mathcal{A}_N \circ \cdots \circ \mathcal{A}_1\}}$,
+the closure in $C(K)$.
+\end{definition}
+
+\begin{definition}[Biological Subspace]
+$\mathcal{F}_{\mathrm{bio}} \subset \mathcal{F}_{\mathrm{all}}$ denotes functions realisable
+under biological constraints (formalised in Appendix~\ref{app:cpg}).
+\end{definition}
+
+\begin{proposition}
+In general, $\mathcal{F}_{\mathrm{bio}} \subsetneq \mathcal{F}_{\mathrm{all}}$.
+\end{proposition}
+
+This strict inclusion formalises the separation between capacity (what amplitwist cascades
+can represent) and implementation (what biological systems actually compute).
+
+% ==========================================================
+\section{Phase Alignment and Vorticity}
+\label{app:phase}
+
+\subsection{Field Structure}
+
+Let $M$ be a smooth manifold.  Define a scalar field $\Phi \colon M \to \mathbb{R}$
+(salience), a vector field $v \colon M \to TM$ (trajectory velocity), and an entropy
+field $S \colon M \to \mathbb{R}_{\ge 0}$ (uncertainty).  Assume $v(x) \neq 0$ and
+$\nabla\Phi(x) \neq 0$ almost everywhere.
+
+\subsection{Phase Alignment}
+
+\begin{definition}[Phase Angle]
+The local phase alignment is
+\[
+\theta(x)
+= \arccos\!\left(
+\frac{v(x)\cdot\nabla\Phi(x)}
+{\|v(x)\|\,\|\nabla\Phi(x)\|+\epsilon}
+\right), \quad \epsilon > 0.
+\]
+\end{definition}
+
+\begin{proposition}
+$\theta(x) = 0 \iff v(x) \parallel \nabla\Phi(x)$, and
+$\theta(x) = \pi \iff v(x) \parallel -\nabla\Phi(x)$.
+Thus $\theta(x)$ measures directional coherence between the trajectory and the salience
+gradient.
+\end{proposition}
+
+\subsection{Alignment Functional}
+
+Define the global alignment energy
+$\mathcal{E}_{\mathrm{align}} = \int_M (1 - \cos\theta(x))\,d\mu(x)$.
+
+\begin{theorem}
+$\mathcal{E}_{\mathrm{align}} = 0 \iff v(x) \parallel \nabla\Phi(x)$ for all $x \in M$.
+\end{theorem}
+
+\begin{proof}
+Follows immediately from $1 - \cos\theta = 0 \iff \theta = 0$.
+\end{proof}
+
+\subsection{Vorticity}
+
+\begin{definition}[Vorticity]
+Let $\hat{v}(x) = v(x)/\|v(x)\|$ be the normalised direction field.  The vorticity is
+\[
+\xi(x) = \|\nabla \times \hat{v}(x)\|.
+\]
+\end{definition}
+
+The integrated vorticity is $\Xi = \int_M \xi(x)\,d\mu(x)$, which equals zero if and only
+if $\hat{v}$ is irrotational.
+
+\subsection{Phase--Vorticity Relationship}
+
+\begin{proposition}
+Large spatial gradients of $\theta$ imply increased vorticity: if
+$\|\nabla\theta(x)\| \gg 0$ then $\xi(x)$ is large.
+\end{proposition}
+
+\begin{proof}[Sketch]
+Since $\hat{v}$ depends on the angular variable, spatial variation in phase induces curl in
+the direction field.
+\end{proof}
+
+\subsection{Discrete Approximation}
+
+Given a discrete response trajectory $\{x_t\}$, define $v_t = x_{t+1} - x_t$ and
+$\hat{v}_t = v_t/(\|v_t\|+\epsilon)$.  The discrete phase estimate is
+\[
+\theta_t = \arccos\!\left(
+\frac{v_t \cdot \nabla\Phi(x_t)}{\|v_t\|\,\|\nabla\Phi(x_t)\|+\epsilon}
+\right),
+\]
+and the discrete vorticity approximation is
+$\xi_t \approx \|\hat{v}_{t+1} - \hat{v}_t\|$.
+
+\subsection{Coherence Criterion}
+
+A trajectory is \emph{coherent} if $\sup_t \theta_t \le \theta_{\mathrm{crit}}$ and
+$\sum_t \xi_t \le \Xi_{\mathrm{crit}}$.  Low $\theta$ signals aligned transformation; low
+$\xi$ signals stable cascade dynamics.  High $\theta$ signals misalignment; high $\xi$
+signals rotational instability.  These quantities define measurable invariants of
+transformation coherence that can be estimated from behavioural response sequences.
+
+% ==========================================================
+\section{Entropy Weighting as a Biological Prior}
+\label{app:entropy}
+
+\subsection{Entropy Field and Weighting}
+
+Let $S \colon M \to \mathbb{R}_{\ge 0}$ denote an entropy (uncertainty) field.
+
+\begin{definition}[Entropy Weight and Weighted Operator]
+For layer $k$, define $w_k(x) = e^{-\lambda S(x)}$ with $\lambda > 0$.  The
+entropy-weighted amplitwist is
+\[
+\widetilde{\mathcal{A}}^{(k)}_x(u)
+= w_k(x)\,\pi_x\!\bigl(\rho_x R_x u\bigr).
+\]
+High entropy suppresses operator influence; low entropy amplifies stable transformations.
+\end{definition}
+
+\subsection{Variational Formulation}
+
+Consider $f \colon M \to \mathbb{R}^m$.  Define the weighted Dirichlet energy
+\[
+\mathcal{L}[f]
+= \int_M e^{-\lambda S(x)}\,\|\nabla f(x)\|^2\,d\mu(x).
+\]
+
+\begin{proposition}
+Critical points of $\mathcal{L}$ satisfy the weighted Euler--Lagrange equation
+$\nabla\cdot(e^{-\lambda S}\nabla f) = 0$.
+\end{proposition}
+
+\begin{proof}
+Computing the first variation and integrating by parts:
+$\delta\mathcal{L} = -2\int_M \delta f\,\nabla\cdot(e^{-\lambda S}\nabla f)\,d\mu = 0$
+for all admissible $\delta f$.
+\end{proof}
+
+Regions with large $S(x)$ are penalised (exploration suppressed); regions with small
+$S(x)$ are favoured (stable exploitation).  Thus $w_k$ encodes a biological prior toward
+low-uncertainty trajectories.
+
+\subsection{Admissibility and Stability}
+
+\begin{definition}[Admissible State and Trajectory]
+A point $x \in M$ is admissible if $S(x) \le S_{\max}$.  A trajectory $\gamma\colon[0,T]\to M$
+is admissible if $\sup_{t} S(\gamma(t)) \le S_{\max}$.
+\end{definition}
+
+\begin{proposition}
+If $S(x) \le S_{\max}$ and $\lambda > 0$, then $e^{-\lambda S_{\max}} \le w_k(x) \le 1$.
+\end{proposition}
+
+\subsection{Entropy--Vorticity Coupling}
+
+Under the assumption that high-entropy regions induce higher phase variability
+($\|\nabla\theta(x)\| \propto S(x)$), Appendix~\ref{app:phase} implies that
+$S(x) \uparrow$ entails $\xi(x) \uparrow$, since vorticity scales with the spatial
+gradient of direction.
+
+\subsection{Regularised Energy Functional}
+
+The combined functional
+\[
+\mathcal{J}[f]
+= \int_M \bigl[e^{-\lambda S(x)}\|\nabla f(x)\|^2
++ \alpha S(x)^2\bigr]\,d\mu(x)
+\]
+enforces coherent transformations through its first term and penalises entropy growth
+through its second.  Admissible dynamics minimise $\mathcal{J}$ subject to task
+constraints.  The limiting cases are informative: as $\lambda \to 0$, the entropy weight
+vanishes and the full expressive capacity of $\mathcal{F}_{\mathrm{all}}$ is recovered;
+as $\lambda \to \infty$, only minimal-entropy trajectories survive, corresponding to the
+most strongly constrained biological regime.
+
+% ==========================================================
+\section{Hybrid Dynamics and Trotter--Kato Convergence}
+\label{app:hybrid}
+
+\subsection{Semigroup Evolution}
+
+Let $X$ be a Banach space (e.g.\ $L^2(M)$ or $H^k(M)$) and let $F\colon\mathcal{D}(F)
+\subset X \to X$ generate a well-posed flow.
+
+\begin{definition}[Strongly Continuous Semigroup]
+$\{T(t)\}_{t\ge 0}$ satisfies $T(0) = I$, $T(t+s) = T(t)T(s)$, and
+$\lim_{t\downarrow 0}\|T(t)u - u\| = 0$ for all $u \in X$.
+For linear $F = A$ (densely defined and closed), $T(t) = e^{tA}$.
+\end{definition}
+
+\subsection{Discrete Operator Updates}
+
+Let $\{P_k\}$ be a sequence of (possibly nonlinear) amplitwist operators acting on $X$.
+Given a time grid $0 = t_0 < t_1 < \cdots < t_N = t$ with $\Delta t_k = t_{k+1} - t_k$,
+the hybrid evolution is
+\[
+u_{k+1} = P_k\,T(\Delta t_k)\,u_k, \qquad
+u(t) = \Bigl(\prod_{k=0}^{N-1} P_k T(\Delta t_k)\Bigr)u_0,
+\]
+with time-ordered product.
+
+\subsection{Linear Trotter--Kato Framework}
+
+\begin{theorem}[Trotter Product Formula]
+If $A$ and $B$ generate strongly continuous semigroups $T_A(t)$ and $T_B(t)$ on $X$, then
+under standard domain conditions,
+\[
+\lim_{n\to\infty}\Bigl(T_A(t/n)\,T_B(t/n)\Bigr)^n = T_{A+B}(t)
+\]
+strongly on $X$.
+\end{theorem}
+
+Identifying $T_A(\Delta t) \equiv T(\Delta t)$ and $T_B(\Delta t) \equiv P(\Delta t)$, the
+hybrid scheme approximates $\exp(t(A+B))$ in the linearised regime.
+
+\subsection{Nonlinear Extension (Lie--Trotter Splitting)}
+
+For nonlinear evolution $u' = F(u) + G(u)$, define flows $\Phi_F(t)$ and $\Phi_G(t)$.
+
+\begin{theorem}[Lie--Trotter Splitting]
+Under Lipschitz conditions on $F$ and $G$, the scheme
+$u^{(n)}(t) = (\Phi_G(t/n) \circ \Phi_F(t/n))^n u_0$
+converges to the solution of $u' = F(u) + G(u)$ as $n \to \infty$.
+\end{theorem}
+
+The identification is $\Phi_F \leftrightarrow T(t)$ and $\Phi_G \leftrightarrow P(t)$.
+
+\subsection{Convergence Result}
+
+\begin{theorem}[Hybrid Convergence]
+\label{thm:hybrid}
+Assume $T(t)$ is strongly continuous, $P_k \to P_{t_k}$ uniformly, the scheme is stable
+(in the sense that $\sup_n \|\prod_{k=0}^{n-1} P_k T(\Delta t_k)\| \le C$), and the local
+truncation error is $O(\Delta t^2)$.  Then
+\[
+\lim_{\max\Delta t_k \to 0}
+\Bigl(\prod_{k=0}^{N-1} P_k\,T(\Delta t_k)\Bigr)
+= T(t)\circ P_t
+\]
+strongly on $X$.
+\end{theorem}
+
+The consequence for cascades is direct: discrete amplitwist cascades are not arbitrary
+updates but approximate a continuous operator flow, and in the limit they inherit the same
+invariant structure as the underlying continuous field dynamics.
+
+% ==========================================================
+\section{Spectral Geometry and Efficiency Bounds}
+\label{app:spectral}
+
+\subsection{Laplacian and Eigenstructure}
+
+Let $M$ be a compact Riemannian manifold with metric $g$.  The Laplace--Beltrami operator
+$\Delta_M f = \nabla \cdot \nabla f$ has eigenpairs $(\lambda_k, \psi_k)$ satisfying
+$\Delta_M \psi_k = -\lambda_k \psi_k$ with $0 = \lambda_0 < \lambda_1 \le \lambda_2 \le
+\cdots$.  Any $f \in L^2(M)$ admits the spectral expansion $f(x) = \sum_k a_k \psi_k(x)$,
+and semigroup evolution satisfies $T(t)f = \sum_k a_k e^{-\lambda_k t}\psi_k$.
+
+\subsection{Efficiency Metric and Bound}
+
+\begin{definition}[Cascade Efficiency]
+$\eta^{(N)} = \|f^{(N)} - f^{(0)}\|_{L^2} \big/ \sum_{j=1}^N \|\epsilon_j T_j\|$.
+\end{definition}
+
+\begin{theorem}[Efficiency Lower Bound]
+\label{thm:efficiency}
+Let $\lambda_1(M)$ be the first nonzero Laplacian eigenvalue.  Then
+\[
+\eta^{(N)} \;\ge\;
+\frac{\lambda_1(M)}{N\cdot\max_j\|\epsilon_j T_j\|}.
+\]
+\end{theorem}
+
+\begin{proof}[Sketch]
+The smallest nontrivial mode dominates the slowest propagation direction.  Using the
+Rayleigh quotient $\lambda_1 = \inf_{f \perp \psi_0} \int_M \|\nabla f\|^2 / \int_M f^2$,
+perturbations must overcome this spectral barrier, yielding the stated bound.
+\end{proof}
+
+\subsection{Geometric Interpretation}
+
+Large $\lambda_1$ indicates strong connectivity and rapid propagation; small $\lambda_1$
+indicates geometric resistance.  The Cheeger constant $h(M)$ satisfies
+$h(M)^2/4 \le \lambda_1(M) \le 2h(M)$, so geometric bottlenecks directly limit cascade
+efficiency.  Low-frequency modes (small $\lambda_k$) correspond to long-range integration
+and slow dynamics; high-frequency modes correspond to local refinement and transient
+responses.
+
+\subsection{Spectral Filtering and the Biological Subspace}
+
+Entropy-weighted amplitwists preferentially damp high-frequency modes: the map
+$a_k \mapsto a_k e^{-\lambda S}$ suppresses higher-$\lambda_k$ coefficients more
+strongly, favouring smooth, low-energy representations.  The biologically realisable
+function space can accordingly be characterised spectrally as
+\[
+\mathcal{F}_{\mathrm{bio}}
+= \Bigl\{f \in \mathcal{F}_{\mathrm{all}} \;\Big|\; \sum_k \lambda_k a_k^2 \le C\Bigr\}
+\]
+for some bound $C$, defining a spectrally constrained subset of the full function space in
+which biological systems operate within low-energy spectral bands.
+
+% ==========================================================
+\section{Dynamical Constraint Model (CPG Prior)}
+\label{app:cpg}
+
+\subsection{Trajectory Spaces and Biological Realisation}
+
+Let $\mathcal{T}_{\mathrm{all}} = \{\gamma\colon [0,T] \to M \mid \gamma \text{ absolutely
+continuous}\}$.
+
+\begin{definition}[Biological Trajectory]
+A trajectory $\gamma \in \mathcal{T}_{\mathrm{bio}} \subset \mathcal{T}_{\mathrm{all}}$
+if it is generated by a finite composition of low-dimensional dynamical primitives
+$\gamma(t) = \Phi_k \circ \cdots \circ \Phi_1(t)$, where each $\Phi_i$ is generated by
+a smooth, bounded vector field $\dot{x} = f_i(x)$ with $\|\nabla f_i\| \le C$.
+A primitive is \emph{CPG-like} if $f_i(x) = A_i x + g_i(x)$, where $A_i$ has imaginary
+eigenvalues (oscillatory structure) and $g_i$ is a small nonlinear perturbation.
+\end{definition}
+
+\subsection{Constraint Functional}
+
+Define the trajectory energy
+\[
+\mathcal{J}[\gamma]
+= \int_0^T \Bigl(
+\|\ddot{\gamma}(t)\|^2
++ \alpha\,\xi(\gamma(t))
++ \beta\,S(\gamma(t))
+\Bigr)\,dt.
+\]
+This functional simultaneously penalises rapid acceleration (lack of smoothness), vorticity
+(rotational instability), and entropy (uncertainty).
+
+\begin{theorem}
+Biological trajectories approximately satisfy
+$\gamma \in \arg\min_{\tilde\gamma \in \mathcal{T}_{\mathrm{all}}} \mathcal{J}[\tilde\gamma]$,
+with Euler--Lagrange equation
+$\frac{d^2}{dt^2}\ddot\gamma(t) - \alpha\nabla\xi(\gamma(t)) - \beta\nabla S(\gamma(t)) = 0$.
+\end{theorem}
+
+\subsection{Low-Dimensional Manifold Constraint}
+
+\begin{proposition}
+There exists a manifold $\mathcal{M}_{\mathrm{bio}} \subset \mathcal{T}_{\mathrm{all}}$ of
+dimension $d \ll \dim(\mathcal{T}_{\mathrm{all}})$ such that $\mathcal{T}_{\mathrm{bio}}
+\subset \mathcal{M}_{\mathrm{bio}}$.
+\end{proposition}
+
+\begin{proof}[Sketch]
+Follows from restriction to a finite set of dynamical primitives and smooth compositions.
+\end{proof}
+
+Although amplitwist cascades are dense in $C(K)$ by Theorem~\ref{thm:density}, biological
+trajectories realise only the restricted subset $\mathcal{F}_{\mathrm{bio}} = \{f \in
+\mathcal{F}_{\mathrm{all}} \mid f \text{ induced by } \gamma \in \mathcal{T}_{\mathrm{bio}}\}$.
+A transformation $f$ is \emph{non-dynamical} if no $\gamma \in \mathcal{T}_{\mathrm{bio}}$
+generates it with bounded $\mathcal{J}$; such transformations produce high vorticity, high
+entropy, and discontinuities in $\theta$.
+
+% ==========================================================
+\section{Admissibility Constraints and the Revised Categorical Principle}
+\label{app:admissibility}
+
+\subsection{Motivation}
+
+The biological prior of Appendix~\ref{app:cpg} constrains which trajectories occur.  A
+complementary question concerns which \emph{transformations} are structurally valid: not
+what a system does in practice, but what it is permissible for it to do while remaining
+composable with other systems operating under the same constraints.  The answer takes the
+form of a bounded region in the transformation space defined by the operator geometry
+already in place, rather than a prescription over outputs.  A transformation is admissible
+if and only if it remains within the region where phase alignment, entropy, and vorticity
+are all bounded---precisely the conditions under which operators can be coherently composed.
+This is the sense in which the framework yields something analogous to a categorical
+constraint, but one that is grounded in geometry rather than derived from abstract ethical
+reasoning.
+
+\subsection{Admissible Transformation Set}
+
+\begin{definition}[Admissible Operator and Admissible Set]
+An operator $\mathcal{A}_x$ is \emph{admissible} at $x \in M$ if
+\[
+\theta(x) \le \theta_{\max}, \quad
+S(x) \le S_{\max}, \quad
+\xi(x) \le \xi_{\max}.
+\]
+The admissible set is
+$\mathcal{A}_{\mathrm{adm}} = \{\mathcal{A}_x \in \mathcal{A} \mid \theta(x) \le
+\theta_{\max},\; S(x) \le S_{\max},\; \xi(x) \le \xi_{\max}\}$.
+\end{definition}
+
+\subsection{Constraint Functional}
+
+Define the global constraint energy
+\[
+\mathcal{C}[\gamma]
+= \int_M \bigl[\alpha\,\theta(x)^2 + \beta\,S(x)^2 + \gamma\,\xi(x)^2\bigr]\,d\mu(x).
+\]
+A trajectory $\gamma$ is admissible if $\mathcal{C}[\gamma] \le C_{\max}$.
+
+\subsection{The Revised Categorical Principle}
+
+\begin{principle}[Admissibility Constraint]
+A transformation is admissible if and only if it remains within bounded regions of phase
+alignment, entropy, and vorticity such that it preserves composability with other admissible
+transformations.
+\end{principle}
+
+This principle differs from classical categorical formulations in two ways.  First, it
+operates at the level of transformations, not outputs: it does not prescribe what function
+to compute, only which transformations are structurally valid.  Second, it implies both a
+minimum and a maximum.  The lower bound---$\theta(x) \ge 0$, ensuring non-degenerate
+transformation---prevents degenerate (null) operators that contribute no information to
+the cascade.  The upper bounds---on $\theta$, $S$, and $\xi$---ensure stability and
+composability.  An operator that violates the upper bounds produces non-composable
+transformations, cascade breakdown, and unstable trajectories.
+
+\subsection{Compositional Closure}
+
+\begin{theorem}
+If $\mathcal{A}_1, \mathcal{A}_2 \in \mathcal{A}_{\mathrm{adm}}$ and the constraint
+functional $\mathcal{C}$ is subadditive over compositions, then
+$\mathcal{A}_2 \circ \mathcal{A}_1 \in \mathcal{A}_{\mathrm{adm}}$.
+\end{theorem}
+
+\begin{proof}[Sketch]
+Composition preserves the admissibility bounds when $\mathcal{C}$ satisfies the
+subadditivity condition $\mathcal{C}[\mathcal{A}_2 \circ \mathcal{A}_1] \le
+\mathcal{C}[\mathcal{A}_1] + \mathcal{C}[\mathcal{A}_2]$.
+\end{proof}
+
+\subsection{Relation to Biological Prior and Spectral Structure}
+
+The admissibility set $\mathcal{T}_{\mathrm{bio}}$ from Appendix~\ref{app:cpg} can be
+recovered as $\{\gamma \mid \mathcal{C}[\gamma] \le C_{\max}\}$, confirming that biological
+systems operate within admissible bounds rather than maximising expressivity.  The
+admissibility constraint also implies a spectral bound: $\sum_k \lambda_k a_k^2 \le E_{\max}$,
+consistent with the spectral characterisation of $\mathcal{F}_{\mathrm{bio}}$ in
+Appendix~\ref{app:spectral}.
+
+\subsection{Alignment Without Identical Outputs}
+
+The admissibility framing resolves a persistent ambiguity in alignment discussions.  Two
+agents are aligned not because they produce identical outputs, but because their
+transformations lie within the same admissible region and can be composed without breaking
+coherence.  Alignment is a property of transformation geometry, not output agreement.  This
+follows directly from the trajectory-equivalence account of propositional identity
+(Appendix~\ref{app:equiv}): two agents that produce different surface responses may
+nonetheless be $\Pi$-equivalent if their operator geometry is compatible under the same
+perturbation sequence.
+
+% ==========================================================
+\section{Representation as Trajectory Equivalence}
+\label{app:equiv}
+
+\subsection{Equivalence Relation}
+
+Let $\mathcal{X} = \{x \in M\}$ and let $\mathcal{P} = \{P_k\}$ be a sequence of
+perturbations.  Define the perturbed cascade $x_{k+1} = \mathcal{A}_k(P_k(x_k))$.
+
+\begin{definition}[Trajectory Equivalence]
+Two states $x, y \in M$ are equivalent, written $x \sim y$, if for all admissible
+perturbation sequences $\mathcal{P}$,
+\[
+\mathcal{A}^{(N)}_{\mathcal{P}}(x) = \mathcal{A}^{(N)}_{\mathcal{P}}(y)
+\quad \text{for all } N.
+\]
+\end{definition}
+
+\subsection{Quotient Space and Propositions}
+
+The quotient $\mathcal{R} = \mathcal{X}/{\sim}$ represents propositions: an element
+$[x] \in \mathcal{R}$ is a proposition.  A property $F\colon \mathcal{X} \to \mathbb{R}$
+is representationally invariant if and only if $x \sim y$ implies $F(x) = F(y)$.
+
+\subsection{Stability Under Composition}
+
+\begin{theorem}
+If $x \sim y$, then $\mathcal{A}^{(N)}(x) \sim \mathcal{A}^{(N)}(y)$ for any cascade.
+\end{theorem}
+
+\begin{proof}
+Closure follows from associativity of operator composition.
+\end{proof}
+
+\subsection{Metric Structure}
+
+Define the pseudometric
+$d(x,y) = \sup_{\mathcal{P},N}\|\mathcal{A}^{(N)}_{\mathcal{P}}(x) -
+\mathcal{A}^{(N)}_{\mathcal{P}}(y)\|$.
+Then $x \sim y \iff d(x,y) = 0$.  Restricting to biologically admissible trajectories
+yields ${\sim}_{\mathrm{bio}} \subseteq {\sim}$: biological systems identify propositions
+only up to admissible transformations.
+
+Propositions under this account are not static encodings.  They are invariants under
+transformation cascades, and meaning is defined by stability under perturbation rather than
+by any intrinsic property of the state.
+
+% ==========================================================
+\section{Empirical Observables and Measurement Protocol}
+\label{app:measurement}
+
+\subsection{Fixed Representation Manifold}
+
+Let $M \subset \mathbb{R}^d$ be a pre-specified feature manifold with metric $g$, defined
+prior to data collection (non-circular design).  All embeddings $x_t \in M$ are
+constructed from this manifold; no parameters of $M$ are fitted to participant trajectories.
+
+\subsection{Discrete Trajectory and Phase}
+
+Given responses $\{x_t\}_{t=0}^T \subset M$, define $v_t = x_{t+1} - x_t$,
+$\hat{v}_t = v_t/(\|v_t\|+\epsilon)$, and the discrete phase and amplitude
+\[
+\theta_t = \arccos\!\left(
+\frac{v_t \cdot \nabla\Phi(x_t)}{\|v_t\|\,\|\nabla\Phi(x_t)\|+\epsilon}
+\right),
+\qquad
+\rho_t = \|v_t\|,
+\]
+where $\Phi(x) = -d_M(x, x^\star)$ for the task target $x^\star$.
+
+\subsection{Entropy Proxies}
+
+The entropy field $S_t$ may be estimated by several proxies: the Shannon entropy of the
+response choice distribution ($-\sum_i p_{t,i}\log p_{t,i}$), the surprisal of the
+observed transition ($-\log p(x_{t+1}\mid x_t)$), or a monotone function of reported
+confidence.  Any of these provide an operationalisation of $S$ that can be inserted into
+the entropy-weighted operator.
+
+\subsection{Vorticity, Aggregates, and Layer Segmentation}
+
+Discrete vorticity is approximated as $\xi_t \approx \|\hat{v}_{t+1} - \hat{v}_t\|$.
+Global aggregates are $\bar\theta = T^{-1}\sum_t \theta_t$ and $\Xi = \sum_t \xi_t$.
+Partitioning indices into layers $\mathcal{I}_\ell$ (phonological, morphological,
+semantic-pragmatic), layer-wise quantities are $\bar\theta^{(\ell)} =
+|\mathcal{I}_\ell|^{-1}\sum_{t\in\mathcal{I}_\ell}\theta_t$ and
+$\Xi^{(\ell)} = \sum_{t\in\mathcal{I}_\ell}\xi_t$.
+
+A layer $\ell$ is \emph{convergent} if $\theta_{t+1} \le \theta_t + \delta$ for most
+$t \in \mathcal{I}_\ell$ (small tolerance $\delta$).  At a layer boundary $b$, the
+boundary vorticity $\xi_b = \|\hat{v}_{b+1} - \hat{v}_b\|$ measures the discontinuity
+between cascade stages; large $\xi_b$ indicates a phase jump rather than smooth
+composition.
+
+\subsection{Human--Model Alignment Loss}
+
+Let $\{x_t^{(h)}\}$ and $\{x_t^{(m)}\}$ be human and model trajectories embedded in
+the same $M$.  Define the operator distance at layer $k$
+\[
+d_A^{(k)} = \sqrt{
+(\rho_k^{(h)} - \rho_k^{(m)})^2
++ (\theta_k^{(h)} - \theta_k^{(m)})^2
++ (S_k^{(h)} - S_k^{(m)})^2
+},
+\]
+and the alignment loss $\mathcal{L}_A = \sum_k d_A^{(k)}$.
+
+Since $M$ and $\Phi$ are fixed prior to data collection, the estimates $\theta_t$ and
+$\xi_t$ are independent of trajectory inference, ensuring that the test of phase alignment
+is non-circular.  The primary experimental outputs are the phase trajectory $\{\theta_t\}$,
+the vorticity profile $\{\xi_t\}$, the layer-wise convergence $\bar\theta^{(\ell)}$,
+boundary discontinuities $\xi_b$, and the alignment loss $\mathcal{L}_A$.  Together these
+define a fully operational pipeline mapping behavioural responses to the tuple
+$(v_t, \theta_t, \rho_t, S_t, \xi_t)$ that constitutes the empirical amplitwist estimate.
+
+% ==========================================================
+\section{Non-Compositional Transformations and Failure Modes}
+\label{app:failure}
+
+\subsection{Compositional and Non-Compositional Transformations}
+
+\begin{definition}[Compositional Transformation]
+A transformation $f\colon M \to M$ is compositional if there exists a finite admissible
+cascade $f \approx \mathcal{A}_N \circ \cdots \circ \mathcal{A}_1$ with each
+$\mathcal{A}_k \in \mathcal{A}_{\mathrm{adm}}$.
+\end{definition}
+
+\begin{definition}[Non-Compositional Transformation]
+$f$ is non-compositional if no finite admissible cascade approximates it with bounded
+$\theta \le \theta_{\max}$, $\xi \le \xi_{\max}$, and $S \le S_{\max}$.
+\end{definition}
+
+\begin{proposition}
+If $f$ is non-compositional, then any approximating trajectory $\gamma$ must contain a
+time $t$ at which $\theta_t > \theta_{\max}$ or $\xi_t > \xi_{\max}$.
+\end{proposition}
+
+\subsection{Failure Signatures}
+
+At a layer boundary $b$, the boundary jump is $\Delta v_b = \|\hat{v}_{b+1} - \hat{v}_b\|$.
+Non-compositional tasks produce $\Delta v_b \gg 0$.  Biological systems minimising
+$\mathcal{J}$ may respond by introducing spurious decompositions: a trajectory
+$\gamma = \gamma_3 \circ \gamma_2 \circ \gamma_1$ where no true compositional structure
+exists in $f$, reducing $\xi$ and $\theta$ locally at the cost of traversing an
+intermediate state that is not part of the task.
+
+\subsection{Three-Regime Prediction}
+
+\begin{theorem}[Behavioural Regimes]
+\label{thm:regimes}
+Let tasks be partitioned into compositional and non-compositional families.  Then three
+distinct patterns are predicted.  On compositional tasks, human trajectories show
+$\theta_t \downarrow$ (improving phase alignment), $\xi_t \downarrow$ (stabilising
+vorticity), and an ordered cascade in which lower layers stabilise before higher ones
+engage.  On non-compositional tasks, human trajectories show $\theta_t \uparrow$ or
+$\xi_t \uparrow$, or exhibit spurious intermediate stages.  Language models, on either
+task family, exhibit low final output error alongside higher vorticity at layer boundaries
+and disordered intermediate operator structure.
+\end{theorem}
+
+\subsection{Output vs Path Dissociation}
+
+\begin{definition}[Endpoint Accuracy and Path Coherence Error]
+Let $\epsilon_{\mathrm{out}} = \|f(x) - \hat{f}(x)\|$ and
+$\epsilon_{\mathrm{path}} = \sum_t (\theta_t^2 + \xi_t^2)$.
+\end{definition}
+
+\begin{proposition}
+It is possible that $\epsilon_{\mathrm{out}} \approx 0$ while $\epsilon_{\mathrm{path}} \gg 0$.
+\end{proposition}
+
+This distinguishes correct outputs from coherent transformations.  Non-compositional
+transformations also excite high-frequency spectral modes ($a_k$ large for high
+$\lambda_k$), simultaneously increasing entropy and vorticity.
+
+A task is identified as non-compositional empirically if the observed data satisfy
+$\Xi > \Xi_{\max}$ and $\bar\theta > \theta_{\max}$ despite low output error.  This
+constitutes the falsifiable signature of the framework: the predicted asymmetry between
+human failure modes (directional, prior-shaped, localised at decomposition boundaries)
+and model failure modes (random, entropy-insensitive, uniformly distributed across layers)
+is either present in the data or it is not.
+
+\end{document}

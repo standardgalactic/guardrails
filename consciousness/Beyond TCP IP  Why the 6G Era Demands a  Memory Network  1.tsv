@@ -1,0 +1,74 @@
+start	end	text
+240	5600	Today, every time you load a web page or stream a video, you rely on a routing architecture
+5600	7800	designed in the 1970s.
+7800	13320	The TCP IP protocol handles all of your data exactly like a postal service sorting millions
+13320	15000	of blank boxes.
+15000	20800	It routes traffic based on geographic coordinates, the IP addresses of the sender and the receiver.
+20800	25280	The network moving the package is completely blind to its actual contents.
+25280	29560	This location-based model is increasingly mismatched with how we use the Internet, where
+29560	32760	over 90% of traffic is content retrieval.
+32760	37120	We are typically asking the network for a specific piece of data, regardless of which physical
+37120	39240	server it currently sits on.
+39240	41560	This leads to massive inefficiencies.
+41560	46400	We secure the connection rather than the data itself, and routers cannot distinguish a critical
+46400	49700	medical alert from a routine social media update.
+49700	52700	This is the architectural pivot for the 6G era.
+52700	56400	On the left, traditional TCP IP searches for a physical host.
+56400	61760	On the right, memnet uses information-centric networking to route traffic based on a hierarchical
+61760	63800	name assigned to the data.
+63800	68720	By identifying data by its name, the network can present information as structured semantic
+68720	69800	primitives.
+69800	74560	This provides the organized inputs that AI models require for real-time reasoning, rather
+74560	77780	than a raw, unorganized stream of bits.
+77780	80400	Memnet communication uses two new primitives.
+80400	84600	An application broadcasts an interest packet, a request for a specific data name.
+84600	87860	The network finds the nearest data packet.
+87860	92380	It contains the content and a cryptographic signature, following the interest's trail directly
+92380	94040	back to the user.
+94040	96940	Every memnet router also contains a content store.
+96940	100780	This is an in-network memory cache built directly into the routing hardware.
+100780	104940	If thousands of people request the same file, the data doesn't cross the backbone thousands
+104940	106080	of times.
+106080	110760	The first router that retrieves the data saves a version in its content store, and serves
+110760	114160	its own copy to every subsequent user.
+114160	118040	Distributing memory into the routing fabric eliminates backhaul bottlenecks by turning the
+118040	122020	network into a globally distributed content delivery system.
+122020	126340	Because memnet routes my name, it can assign priority based on the specific type of information
+126340	127680	being carried.
+127680	131560	This allows the network to natively guarantee performance for critical data.
+131560	136960	In scalable video coding, video splits into a required base layer and optional enhancements.
+136960	140120	The router places the base layer in a high-speed protected lane.
+140120	144640	During congestion, it drops enhancement packets, while the base layer continues uninterrupted.
+144640	146260	The stream never stops.
+146260	150060	For life-critical information, memnet uses a TSN proxy.
+150060	154860	This translates ICN data names into time-sensitive networking reservations, which are guaranteed hardware
+154860	157200	paths across the network backbone.
+157200	162460	Fusing data names with time-sensitive networking creates zero-congestion hardware contracts for
+162460	168800	critical data, a level of reliability that was previously impossible on standard Ethernet.
+168800	173300	This architectural shift also changes how the network defends itself against distributed
+173300	178240	denial-of-service, or DDoS attacks, where massive floods of garbage traffic are used to
+178240	180480	crash systems.
+180480	184600	Memnet integrates the marine algorithm directly into the hardware of the router.
+184600	191100	It identifies anomalies in O1 constant time, performing detection at line-rate speeds.
+191100	195780	Instead of heavy processing, the algorithm monitors traffic behavior by analyzing jitter,
+195780	198360	the timing deviations between packets.
+198360	202080	A DDoS attack is a chaotic explosion of erratic jitter.
+202080	206200	The switch instantly drops these malicious packets into a background queue before they tax
+206200	207780	the system.
+207780	212200	Treating jitter as a behavioral signature allows the network to identify and neutralize threats
+212200	213200	at the hardware level.
+213200	219700	This efficiency extends to edge devices through a power-aware strategy that utilizes multiple
+219700	220700	radios.
+220700	226260	A sensor can stay in a low-power sleep state, using only a tiny LoRa radio to listen for
+226260	227760	an interest ping.
+227760	232260	It only wakes up its high-bandwidth Wi-Fi chip when there is a specific request for a heavy
+232260	233260	data payload.
+233260	238720	To maintain security in these large-scale meshes, Memnet integrates a peer-to-peer reputation
+238720	241700	system directly into the routing logic.
+241700	243940	Routers constantly evaluate their neighbors.
+243940	249020	If a node is identified as malicious or refuses to cooperate, the network lowers its reputation
+249020	251080	score and automatically avoids it.
+251080	256520	Memnet transforms telecommunications from a system that blindly transmits bits into a semantic
+256520	260260	substrate that natively prioritizes and authenticates information.
+260260	265640	This 6G infrastructure coordinates data based on its internal semantic value, allowing the
+265640	269100	internet to function as a globally distributed, self-aware memory.

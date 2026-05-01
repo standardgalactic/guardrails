@@ -1,0 +1,81 @@
+start	end	text
+360	5040	When a singer steps up to a microphone and hits a powerful note, they are transferring
+5040	8640	immense physical and emotional energy into the air.
+8640	13640	The vibration of their vocal cords, the tension in their jaw, the micro-fluctuations in their
+13640	18160	breath—it all creates a living, continuous wave of pressure.
+18160	22400	We rely on digital technology to capture that exact feeling.
+22400	27800	But the standard method we use to record that wave actively filters out the subtle, biological
+27800	31160	nuances that make the performance feel human.
+31160	37600	Since the dawn of the CD, the audio industry has relied on pulse code modulation, or PCM.
+37600	43340	It is a system that tries to represent a continuous, physical event using a rigid set of digital
+43340	44800	coordinates.
+44800	48140	This diagram shows exactly how PCM works.
+48140	52680	It takes the fluid shape of the sound wave and forces it onto a rigid lattice.
+52680	57540	It measures the amplitude of the wave thousands of times a second, creating a series of static
+57540	59180	snapshots.
+59180	63540	Between each of those vertical bars, the system simply stops recording.
+63540	69960	Those blank spaces between the snapshots contain the micro-dynamics and texture of the voice.
+69960	75280	By ignoring the space between the points, the digital grid discards the raw emotional intent
+75280	76840	of the artist.
+76840	81600	Look closely at this wave peak to see the first type of damage this causes.
+81600	86540	Because the acoustic event happens exactly between two lines of the digital grid, the system
+86540	88180	cannot record its true position.
+88180	90580	The computer has to guess.
+90580	94720	It forcibly snaps that peak to the nearest available timestamp.
+94720	101140	That subtle shift introduces a temporal error known as jitter, warping the timing of the performance.
+101140	105460	The moment the file is saved, that damage is locked into the audio.
+105460	108260	The second problem happens in the frequency domain.
+108260	113180	To keep file sizes manageable, digital formats slice off the top of the audio spectrum.
+113180	118940	Anything above 20 kHz, the technical upper limit of conscious human hearing, is deleted.
+118940	123380	But decades of research into the hypersonic effect indicate that the human nervous system
+123380	126680	physically reacts to those inaudible frequencies.
+126680	131820	That deleted data contains the overtones that make up the soul signature, the biological bandwidth
+131820	134720	that gives a recording its depth and presence.
+134720	140060	By forcing every sound onto this digital grid, we are storing a flattened, compromised approximation
+140060	141280	of the art.
+141280	146780	The Phoenix 8A Audio format approaches this problem by abandoning the digital grid entirely.
+146780	152100	Instead of compressing the audio, it extracts the underlying mathematical truth of the performance.
+152100	157600	Instead of taking blind snapshots, the system uses an analysis pipeline called the Ignite Engine.
+157600	162560	It reads the incoming audio stream directly in the time domain, analyzing the exact geometry
+162560	164340	of the wave as it happens.
+164340	170020	The engine dehydrates the sound, separating the complex audio into distinct meaningful events,
+170020	173440	isolating steady harmonic tones from sharp transient attacks.
+173440	177480	Once isolated, they aren't saved as rounded off coordinates.
+177480	183720	They're translated into precise mathematical formulas, stored as exact, rational fractions.
+183720	190720	The resulting 8A file holds the pure mathematical DNA of the artist's performance, preserving the exact
+190720	195220	exact physical relationships of the sound without any grid to constrain it.
+195220	200060	To hear that math, the format uses a synthesis system called the Rise Engine.
+200060	205900	This engine takes those dehydrated formulas and rehydrates them, synthesizing a perfect audio
+205900	207980	wave in real time.
+207980	215560	Stored as mathematical relationships, the performance can be rendered at any resolution—96 kHz, 192 kHz,
+215560	219220	or a massive 768 kHz archive.
+219220	222820	The Rise Engine generates the curve directly from the source equation.
+222820	226740	Zoom in endlessly, and there are zero upsampling artifacts.
+226740	232080	A single 8A file provides perfect playback resolution that scales up with your hardware,
+232080	236060	making the recording completely immune to the aging of digital formats.
+236060	242000	Storing audio as semantic mathematics also unlocks an entirely new approach to post-production,
+242000	245000	managed through a feature called the Performance Patch.
+245000	248700	Creating a standard digital recording is like trying to unbake a cake.
+248700	251920	The sounds are permanently mixed together in that rigid grid.
+251920	256820	But an 8A file keeps the musical elements isolated and mathematically distinct.
+256820	260220	This interface shows how an artist interacts with the format.
+260220	265120	Instead of destructive equalization or filtering, they can open the dehydrated file and adjust
+265120	266700	isolated variables.
+266700	271660	They can increase vocal vibrato intensity, or add weight to the harmonics of a piano chord.
+271660	274320	All without degrading the original master data.
+274320	278920	By maintaining complete control over the underlying mathematics, the format ensures that the original
+278920	283840	physical energy of the room—the air pressure that actually drives a speaker cone—is preserved
+283840	287280	exactly as it occurred, even decades into the future.
+287280	294160	The Phoenix 8A format captures the living, interactive acoustics of the performance, securing the artist's
+294160	297160	exact intent for as long as the music is played.
+297160	304520	The Phoenix 8BP
+304520	306060	The 2020
+306060	308120	Magnet
+308120	309100	The nature
+309100	313440	In the
+313440	314180	the
+314180	315000	The
+315000	315540	The
+315540	318140	The
+318140	319760	The
+319760	322480	The

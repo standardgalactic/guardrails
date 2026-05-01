@@ -1,0 +1,2260 @@
+1
+00:00:00,000 --> 00:00:04,740
+Welcome back to The Deep Dive. Today, we are really going under the hood, looking at some
+
+2
+00:00:04,740 --> 00:00:09,380
+source material that I think fundamentally changes how you have to view your own mind.
+
+3
+00:00:09,620 --> 00:00:10,220
+It really does.
+
+4
+00:00:10,300 --> 00:00:13,540
+We're doing a deep dive into the very core of how we make decisions,
+
+5
+00:00:13,860 --> 00:00:16,620
+and maybe more importantly, why we make mistakes.
+
+6
+00:00:16,820 --> 00:00:21,300
+And that's such a crucial point, because for, I mean, for decades in neuroscience,
+
+7
+00:00:21,540 --> 00:00:27,920
+whenever a researcher saw an error, you know, a wrong button press, a bad choice.
+
+8
+00:00:27,940 --> 00:00:28,360
+Like a slip up.
+
+9
+00:00:28,360 --> 00:00:35,460
+A slip up. Exactly. It was always treated as a side effect. It was seen as a failure of the main
+
+10
+00:00:35,460 --> 00:00:36,060
+system.
+
+11
+00:00:36,340 --> 00:00:36,440
+Noise.
+
+12
+00:00:36,960 --> 00:00:40,540
+Right. It was either noise in the signal, or the brain didn't have enough evidence yet,
+
+13
+00:00:40,600 --> 00:00:44,240
+or maybe it was some kind of failure of control that happened right at the last second.
+
+14
+00:00:44,340 --> 00:00:49,460
+So the basic idea was, a successful brain is a computer running the right program.
+
+15
+00:00:50,000 --> 00:00:53,220
+A brain that makes a mistake is a computer that just crashed for a moment.
+
+16
+00:00:53,420 --> 00:00:55,120
+That's the classical view in a nutshell.
+
+17
+00:00:55,120 --> 00:00:59,120
+But the sources we're digging into today, and this is some pretty groundbreaking stuff,
+
+18
+00:00:59,260 --> 00:01:03,180
+using these incredible biomimetic models of the corticosteroidal system,
+
+19
+00:01:03,320 --> 00:01:05,800
+and then validated with macaque data.
+
+20
+00:01:05,960 --> 00:01:08,420
+Yeah, the Pathak et al. paper from 2025.
+
+21
+00:01:08,760 --> 00:01:09,100
+That's the one.
+
+22
+00:01:09,280 --> 00:01:09,460
+Yeah.
+
+23
+00:01:09,540 --> 00:01:13,300
+It just suggests that this entire classical view is, well, fundamentally wrong.
+
+24
+00:01:13,640 --> 00:01:18,280
+It's not just wrong. It presents a genuine crisis for how we think about decision-making.
+
+25
+00:01:18,280 --> 00:01:23,220
+The research suggests errors aren't these sloppy, last-minute accidents.
+
+26
+00:01:23,580 --> 00:01:23,720
+No.
+
+27
+00:01:24,120 --> 00:01:30,460
+No. They're predictable. They are internally coherent, robust plans of action that the brain
+
+28
+00:01:30,460 --> 00:01:33,460
+commits to right at the very beginning of the process.
+
+29
+00:01:33,580 --> 00:01:34,620
+Okay. That changes everything.
+
+30
+00:01:34,680 --> 00:01:34,980
+That changes everything.
+
+31
+00:01:34,980 --> 00:01:39,620
+I mean, what does that do to our ideas about rationality or agency? If the choice is locked
+
+32
+00:01:39,620 --> 00:01:43,460
+in before we're even aware of it, what does self-control even mean?
+
+33
+00:01:43,460 --> 00:01:48,700
+That is the mission for this deep dive. We are going to unpack the discovery of these incredible
+
+34
+00:01:48,700 --> 00:01:51,820
+cells, the incongruent neurons, or ICNs for short.
+
+35
+00:01:52,040 --> 00:01:53,000
+ICNs. Got it.
+
+36
+00:01:53,020 --> 00:01:56,100
+And then we'll get into the theoretical framework that this discovery supports,
+
+37
+00:01:56,180 --> 00:02:00,720
+which is called the admissible histories approach. We really have to restructure how we think about
+
+38
+00:02:00,720 --> 00:02:03,180
+time and choice in the brain. It's an ontological shift.
+
+39
+00:02:03,400 --> 00:02:06,440
+And just to frame this whole conversation for you, get this staggering fact.
+
+40
+00:02:06,700 --> 00:02:06,880
+Yeah.
+
+41
+00:02:07,740 --> 00:02:13,140
+The researchers found a group of neurons that can reliably predict that you're going to make a
+
+42
+00:02:13,140 --> 00:02:18,420
+mistake. A full behavioral error. More than one second before you actually do it.
+
+43
+00:02:18,420 --> 00:02:23,760
+Just think about that. A full second. These neurons fire off within the first 200 milliseconds
+
+44
+00:02:23,760 --> 00:02:24,860
+of you seeing something.
+
+45
+00:02:25,240 --> 00:02:29,500
+200 milliseconds is nothing. That's barely the time it takes for the light to hit your eye and get
+
+46
+00:02:29,500 --> 00:02:29,900
+processed.
+
+47
+00:02:30,100 --> 00:02:35,800
+Exactly. And yet in that tiny window, the outcome of a complex choice that takes another one,
+
+48
+00:02:36,020 --> 00:02:41,100
+two, maybe three seconds to unfold is already fixed. The mistake is already authorized and on its way
+
+49
+00:02:41,100 --> 00:02:43,180
+before you've even had a chance to really think.
+
+50
+00:02:43,520 --> 00:02:44,760
+A second of predetermination.
+
+51
+00:02:45,080 --> 00:02:45,420
+Wow.
+
+52
+00:02:45,620 --> 00:02:47,580
+That's wild. Okay. Let's unpack this.
+
+53
+00:02:47,660 --> 00:02:47,800
+Yeah.
+
+54
+00:02:48,060 --> 00:02:51,220
+So how did they even find these ICNs? What was the breakthrough?
+
+55
+00:02:51,420 --> 00:02:55,800
+Well, the initial discovery actually came from a computational model, a really sophisticated,
+
+56
+00:02:56,160 --> 00:03:00,780
+biologically grounded model of these circuits called corticostreatal microassemblies.
+
+57
+00:03:00,960 --> 00:03:03,820
+Okay. Let's break that down. Corticostreatal. What are we talking about here?
+
+58
+00:03:03,820 --> 00:03:09,000
+So think of it as the main highway for action in your brain. It's the communication link between
+
+59
+00:03:09,000 --> 00:03:14,220
+your cortex, the outer thinking part, and the striatum, which is this deep structure that's all
+
+60
+00:03:14,220 --> 00:03:17,580
+about action selection, habits, learning from rewards.
+
+61
+00:03:17,880 --> 00:03:23,720
+So it's the circuit that turns a thought or a goal into an actual physical movement.
+
+62
+00:03:23,720 --> 00:03:29,040
+Precisely. And by modeling the complex dynamics of how these cells talk to each other,
+
+63
+00:03:29,400 --> 00:03:34,240
+the researchers could start to isolate different patterns of activity, different populations of neurons.
+
+64
+00:03:34,540 --> 00:03:38,880
+And one of these populations was the ICNs. Why incongruent?
+
+65
+00:03:39,220 --> 00:03:43,080
+They called them that because their firing pattern was really strong, really clear,
+
+66
+00:03:43,280 --> 00:03:48,720
+and it was obviously driving an action. But that action was incongruous with the goal of the task.
+
+67
+00:03:48,820 --> 00:03:52,120
+In other words, it was the wrong action. It led to no reward.
+
+68
+00:03:52,120 --> 00:03:56,520
+Exactly. The action was perfectly formed, but externally, it was a mistake.
+
+69
+00:03:57,040 --> 00:04:01,400
+And this brings us back to that temporal paradox, which is the finding that just breaks all the old
+
+70
+00:04:01,400 --> 00:04:06,380
+models. Let's walk through the sequence of events they saw in the macaques, step by step.
+
+71
+00:04:06,600 --> 00:04:13,720
+Okay. So the stimulus appears on the screen. Then, within just 200 milliseconds, a fifth of a second,
+
+72
+00:04:14,520 --> 00:04:19,560
+this population of ICNs associated with the incorrect choice fires, and it fires strongly.
+
+73
+00:04:19,800 --> 00:04:20,120
+Wow.
+
+74
+00:04:20,120 --> 00:04:24,540
+But the task itself, you know, gathering evidence, planning, and making the movement,
+
+75
+00:04:25,000 --> 00:04:29,160
+that often takes a lot longer. Sometimes 1.2 seconds, sometimes two full seconds.
+
+76
+00:04:29,280 --> 00:04:34,440
+And the actual mistake, the monkey pressing the wrong button, happens way at the end of that period.
+
+77
+00:04:34,500 --> 00:04:38,020
+A huge delay. The neural commitment happens at 200 milliseconds,
+
+78
+00:04:38,720 --> 00:04:41,280
+but the behavioral expression is over a second later.
+
+79
+00:04:41,280 --> 00:04:46,540
+So this is the big question. What on earth is happening in that 1,000 millisecond gap?
+
+80
+00:04:46,700 --> 00:04:46,940
+Mm-hmm.
+
+81
+00:04:47,020 --> 00:04:51,560
+Because if the outcome is already locked in, the brain can't be doing what we always thought it was
+
+82
+00:04:51,560 --> 00:04:56,740
+doing, which is, you know, carefully weighing the evidence, deliberating, still making up its mind.
+
+83
+00:04:56,800 --> 00:04:59,800
+It's not deliberating. That's the key insult. It's unfolding.
+
+84
+00:05:00,300 --> 00:05:00,700
+Unfold.
+
+85
+00:05:00,700 --> 00:05:06,000
+Think of it like a lint fuse. The ICN activity at 200 milliseconds isn't a prediction that a mistake
+
+86
+00:05:06,000 --> 00:05:10,800
+might happen. It's the signal that the fuse has been lit. The system has entered a state where the
+
+87
+00:05:10,800 --> 00:05:11,900
+outcome is already determined.
+
+88
+00:05:11,900 --> 00:05:18,320
+So the rest of that time, that full second, is just the time it takes for the fuse to burn down to
+
+89
+00:05:18,320 --> 00:05:19,080
+the firecracker.
+
+90
+00:05:19,240 --> 00:05:24,400
+That's a great analogy. It's just the necessary biological time it takes for that cascade of
+
+91
+00:05:24,400 --> 00:05:29,520
+neural signals to travel through all the motor pathways and physically express itself as a
+
+92
+00:05:29,520 --> 00:05:33,420
+movement. The decision is done. The rest is just execution.
+
+93
+00:05:33,960 --> 00:05:39,160
+And the sources are really clear on this point. These ICNs aren't just some random flicker of noise
+
+94
+00:05:39,160 --> 00:05:43,340
+because the old models would just say, oh, that's just some ambiguous early activity.
+
+95
+00:05:43,580 --> 00:05:49,440
+Right. They dismiss it. But the ICN signal is incredibly robust. It has these key properties
+
+96
+00:05:49,440 --> 00:05:53,500
+that make it functionally identical to the neurons that drive the correct response.
+
+97
+00:05:53,640 --> 00:05:54,740
+Okay. What are those properties?
+
+98
+00:05:54,880 --> 00:05:59,000
+Well, first, they're stable. They show up reliably from one trial to the next in the same context.
+
+99
+00:05:59,000 --> 00:06:04,900
+Second, they're highly selective. An ICN doesn't just fire randomly. It fires for a specific
+
+100
+00:06:04,900 --> 00:06:07,940
+stimulus leading to a specific incorrect answer.
+
+101
+00:06:07,940 --> 00:06:13,680
+Ah, so it's not just a general oops signal. It's a signal for do this specific wrong thing.
+
+102
+00:06:13,980 --> 00:06:20,000
+Exactly. Third, it's causal. They've shown it's upstream of the error. It helps drive the physical
+
+103
+00:06:20,000 --> 00:06:23,400
+mistake. And fourth, and this is maybe the most important part.
+
+104
+00:06:23,500 --> 00:06:24,160
+The robustness.
+
+105
+00:06:24,280 --> 00:06:29,080
+The robustness. The level of activity, the firing rate of an ICN that leads to a mistake
+
+106
+00:06:29,080 --> 00:06:33,320
+is just as strong as the firing rate of a correct neuron that leads to a reward.
+
+107
+00:06:33,480 --> 00:06:36,800
+So from the brain's internal point of view, it's not making an error.
+
+108
+00:06:36,800 --> 00:06:42,980
+Not at all. From inside the system, this is a perfectly legitimate, well-formed, high-confidence
+
+109
+00:06:42,980 --> 00:06:50,000
+action plan. The only thing that labels it an error is the outside world, the rules of the
+
+110
+00:06:50,000 --> 00:06:52,840
+experiment, which says, sorry, no reward for that one.
+
+111
+00:06:52,940 --> 00:06:56,980
+This is forcing us to make a really sharp distinction then between two separate moments
+
+112
+00:06:56,980 --> 00:06:59,280
+in time, commitment and expression.
+
+113
+00:06:59,540 --> 00:07:03,860
+That's the core distinction. Commitment is that point of no return. It's the moment the internal
+
+114
+00:07:03,860 --> 00:07:08,280
+dynamics of the brain push the neural state into a valley where there's only one way
+
+115
+00:07:08,280 --> 00:07:12,760
+out, only one possible outcome. The ICNs are the flag that marks that moment.
+
+116
+00:07:13,180 --> 00:07:17,260
+And expression is just the final act, the observable behavior that happens much later.
+
+117
+00:07:17,820 --> 00:07:24,500
+The ICNs are the smoking gun, showing that for mistakes, commitment happens way, way before
+
+118
+00:07:24,500 --> 00:07:24,960
+expression.
+
+119
+00:07:24,960 --> 00:07:29,080
+And, you know, this idea does have some history. People might remember the famous
+
+120
+00:07:29,080 --> 00:07:30,780
+Libet experiments from the 80s.
+
+121
+00:07:30,780 --> 00:07:32,520
+Right. The readiness potential.
+
+122
+00:07:32,720 --> 00:07:38,440
+Exactly. Libet showed that general brain activity predicting a movement happens before you're
+
+123
+00:07:38,440 --> 00:07:40,920
+consciously aware of your intention to move.
+
+124
+00:07:41,040 --> 00:07:43,180
+But this is different. This feels much more specific.
+
+125
+00:07:43,560 --> 00:07:48,220
+It's way more specific and far more predictive. Libet was about voluntary action in general.
+
+126
+00:07:48,220 --> 00:07:55,500
+The ICN finding applies this logic to a specific, evaluated outcome, an error. And it predicts
+
+127
+00:07:55,500 --> 00:07:58,540
+the specific, incorrect choice with near certainty.
+
+128
+00:07:58,920 --> 00:08:04,020
+So Libet showed activity comes before general intention. This shows that a specific commitment
+
+129
+00:08:04,020 --> 00:08:07,760
+to a mistake is made, deterministically, a full second before it happens.
+
+130
+00:08:08,020 --> 00:08:12,840
+It's like we're watching the brain commit to a plan in slow motion. Once those ICNs fire,
+
+131
+00:08:12,980 --> 00:08:16,940
+the verdict is in. The rest is just the system waiting for the clock to run out before the
+
+132
+00:08:16,940 --> 00:08:22,040
+action takes place. Okay. So that deep dive into what ICNs are and what they do,
+
+133
+00:08:22,340 --> 00:08:27,980
+it makes it painfully obvious why the old models of decision-making just can't cope with this.
+
+134
+00:08:28,060 --> 00:08:32,940
+They really can't. Let's talk about why. Why does this classical framework,
+
+135
+00:08:33,260 --> 00:08:37,300
+which has been the dominant way of thinking for so long, just fall apart here?
+
+136
+00:08:37,300 --> 00:08:41,820
+Well, we can call that whole framework the state-first ontology. And it's all built around
+
+137
+00:08:41,820 --> 00:08:46,740
+the idea that a decision is a single computation happening either instantly or gradually over
+
+138
+00:08:46,740 --> 00:08:50,400
+time that can be described by a single evolving state.
+
+139
+00:08:50,600 --> 00:08:54,780
+And errors in that view are just a failure to compute the right state.
+
+140
+00:08:54,920 --> 00:08:56,140
+A failure to compute. Exactly.
+
+141
+00:08:56,380 --> 00:09:00,180
+Probably the most famous, and I mean, honestly, the most successful model in all of cognitive
+
+142
+00:09:00,180 --> 00:09:06,000
+science is the drift diffusion model, the DDM. Can you give us a quick refresher on how that works?
+
+143
+00:09:06,140 --> 00:09:12,140
+Sure. The DDM is beautiful in its simplicity. It imagines a decision as a process of accumulating
+
+144
+00:09:12,140 --> 00:09:17,280
+evidence for one of two choices. Think of a little particle drifting between two lines or two
+
+145
+00:09:17,280 --> 00:09:19,380
+thresholds. One for correct and one for incorrect.
+
+146
+00:09:19,640 --> 00:09:24,400
+Exactly. And the evidence you get from the world pushes the particle toward the correct line,
+
+147
+00:09:24,720 --> 00:09:28,240
+but there's always some noise, so it jitters around. Whichever line it hits first,
+
+148
+00:09:28,500 --> 00:09:29,680
+that's the decision you make.
+
+149
+00:09:30,040 --> 00:09:34,900
+And time in that model is just how long it takes for the particle to finally hit a threshold.
+
+150
+00:09:35,140 --> 00:09:39,780
+Right. And it explains the speed accuracy trade-off perfectly. If you lower the threshold,
+
+151
+00:09:39,780 --> 00:09:44,360
+you decide faster, but you're more likely to hit the wrong one by accident. It's incredibly
+
+152
+00:09:44,360 --> 00:09:50,340
+elegant. But the ICN finding creates a huge problem for it. A fatal incompatibility, you could
+
+153
+00:09:50,340 --> 00:09:55,160
+say. It creates a temporal dilemma that the DDM just can't solve without basically making itself
+
+154
+00:09:55,160 --> 00:10:00,820
+useless. Okay, lay it out for us. We've got this idea of a gradual drift of evidence on one hand,
+
+155
+00:10:01,000 --> 00:10:05,100
+and then we've got this decisive neural commitment at 200 milliseconds on the other.
+
+156
+00:10:05,220 --> 00:10:09,480
+And you can't have both. So if you try to map the ICN activity onto the DDM,
+
+157
+00:10:09,480 --> 00:10:15,940
+you hit a wall. Here's the first problem. If the decision variable, that drifting particle,
+
+158
+00:10:16,300 --> 00:10:21,680
+is still somewhere in the middle at 200 milliseconds, which it should be in any slow task.
+
+159
+00:10:21,760 --> 00:10:23,160
+Yeah, it's still accumulating evidence.
+
+160
+00:10:23,400 --> 00:10:28,760
+Then any neural activity at that point should be ambiguous. It should be weak or noisy. But the
+
+161
+00:10:28,760 --> 00:10:33,260
+ICN signal isn't weak or noisy. It's powerful and highly predictive.
+
+162
+00:10:33,260 --> 00:10:36,600
+Okay. So what's the other horn of the dilemma?
+
+163
+00:10:37,080 --> 00:10:42,360
+The other problem is, what if you say, okay, maybe the model is wrong and the threshold was
+
+164
+00:10:42,360 --> 00:10:47,360
+already crossed at 200 milliseconds? To explain the certainty of the ICN signal.
+
+165
+00:10:47,460 --> 00:10:47,580
+Right.
+
+166
+00:10:47,920 --> 00:10:52,360
+Well, if that's true, then what is the brain doing for the next full second? That entire
+
+167
+00:10:52,360 --> 00:10:54,980
+stretch of processing time becomes completely meaningless.
+
+168
+00:10:55,260 --> 00:10:57,800
+It becomes epiphenomenal. A ghost in the machine.
+
+169
+00:10:57,800 --> 00:11:02,520
+Exactly. If the decision is already made, then the BDM has to include the system as just sitting
+
+170
+00:11:02,520 --> 00:11:07,320
+there twiddling its thumbs for a second. And that collapses the entire purpose of the model,
+
+171
+00:11:07,460 --> 00:11:11,760
+which is to describe this gradual, time-consuming process of deliberation.
+
+172
+00:11:11,860 --> 00:11:14,800
+Now, I can hear someone thinking, well, couldn't you just tweak the model?
+
+173
+00:11:15,720 --> 00:11:21,720
+What if the ICNs just represent some kind of early bias and the accumulation continues after that?
+
+174
+00:11:21,720 --> 00:11:26,620
+People have tried, but the problem goes deeper than just the timing. It's a problem of language,
+
+175
+00:11:26,780 --> 00:11:28,380
+of representational vocabulary.
+
+176
+00:11:28,560 --> 00:11:29,320
+What do you mean by that?
+
+177
+00:11:29,580 --> 00:11:35,620
+The DDM describes how a single value estate evolves over time, but it has no way to describe
+
+178
+00:11:35,620 --> 00:11:41,100
+the commitment to a whole complex, time-extended sequence of future states. It can't talk about
+
+179
+00:11:41,100 --> 00:11:42,420
+a pre-authorized trajectory.
+
+180
+00:11:42,640 --> 00:11:46,540
+So it can describe the rate of change right now, but it can't capture the commitment to
+
+181
+00:11:46,540 --> 00:11:48,300
+the entire shape of the path ahead.
+
+182
+00:11:48,300 --> 00:11:52,740
+You've got it. That representational vacuum means the DBM, while it's still useful for
+
+183
+00:11:52,740 --> 00:11:57,940
+some things, just fails to capture the core neural reality that this new research has uncovered.
+
+184
+00:11:58,580 --> 00:12:02,440
+What about other big models, like the Bayesian or inference-based models? They seem a bit
+
+185
+00:12:02,440 --> 00:12:03,020
+more sophisticated.
+
+186
+00:12:03,640 --> 00:12:09,120
+They are, but they run into a very similar problem with time. In a Bayesian world, you make errors
+
+187
+00:12:09,120 --> 00:12:14,280
+because you don't have enough evidence, or because you have a really strong, incorrect prior belief.
+
+188
+00:12:14,460 --> 00:12:16,180
+Your internal assumption is just wrong.
+
+189
+00:12:16,180 --> 00:12:21,600
+Right. Now, for the system to commit to an error in just 200 milliseconds, that Bayesian
+
+190
+00:12:21,600 --> 00:12:23,740
+explanation has to become really extreme.
+
+191
+00:12:23,900 --> 00:12:24,280
+How so?
+
+192
+00:12:24,480 --> 00:12:29,700
+It would have to mean that your internal prior belief was so overwhelmingly powerful that
+
+193
+00:12:29,700 --> 00:12:32,920
+it just instantly steamrolled any sensory evidence coming in.
+
+194
+00:12:33,180 --> 00:12:37,960
+Or that the brain just made a snap judgment based on a tiny, compressed piece of information
+
+195
+00:12:37,960 --> 00:12:40,400
+and then ignored everything else that came after.
+
+196
+00:12:40,400 --> 00:12:46,040
+Right. But even if you accept that, you're still stuck with the same problem as the DDM.
+
+197
+00:12:46,820 --> 00:12:52,000
+Why does the trial keep going for another second? If the inference is complete, why is the system
+
+198
+00:12:52,000 --> 00:12:53,020
+still processing?
+
+199
+00:12:53,460 --> 00:12:55,520
+And this is where the new framework has an answer.
+
+200
+00:12:55,820 --> 00:13:00,920
+It has a powerful answer. The old models all assume that the future is something you simulate
+
+201
+00:13:00,920 --> 00:13:06,180
+or predict. The new framework says, no, the future is something that is ontologically realized.
+
+202
+00:13:06,340 --> 00:13:10,660
+It's not a hypothetical path. It's a real physical path the brain has already started walking down.
+
+203
+00:13:10,980 --> 00:13:16,520
+Exactly. The choice to walk down that path has been made, and the ICN is the signpost at the entrance.
+
+204
+00:13:16,520 --> 00:13:22,680
+So this isn't just about tweaking a parameter in an old model. This is a signal that we need a whole new way of thinking.
+
+205
+00:13:23,180 --> 00:13:27,820
+We have to stop seeing time as just a clock that measures how long a decision takes.
+
+206
+00:13:27,880 --> 00:13:33,800
+I start seeing time as the very fabric of the decision itself. The decision is the entire trajectory through time.
+
+207
+00:13:33,880 --> 00:13:35,440
+Which brings us to this new way of thinking.
+
+208
+00:13:35,580 --> 00:13:35,740
+Yeah.
+
+209
+00:13:35,880 --> 00:13:37,660
+The trajectory-first ontology.
+
+210
+00:13:38,040 --> 00:13:45,320
+That's the paradigm shift that this research is forcing on us. We have to change our fundamental unit of analysis.
+
+211
+00:13:45,320 --> 00:13:52,200
+It's no longer the instantaneous neural state or some abstract value of accumulated evidence.
+
+212
+00:13:52,320 --> 00:13:54,560
+It's the whole movie, not just a single frame.
+
+213
+00:13:54,740 --> 00:13:58,340
+Exactly. The fundamental unit is the temporally extended history.
+
+214
+00:13:58,580 --> 00:14:04,060
+Okay. Let's be really clear for everyone listening. What do you mean by a history with a capital H?
+
+215
+00:14:04,320 --> 00:14:11,660
+A history, which the paper calls dollar, is just the complete ordered sequence of neural states from the very beginning,
+
+216
+00:14:11,660 --> 00:14:16,660
+from the stimulus popping up on the screen all the way to the very end, the physical action being completed.
+
+217
+00:14:16,960 --> 00:14:19,240
+So it's the entire neural journey for a single decision.
+
+218
+00:14:19,420 --> 00:14:25,940
+The entire journey. And the power of this framework is that it lets us make a really clean separation between two different concepts.
+
+219
+00:14:26,120 --> 00:14:28,260
+A separation that the old models couldn't make.
+
+220
+00:14:28,380 --> 00:14:28,900
+And that is?
+
+221
+00:14:28,960 --> 00:14:31,980
+The separation between what the system can do and what the system should do.
+
+222
+00:14:32,160 --> 00:14:34,680
+Internal possibility versus external value.
+
+223
+00:14:34,680 --> 00:14:37,680
+Precisely. We start with internal coherence.
+
+224
+00:14:38,340 --> 00:14:42,140
+This is the set of all admissible histories, which we can call dollar.
+
+225
+00:14:42,740 --> 00:14:53,060
+A history is admissible if the brain's wiring its architecture, its synaptic weights, its dynamics, can actually produce that sequence of states.
+
+226
+00:14:53,060 --> 00:15:00,380
+So this is just a physics question. Can the machine do this, yes or no? It has nothing to do with whether it's a good or bad action.
+
+227
+00:15:00,440 --> 00:15:10,160
+And nothing at all. It's purely structural. So if you've trained your brain to pick option A 90% of the time, the path to pick option B is still an admissible history.
+
+228
+00:15:10,680 --> 00:15:15,180
+The wiring for it still exists. It's still possible for the system to go down that path.
+
+229
+00:15:15,260 --> 00:15:17,180
+Okay. So that's admissibility. What's the other half?
+
+230
+00:15:17,180 --> 00:15:21,880
+The other half is external valuation or valuation ballers. And this is a sign by the outside world.
+
+231
+00:15:22,300 --> 00:15:26,780
+This is the part where the experimenter says that action gets a reward or that action gets you nothing.
+
+232
+00:15:27,160 --> 00:15:30,020
+This is where the labels correct and incorrect finally come into play.
+
+233
+00:15:30,240 --> 00:15:34,940
+Exactly. And this separation immediately solves the puzzle of the ICNs.
+
+234
+00:15:35,260 --> 00:15:37,140
+It lets us have error without failure.
+
+235
+00:15:37,580 --> 00:15:41,540
+The ICNs represent trajectories that are perfectly admissible.
+
+236
+00:15:41,540 --> 00:15:46,760
+They are part of the set dollars. They are computationally coherent. They're dynamically robust.
+
+237
+00:15:47,180 --> 00:15:50,320
+The system is not failing when it executes them.
+
+238
+00:15:50,920 --> 00:15:53,840
+But they get a negative valuation. They're punched by the outside world.
+
+239
+00:15:53,960 --> 00:15:56,900
+Right. They are not failures of the system's mechanics.
+
+240
+00:15:57,420 --> 00:16:01,780
+They are simply selections of an alternative future that turns out to be a bad one.
+
+241
+00:16:02,260 --> 00:16:04,540
+So the ICN isn't encoding error.
+
+242
+00:16:05,080 --> 00:16:10,040
+It's encoding a perfectly good action plan that just happens to be the wrong one for the current rules.
+
+243
+00:16:10,320 --> 00:16:13,840
+It's like having a perfectly functional car with a GPS that can take you anywhere.
+
+244
+00:16:14,200 --> 00:16:16,200
+The car never breaks down. That's the admissibility.
+
+245
+00:16:16,200 --> 00:16:18,620
+But if you type in the wrong address...
+
+246
+00:16:18,620 --> 00:16:20,020
+The car will drive you there perfectly.
+
+247
+00:16:20,400 --> 00:16:24,000
+The mechanics were flawless, but the valuation of your destination was poor.
+
+248
+00:16:24,520 --> 00:16:26,880
+The ICN is like the GPS confidently saying,
+
+249
+00:16:27,100 --> 00:16:29,480
+now turning left towards the wrong address.
+
+250
+00:16:29,580 --> 00:16:30,400
+That's a great analogy.
+
+251
+00:16:30,880 --> 00:16:33,760
+It really decouples the internal success of the computation
+
+252
+00:16:33,760 --> 00:16:36,080
+from the external success of the outcome.
+
+253
+00:16:36,320 --> 00:16:37,700
+It's a profound move.
+
+254
+00:16:37,980 --> 00:16:40,120
+Now, let's connect this back to the timing,
+
+255
+00:16:40,420 --> 00:16:42,000
+to that 200 millisecond commitment.
+
+256
+00:16:42,000 --> 00:16:45,620
+The sources talk about a concept called prefix closure.
+
+257
+00:16:46,300 --> 00:16:49,160
+That sounds a little jargony, so let's really break that down.
+
+258
+00:16:49,260 --> 00:16:50,840
+It sounds more complicated than it is.
+
+259
+00:16:51,080 --> 00:16:54,900
+Prefix closure is a really simple but powerful idea about sequences.
+
+260
+00:16:55,460 --> 00:16:58,980
+It just means that if a whole complete history is possible...
+
+261
+00:16:58,980 --> 00:17:01,360
+So the whole trip from start to finish is admissible.
+
+262
+00:17:01,560 --> 00:17:04,700
+Then every initial part of that trip must also be admissible.
+
+263
+00:17:04,860 --> 00:17:06,620
+You can't magically get to the end of the journey
+
+264
+00:17:06,620 --> 00:17:08,560
+without having completed the beginning parts of it.
+
+265
+00:17:08,560 --> 00:17:11,260
+Right. If making a cake is an admissible history,
+
+266
+00:17:11,560 --> 00:17:14,020
+then the first step, mixing the flour and sugar,
+
+267
+00:17:14,300 --> 00:17:16,780
+has to be an admissible prefix of that history.
+
+268
+00:17:16,900 --> 00:17:21,120
+Exactly. And the crucial insight here is that the ICN activity,
+
+269
+00:17:21,320 --> 00:17:23,400
+that flash of firing at 200 milliseconds,
+
+270
+00:17:24,080 --> 00:17:25,700
+represents a decisive prefix.
+
+271
+00:17:25,960 --> 00:17:27,060
+A decisive prefix.
+
+272
+00:17:27,260 --> 00:17:30,340
+Yes. The brain's activity has entered an initial state,
+
+273
+00:17:30,340 --> 00:17:34,420
+a particular pattern, that is only a prefix for one possible future.
+
+274
+00:17:35,000 --> 00:17:37,740
+It's structurally connected only to the sequence of states
+
+275
+00:17:37,740 --> 00:17:38,860
+that leads to the error.
+
+276
+00:17:39,300 --> 00:17:40,860
+So it's like entering a one-way street.
+
+277
+00:17:41,200 --> 00:17:43,860
+The moment you make that turn at the 200 millisecond mark,
+
+278
+00:17:44,020 --> 00:17:46,480
+the rest of your path is completely determined.
+
+279
+00:17:46,820 --> 00:17:49,500
+Even if it takes you five more minutes to get to the end of the road,
+
+280
+00:17:50,020 --> 00:17:52,640
+that turn is the decisive prefix.
+
+281
+00:17:52,800 --> 00:17:53,680
+That's it, precisely.
+
+282
+00:17:53,820 --> 00:17:56,460
+Once the system enters that ICN marked prefix,
+
+283
+00:17:57,020 --> 00:17:59,300
+all the other possible futures collapse,
+
+284
+00:17:59,720 --> 00:18:02,440
+the multiplicity of what could happen just disappears,
+
+285
+00:18:02,680 --> 00:18:05,620
+and you're locked onto a single predetermined branch.
+
+286
+00:18:05,620 --> 00:18:08,820
+The probability of making a mistake, given you've entered that prefix,
+
+287
+00:18:09,000 --> 00:18:10,580
+shoots up to basically 100%.
+
+288
+00:18:10,580 --> 00:18:11,100
+Pretty much.
+
+289
+00:18:11,460 --> 00:18:14,920
+And so that long one-second delay suddenly makes sense again.
+
+290
+00:18:15,100 --> 00:18:16,740
+The brain isn't sitting around deliberating.
+
+291
+00:18:16,860 --> 00:18:17,460
+It's busy.
+
+292
+00:18:17,940 --> 00:18:21,240
+It's executing all the necessary sequential steps of the history
+
+293
+00:18:21,240 --> 00:18:22,500
+it has already committed to.
+
+294
+00:18:22,680 --> 00:18:25,280
+And that just happens to take a second of biological time.
+
+295
+00:18:25,460 --> 00:18:29,160
+Okay, but this raises a really obvious and, I think, critical question.
+
+296
+00:18:29,160 --> 00:18:33,740
+If these error trajectories, these dollar histories, are always punished,
+
+297
+00:18:34,120 --> 00:18:35,680
+why doesn't the brain just get rid of them?
+
+298
+00:18:35,980 --> 00:18:40,040
+Why don't we learn our way to perfection and eliminate the ICNs and the paths they represent?
+
+299
+00:18:40,400 --> 00:18:40,600
+Right.
+
+300
+00:18:41,000 --> 00:18:45,340
+If the brain is this amazing learning machine, why can't it just delete the bad code?
+
+301
+00:18:45,440 --> 00:18:50,120
+Why don't we ever reach 100% accuracy, even on a task we've practiced a thousand times?
+
+302
+00:18:50,200 --> 00:18:50,560
+Exactly.
+
+303
+00:18:50,560 --> 00:18:56,640
+And the answer comes down to the physical, biological constraints of how learning actually works.
+
+304
+00:18:56,800 --> 00:19:02,360
+We often think of the brain as this ideal optimization machine, but it's a physical object.
+
+305
+00:19:02,620 --> 00:19:06,980
+And biological learning, like reinforcement learning, it's an incremental process, right?
+
+306
+00:19:07,260 --> 00:19:07,380
+Yeah.
+
+307
+00:19:07,380 --> 00:19:10,280
+It's not like a programmer going in and deleting a line of code.
+
+308
+00:19:10,460 --> 00:19:11,620
+It's not deletion at all.
+
+309
+00:19:11,720 --> 00:19:13,800
+It's all about adjusting synaptic weights.
+
+310
+00:19:14,200 --> 00:19:19,840
+When a pathway leads to a reward, the connections along that path get a little bit stronger.
+
+311
+00:19:19,840 --> 00:19:23,080
+When a path leads to nothing, it gets a little bit weaker.
+
+312
+00:19:23,260 --> 00:19:24,420
+That's amplification and suppression.
+
+313
+00:19:24,600 --> 00:19:25,920
+It's amplification and suppression.
+
+314
+00:19:26,480 --> 00:19:30,520
+So the correct pathways, the dollar pluses issues, they get amplified and become these
+
+315
+00:19:30,520 --> 00:19:34,360
+huge, wide superhighways that are overwhelmingly likely to be taken.
+
+316
+00:19:34,600 --> 00:19:37,340
+But the alternative paths, the dollar histories...
+
+317
+00:19:37,340 --> 00:19:39,600
+They just become these tiny, narrow back roads.
+
+318
+00:19:39,760 --> 00:19:39,980
+Yeah.
+
+319
+00:19:40,220 --> 00:19:40,940
+But they're still there.
+
+320
+00:19:41,220 --> 00:19:42,060
+They're still on the map.
+
+321
+00:19:42,540 --> 00:19:47,000
+As long as those synaptic weights are not absolute zero, and they never are,
+
+322
+00:19:47,000 --> 00:19:49,840
+the pathways remain dynamically available.
+
+323
+00:19:50,460 --> 00:19:53,740
+They exist as latent possibilities within the structure.
+
+324
+00:19:54,020 --> 00:19:55,540
+And this isn't a bug in the system.
+
+325
+00:19:55,660 --> 00:19:57,360
+You're saying this is actually a feature.
+
+326
+00:19:57,580 --> 00:20:01,980
+It's a necessary feature, and it's driven by the very nature of our brain's architecture.
+
+327
+00:20:02,480 --> 00:20:03,560
+I mean, think about the cortex.
+
+328
+00:20:03,760 --> 00:20:05,400
+It's a massively competitive environment.
+
+329
+00:20:05,700 --> 00:20:08,340
+You have neurons constantly trying to inhibit their neighbors.
+
+330
+00:20:08,520 --> 00:20:09,140
+All the time.
+
+331
+00:20:09,140 --> 00:20:14,740
+It's called lateral inhibition, and it's how the brain forces a clear winner-take-all outcome
+
+332
+00:20:14,740 --> 00:20:17,900
+instead of just having a murky average of activity.
+
+333
+00:20:18,340 --> 00:20:23,000
+So in that competition, even a tiny bit of random noise at the beginning could be enough
+
+334
+00:20:23,000 --> 00:20:23,900
+to tip the scales.
+
+335
+00:20:24,240 --> 00:20:28,380
+It could be just enough to give the ICN-associated pathway an early advantage.
+
+336
+00:20:28,540 --> 00:20:32,920
+And once it wins that initial competition, the whole trajectory is set in motion.
+
+337
+00:20:33,200 --> 00:20:37,000
+Those ICNs are the neural embodiment of those latent alternative futures.
+
+338
+00:20:37,160 --> 00:20:38,440
+The paths that could be taken.
+
+339
+00:20:38,440 --> 00:20:41,860
+The paths that could be taken, but which are usually suppressed.
+
+340
+00:20:42,420 --> 00:20:47,180
+And the reason they are never fully erased by learning is because erasing them would
+
+341
+00:20:47,180 --> 00:20:49,160
+come at a catastrophic cost.
+
+342
+00:20:49,280 --> 00:20:50,540
+And that cost is flexibility.
+
+343
+00:20:50,840 --> 00:20:51,800
+That's the cost.
+
+344
+00:20:52,100 --> 00:20:53,220
+This is so important.
+
+345
+00:20:53,680 --> 00:20:58,880
+The persistence of these error-prone histories is not a failure of learning.
+
+346
+00:20:59,200 --> 00:21:03,160
+It is the structural necessity that allows us to be adaptable.
+
+347
+00:21:03,360 --> 00:21:03,640
+Okay.
+
+348
+00:21:03,900 --> 00:21:04,400
+Explain that.
+
+349
+00:21:04,400 --> 00:21:08,740
+How does the ability to make a mistake help us adapt?
+
+350
+00:21:09,080 --> 00:21:11,840
+Imagine a brain that had optimized itself to perfection.
+
+351
+00:21:12,180 --> 00:21:16,020
+It has deleted every single pathway except the one that leads to the current reward.
+
+352
+00:21:16,200 --> 00:21:17,680
+It's 100% accurate.
+
+353
+00:21:17,800 --> 00:21:18,340
+Sounds pretty good.
+
+354
+00:21:18,540 --> 00:21:19,300
+It sounds great.
+
+355
+00:21:19,380 --> 00:21:20,800
+Until the rules of the world change.
+
+356
+00:21:21,380 --> 00:21:24,420
+Suddenly, the reward is switched from option A to option B.
+
+357
+00:21:24,940 --> 00:21:27,320
+What does our perfect, brittle system do?
+
+358
+00:21:27,420 --> 00:21:28,160
+It's stuck.
+
+359
+00:21:28,160 --> 00:21:32,940
+It has no pathway to B. It would have to slowly and painfully build a whole new road from scratch.
+
+360
+00:21:33,060 --> 00:21:33,420
+Exactly.
+
+361
+00:21:33,580 --> 00:21:34,560
+It's incredibly inefficient.
+
+362
+00:21:34,880 --> 00:21:38,720
+But our actual brains, which have kept those other pathways around, they're just suppressed
+
+363
+00:21:38,720 --> 00:21:41,260
+and narrow, can adapt much faster.
+
+364
+00:21:41,540 --> 00:21:45,300
+All it has to do is start strengthening an existing road, not build a new one.
+
+365
+00:21:45,300 --> 00:21:51,260
+So the capacity for error is the physiological price we pay for being able to learn quickly
+
+366
+00:21:51,260 --> 00:21:53,020
+and survive in a changing world.
+
+367
+00:21:53,020 --> 00:21:54,460
+That is the essence of it.
+
+368
+00:21:54,740 --> 00:21:59,120
+The reason your error rate never truly hits zero is because those mistakes are the system
+
+369
+00:21:59,120 --> 00:22:02,420
+occasionally taking a valid but disfavored path.
+
+370
+00:22:02,620 --> 00:22:07,740
+And keeping those paths open is essential for rapid reconfiguration when the world throws
+
+371
+00:22:07,740 --> 00:22:08,460
+you a curveball.
+
+372
+00:22:08,580 --> 00:22:12,740
+So the mistakes we make are actually a sign that our brains are still flexible, still ready
+
+373
+00:22:12,740 --> 00:22:13,860
+to learn something new.
+
+374
+00:22:13,860 --> 00:22:19,020
+You can't have perfect adaptability without retaining the capacity to sometimes enter a
+
+375
+00:22:19,020 --> 00:22:22,300
+perfectly admissible but currently incorrect trajectory.
+
+376
+00:22:22,800 --> 00:22:25,980
+It's the cost of doing business for a biological brain.
+
+377
+00:22:26,100 --> 00:22:28,800
+Okay, this is where things get really, really interesting for me.
+
+378
+00:22:28,880 --> 00:22:29,380
+The intervention.
+
+379
+00:22:29,600 --> 00:22:30,660
+The intervention experiment.
+
+380
+00:22:30,800 --> 00:22:35,720
+Because it's one thing to show a correlation to say, hey, these ICNs fire before a mistake.
+
+381
+00:22:36,200 --> 00:22:39,120
+But it's another thing entirely to prove causation.
+
+382
+00:22:39,280 --> 00:22:42,960
+And this is the empirical high point of the research, where they actually manipulate the
+
+383
+00:22:42,960 --> 00:22:43,900
+system in real time.
+
+384
+00:22:43,900 --> 00:22:49,680
+So they took this incredible insight that the die is cast at 200 milliseconds, and they
+
+385
+00:22:49,680 --> 00:22:50,540
+decided to intervene.
+
+386
+00:22:51,240 --> 00:22:52,060
+How did they do it?
+
+387
+00:22:52,680 --> 00:22:55,460
+So they didn't just sit back and record the ICN activity.
+
+388
+00:22:55,780 --> 00:23:01,780
+They built a system that could detect that specific neural signature, that decisive prefix,
+
+389
+00:23:02,120 --> 00:23:03,360
+the moment it happened.
+
+390
+00:23:03,460 --> 00:23:05,200
+Within that first 200 milliseconds.
+
+391
+00:23:05,200 --> 00:23:06,280
+In real time.
+
+392
+00:23:06,540 --> 00:23:10,360
+And as soon as they detected it, they immediately halted the trial that has stopped everything
+
+393
+00:23:10,360 --> 00:23:13,160
+before the monkey could actually make the incorrect movement.
+
+394
+00:23:13,480 --> 00:23:18,800
+So the commitment to the error has happened inside the brain, but the external expression
+
+395
+00:23:18,800 --> 00:23:20,260
+of the error is prevented.
+
+396
+00:23:21,000 --> 00:23:23,540
+It's like they cut the trajectory off midstream.
+
+397
+00:23:23,680 --> 00:23:24,160
+What happened?
+
+398
+00:23:24,160 --> 00:23:28,860
+The result was a significant improvement in the overall accuracy for the entire session.
+
+399
+00:23:29,440 --> 00:23:33,660
+By catching and stopping the error trajectories before they could complete, the net performance
+
+400
+00:23:33,660 --> 00:23:34,660
+of the system went up.
+
+401
+00:23:34,760 --> 00:23:38,320
+And this result just completely torpedoes the classical models.
+
+402
+00:23:38,440 --> 00:23:38,960
+It does.
+
+403
+00:23:39,320 --> 00:23:42,900
+Because in an old model like the DDM, what would this intervention be doing?
+
+404
+00:23:43,000 --> 00:23:46,760
+You're just stopping a trial where the evidence happens to be drifting the wrong way.
+
+405
+00:23:46,840 --> 00:23:49,480
+It shouldn't fundamentally change the system's overall behavior.
+
+406
+00:23:49,800 --> 00:23:50,880
+It's not error correction.
+
+407
+00:23:51,180 --> 00:23:51,800
+That's the key.
+
+408
+00:23:51,800 --> 00:23:52,440
+It can't be.
+
+409
+00:23:52,580 --> 00:23:54,040
+There was no error to correct yet.
+
+410
+00:23:54,260 --> 00:23:56,400
+The monkey never actually pressed the wrong button.
+
+411
+00:23:57,160 --> 00:24:00,360
+The intervention is purely perspective, not reactive.
+
+412
+00:24:00,760 --> 00:24:05,780
+It's proof that the future was already determined because by erasing that specific future, they
+
+413
+00:24:05,780 --> 00:24:07,760
+improved the system's present performance.
+
+414
+00:24:07,760 --> 00:24:12,240
+And that means the intervention wasn't acting on a momentary, ambiguous state.
+
+415
+00:24:12,380 --> 00:24:14,060
+It was acting on a whole trajectory.
+
+416
+00:24:14,980 --> 00:24:19,460
+By stopping the trial, what they were really doing was defining a pruned set of histories.
+
+417
+00:24:19,760 --> 00:24:21,580
+Crooning the tree of possibilities.
+
+418
+00:24:21,580 --> 00:24:26,380
+They were systematically snipping off the branches that led to the negatively valued outcomes,
+
+419
+00:24:26,480 --> 00:24:29,200
+the dollar histories, before they could fully grow.
+
+420
+00:24:29,900 --> 00:24:34,020
+And what's really crucial is that this didn't change the internal dynamics of the correct
+
+421
+00:24:34,020 --> 00:24:35,080
+histories at all.
+
+422
+00:24:35,320 --> 00:24:38,180
+The brain didn't magically get better at the task.
+
+423
+00:24:38,580 --> 00:24:42,880
+They just externally prevented it from executing its occasional admissible mistakes.
+
+424
+00:24:42,880 --> 00:24:46,400
+And that is the slam dunk causal evidence.
+
+425
+00:24:47,040 --> 00:24:51,540
+It proves that these error trajectories are not just some statistical pattern we see after
+
+426
+00:24:51,540 --> 00:24:52,020
+the fact.
+
+427
+00:24:52,020 --> 00:24:57,960
+They are fully specified and causally real things inside the brain with momentum long before
+
+428
+00:24:57,960 --> 00:24:59,180
+any behavior happens.
+
+429
+00:24:59,180 --> 00:25:03,280
+This has to completely change how we think about the idea of cognitive control.
+
+430
+00:25:03,600 --> 00:25:03,960
+Completely.
+
+431
+00:25:04,200 --> 00:25:07,860
+We've always had this idea of control as, you know, an internal brake pedal.
+
+432
+00:25:08,000 --> 00:25:12,100
+A little supervisor in your head that catches a mistake at the last second and says, whoa,
+
+433
+00:25:12,280 --> 00:25:12,720
+stop.
+
+434
+00:25:12,880 --> 00:25:14,100
+A last ditch correction.
+
+435
+00:25:14,300 --> 00:25:15,460
+A last ditch effort.
+
+436
+00:25:15,960 --> 00:25:20,220
+But what this research shows is that by that point, it's almost always too late.
+
+437
+00:25:20,520 --> 00:25:22,540
+The system is past the decisive prefix.
+
+438
+00:25:22,920 --> 00:25:25,260
+It's already in irreversible execution mode.
+
+439
+00:25:25,260 --> 00:25:28,160
+So real cognitive control isn't about hitting the brakes.
+
+440
+00:25:28,360 --> 00:25:29,860
+It's about something that happens much earlier.
+
+441
+00:25:30,180 --> 00:25:33,820
+It's the proactive, early suppression of disfavored trajectories.
+
+442
+00:25:34,080 --> 00:25:37,080
+It's about pruning the future before it even starts to unfold.
+
+443
+00:25:37,500 --> 00:25:40,520
+This reframes the whole idea of self-control in our daily lives.
+
+444
+00:25:41,020 --> 00:25:44,380
+We think of it as this epic battle wrestling with the temptation in the moment.
+
+445
+00:25:44,700 --> 00:25:44,980
+Right.
+
+446
+00:25:45,300 --> 00:25:49,100
+If you're trying not to eat a cookie, we think self-control is the fight your hand is having
+
+447
+00:25:49,100 --> 00:25:49,960
+on the way to your mouth.
+
+448
+00:25:50,380 --> 00:25:51,720
+But that's the expression phase.
+
+449
+00:25:52,120 --> 00:25:53,660
+The commitment was made long before.
+
+450
+00:25:53,660 --> 00:25:59,140
+True self-control was what happened or failed to happen in that first 200 milliseconds when
+
+451
+00:25:59,140 --> 00:26:00,820
+the thought cookie first popped into your head.
+
+452
+00:26:00,940 --> 00:26:01,340
+Exactly.
+
+453
+00:26:01,860 --> 00:26:05,080
+It's about whether you let that initial prefix gain momentum.
+
+454
+00:26:05,920 --> 00:26:09,080
+A failure of self-control is a failure of early pruning.
+
+455
+00:26:09,720 --> 00:26:14,580
+It's allowing a coherent, admissible, but ultimately bad trajectory to get going.
+
+456
+00:26:14,840 --> 00:26:19,140
+So the intervention experiment is like an externalized form of perfect self-control.
+
+457
+00:26:19,520 --> 00:26:20,700
+That's a perfect way to put it.
+
+458
+00:26:20,700 --> 00:26:25,620
+It shows that if we could somehow internally replicate that process veto, that decisive
+
+459
+00:26:25,620 --> 00:26:31,200
+prefix before the clock runs down, we could achieve incredible accuracy, even while the
+
+460
+00:26:31,200 --> 00:26:34,340
+structural possibility for error still exists within us.
+
+461
+00:26:34,440 --> 00:26:36,680
+Okay, let's pull the camera back and look at the big picture.
+
+462
+00:26:36,860 --> 00:26:41,280
+We've got this time gap, this trajectory first idea, the causal proof from pruning.
+
+463
+00:26:41,280 --> 00:26:45,800
+What does this do to the big philosophical ideas that we use to understand ourselves?
+
+464
+00:26:46,300 --> 00:26:47,300
+Let's start with agency.
+
+465
+00:26:47,760 --> 00:26:50,460
+Agency takes a big hit, at least in its traditional form.
+
+466
+00:26:50,900 --> 00:26:55,500
+If the decision is effectively fixed a full second before the action, you can't really
+
+467
+00:26:55,500 --> 00:26:59,000
+locate your free will or your choice in that final moment.
+
+468
+00:26:59,340 --> 00:27:02,780
+So my feeling of choosing to press the button right now is sort of an illusion.
+
+469
+00:27:02,780 --> 00:27:08,420
+The decisive selection happened much earlier, and it was heavily constrained by the structure
+
+470
+00:27:08,420 --> 00:27:09,820
+and history of your brain.
+
+471
+00:27:10,520 --> 00:27:14,000
+So agency in this new framework has to be something different.
+
+472
+00:27:14,500 --> 00:27:15,100
+What does it become?
+
+473
+00:27:15,280 --> 00:27:19,880
+It becomes the capacity to shape the space of possible futures over the long term.
+
+474
+00:27:20,340 --> 00:27:25,800
+It's the ongoing work of learning, of practicing, of paying attention, all the things that slowly
+
+475
+00:27:25,800 --> 00:27:27,540
+change the underlying probabilities.
+
+476
+00:27:27,860 --> 00:27:31,100
+It's about pruning some paths and widening others.
+
+477
+00:27:31,100 --> 00:27:33,380
+So agency isn't a single event in time.
+
+478
+00:27:33,840 --> 00:27:38,600
+It's the slow, continuous process of being an architect for your own brain's possibility
+
+479
+00:27:38,600 --> 00:27:39,100
+space.
+
+480
+00:27:39,220 --> 00:27:39,580
+Exactly.
+
+481
+00:27:39,820 --> 00:27:43,860
+It's less about the choice and more about structuring the potential for future choices.
+
+482
+00:27:44,040 --> 00:27:44,320
+Wow.
+
+483
+00:27:44,620 --> 00:27:45,860
+Okay, what about rationality?
+
+484
+00:27:46,200 --> 00:27:50,680
+We tend to think of being rational as, you know, computing the best answer.
+
+485
+00:27:50,740 --> 00:27:50,960
+Right.
+
+486
+00:27:51,120 --> 00:27:53,300
+Maximizing your utility, getting the most reward.
+
+487
+00:27:53,540 --> 00:27:55,640
+But this framework seems to suggest something else.
+
+488
+00:27:55,820 --> 00:27:56,340
+It does.
+
+489
+00:27:56,340 --> 00:28:02,560
+It suggests that rationality isn't an active computation as much as it is an emergent property
+
+490
+00:28:02,560 --> 00:28:03,920
+of successful suppression.
+
+491
+00:28:04,440 --> 00:28:05,120
+What do you mean by that?
+
+492
+00:28:05,560 --> 00:28:09,920
+You are rational not because you calculated the single best path, but because you successfully
+
+493
+00:28:09,920 --> 00:28:15,140
+avoided entering the thousands of other perfectly possible but suboptimal paths.
+
+494
+00:28:15,260 --> 00:28:17,500
+So rationality is defined by what you don't do.
+
+495
+00:28:17,820 --> 00:28:20,320
+It becomes a fundamentally negative definition.
+
+496
+00:28:20,980 --> 00:28:25,040
+A rational person is someone whose brain is very, very good at early pruning.
+
+497
+00:28:25,040 --> 00:28:30,200
+If you manage your money well, your rationality isn't just in the one good investment you
+
+498
+00:28:30,200 --> 00:28:36,000
+made, it's in the hundreds of terrible, impulsive spending trajectories that you successfully
+
+499
+00:28:36,000 --> 00:28:37,800
+suppressed before they ever got started.
+
+500
+00:28:38,120 --> 00:28:40,020
+That is a stunning way to reframe it.
+
+501
+00:28:40,480 --> 00:28:43,220
+Success is defined by the failures you manage to avoid.
+
+502
+00:28:43,340 --> 00:28:45,140
+It really turns the definition on its head.
+
+503
+00:28:45,380 --> 00:28:49,340
+Now, how does all of this connect with other big, complex theories out there?
+
+504
+00:28:49,640 --> 00:28:52,720
+The one that comes to mind is Active Infants, Kari Friston's work.
+
+505
+00:28:52,720 --> 00:28:55,100
+Yeah, that's a really important connection to make.
+
+506
+00:28:55,280 --> 00:28:57,180
+Active Inference is hugely influential.
+
+507
+00:28:57,680 --> 00:29:03,120
+This idea that the brain is always trying to minimize surprise or free energy by making
+
+508
+00:29:03,120 --> 00:29:04,340
+inferences about the future.
+
+509
+00:29:04,540 --> 00:29:07,720
+And it talks about policies, which are future action sequences.
+
+510
+00:29:07,960 --> 00:29:08,840
+It's already temporal.
+
+511
+00:29:09,380 --> 00:29:12,260
+Why doesn't it fully capture this ICN finding?
+
+512
+00:29:12,860 --> 00:29:18,000
+Well, Active Inference is forward-looking, but it often still comes from a state-first perspective.
+
+513
+00:29:18,000 --> 00:29:23,180
+It views those future policies as hypothetical things that are simulated and weighed from
+
+514
+00:29:23,180 --> 00:29:23,900
+your current state.
+
+515
+00:29:24,440 --> 00:29:25,920
+The key difference is ontological.
+
+516
+00:29:26,560 --> 00:29:28,560
+In AI, the future is inferred.
+
+517
+00:29:29,040 --> 00:29:30,640
+And in the admissible history framework?
+
+518
+00:29:31,020 --> 00:29:32,500
+The future history is realized.
+
+519
+00:29:32,760 --> 00:29:35,740
+It's a physically possible path encoded in the brain's wiring.
+
+520
+00:29:36,220 --> 00:29:40,280
+The admissible history framework basically provides the structural foundation on which Active
+
+521
+00:29:40,280 --> 00:29:41,260
+Inference has to operate.
+
+522
+00:29:41,260 --> 00:29:42,520
+Ah, okay.
+
+523
+00:29:42,880 --> 00:29:47,240
+So the set of admissible histories, dollar, tells you which policies or trajectories even
+
+524
+00:29:47,240 --> 00:29:49,320
+exist to be considered in the first place.
+
+525
+00:29:49,740 --> 00:29:50,160
+Exactly.
+
+526
+00:29:50,400 --> 00:29:53,340
+Sawade defines the set of physically possible futures.
+
+527
+00:29:53,780 --> 00:29:58,540
+And then Active Inference comes in and provides a beautiful mathematical story for how the brain
+
+528
+00:29:58,540 --> 00:30:03,320
+might weigh and prune those available futures to select the best one.
+
+529
+00:30:03,700 --> 00:30:05,060
+They actually work together beautifully.
+
+530
+00:30:05,060 --> 00:30:09,060
+This really solidifies the idea that we need a new unit of cognition.
+
+531
+00:30:09,660 --> 00:30:13,340
+We have to stop looking at the snapshot, at the instantaneous neural state.
+
+532
+00:30:13,540 --> 00:30:16,660
+The true unit of analysis has to be the authorized trajectory.
+
+533
+00:30:17,340 --> 00:30:18,200
+The entire history.
+
+534
+00:30:18,540 --> 00:30:21,320
+The ICNs are so important because they show us that boundary line.
+
+535
+00:30:21,540 --> 00:30:25,420
+The point where a mere prediction about the future turns into an irreversible commitment
+
+536
+00:30:25,420 --> 00:30:26,020
+to a future.
+
+537
+00:30:26,500 --> 00:30:28,260
+The brain doesn't just guess what might happen.
+
+538
+00:30:28,480 --> 00:30:30,820
+It enters a path that ensures what will happen.
+
+539
+00:30:31,800 --> 00:30:33,420
+Hashtag tagged tag hag outro.
+
+540
+00:30:33,420 --> 00:30:38,260
+So after this deep dive, we've really moved our whole understanding of what a mistake is.
+
+541
+00:30:38,440 --> 00:30:41,260
+It's not just a computational glitch, a bit of noise in the machine.
+
+542
+00:30:41,520 --> 00:30:41,980
+Not at all.
+
+543
+00:30:42,240 --> 00:30:46,980
+We land on this really radical idea that an error is the successful execution of a legitimate,
+
+544
+00:30:47,220 --> 00:30:51,340
+internally coherent plan that the outside world just happens to penalize.
+
+545
+00:30:51,540 --> 00:30:53,000
+The brain doesn't stumble into error.
+
+546
+00:30:53,460 --> 00:30:54,340
+It commits to it.
+
+547
+00:30:54,820 --> 00:30:58,300
+Early, confidently, and with full dynamic certainty.
+
+548
+00:30:58,540 --> 00:31:02,660
+Which means accuracy getting things right isn't about running the correct calculation.
+
+549
+00:31:02,660 --> 00:31:08,500
+It's about the constant, active, and successful suppression of all the other admissible but
+
+550
+00:31:08,500 --> 00:31:09,880
+incorrect trajectories.
+
+551
+00:31:09,880 --> 00:31:12,680
+So let's leave our listeners with a final provocative thought.
+
+552
+00:31:13,780 --> 00:31:18,980
+If the capacity to make mistakes, to have these dollar histories, is a structural necessity
+
+553
+00:31:18,980 --> 00:31:20,920
+for a flexible, adaptable mind.
+
+554
+00:31:20,920 --> 00:31:26,100
+And if our commitments to these mistakes are made so far in advance of our conscious awareness,
+
+555
+00:31:26,840 --> 00:31:30,040
+then where can we find our real leverage for control?
+
+556
+00:31:30,700 --> 00:31:36,080
+It suggests that the most profound form of control isn't found in that last-second white-knuckled
+
+557
+00:31:36,080 --> 00:31:37,240
+struggle with temptation.
+
+558
+00:31:37,760 --> 00:31:39,580
+That moment is almost always too late.
+
+559
+00:31:39,680 --> 00:31:40,180
+So where is it?
+
+560
+00:31:40,180 --> 00:31:44,320
+The highest form of self-control might be something much quieter happening in the background.
+
+561
+00:31:44,740 --> 00:31:48,580
+It's the slow, patient work of cultivating your own neural architecture, adjusting the
+
+562
+00:31:48,580 --> 00:31:54,020
+dynamics, the biases, the learning rates, in a way that physically prunes the set of bad,
+
+563
+00:31:54,180 --> 00:31:56,200
+but possible, futures you can even enter.
+
+564
+00:31:56,560 --> 00:32:01,840
+You control your future, not by fighting it in the moment, but by sculpting the landscape
+
+565
+00:32:01,840 --> 00:32:04,660
+of your own mind, long before the choice ever appears.
+

@@ -1,0 +1,2428 @@
+1
+00:00:00,000 --> 00:00:05,580
+Welcome back to the deep dive. So, um, I was sitting on my couch last night doing that thing
+
+2
+00:00:05,580 --> 00:00:10,260
+we all do. I unlocked my phone, you know, just to check the weather for the morning, right?
+
+3
+00:00:10,340 --> 00:00:16,980
+The famous last words, just checking the weather. Exactly. And, uh, 45 minutes later, I found myself
+
+4
+00:00:16,980 --> 00:00:22,360
+deep in a comment section argument about, I think it was toaster oven repair protocol.
+
+5
+00:00:22,420 --> 00:00:25,740
+Oh yeah. The classic drift. You go in for one specific thing and you end up somewhere
+
+6
+00:00:25,740 --> 00:00:29,440
+completely different. And usually you're angry about it. Yeah. I put the phone down and I just
+
+7
+00:00:29,440 --> 00:00:35,300
+felt, I felt drained, not just tired, but, um, extracted. Like something had been taken from
+
+8
+00:00:35,300 --> 00:00:40,280
+me. And usually when we talk about this feeling, we blame the algorithm or we blame the CEO of
+
+9
+00:00:40,280 --> 00:00:46,120
+whatever platform or the engagement bait content itself. But today we were doing something totally
+
+10
+00:00:46,120 --> 00:00:50,460
+different. We are looking at a source that basically says, stop blaming the people,
+
+11
+00:00:50,940 --> 00:00:56,040
+stop blaming the software updates, blame the geometry. It is a massive shift in perspective.
+
+12
+00:00:56,040 --> 00:01:01,840
+And honestly, it's a little vertigo inducing. We are unpacking a paper released just this month,
+
+13
+00:01:02,240 --> 00:01:07,860
+February, 2026, by an author known as Flixian. The title is Manufacturing Stability,
+
+14
+00:01:08,780 --> 00:01:11,140
+Structural Foundations for Digital Infrastructure.
+
+15
+00:01:12,080 --> 00:01:15,840
+And, um, when you say structural, we should be clear to everyone listening. You don't mean like
+
+16
+00:01:15,840 --> 00:01:21,540
+organizational charts or corporate structure. You mean physics. You mean the actual mathematical
+
+17
+00:01:21,540 --> 00:01:26,880
+shape of our digital space? Exactly. The core premise here is that the internet as it is built
+
+18
+00:01:26,880 --> 00:01:32,620
+today actually has a specific geometric shape. And that shape is designed, whether that was
+
+19
+00:01:32,620 --> 00:01:37,520
+intentional or totally accidental, to create instability. It creates what the author calls
+
+20
+00:01:37,520 --> 00:01:42,780
+extractive gravity. Okay. So my 45 minute detour into the toaster oven arguments wasn't just a failure
+
+21
+00:01:42,780 --> 00:01:47,600
+of my own willpower. It was a failure of navigating a curved surface. That's the argument. I mean,
+
+22
+00:01:47,600 --> 00:01:51,860
+if you try to walk in a straight line on a floor that's severely slanted or curved, you will turn.
+
+23
+00:01:52,020 --> 00:01:57,060
+You can't help it. And this paper argues that we have built a digital world with such extreme
+
+24
+00:01:57,060 --> 00:02:04,120
+curvature that stability, you know, just having a normal, calm interaction is structurally impossible.
+
+25
+00:02:04,120 --> 00:02:09,640
+Okay. Structurally impossible. That is a huge claim to make. So today our mission for you,
+
+26
+00:02:09,700 --> 00:02:13,720
+the listener, is to unpack this. We're going to talk about manifolds, gravity wells,
+
+27
+00:02:13,720 --> 00:02:19,160
+something called the Jacobi field, which sounds like a sci-fi weapon, but is actually terrifying
+
+28
+00:02:19,160 --> 00:02:24,400
+math. And finally, a proposal for a totally new internet architecture called plenum hub.
+
+29
+00:02:24,880 --> 00:02:29,880
+Which promises to fix all of this, not by passing new laws, but by fundamentally changing the algebra
+
+30
+00:02:29,880 --> 00:02:34,280
+of how information moves. Let's dive right in then. The paper starts with this concept of the
+
+31
+00:02:34,280 --> 00:02:37,680
+manifold. Now I hear the word manifold and I immediately think of a car engine,
+
+32
+00:02:38,060 --> 00:02:40,780
+but we are talking about math here. Can you help me visualize this?
+
+33
+00:02:40,780 --> 00:02:45,820
+Sure. So in differential geometry, a manifold is a space that looks totally flat when you're
+
+34
+00:02:45,820 --> 00:02:49,640
+zoomed in close, but it has a really complex shape when you zoom out.
+
+35
+00:02:49,840 --> 00:02:50,340
+Like the earth.
+
+36
+00:02:50,880 --> 00:02:56,840
+Exactly like the earth. If you stand in the middle of a cornfield, the world looks flat. You can walk
+
+37
+00:02:56,840 --> 00:03:01,360
+north, south, east, west. It feels like a perfectly flat two-dimensional plane.
+
+38
+00:03:01,920 --> 00:03:04,520
+But if I zoom out into orbit, I see it's a sphere.
+
+39
+00:03:04,880 --> 00:03:09,760
+Correct. Now Fliction asks us to imagine the internet as a surface just like that.
+
+40
+00:03:09,760 --> 00:03:14,920
+We call it the information manifold. When you log on to a social media platform,
+
+41
+00:03:14,920 --> 00:03:20,280
+you feel like you are standing on a flat field. You think, I can choose to click this or I can
+
+42
+00:03:20,280 --> 00:03:23,860
+search for that. Yeah, I feel like I am the captain of my own ship. I'm just browsing.
+
+43
+00:03:24,280 --> 00:03:29,020
+But the paper argues that this space is not flat at all. It is heavily, heavily curved.
+
+44
+00:03:29,800 --> 00:03:35,320
+Specifically, it has regions of intense positive curvature. Imagine that rubber sheet analogy they
+
+45
+00:03:35,320 --> 00:03:38,540
+always use to explain gravity in high school physics classes.
+
+46
+00:03:38,600 --> 00:03:40,940
+Oh, the trampoline with the bowling ball in the middle.
+
+47
+00:03:40,980 --> 00:03:45,680
+Right. You stretch a rubber sheet tight. That's a flat network. Then you drop a massive bowling
+
+48
+00:03:45,680 --> 00:03:50,140
+ball right in the center. That bowling ball is a dominant platform, a Facebook, a TikTok,
+
+49
+00:03:50,320 --> 00:03:53,740
+a Google. It creates a massive dip in the fabric, a gravity well.
+
+50
+00:03:53,740 --> 00:03:58,720
+Okay. So the platform is the heavy object and I am what? I'm just a marble.
+
+51
+00:03:58,900 --> 00:04:04,320
+You are a marble rolling across that sheet. Now here's the crucial part. If you are rolling along,
+
+52
+00:04:04,420 --> 00:04:09,060
+trying to go in a straight line right past that bowling ball, what happens to your path?
+
+53
+00:04:09,540 --> 00:04:11,620
+Well, it bends. I get pulled toward the ball.
+
+54
+00:04:12,100 --> 00:04:12,980
+Do you choose to turn?
+
+55
+00:04:13,220 --> 00:04:16,240
+No. The slope makes me turn. Gravity does the work.
+
+56
+00:04:16,540 --> 00:04:19,120
+That is exactly what the paper calls geodesic convergence.
+
+57
+00:04:19,120 --> 00:04:25,360
+In a curved space, a straight line, which in math we call it geodesic, isn't straight in the
+
+58
+00:04:25,360 --> 00:04:30,260
+way we typically think of it. The shortest path between two points actually bends down into the
+
+59
+00:04:30,260 --> 00:04:35,840
+well. So you log on, intending to check the weather. That is your destination. You try to
+
+60
+00:04:35,840 --> 00:04:40,880
+walk a straight line. But the curvature of the platform, the gravity well of engagement,
+
+61
+00:04:41,380 --> 00:04:45,360
+bends your path. You slide right down the slope into the viral video, into the argument,
+
+62
+00:04:45,540 --> 00:04:46,260
+into the outrage.
+
+63
+00:04:46,260 --> 00:04:50,420
+And I'm sitting there on the couch thinking, why did I click that? Why did I do this again?
+
+64
+00:04:50,660 --> 00:04:55,140
+But you're saying the click wasn't really a free choice. It was just the path of least
+
+65
+00:04:55,140 --> 00:04:57,000
+resistance in a warped geometry.
+
+66
+00:04:57,480 --> 00:05:03,720
+Precisely. The platform has engineered the slope so that not clicking requires an immense
+
+67
+00:05:03,720 --> 00:05:09,380
+amount of energy. You basically have to hike out of a steep crater to avoid it. But sliding in
+
+68
+00:05:09,380 --> 00:05:11,580
+is completely effortless. It's thermodynamic.
+
+69
+00:05:11,820 --> 00:05:15,920
+I mean, that makes me feel a little better about my toaster of an argument, but honestly, not much.
+
+70
+00:05:15,920 --> 00:05:20,340
+It sounds incredibly deterministic. Like we are just marbles with no brakes at all.
+
+71
+00:05:20,400 --> 00:05:23,740
+Oh, it gets more deterministic. This is where we need to talk about the Jacoby field.
+
+72
+00:05:23,880 --> 00:05:26,760
+Yes. I circled this heavily in the notes because it sounded very intimidating.
+
+73
+00:05:27,140 --> 00:05:30,120
+The Jacoby field, it basically measures deviation.
+
+74
+00:05:30,360 --> 00:05:30,560
+Right.
+
+75
+00:05:30,560 --> 00:05:36,780
+It measures how parallel paths behave in a space. And this is the absolute key to understanding
+
+76
+00:05:36,780 --> 00:05:43,800
+modern polarization. In a flat space, Euclidean space, if you and I start walking parallel to
+
+77
+00:05:43,800 --> 00:05:46,920
+each other, we stay parallel forever. We never meet.
+
+78
+00:05:47,040 --> 00:05:49,100
+We just agree to disagree and stay in our own lanes.
+
+79
+00:05:49,100 --> 00:05:55,000
+Right. But in a space with positive curvature, like a sphere or one of these gravity wells
+
+80
+00:05:55,000 --> 00:06:00,740
+parallel lines converge, think of two people starting at the equator, separated by 100 miles,
+
+81
+00:06:01,240 --> 00:06:06,160
+walking due north. They are parallel at the start, but they will crash into each other at
+
+82
+00:06:06,160 --> 00:06:06,680
+the North Pole.
+
+83
+00:06:06,800 --> 00:06:10,280
+They don't have a choice. The geometry of the sphere forces them to meet.
+
+84
+00:06:10,420 --> 00:06:15,220
+Now apply that directly to the internet. You start with an interest in, say, knitting.
+
+85
+00:06:15,220 --> 00:06:20,880
+I start with an interest in vintage motorcycle repair. We're on completely parallel paths.
+
+86
+00:06:20,980 --> 00:06:22,540
+We shouldn't really overlap ever.
+
+87
+00:06:22,900 --> 00:06:23,020
+Right.
+
+88
+00:06:23,400 --> 00:06:29,140
+But the platform acts as a massive gravity well with positive curvature. The Jacoby field
+
+89
+00:06:29,140 --> 00:06:32,040
+describes mathematically how our paths are crunched together.
+
+90
+00:06:32,180 --> 00:06:36,700
+So the algorithm is actively steering us both toward the exact same trending topic.
+
+91
+00:06:36,760 --> 00:06:40,980
+Exactly. The North Pole on this analogy is the viral main character of the day,
+
+92
+00:06:41,200 --> 00:06:44,660
+the outrage of the moment. The platform bends the space
+
+93
+00:06:44,660 --> 00:06:48,660
+so that the knitter and the biker both end up in the exact same comment section,
+
+94
+00:06:49,120 --> 00:06:52,160
+fighting about something neither of them even cared about an hour ago.
+
+95
+00:06:52,380 --> 00:06:56,700
+So when we say the internet hurts us, we aren't just being metaphorical or dramatic.
+
+96
+00:06:56,700 --> 00:07:03,340
+We are describing a literal geometric function. The space itself is pushing completely diverse
+
+97
+00:07:03,340 --> 00:07:06,000
+interests into a singularity of conflict.
+
+98
+00:07:06,380 --> 00:07:11,660
+It perfectly explains why the internet feels so incredibly small and so painfully loud at the
+
+99
+00:07:11,660 --> 00:07:15,940
+same time. No matter where you start, you end up in the same room as everyone else,
+
+100
+00:07:16,120 --> 00:07:17,520
+and that room is usually on fire.
+
+101
+00:07:17,780 --> 00:07:22,700
+Okay, so that's the gravity part of the diagnosis. But the paper pivots to something even more
+
+102
+00:07:22,700 --> 00:07:28,880
+unsettling here. Predictive asymmetry. This felt less like physics to me and more like a psychological
+
+103
+00:07:28,880 --> 00:07:29,720
+horror movie.
+
+104
+00:07:29,860 --> 00:07:32,860
+It is arguably the most dystopian part of the entire analysis.
+
+105
+00:07:32,860 --> 00:07:37,680
+It deals with information density. The paper introduces this concept of a scalar well.
+
+106
+00:07:38,080 --> 00:07:41,620
+Which is really just a fancy way of saying a place where they know way more than you do.
+
+107
+00:07:41,700 --> 00:07:46,040
+Essentially, yes. The platform collects data points, billions of them every single day.
+
+108
+00:07:46,120 --> 00:07:51,100
+It builds a very complex model of you. And the paper uses a specific mathematical metric to
+
+109
+00:07:51,100 --> 00:07:54,600
+measure the power of that model. It's called the Kolbach-Leibler divergence.
+
+110
+00:07:55,160 --> 00:08:00,040
+Okay, KL divergence. I looked this up before we started. It measures the distance between two
+
+111
+00:08:00,040 --> 00:08:01,680
+probability distributions.
+
+112
+00:08:01,900 --> 00:08:07,080
+Correct. And in this specific context, it measures the gap between the platform's model of you
+
+113
+00:08:07,080 --> 00:08:08,800
+and your own model of yourself.
+
+114
+00:08:09,060 --> 00:08:12,000
+Let's stop there for a second, because I feel like I know myself pretty well.
+
+115
+00:08:12,140 --> 00:08:18,620
+I'm the world's leading expert on me, right? How can a server farm in California know me better than I do?
+
+116
+00:08:18,940 --> 00:08:23,080
+Well, let's test that assumption. You have a model of yourself in your head.
+
+117
+00:08:23,080 --> 00:08:29,940
+Your model says, I am a rational person. I value my sleep. If I see a push notification at 1130 p.m.,
+
+118
+00:08:29,940 --> 00:08:34,020
+I will ignore it because I have work tomorrow. That is your self-model.
+
+119
+00:08:34,140 --> 00:08:36,120
+It's a nice model. I really like that version of me.
+
+120
+00:08:36,140 --> 00:08:37,260
+It's a delusional model.
+
+121
+00:08:37,360 --> 00:08:37,760
+Ouch.
+
+122
+00:08:37,880 --> 00:08:41,820
+Because the platform has a different model. The platform has watched you for five straight years.
+
+123
+00:08:42,220 --> 00:08:48,080
+It has a probability distribution that says, if we show user 492 a video of a golden retriever
+
+124
+00:08:48,080 --> 00:08:54,760
+interacting with a baby duck at 11.32 p.m., there is a 94.6% probability they will unlock the phone
+
+125
+00:08:54,760 --> 00:08:59,120
+and an 88% probability they will remain active for another 45 minutes.
+
+126
+00:08:59,240 --> 00:09:00,800
+And the really scary part is they are right.
+
+127
+00:09:00,800 --> 00:09:06,480
+They are statistically right. You are operating on a philosophical model of free will.
+
+128
+00:09:06,860 --> 00:09:10,600
+They are operating on a cold model of behavioral probabilities.
+
+129
+00:09:11,620 --> 00:09:17,220
+The KL divergence is literally the measurable gap between your delusion of agency and their
+
+130
+00:09:17,220 --> 00:09:18,960
+mathematical certainty of your habits.
+
+131
+00:09:18,960 --> 00:09:23,560
+And as they get more data on me, that gap just widens. Their model gets higher and higher resolution.
+
+132
+00:09:24,100 --> 00:09:25,540
+Mine just stays the same.
+
+133
+00:09:25,840 --> 00:09:30,040
+That is the asymmetry. Eventually, the platform isn't just predicting you anymore.
+
+134
+00:09:30,040 --> 00:09:33,720
+It is simulating you better than you can simulate yourself.
+
+135
+00:09:34,180 --> 00:09:38,280
+And this leads directly to what Fliction calls manifold collapse.
+
+136
+00:09:38,700 --> 00:09:40,760
+Manifold collapse. That sounds like the end of the world.
+
+137
+00:09:40,860 --> 00:09:42,120
+It's the end of your internal world.
+
+138
+00:09:42,320 --> 00:09:46,740
+The idea is that because their map of you is so much better than your map of yourself,
+
+139
+00:09:46,960 --> 00:09:49,820
+you eventually stop navigating by your own internal compass.
+
+140
+00:09:50,020 --> 00:09:51,560
+You just start navigating by their map.
+
+141
+00:09:51,620 --> 00:09:51,940
+Whoa.
+
+142
+00:09:52,200 --> 00:09:54,840
+They lay down the tracks. Watch this next. Buy this. Click here.
+
+143
+00:09:55,140 --> 00:09:59,140
+And you just roll down them because it's cognitively easier than thinking for yourself.
+
+144
+00:09:59,140 --> 00:10:02,040
+So you basically become a non-player character in your own life.
+
+145
+00:10:02,380 --> 00:10:04,540
+It is harsh, but it's accurate.
+
+146
+00:10:05,100 --> 00:10:08,460
+The paper argues this isn't just a basic privacy violation.
+
+147
+00:10:08,700 --> 00:10:12,960
+We usually think of privacy as, you know, don't read my private emails or look at my photos.
+
+148
+00:10:13,540 --> 00:10:14,400
+This is structural.
+
+149
+00:10:14,900 --> 00:10:17,320
+It's what they call a right to predictive parity.
+
+150
+00:10:17,880 --> 00:10:22,820
+The argument is, is it even ethical for an entity to possess a behavioral map of you
+
+151
+00:10:22,820 --> 00:10:25,380
+that is this much more accurate than your own?
+
+152
+00:10:25,380 --> 00:10:28,600
+It's like playing poker against someone who can not only see your cards,
+
+153
+00:10:28,740 --> 00:10:33,380
+but also knows exactly how your eye twitches when you bluff and also knows you're tired and hungry.
+
+154
+00:10:33,580 --> 00:10:35,600
+And they also control the lighting and the temperature in the room.
+
+155
+00:10:35,800 --> 00:10:35,980
+Yes.
+
+156
+00:10:36,100 --> 00:10:37,560
+You cannot win that game.
+
+157
+00:10:37,780 --> 00:10:41,240
+The scalar well is so incredibly deep that you cannot climb out of it.
+
+158
+00:10:41,620 --> 00:10:43,580
+You are trapped inside their prediction of you.
+
+159
+00:10:43,580 --> 00:10:45,300
+Man, that is bleak.
+
+160
+00:10:45,680 --> 00:10:50,300
+So we are just marbles rolling down a curved slope into a gravity well,
+
+161
+00:10:50,500 --> 00:10:52,900
+being herded into fights by a Jacoby field,
+
+162
+00:10:53,040 --> 00:10:56,200
+while an AI predicts our every move better than we can.
+
+163
+00:10:56,360 --> 00:10:58,160
+This is the diagnosis of the internet.
+
+164
+00:10:58,300 --> 00:10:59,180
+That is the diagnosis.
+
+165
+00:10:59,380 --> 00:11:01,560
+And honestly, if the paper stopped right there,
+
+166
+00:11:01,620 --> 00:11:04,160
+I would say burn the computers and move to a cabin in the woods.
+
+167
+00:11:04,420 --> 00:11:04,680
+Right.
+
+168
+00:11:04,880 --> 00:11:05,960
+Just unplug everything.
+
+169
+00:11:06,460 --> 00:11:07,720
+But Flitchin doesn't start there.
+
+170
+00:11:07,800 --> 00:11:09,320
+They actually propose a solution.
+
+171
+00:11:09,320 --> 00:11:13,020
+And it's not more moderation or breaking up big tech companies.
+
+172
+00:11:13,260 --> 00:11:15,640
+It's a total architectural overhaul.
+
+173
+00:11:15,880 --> 00:11:17,860
+They call it the plenum hub architecture.
+
+174
+00:11:18,480 --> 00:11:21,360
+This is where we shift gears from geometry to thermodynamics.
+
+175
+00:11:22,180 --> 00:11:26,740
+The solution is called the RSVP framework, relativistic scalar vector plenum.
+
+176
+00:11:26,940 --> 00:11:30,100
+Which sounds incredibly Star Trek, but walk me through it.
+
+177
+00:11:30,200 --> 00:11:32,680
+What is the core idea of plenum hub?
+
+178
+00:11:32,940 --> 00:11:35,680
+The core idea is that we need to make extractive behavior.
+
+179
+00:11:35,680 --> 00:11:38,400
+That gravity well creation we just talked about,
+
+180
+00:11:38,700 --> 00:11:41,460
+not just illegal or against the terms of service,
+
+181
+00:11:41,920 --> 00:11:43,440
+but algebraically impossible.
+
+182
+00:11:43,840 --> 00:11:44,760
+Algebraically impossible,
+
+183
+00:11:44,980 --> 00:11:47,960
+meaning the code literally will not compile if you try to do it.
+
+184
+00:11:48,040 --> 00:11:48,440
+Exactly.
+
+185
+00:11:48,820 --> 00:11:50,820
+In programming, we have this concept of types.
+
+186
+00:11:51,360 --> 00:11:53,240
+If you try to divide a number by the word banana,
+
+187
+00:11:53,740 --> 00:11:55,160
+the computer throws a type error.
+
+188
+00:11:55,580 --> 00:11:56,980
+It just refuses to run.
+
+189
+00:11:57,420 --> 00:11:59,200
+Flitchin wants to create a new layer of the internet
+
+190
+00:11:59,200 --> 00:12:01,320
+where engagement farming or context stripping
+
+191
+00:12:01,320 --> 00:12:04,060
+creates a literal type error at the protocol level.
+
+192
+00:12:04,140 --> 00:12:04,980
+How do you even do that?
+
+193
+00:12:04,980 --> 00:12:06,600
+How do you code against engagement farming?
+
+194
+00:12:07,060 --> 00:12:09,320
+By fundamentally switching the underlying economy.
+
+195
+00:12:10,120 --> 00:12:13,060
+Right now, the entire web operates on an economy of engagement.
+
+196
+00:12:13,660 --> 00:12:17,620
+The RSVP framework switches that to an economy of entropy.
+
+197
+00:12:17,820 --> 00:12:18,120
+Entropy.
+
+198
+00:12:18,300 --> 00:12:19,280
+Okay, that's a physics term.
+
+199
+00:12:19,380 --> 00:12:21,300
+It means disorder, randomness.
+
+200
+00:12:21,480 --> 00:12:21,740
+Yes.
+
+201
+00:12:22,300 --> 00:12:24,780
+In thermodynamics, creating order requires energy.
+
+202
+00:12:25,480 --> 00:12:27,840
+Creating disorder entropy is usually very easy.
+
+203
+00:12:28,280 --> 00:12:29,400
+Think of a teenager's bedroom.
+
+204
+00:12:29,860 --> 00:12:32,520
+It gets messy, which is high entropy automatically.
+
+205
+00:12:32,520 --> 00:12:35,980
+Cleaning it up and creating low entropy takes actual work.
+
+206
+00:12:36,220 --> 00:12:36,740
+Okay, I follow that.
+
+207
+00:12:37,080 --> 00:12:39,900
+The current internet flips this reality on its head.
+
+208
+00:12:40,640 --> 00:12:43,020
+It is incredibly cheap to create disorder digitally.
+
+209
+00:12:43,720 --> 00:12:46,680
+You can program a bot to flood a comment section with noise,
+
+210
+00:12:46,860 --> 00:12:48,780
+lies, and rage beat for fractions of a penny.
+
+211
+00:12:49,020 --> 00:12:49,160
+Yeah.
+
+212
+00:12:49,220 --> 00:12:52,240
+You can create massive high entropy storms basically for free.
+
+213
+00:12:52,240 --> 00:12:57,380
+And doing the actual work of verifying facts, checking sources, being nuanced, that is really
+
+214
+00:12:57,380 --> 00:12:57,820
+expensive.
+
+215
+00:12:58,000 --> 00:12:59,160
+It takes human time and energy.
+
+216
+00:12:59,280 --> 00:12:59,460
+Right.
+
+217
+00:12:59,540 --> 00:13:02,020
+So the current system massively favors noise.
+
+218
+00:13:02,500 --> 00:13:04,600
+The plenum hub introduces an entropy budget.
+
+219
+00:13:04,900 --> 00:13:07,140
+This is the concept of thermodynamic accountability.
+
+220
+00:13:07,140 --> 00:13:09,940
+I found this part fascinating when I was reading the source.
+
+221
+00:13:10,140 --> 00:13:15,140
+So if I want to post something, if I want to change the manifold, I actually have to declare
+
+222
+00:13:15,140 --> 00:13:15,560
+a budget.
+
+223
+00:13:15,800 --> 00:13:18,100
+You have to declare the entropy impact of your action.
+
+224
+00:13:18,220 --> 00:13:22,780
+You essentially tell the network, I am introducing this much disorder into the system.
+
+225
+00:13:22,960 --> 00:13:25,240
+And the system has a hard mathematical limit.
+
+226
+00:13:25,680 --> 00:13:28,240
+You cannot just infinite scroll disorder into the world.
+
+227
+00:13:28,340 --> 00:13:29,900
+But wait, people lie all the time.
+
+228
+00:13:30,100 --> 00:13:30,800
+Spammers lie.
+
+229
+00:13:30,800 --> 00:13:36,000
+I can just say, hey, this bot army attack I'm launching, it's actually very low entropy.
+
+230
+00:13:36,240 --> 00:13:37,000
+It's pure poetry.
+
+231
+00:13:37,420 --> 00:13:39,600
+That is the most obvious objection for sure.
+
+232
+00:13:40,180 --> 00:13:43,620
+And the paper solves it with a mechanism called staking and slashing.
+
+233
+00:13:43,780 --> 00:13:45,420
+Which sounds kind of violent.
+
+234
+00:13:45,620 --> 00:13:46,880
+It's financial violence, really.
+
+235
+00:13:47,600 --> 00:13:52,360
+To participate in the plenum hub, to write anything to the manifold, you must post a stake,
+
+236
+00:13:52,740 --> 00:13:53,200
+a bond.
+
+237
+00:13:53,300 --> 00:13:54,180
+It could be crypto tokens.
+
+238
+00:13:54,260 --> 00:13:55,400
+It could be reputation points.
+
+239
+00:13:55,480 --> 00:13:57,380
+But it must be something of real value.
+
+240
+00:13:57,480 --> 00:13:57,640
+Yeah.
+
+241
+00:13:57,640 --> 00:14:02,500
+If you declare a low entropy budget, but the network analyzes your content and realizes
+
+242
+00:14:02,500 --> 00:14:08,620
+it is actually high entropy noise like spam, lies, or just incoherence, your stake is slashed.
+
+243
+00:14:08,780 --> 00:14:09,660
+You just lose your deposit.
+
+244
+00:14:10,160 --> 00:14:11,200
+You lose it instantly.
+
+245
+00:14:12,020 --> 00:14:13,880
+This completely flips the economics.
+
+246
+00:14:14,560 --> 00:14:16,840
+Suddenly, being a troll isn't free anymore.
+
+247
+00:14:17,240 --> 00:14:19,160
+It becomes prohibitively expensive.
+
+248
+00:14:19,940 --> 00:14:23,580
+If you want to pollute the information stream, you have to pay for the cleanup.
+
+249
+00:14:24,060 --> 00:14:24,680
+I really like that.
+
+250
+00:14:24,740 --> 00:14:27,020
+It's basically a carbon tax for digital pollution.
+
+251
+00:14:27,660 --> 00:14:27,940
+Exactly.
+
+252
+00:14:28,460 --> 00:14:30,240
+It forces thermodynamic accountability.
+
+253
+00:14:30,900 --> 00:14:33,160
+You have to put real skin in the game if you want to speak.
+
+254
+00:14:33,800 --> 00:14:37,340
+Now, this does bring up a concern for me, and I'm sure for anyone listening.
+
+255
+00:14:37,660 --> 00:14:39,540
+Does this mean only rich people can post?
+
+256
+00:14:40,020 --> 00:14:44,320
+If I have to post a bond to tweet, isn't that just killing free speech for people who don't
+
+257
+00:14:44,320 --> 00:14:44,980
+have resources?
+
+258
+00:14:45,360 --> 00:14:46,860
+The paper addresses this directly.
+
+259
+00:14:47,400 --> 00:14:49,100
+The cost isn't necessarily dollars.
+
+260
+00:14:49,220 --> 00:14:50,820
+It's value within the network.
+
+261
+00:14:50,820 --> 00:14:55,880
+If you have a long history of high-fidelity, truthful contributions, your reputation stake
+
+262
+00:14:55,880 --> 00:14:56,560
+grows naturally.
+
+263
+00:14:56,680 --> 00:14:58,200
+You can spend that reputation to post.
+
+264
+00:14:58,900 --> 00:15:02,460
+But if you are a brand-new, completely anonymous account, yes, the barrier is higher.
+
+265
+00:15:02,740 --> 00:15:04,680
+You can't just spin up a million bots in a basement.
+
+266
+00:15:04,960 --> 00:15:10,140
+You have to stake them all, which makes botnets economically unviable right out of the gate.
+
+267
+00:15:10,140 --> 00:15:15,180
+So it kills the bots, but it might make it a bit harder for a whistleblower or a brand-new
+
+268
+00:15:15,180 --> 00:15:17,280
+voice to break in initially.
+
+269
+00:15:17,680 --> 00:15:18,380
+Potentially, yes.
+
+270
+00:15:18,940 --> 00:15:22,000
+It heavily prioritizes stability over virality.
+
+271
+00:15:22,560 --> 00:15:25,880
+It is a conservative system in the physics sense of the word.
+
+272
+00:15:26,320 --> 00:15:29,180
+It actively resists rapid, chaotic fluctuations.
+
+273
+00:15:29,500 --> 00:15:32,120
+Let's talk about the content itself in this new system.
+
+274
+00:15:32,460 --> 00:15:35,780
+Because we aren't just posting JPEGs or text files anymore.
+
+275
+00:15:35,780 --> 00:15:37,960
+We are posting semantic spheres.
+
+276
+00:15:38,740 --> 00:15:41,640
+This is hands down my favorite technical detail in the whole paper.
+
+277
+00:15:42,300 --> 00:15:44,540
+A semantic sphere is a formal data object.
+
+278
+00:15:45,020 --> 00:15:47,240
+And it contains four very specific things.
+
+279
+00:15:47,780 --> 00:15:51,060
+One, identity, which is a cryptographic hash of who you are.
+
+280
+00:15:51,340 --> 00:15:53,520
+Two, payload the actual content itself.
+
+281
+00:15:53,880 --> 00:15:56,120
+Three, entropy that disorder score we just discussed.
+
+282
+00:15:56,240 --> 00:15:57,580
+And the fourth one is provenance.
+
+283
+00:15:57,960 --> 00:16:00,300
+Provenance is the absolute game-changer here.
+
+284
+00:16:00,720 --> 00:16:04,640
+Currently, you can take a screenshot of a headline, crop out the date, crop out the author, and
+
+285
+00:16:04,640 --> 00:16:06,060
+just post it to rage-bait people.
+
+286
+00:16:06,240 --> 00:16:07,520
+That is called context-dripping.
+
+287
+00:16:07,760 --> 00:16:09,020
+We see it literally every day.
+
+288
+00:16:09,100 --> 00:16:10,240
+Look what this politician said.
+
+289
+00:16:10,520 --> 00:16:14,040
+But they actually said it 10 years ago as a joke in a totally different context.
+
+290
+00:16:14,440 --> 00:16:18,420
+In PlenumHub, a semantic sphere must contain its provenance graph.
+
+291
+00:16:18,860 --> 00:16:22,040
+It must cryptographically link all the way back to its source.
+
+292
+00:16:22,400 --> 00:16:27,980
+If you try to post an orphan clip, a clip with the context severed from it, the system just
+
+293
+00:16:27,980 --> 00:16:28,600
+rejects it.
+
+294
+00:16:29,280 --> 00:16:29,960
+It's a type error.
+
+295
+00:16:30,280 --> 00:16:33,540
+So it effectively bans out of context as a category of content.
+
+296
+00:16:33,540 --> 00:16:36,700
+It demands what the paper calls media-quine closure.
+
+297
+00:16:37,560 --> 00:16:41,660
+A quine, in computer science, is a program that contains its own source code.
+
+298
+00:16:42,760 --> 00:16:46,300
+A media-quine is a piece of media that contains its own entire context.
+
+299
+00:16:46,940 --> 00:16:51,040
+You cannot consume the snippet without dragging the whole history of the information with it.
+
+300
+00:16:51,100 --> 00:16:53,220
+This connects directly to sheaf theory, right?
+
+301
+00:16:53,460 --> 00:16:56,160
+Which, I admit, I had to read like three times to grasp.
+
+302
+00:16:56,300 --> 00:16:57,500
+It's about gluing things together.
+
+303
+00:16:57,600 --> 00:16:58,760
+It's about truth consistency.
+
+304
+00:16:58,760 --> 00:17:02,480
+Imagine I have a map of New York, and you have a map of New Jersey.
+
+305
+00:17:02,860 --> 00:17:06,820
+If we put them side-by-side on a table, the roads at the border should line up perfectly.
+
+306
+00:17:07,100 --> 00:17:07,960
+They should glue together.
+
+307
+00:17:08,280 --> 00:17:12,700
+If my road ends at the river, and your road starts 10 miles north, our maps don't glue.
+
+308
+00:17:13,100 --> 00:17:14,720
+One of us is objectively wrong.
+
+309
+00:17:14,720 --> 00:17:15,280
+Right.
+
+310
+00:17:16,000 --> 00:17:22,340
+Sheaf theory is the rigorous math of ensuring local data glues into a consistent global whole.
+
+311
+00:17:23,040 --> 00:17:32,600
+In information terms, if I post a clip saying the mayor hates puppies, and the full original video shows the mayor playing happily with the puppy, those two pieces of data do not glue.
+
+312
+00:17:33,100 --> 00:17:34,200
+There is a sheaf violation.
+
+313
+00:17:34,200 --> 00:17:41,080
+So the system actually detects that the local truth, the short clip, contradicts the global truth of the full video.
+
+314
+00:17:41,320 --> 00:17:42,460
+And it creates resistance.
+
+315
+00:17:43,200 --> 00:17:45,400
+It degrades the value of your post immediately.
+
+316
+00:17:45,980 --> 00:17:48,740
+Specifically, it degrades the texture crystal value.
+
+317
+00:17:48,820 --> 00:17:49,760
+Okay, perfect segue.
+
+318
+00:17:50,060 --> 00:17:50,840
+Texture crystal.
+
+319
+00:17:51,220 --> 00:17:53,180
+We are entering the economy section now.
+
+320
+00:17:53,280 --> 00:17:54,040
+This is segment three.
+
+321
+00:17:54,240 --> 00:17:56,940
+The paper proposes completely replacing likes with crystals.
+
+322
+00:17:57,360 --> 00:17:58,800
+Now, I have to be totally honest with you.
+
+323
+00:17:58,860 --> 00:18:02,920
+When I first read the word crystals in the outline, I thought, okay, we've gone full hippie here.
+
+324
+00:18:02,920 --> 00:18:09,220
+It does sound a bit new age on the surface, but it's actually hardcore condensed matter physics applied directly to economics.
+
+325
+00:18:09,960 --> 00:18:14,500
+The ultimate goal is to move from an attention economy to a structure economy.
+
+326
+00:18:14,880 --> 00:18:16,400
+What is the fundamental difference there?
+
+327
+00:18:16,700 --> 00:18:23,400
+In an attention economy, you get paid either in dopamine likes or actual ad revenue just for making people look.
+
+328
+00:18:23,900 --> 00:18:25,460
+It doesn't matter why they look at all.
+
+329
+00:18:25,860 --> 00:18:27,560
+A horrific car crash gets looks.
+
+330
+00:18:28,020 --> 00:18:30,240
+A genius scientific breakthrough gets looks.
+
+331
+00:18:30,880 --> 00:18:32,420
+They are priced exactly the same.
+
+332
+00:18:32,420 --> 00:18:35,280
+Actually, the car crash usually is a lot better.
+
+333
+00:18:35,560 --> 00:18:36,400
+Sadly correct.
+
+334
+00:18:36,880 --> 00:18:41,600
+In a structure economy, you get paid for building meaning, for reducing entropy.
+
+335
+00:18:42,360 --> 00:18:46,980
+The paper proposes two new currencies for this, texture crystals and time crystals.
+
+336
+00:18:47,240 --> 00:18:48,380
+Let's start with texture crystals.
+
+337
+00:18:48,640 --> 00:18:50,260
+The text says this measures novelty.
+
+338
+00:18:50,540 --> 00:18:51,880
+But not just random newness.
+
+339
+00:18:52,300 --> 00:18:54,060
+It measures allocative efficiency.
+
+340
+00:18:54,700 --> 00:18:57,500
+The underlying formula involves something called mutual information.
+
+341
+00:18:57,740 --> 00:19:01,100
+Basically, it asks the network, is this post redundant?
+
+342
+00:19:01,100 --> 00:19:03,880
+Give me a real world example of how that works.
+
+343
+00:19:04,020 --> 00:19:04,220
+Okay.
+
+344
+00:19:04,620 --> 00:19:06,260
+Let's say a major news event happens.
+
+345
+00:19:06,740 --> 00:19:09,380
+A famous celebrity falls down the stairs on live TV.
+
+346
+00:19:09,560 --> 00:19:10,600
+A classic internet moment.
+
+347
+00:19:10,880 --> 00:19:15,340
+Within 10 minutes, there are 50,000 tweets making the exact same pun about the fall.
+
+348
+00:19:15,480 --> 00:19:16,640
+He really fell for her.
+
+349
+00:19:16,840 --> 00:19:17,780
+Times 50,000.
+
+350
+00:19:17,780 --> 00:19:18,380
+Exactly.
+
+351
+00:19:18,380 --> 00:19:22,800
+In the current economy, all 50,000 of those people might get a few likes.
+
+352
+00:19:23,200 --> 00:19:24,480
+They all get a tiny hit of dopamine.
+
+353
+00:19:25,420 --> 00:19:30,340
+In the crystal economy, the very first person to make the joke creates a texture crystal.
+
+354
+00:19:31,100 --> 00:19:33,380
+They add a genuinely new information to the manifold.
+
+355
+00:19:34,040 --> 00:19:36,260
+The second person adds very little new info.
+
+356
+00:19:36,800 --> 00:19:40,200
+By the time you get to the 50,000th person, they add zero new information.
+
+357
+00:19:40,780 --> 00:19:43,820
+Their texture crystal yield is mathematically zero.
+
+358
+00:19:43,820 --> 00:19:44,680
+Oh, wow.
+
+359
+00:19:44,860 --> 00:19:47,500
+So copy-paste culture is demonetized instantly.
+
+360
+00:19:47,960 --> 00:19:49,960
+It ruthlessly penalizes redundancy.
+
+361
+00:19:50,640 --> 00:19:54,480
+If you are just echoing the noise that's already there, you get absolutely nothing.
+
+362
+00:19:54,900 --> 00:20:01,220
+You are only rewarded for heterogeneity, for adding a perspective or a fact that isn't already present in the space.
+
+363
+00:20:01,380 --> 00:20:03,580
+That would silence so much of the modern internet.
+
+364
+00:20:03,640 --> 00:20:04,580
+It would silence the echo.
+
+365
+00:20:04,720 --> 00:20:05,680
+That's the entire point.
+
+366
+00:20:05,940 --> 00:20:09,220
+It demands that you say something genuinely unique or you say nothing at all.
+
+367
+00:20:09,380 --> 00:20:09,640
+Okay.
+
+368
+00:20:09,760 --> 00:20:10,660
+That makes sense for texture.
+
+369
+00:20:10,840 --> 00:20:11,700
+What about time crystals?
+
+370
+00:20:11,700 --> 00:20:14,360
+Time crystals measure provenance-weighted persistence.
+
+371
+00:20:15,240 --> 00:20:17,920
+This addresses the flash-in-the-pan problem of viral media.
+
+372
+00:20:18,380 --> 00:20:22,440
+You mean the viral hit that everyone obsesses over and then completely forgets in 24 hours?
+
+373
+00:20:22,660 --> 00:20:22,880
+Right.
+
+374
+00:20:23,320 --> 00:20:27,680
+Currently, if you go viral today, you get a massive follower boost that lasts forever.
+
+375
+00:20:28,200 --> 00:20:30,900
+You can basically coast on that past glory for years.
+
+376
+00:20:31,860 --> 00:20:33,840
+Time crystals introduce a decay factor.
+
+377
+00:20:34,540 --> 00:20:36,800
+The math is an exponential decay function.
+
+378
+00:20:36,940 --> 00:20:39,840
+So my influence basically rots over time.
+
+379
+00:20:39,840 --> 00:20:43,820
+Your influence rots unless your work is structurally load-bearing.
+
+380
+00:20:44,140 --> 00:20:46,900
+What does structurally load-bearing mean in this context?
+
+381
+00:20:47,160 --> 00:20:49,680
+It means other people are actively building on top of it.
+
+382
+00:20:49,940 --> 00:21:00,780
+If you wrote an incredibly insightful thread three years ago and people are still citing it today, still linking to it, still using it as the foundation for their own new ideas, then the system refreshes your time crystals.
+
+383
+00:21:01,460 --> 00:21:05,300
+You are providing ongoing structural integrity to the information manifold.
+
+384
+00:21:05,300 --> 00:21:10,780
+So the influencer of the future isn't the person who stands on a stage and screams the loudest.
+
+385
+00:21:11,060 --> 00:21:14,880
+It's the person who lays the strongest foundation that everyone else stands on.
+
+386
+00:21:14,980 --> 00:21:15,300
+Exactly.
+
+387
+00:21:15,700 --> 00:21:18,620
+It moves status from your visibility to actual support.
+
+388
+00:21:19,260 --> 00:21:19,760
+Are you a pillar?
+
+389
+00:21:20,460 --> 00:21:21,760
+Or are you just decoration?
+
+390
+00:21:22,240 --> 00:21:24,500
+If you are a pillar, you accrue long-term value.
+
+391
+00:21:24,860 --> 00:21:27,280
+If you are a decoration, you decay and fade away.
+
+392
+00:21:27,280 --> 00:21:33,260
+I really love the idea of the librarian or the archivist becoming the ultimate internet power user.
+
+393
+00:21:33,900 --> 00:21:38,020
+The person who quietly organizes and connects things gets the most status.
+
+394
+00:21:38,720 --> 00:21:40,200
+It absolutely favors the synthesizer.
+
+395
+00:21:40,400 --> 00:21:41,260
+It favors the historian.
+
+396
+00:21:41,620 --> 00:21:41,720
+Yeah.
+
+397
+00:21:41,840 --> 00:21:44,560
+And it heavily penalizes the hot take artist.
+
+398
+00:21:44,760 --> 00:21:47,100
+It's a complete inversion of our current values.
+
+399
+00:21:47,260 --> 00:21:48,220
+But let's zoom out a bit.
+
+400
+00:21:48,560 --> 00:21:55,140
+Because the paper argues that this shift from engagement to structure is actually part of a much larger evolutionary trend.
+
+401
+00:21:55,140 --> 00:21:58,140
+This brings us to segment four, chippification.
+
+402
+00:21:58,780 --> 00:21:59,220
+Chippification.
+
+403
+00:21:59,720 --> 00:22:02,620
+It's a really fun word for a very deep historical process.
+
+404
+00:22:02,760 --> 00:22:02,860
+Right.
+
+405
+00:22:03,160 --> 00:22:07,660
+Fliction argues that physical systems inevitably evolve into abstract logical systems.
+
+406
+00:22:07,880 --> 00:22:09,880
+Use the factory example in the text.
+
+407
+00:22:10,040 --> 00:22:10,240
+Right.
+
+408
+00:22:10,340 --> 00:22:11,660
+Think about the Industrial Revolution.
+
+409
+00:22:12,140 --> 00:22:14,080
+A factory was a massive physical beast.
+
+410
+00:22:14,260 --> 00:22:16,460
+Steam engines, huge gears, belts, pulleys.
+
+411
+00:22:16,860 --> 00:22:20,060
+If you wanted to change the logic of a factory, say, change the order of assembly,
+
+412
+00:22:20,440 --> 00:22:22,920
+you had to physically unbolt and move a two-ton machine.
+
+413
+00:22:22,920 --> 00:22:25,480
+You had to get a massive wrench and a crew of guys.
+
+414
+00:22:25,960 --> 00:22:26,620
+Then came electricity.
+
+415
+00:22:27,040 --> 00:22:28,120
+Then electrical relays.
+
+416
+00:22:28,560 --> 00:22:30,060
+Then silicon logic gates.
+
+417
+00:22:30,720 --> 00:22:37,540
+Now, that entire factory's operational logic is encoded on a tiny silicon chick, a PLC controller.
+
+418
+00:22:37,960 --> 00:22:39,320
+The factory is now software.
+
+419
+00:22:39,800 --> 00:22:42,640
+The physical machines that were just peripherals plugged into the code.
+
+420
+00:22:42,840 --> 00:22:45,760
+And the example that really clicked for me was the Nintendo cartridge.
+
+421
+00:22:46,060 --> 00:22:46,340
+Yes.
+
+422
+00:22:46,480 --> 00:22:47,300
+It's a perfect analogy.
+
+423
+00:22:47,720 --> 00:22:50,000
+Think of an old arcade cabinet, like Donkey Kong.
+
+424
+00:22:50,000 --> 00:22:53,080
+It was a physical mess of wires and custom circuit boards.
+
+425
+00:22:53,500 --> 00:22:55,120
+A literal physical labyrinth.
+
+426
+00:22:55,600 --> 00:23:00,400
+Then Nintendo came along and condensed all that complex logic into a small plastic cartridge.
+
+427
+00:23:00,880 --> 00:23:02,460
+And now we have software emulators.
+
+428
+00:23:02,700 --> 00:23:03,740
+The plastic is gone.
+
+429
+00:23:03,900 --> 00:23:04,860
+The silicon is gone.
+
+430
+00:23:04,940 --> 00:23:08,860
+But the logic of Donkey Kong exists as pure code on my laptop.
+
+431
+00:23:09,320 --> 00:23:11,480
+The logic survives the physical medium.
+
+432
+00:23:11,800 --> 00:23:15,160
+The paper argues that everything in our world is undergoing this chipification.
+
+433
+00:23:15,660 --> 00:23:18,840
+Supply chains, logistics, governance, corporate organizations.
+
+434
+00:23:18,840 --> 00:23:22,840
+We are steadily turning the messy physical world into virtual machines.
+
+435
+00:23:23,180 --> 00:23:25,260
+So the physical world is really just becoming the hardware.
+
+436
+00:23:25,460 --> 00:23:27,960
+The real world is the software running on top of it.
+
+437
+00:23:28,400 --> 00:23:33,100
+And if that's true, we need to look very closely at how software creates stability.
+
+438
+00:23:34,360 --> 00:23:37,560
+Which is why the paper pivots to swarm dynamics.
+
+439
+00:23:37,900 --> 00:23:38,260
+Cars.
+
+440
+00:23:38,840 --> 00:23:39,640
+Autonomous cars.
+
+441
+00:23:39,940 --> 00:23:40,320
+Cars.
+
+442
+00:23:40,680 --> 00:23:43,940
+We currently think of self-driving cars as personal chauffeurs.
+
+443
+00:23:44,340 --> 00:23:45,340
+My car drives me.
+
+444
+00:23:45,340 --> 00:23:49,620
+But once all cars are chippified and communicating, they aren't individuals anymore.
+
+445
+00:23:49,720 --> 00:23:50,520
+They become a network.
+
+446
+00:23:51,080 --> 00:23:51,580
+A swarm.
+
+447
+00:23:51,960 --> 00:23:53,520
+Like a flock of starlings.
+
+448
+00:23:54,080 --> 00:23:58,080
+You know, you've seen those amazing videos where hundreds of thousands of birds fly in
+
+449
+00:23:58,080 --> 00:24:01,720
+a massive cloud, turning instantly, never crashing into each other.
+
+450
+00:24:02,140 --> 00:24:03,840
+That phenomena is called stigmergy.
+
+451
+00:24:04,220 --> 00:24:06,440
+It's coordination through the environment itself.
+
+452
+00:24:07,060 --> 00:24:11,940
+And the reason those birds don't crash is a specific mathematical property called the spectral
+
+453
+00:24:11,940 --> 00:24:12,300
+gap.
+
+454
+00:24:12,620 --> 00:24:14,640
+Okay, you're going to have to define spectral gap for me.
+
+455
+00:24:14,640 --> 00:24:19,180
+It's a measure of how quickly information propagates through a network, relative to
+
+456
+00:24:19,180 --> 00:24:21,340
+how quickly the network changes its physical shape.
+
+457
+00:24:22,080 --> 00:24:26,920
+In a flock of birds, if the lead bird turns sharply, that information ripples to the very
+
+458
+00:24:26,920 --> 00:24:29,400
+back of the flock faster than the flock can collide.
+
+459
+00:24:30,000 --> 00:24:30,860
+The gap is open.
+
+460
+00:24:31,300 --> 00:24:32,960
+Stability is automatically maintained.
+
+461
+00:24:33,200 --> 00:24:34,400
+And how does that apply to the internet?
+
+462
+00:24:34,960 --> 00:24:37,740
+The internet currently has a collapsed spectral gap.
+
+463
+00:24:39,080 --> 00:24:42,900
+Information, specifically outrage and fear, moves instantly.
+
+464
+00:24:42,900 --> 00:24:48,540
+But the correction, the context, the nuanced truth moves incredibly slowly.
+
+465
+00:24:49,240 --> 00:24:54,300
+Or, conversely, the herd stampedes before the accurate information can even propagate.
+
+466
+00:24:55,300 --> 00:24:57,720
+We have phantom traffic jams of pure anger.
+
+467
+00:24:58,040 --> 00:25:01,640
+Oh, you know those traffic jams where everyone comes to a complete stop on the highway, but
+
+468
+00:25:01,640 --> 00:25:02,380
+there's no accident?
+
+469
+00:25:02,620 --> 00:25:06,080
+Just someone tap their brake three miles ahead and the ripple effect stopped the whole highway?
+
+470
+00:25:06,180 --> 00:25:06,660
+Exactly.
+
+471
+00:25:06,660 --> 00:25:08,680
+That is a textbook stability failure.
+
+472
+00:25:09,540 --> 00:25:12,780
+The paper argues that social media is currently a crashing swarm.
+
+473
+00:25:13,320 --> 00:25:17,920
+We are constantly crashing into each other because we lack the geometric controls, the spectral
+
+474
+00:25:17,920 --> 00:25:20,060
+gap maintenance to fly together safely.
+
+475
+00:25:20,280 --> 00:25:24,420
+So Plenumub is basically trying to install air traffic control for the human hive mind.
+
+476
+00:25:24,620 --> 00:25:29,000
+It's trying to give the digital swarm the exact same mathematical elegance that nature
+
+477
+00:25:29,000 --> 00:25:29,780
+gave the starlings.
+
+478
+00:25:30,240 --> 00:25:32,340
+It's biomimicry at the base protocol level.
+
+479
+00:25:32,340 --> 00:25:34,760
+That is a genuinely beautiful image.
+
+480
+00:25:35,320 --> 00:25:38,880
+But before we get too carried away with the beauty of the math, we really need to talk
+
+481
+00:25:38,880 --> 00:25:40,920
+about the human cost of the current system.
+
+482
+00:25:41,620 --> 00:25:44,640
+This is segment five, the ethics of optimization.
+
+483
+00:25:45,380 --> 00:25:49,440
+The paper uses an analogy here that I think absolutely everyone listening will understand
+
+484
+00:25:49,440 --> 00:25:51,880
+immediately, the Pepsi paradigm.
+
+485
+00:25:52,140 --> 00:25:52,960
+The sip test.
+
+486
+00:25:53,300 --> 00:25:55,720
+This is legendary in advertising and marketing circles.
+
+487
+00:25:55,820 --> 00:25:56,860
+Tell the story for us.
+
+488
+00:25:56,860 --> 00:26:02,460
+So back in the day, Pepsi ran the famous Pepsi Challenge, a blind taste test in malls.
+
+489
+00:26:02,520 --> 00:26:04,380
+One sip of Coke, one sip of Pepsi.
+
+490
+00:26:04,800 --> 00:26:06,920
+And people overwhelmingly chose Pepsi.
+
+491
+00:26:07,020 --> 00:26:07,780
+Because Pepsi is sweeter.
+
+492
+00:26:08,000 --> 00:26:08,340
+Exactly.
+
+493
+00:26:08,640 --> 00:26:10,760
+It has more sugar and a sharper citrus burst.
+
+494
+00:26:11,420 --> 00:26:14,280
+In a single one ounce sip, that sweetness is delightful.
+
+495
+00:26:14,420 --> 00:26:14,860
+It's a pop.
+
+496
+00:26:15,380 --> 00:26:18,260
+Coke is a bit more dry, more complex, almost raisiny.
+
+497
+00:26:18,280 --> 00:26:20,240
+Everybody buys a one ounce sip of soda.
+
+498
+00:26:20,340 --> 00:26:21,240
+You buy a whole can.
+
+499
+00:26:21,420 --> 00:26:22,260
+And that's the catch.
+
+500
+00:26:22,420 --> 00:26:23,060
+That's the paradigm.
+
+501
+00:26:23,060 --> 00:26:27,180
+If you have to drink a whole 12 ounce can, the extreme sweetness of Pepsi can actually
+
+502
+00:26:27,180 --> 00:26:28,200
+become cloying.
+
+503
+00:26:28,540 --> 00:26:29,400
+It's just too much.
+
+504
+00:26:29,920 --> 00:26:35,180
+Over the longer duration of a whole can, people often prefer the more complex, drier flavor
+
+505
+00:26:35,180 --> 00:26:36,160
+profile of Coke.
+
+506
+00:26:36,400 --> 00:26:39,240
+So the sip experience directly contradicts the can experience.
+
+507
+00:26:39,600 --> 00:26:39,900
+Yes.
+
+508
+00:26:40,320 --> 00:26:44,200
+And the internet we have today is entirely optimized for the sip.
+
+509
+00:26:44,360 --> 00:26:44,840
+Tick tock.
+
+510
+00:26:44,940 --> 00:26:45,900
+The ultimate sip machine.
+
+511
+00:26:46,000 --> 00:26:46,880
+15 seconds.
+
+512
+00:26:46,980 --> 00:26:48,000
+A massive sugar rush.
+
+513
+00:26:48,660 --> 00:26:49,440
+A dopamine hit.
+
+514
+00:26:50,220 --> 00:26:50,580
+Nast.
+
+515
+00:26:51,180 --> 00:26:51,580
+Next.
+
+516
+00:26:51,860 --> 00:26:52,140
+Next.
+
+517
+00:26:52,140 --> 00:26:54,540
+But life, I mean, a human life is a can.
+
+518
+00:26:54,780 --> 00:26:56,520
+Life is a long duration event.
+
+519
+00:26:57,100 --> 00:27:02,840
+We are optimizing our entire digital civilization for the immediate five second sip of engagement
+
+520
+00:27:02,840 --> 00:27:08,200
+and completely ignoring the fact that drinking 5,000 sips of pure syrup in a row makes you
+
+521
+00:27:08,200 --> 00:27:09,060
+violently sick.
+
+522
+00:27:09,180 --> 00:27:10,380
+We are structurally diabetic.
+
+523
+00:27:10,780 --> 00:27:12,540
+The paper calls this temporal distortion.
+
+524
+00:27:13,440 --> 00:27:18,240
+We are actively destroying long term value like our mental health, our democratic institutions,
+
+525
+00:27:18,240 --> 00:27:22,900
+our basic ability to focus, to maximize short term metrics like clicks and ad impressions.
+
+526
+00:27:23,120 --> 00:27:26,640
+And the platforms don't care because they operate as black box behaviorists.
+
+527
+00:27:26,760 --> 00:27:26,940
+Right.
+
+528
+00:27:27,080 --> 00:27:28,120
+They don't care why you click.
+
+529
+00:27:28,240 --> 00:27:28,880
+They really don't.
+
+530
+00:27:29,020 --> 00:27:32,280
+They don't have a variable in their code for user happiness or user fulfillment.
+
+531
+00:27:32,520 --> 00:27:34,780
+They simply have a variable for time on site.
+
+532
+00:27:34,780 --> 00:27:37,060
+The paper calls this a functional ontology.
+
+533
+00:27:37,060 --> 00:27:39,300
+We optimize what we measure.
+
+534
+00:27:40,000 --> 00:27:42,820
+That is the golden, unbreakable rule of engineering.
+
+535
+00:27:43,300 --> 00:27:48,720
+If your map of the world, your ontology only contains engagement, you will optimize for engagement,
+
+536
+00:27:48,960 --> 00:27:51,000
+even if it literally burns the world down.
+
+537
+00:27:51,000 --> 00:27:56,440
+You literally cannot see the damage you are doing because damage isn't a column in your database.
+
+538
+00:27:56,840 --> 00:27:58,780
+So PlenumHub isn't just changing the code.
+
+539
+00:27:59,000 --> 00:28:02,180
+It's forcing the system to measure completely new things.
+
+540
+00:28:02,340 --> 00:28:03,520
+It's expanding the ontology.
+
+541
+00:28:04,020 --> 00:28:10,080
+It forces the digital system to measure entropy, to measure provenance, to measure novelty.
+
+542
+00:28:10,360 --> 00:28:14,100
+By forcing the system to measure them, we can finally optimize for them.
+
+543
+00:28:14,180 --> 00:28:18,220
+And this leads directly to the final ethical point, the right to non-extraction.
+
+544
+00:28:18,220 --> 00:28:21,300
+This is the rights-based framework that ties it all together.
+
+545
+00:28:21,960 --> 00:28:27,380
+Fliction argues that as a human being, you have a fundamental right not to be harvested for behavioral surplus.
+
+546
+00:28:27,540 --> 00:28:28,100
+Harvested?
+
+547
+00:28:28,300 --> 00:28:30,440
+We are back to the farming metaphor from earlier.
+
+548
+00:28:30,800 --> 00:28:31,940
+We are the crop.
+
+549
+00:28:32,400 --> 00:28:35,140
+The current geometry of the internet is a combine harvester.
+
+550
+00:28:35,680 --> 00:28:40,260
+We are just the raw material being endlessly processed into prediction models.
+
+551
+00:28:40,800 --> 00:28:43,020
+The right to non-extraction says,
+
+552
+00:28:43,780 --> 00:28:44,720
+I am not a resource.
+
+553
+00:28:45,120 --> 00:28:45,860
+I am a traveler.
+
+554
+00:28:45,860 --> 00:28:52,300
+I have a fundamental right to walk a path that doesn't inevitably slide me into a psychological meat grinder.
+
+555
+00:28:52,600 --> 00:28:53,760
+That is so powerful.
+
+556
+00:28:53,880 --> 00:28:55,480
+It completely shifts the burden.
+
+557
+00:28:55,700 --> 00:28:57,460
+It's no longer saying, oh, I need more willpower.
+
+558
+00:28:57,520 --> 00:28:58,460
+I need to put my phone away.
+
+559
+00:28:58,540 --> 00:29:01,600
+It's saying, the street shouldn't be built to mug me.
+
+560
+00:29:01,980 --> 00:29:02,380
+Exactly.
+
+561
+00:29:02,660 --> 00:29:04,880
+The geometry should protect you, not exploit you.
+
+562
+00:29:05,060 --> 00:29:06,180
+So let's bring this all home.
+
+563
+00:29:06,380 --> 00:29:07,960
+We've covered a ton of ground today.
+
+564
+00:29:08,320 --> 00:29:11,180
+Manifolds, entropy budgets, crystal economies, swarm dynamics.
+
+565
+00:29:11,320 --> 00:29:12,460
+It's a very dense paper.
+
+566
+00:29:12,460 --> 00:29:16,200
+But the core mission here is simple, manufacturing stability.
+
+567
+00:29:16,580 --> 00:29:18,540
+It's a rallying cry for constraint-first design.
+
+568
+00:29:18,580 --> 00:29:19,940
+Which feels very counterintuitive.
+
+569
+00:29:20,100 --> 00:29:22,380
+Usually when we talk about the internet, it's all about freedom.
+
+570
+00:29:23,020 --> 00:29:23,800
+No rules.
+
+571
+00:29:24,600 --> 00:29:25,540
+Permissionless innovation.
+
+572
+00:29:25,780 --> 00:29:27,760
+But the paper asks a very provocative question.
+
+573
+00:29:27,980 --> 00:29:29,300
+What actually is freedom?
+
+574
+00:29:29,520 --> 00:29:32,240
+Is freedom just the total absence of rules?
+
+575
+00:29:32,420 --> 00:29:35,400
+I mean, that's the classic libertarian definition we hear all the time.
+
+576
+00:29:35,400 --> 00:29:38,360
+But try to build a 100-story skyscraper without rules.
+
+577
+00:29:39,080 --> 00:29:42,560
+Try to build a commercial airplane without strictly obeying the laws of aerodynamics.
+
+578
+00:29:43,120 --> 00:29:43,600
+You can't.
+
+579
+00:29:43,980 --> 00:29:46,480
+In the physical world, we have absolute constraints.
+
+580
+00:29:47,080 --> 00:29:48,300
+Gravity is non-negotiable.
+
+581
+00:29:48,820 --> 00:29:50,280
+Thermodynamics is non-negotiable.
+
+582
+00:29:50,300 --> 00:29:55,820
+And because those rules are so rigid, we can actually build amazing, complex things on top of them safely.
+
+583
+00:29:56,120 --> 00:29:56,580
+Exactly.
+
+584
+00:29:57,020 --> 00:30:01,920
+The absolute rigidity of the substrate is what allows for the incredible complexity of the creation.
+
+585
+00:30:01,920 --> 00:30:05,280
+The internet, up until now, has been squishy.
+
+586
+00:30:05,860 --> 00:30:10,680
+The laws change every single time a CEO changes their mind or wants to boost quarterly earnings.
+
+587
+00:30:11,240 --> 00:30:12,200
+The physics are fluid.
+
+588
+00:30:12,400 --> 00:30:15,800
+And because the physics are fluid, our entire society feels unstable.
+
+589
+00:30:16,120 --> 00:30:19,020
+We are trying to build a global civilization on quicksand.
+
+590
+00:30:19,500 --> 00:30:24,860
+The paper strongly suggests that to be truly free, to have a stable, creative, healthy digital life,
+
+591
+00:30:25,160 --> 00:30:28,700
+we actually need more rigid mathematical laws baked into the substrate.
+
+592
+00:30:29,180 --> 00:30:31,560
+We need a digital gravity that we can rely on.
+
+593
+00:30:31,560 --> 00:30:35,620
+We need to know that the floor won't suddenly tilt just because someone wants to sell more ads.
+
+594
+00:30:36,000 --> 00:30:38,040
+We need a stable plenum.
+
+595
+00:30:38,200 --> 00:30:43,840
+A flat, quiet, truth-seeking space where the path of least resistance is also the path of wisdom.
+
+596
+00:30:44,080 --> 00:30:46,300
+That is a massive, inspiring vision.
+
+597
+00:30:46,460 --> 00:30:50,500
+It really makes our current internet look like a chaotic, almost primitive prototype.
+
+598
+00:30:50,500 --> 00:30:57,880
+I genuinely think history will look back on the social media era of roughly 2005 to 2025 as the Wild West.
+
+599
+00:30:58,680 --> 00:31:01,320
+Dangerous, extractive, and incredibly primitive.
+
+600
+00:31:01,920 --> 00:31:05,260
+This paper is the blueprint for the actual civilization that comes next.
+
+601
+00:31:05,320 --> 00:31:07,360
+So here's the question for you listening right now.
+
+602
+00:31:07,440 --> 00:31:09,620
+Next time you unlock your phone, just pause and ask yourself,
+
+603
+00:31:09,760 --> 00:31:11,080
+am I navigating my own map?
+
+604
+00:31:11,400 --> 00:31:14,360
+Or am I just sliding down a gravity well that someone else dug for me?
+
+605
+00:31:14,720 --> 00:31:15,380
+Check a geometry.
+
+606
+00:31:15,680 --> 00:31:16,760
+Thanks for diving deep with us.
+
+607
+00:31:16,760 --> 00:31:17,520
+We'll see you in the next one.
+
