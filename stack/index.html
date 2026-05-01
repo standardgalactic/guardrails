@@ -1,296 +1,1140 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<title>The Moon Should Not Be a Computer</title>
-
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Flyxion Audio Field Monitor</title>
 <style>
+  :root {
+    --green: #a6ff9f;
+    --green-dim: rgba(120, 255, 130, 0.42);
+    --green-faint: rgba(120, 255, 130, 0.14);
+    --bg: #020802;
+  }
 
-body{
-margin:0;
-background:#000;
-color:#7cff7c;
-font-family:monospace;
-display:flex;
-flex-direction:column;
-align-items:center;
-text-align:center;
-padding:30px;
-max-width:900px;
-margin:auto;
-}
+  * { box-sizing: border-box; }
 
-h2{
-margin-bottom:10px;
-}
+  html, body {
+    margin: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background: var(--bg);
+    color: var(--green);
+    font-family: "Courier New", ui-monospace, monospace;
+  }
 
-/* ===== description ===== */
+  canvas {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, #061606 0%, #020802 58%, #000 100%);
+    touch-action: manipulation;
+  }
 
-.description{
-font-size:0.9em;
-line-height:1.5em;
-color:#aaffaa;
-max-width:800px;
-margin-bottom:25px;
-border:1px solid #00ff0030;
-padding:14px;
-background:#001000;
-}
+  .crt::before {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 90;
+    pointer-events: none;
+    background:
+      repeating-linear-gradient(
+        to bottom,
+        rgba(255,255,255,0.035) 0px,
+        rgba(255,255,255,0.035) 1px,
+        transparent 2px,
+        transparent 4px
+      );
+    opacity: 0.22;
+    mix-blend-mode: screen;
+  }
 
-/* ===== portal ===== */
+  .crt::after {
+    content: "";
+    position: fixed;
+    inset: 0;
+    z-index: 91;
+    pointer-events: none;
+    background:
+      radial-gradient(circle at center, transparent 54%, rgba(0,0,0,0.74) 100%),
+      linear-gradient(rgba(255,255,255,0.018), rgba(0,0,0,0.02));
+  }
 
-.scope-wrap{
-position:relative;
-width:380px;
-height:380px;
-margin-bottom:20px;
-}
+  #homeScreen {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 28px;
+    background: radial-gradient(circle at center, rgba(0, 50, 10, 0.28), rgba(0,0,0,0.88));
+    transition: opacity 200ms ease;
+  }
 
-.scope-wrap::before{
-content:"";
-position:absolute;
-inset:0;
-border-radius:50%;
-background:
-radial-gradient(circle at 50% 50%, #002800 55%, #001100 70%, #000 100%);
-box-shadow:
-0 0 0 5px #001a00,
-0 0 40px #00ff0030,
-inset 0 0 60px #00ff0020;
-}
+  #homeScreen.hidden {
+    opacity: 0;
+    pointer-events: none;
+  }
 
-.scope-wrap::after{
-content:"";
-position:absolute;
-inset:25px;
-border-radius:50%;
-background:
-linear-gradient(130deg, rgba(255,255,255,0.05), transparent 40%);
-pointer-events:none;
-}
+  .homeInner {
+    width: min(1100px, 100%);
+  }
 
-canvas{
-position:absolute;
-inset:25px;
-width:330px;
-height:330px;
-border-radius:50%;
-background:#000;
-box-shadow:inset 0 0 25px #00ff0020;
-}
+  .titleBlock {
+    margin-bottom: 24px;
+    text-align: center;
+    text-shadow: 0 0 12px rgba(0,255,90,0.65);
+  }
 
-.scanlines{
-position:absolute;
-inset:25px;
-border-radius:50%;
-background:
-repeating-linear-gradient(
-to bottom,
-rgba(0,255,0,0.04) 0px,
-rgba(0,255,0,0.04) 1px,
-transparent 2px,
-transparent 4px
-);
-pointer-events:none;
-}
+  .titleBlock h1 {
+    margin: 0 0 8px;
+    font-size: clamp(22px, 4vw, 44px);
+    letter-spacing: 0.12em;
+    font-weight: 400;
+  }
 
-/* ===== captions ===== */
+  .titleBlock p {
+    margin: 0;
+    opacity: 0.78;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+  }
 
-.captions{
-max-width:720px;
-min-height:2.4em;
-border:1px solid #00ff0030;
-background:#001000;
-padding:12px;
-margin-top:15px;
-}
+  #categoryGrid {
+    display: grid;
+    grid-template-columns: repeat(7, minmax(0, 1fr));
+    gap: 14px;
+  }
 
-/* ===== link ===== */
+  .categoryCard {
+    min-height: 148px;
+    border: 1px solid var(--green-dim);
+    background:
+      linear-gradient(135deg, rgba(120,255,130,0.10), rgba(0,25,0,0.78)),
+      repeating-linear-gradient(90deg, transparent 0 10px, rgba(120,255,130,0.03) 11px 12px);
+    color: var(--green);
+    font-family: inherit;
+    cursor: pointer;
+    padding: 14px;
+    text-align: left;
+    box-shadow: 0 0 18px rgba(0,255,90,0.12), inset 0 0 24px rgba(0,255,90,0.045);
+    position: relative;
+    overflow: hidden;
+  }
 
-a{
-margin-top:20px;
-color:#7cff7c;
-text-decoration:none;
-border-bottom:1px solid #00ff00;
-}
+  .categoryCard::before {
+    content: "";
+    position: absolute;
+    inset: -40%;
+    background: conic-gradient(from var(--spin), transparent, rgba(130,255,130,0.13), transparent 35%);
+    opacity: 0.6;
+    animation: spin 14s linear infinite;
+  }
 
-a:hover{
-color:#aaffaa;
-}
+  @property --spin {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
 
+  @keyframes spin { to { --spin: 360deg; } }
+
+  .categoryCard span,
+  .categoryCard small,
+  .categoryCard strong {
+    position: relative;
+    z-index: 2;
+    display: block;
+  }
+
+  .categoryCard strong {
+    font-size: 15px;
+    line-height: 1.2;
+    min-height: 38px;
+    letter-spacing: 0.06em;
+    text-transform: uppercase;
+  }
+
+  .categoryCard span {
+    margin-top: 16px;
+    font-size: 28px;
+    opacity: 0.92;
+  }
+
+  .categoryCard small {
+    margin-top: 12px;
+    opacity: 0.76;
+  }
+
+  .categoryCard:hover {
+    background:
+      linear-gradient(135deg, rgba(120,255,130,0.18), rgba(0,42,0,0.82)),
+      repeating-linear-gradient(90deg, transparent 0 10px, rgba(120,255,130,0.05) 11px 12px);
+  }
+
+  #hud {
+    position: fixed;
+    inset: 0;
+    z-index: 30;
+    pointer-events: none;
+    opacity: 0;
+    transition: opacity 180ms ease;
+  }
+
+  #hud.visible { opacity: 1; }
+
+  #trackTitle {
+    position: fixed;
+    top: 16px;
+    left: 20px;
+    right: 20px;
+    z-index: 31;
+    font-size: 13px;
+    letter-spacing: 0.08em;
+    opacity: 0.86;
+    text-shadow: 0 0 10px rgba(0,255,90,0.8);
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  #categoryTitle {
+    position: fixed;
+    top: 39px;
+    left: 20px;
+    z-index: 31;
+    font-size: 11px;
+    opacity: 0.56;
+    letter-spacing: 0.12em;
+  }
+
+  .controlButton {
+    position: fixed;
+    z-index: 40;
+    pointer-events: auto;
+    border: 1px solid var(--green-dim);
+    background: rgba(0, 25, 0, 0.72);
+    color: var(--green);
+    font-family: inherit;
+    cursor: pointer;
+    padding: 10px 14px;
+    box-shadow: 0 0 16px rgba(0,255,90,0.16);
+  }
+
+  #homeButton { left: 18px; bottom: 18px; }
+  #tracksButton { right: 18px; bottom: 18px; font-size: 20px; padding: 8px 14px; }
+
+  #drawer {
+    position: fixed;
+    right: 18px;
+    bottom: 68px;
+    z-index: 45;
+    width: min(430px, calc(100vw - 36px));
+    max-height: min(620px, calc(100vh - 110px));
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    background: rgba(0, 15, 0, 0.94);
+    border: 1px solid var(--green-dim);
+    box-shadow: 0 0 26px rgba(0,255,90,0.18);
+    opacity: 0;
+    transform: translateY(12px) scale(0.98);
+    pointer-events: none;
+    transition: opacity 160ms ease, transform 160ms ease;
+  }
+
+  #drawer.open {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+    pointer-events: auto;
+  }
+
+  .drawerHead {
+    padding: 14px;
+    border-bottom: 1px solid rgba(120,255,130,0.20);
+    font-size: 12px;
+    letter-spacing: 0.10em;
+    text-transform: uppercase;
+  }
+
+  #trackList {
+    overflow: auto;
+    padding: 8px;
+  }
+
+  .trackItem {
+    display: block;
+    width: 100%;
+    margin: 5px 0;
+    padding: 9px 10px;
+    background: rgba(0, 42, 0, 0.52);
+    border: 1px solid rgba(120,255,130,0.16);
+    color: var(--green);
+    font-family: inherit;
+    text-align: left;
+    cursor: pointer;
+    font-size: 12px;
+    line-height: 1.25;
+  }
+
+  .trackItem:hover,
+  .trackItem.active {
+    background: rgba(0, 72, 0, 0.72);
+    border-color: rgba(120,255,130,0.46);
+  }
+
+  #startHint {
+    position: fixed;
+    inset: 0;
+    z-index: 35;
+    display: grid;
+    place-items: center;
+    pointer-events: none;
+    color: var(--green);
+    text-shadow: 0 0 12px rgba(0,255,90,0.8);
+    letter-spacing: 0.10em;
+    font-size: 14px;
+    opacity: 0;
+  }
+
+  #startHint.visible { opacity: 0.92; }
+
+  @media (max-width: 880px) {
+    #categoryGrid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .categoryCard { min-height: 124px; }
+  }
+
+  @media (max-width: 520px) {
+    #homeScreen { padding: 18px; align-items: flex-start; overflow: auto; }
+    .homeInner { padding-top: 18px; }
+    #categoryGrid { grid-template-columns: 1fr; }
+    .categoryCard { min-height: 112px; }
+    #trackTitle { font-size: 11px; }
+  }
 </style>
 </head>
+<body class="crt">
+<canvas id="visualizer"></canvas>
 
-<body>
+<section id="homeScreen">
+  <div class="homeInner">
+    <div class="titleBlock">
+      <h1>AUDIO FIELD MONITOR</h1>
+      <p>SELECT A CATEGORY TO OPEN A PLAYLIST</p>
+    </div>
+    <div id="categoryGrid"></div>
+  </div>
+</section>
 
-<h2>The Moon Should Not Be a Computer</h2>
-
-<div class="description">
-The paper <b>"The Moon Should Not Be a Computer"</b> argues against relocating AI infrastructure to space, suggesting instead that computation must be integrated into terrestrial ecosystems. The author introduces <b>xylomorphic computation</b>, a framework where AI systems are designed to recycle their own thermal and material byproducts, effectively turning "waste" heat into a resource. By applying the <b>xylomorphic order parameter (λ)</b>, the text demonstrates that orbital compute projects are fundamentally unstable because they lack the ability to reintegrate energy and information. This lack of closure is mirrored in cognitive development, where over-reliance on AI can prematurely fix a learner's reasoning within a narrow <b>attractor basin</b> of the model's own making. Ultimately, the source advocates for <b>dual closure</b>, requiring that large-scale AI maintain both thermodynamic efficiency and epistemic independence from its users. Stable scaling is only possible for systems that operate in a <b>contractive regime</b>, treating every output as a substrate for future growth.
+<div id="hud">
+  <div id="trackTitle"></div>
+  <div id="categoryTitle"></div>
+  <button id="homeButton" class="controlButton">HOME</button>
+  <button id="tracksButton" class="controlButton" aria-label="Tracks">☰</button>
 </div>
 
-<div class="scope-wrap">
-<canvas id="scope"></canvas>
-<div class="scanlines"></div>
+<div id="drawer">
+  <div class="drawerHead" id="drawerTitle">TRACKS</div>
+  <div id="trackList"></div>
 </div>
 
-<div id="captions" class="captions"></div>
-
-<audio id="audio" src="Why_AI_servers_fail_in_space.mp3">
-<track kind="captions" src="Why_AI_servers_fail_in_space.vtt" default>
-</audio>
-
-<a href="moon-not-computer.pdf" target="_blank">
-Read the Essay
-</a>
+<div id="startHint">CLICK / TAP TO START</div>
+<audio id="audio" preload="metadata" crossorigin="anonymous"></audio>
 
 <script>
+const TRACKS_TEXT = `
+03. Divine Predestination and Foreknowledge.mp3
+AI_Standardizes_Writing_Not_Human_Thought.mp3
+AI_cannot_replicate_wordless_thought.mp3
+A_Formal_Theory_of_Stable_Identity.mp3
+A_mathematical_proof_against_bullshit_jobs.mp3
+Abstraction_Is_Just_Energy_Minimization.mp3
+Abstraction_as_Reduction_and_Energy.mp3
+Agency_Requires_Field_Theory_or_Geometry.mp3
+Agency_is_Transient_Geometric_Collapse.mp3
+Algebra_Contra_Monopolia_Spatii_Curvi.mp3
+Analyzing_Structure_or_Irreversible_History.mp3
+Articulatory_Ease_in_the_Arabic_Script.mp3
+Beyond_Catharsis__How_Universal_Incompleteness_Shapes_Emotion,_Logic,_and_the_Cosmos.mp3
+Beyond_GitHub__Reimagining_Code_as_Meaning_with_Semantic_Infrastructure.mp3
+Beyond_Git__Unlocking_Semantic_Infrastructure_and_a_Universal_Computable_Multiverse.mp3
+Beyond__Thinking_Out_Loud__Unpacking_AI_s_True_Reasoning_and_the_Future_of_Trustworthy_AI.mp3
+Blame_The_Geometry_Not_The_Algorithm.mp3
+Bot Parade.mp3
+Breaking_the_mold_from_within.mp3
+Cementerios_de_sueños_digitales_y_la_cura_Flyxion.mp3
+Civilization_as_an_Error_Correcting_Engine.mp3
+Commitment_to_Error_Happens_One_Second_Early.mp3
+Complexity from Constraint - extended.mp3
+Complexity_Does_Not_Require_Intelligence.mp3
+Computation_Is_Merge_and_Collapse.mp3
+Computing_Does_Not_Destroy_Difficulty.mp3
+Context_Sequence_Drives_Massive_AI_Gains.mp3
+Cosmic_Connections__Unifying_Galaxies,_Brains,_AI,_and_Ancient_.mp3
+Cómo_el_diseño_parásito_sabotea_tu_mente.mp3
+Cómo_la_IA_contamina_tus_recuerdos.mp3
+Daughters of the Air_.mp3
+Decoding_Reality__How_RSVP,_TARTAN,_and_HYDRA_are_Forging_a_New_Physics_of_AI_and_the_Cosmos.mp3
+Defending_human_reasoning_against_synthetic_fluency.mp3
+Designing_a_10,000-Year_Civilization.mp3
+Digital_Decay_Identity_Infrastructure_Failure.mp3
+Digital_Decay_and_the_Structural_Cure.mp3
+Digital_Identity_and_System_Collapse (1).mp3
+Discrete_Associahedra_and_the_Amplituhedron_Conjecture.mp3
+Dynamic_Histories_of_Positive_Geometries.mp3
+EAIMR_versus_Replayable_Construction_for_Abstraction.mp3
+El_diseño_feo_de_tu_feed_es_intencional.mp3
+El_espacio-tiempo_es_una_ilusión_entrópica.mp3
+El_mundo_no_colapsa_se_está_actualizando.mp3
+El_plan_arquitectónico_contra_el_caos_de_la_IA.mp3
+Entropic_Field_Theory_of_Complex_Systems.mp3
+Entropy_and_Agency.mp3
+Escaping_Polemic_Debt.mp3
+Escaping_the_Digital_Gravity_Well.mp3
+Event-history and world models.mp3
+Event-history-and-world-models.mp3
+Fixed-Point_Causality__The_Universal_Grammar_Unifying_Spacetime.mp3
+Fixing_AI_Hallucinations_with_TARTAN.mp3
+Forking_Time_to_Escape_the_Hostile_Interface.mp3
+Formatio_idearum_per_densas_coertiones.mp3
+From_AI_Debugging_to_Cosmic_Law__How_Federated_Learning_and_Att.mp3
+From_Cosmic_Cycles_to_AI_Cognition__Unpacking_the_RSVP-TARTAN-HYDRA_Unification_Theory.mp3
+From_Genome_Sharing_to_AI_Glitches__Quantifying_Paradoxes_in_Our_Digital_World.mp3
+Fusing_Steam_and_Magnets_on_One_Rotor.mp3
+Geometric_Consciousness_and_LLMs__Unpacking_the_Radical_Unified.mp3
+Grey Areas.mp3
+History_Reveals_AI_s_Mechanism.mp3
+How-AI-models-deduce-physical-laws.mp3
+How_AI_Tokens_Tax_Human_Thought.mp3
+How_AI_breaks_the_capitalist_engine.mp3
+How_AI_ignores_your_input_to_guess.mp3
+How_AI_models_deduce_physical_laws.mp3
+How_AI_models_deduce_physical_laws.old.mp3
+How_AI_models_deduce_physical_laws.old.old.mp3
+How_Systems_Survive_through_Structured_Return.mp3
+How_Tech_Flattens_the_Geometry_of_Thought.mp3
+How_Yarncrawler_reconstructs_reality_with_physics.mp3
+How_money_flattens_our_possibility_space.mp3
+How_synthetic_media_hacks_human_memory.mp3
+How_tech_giants_manufacture_your_credulity.mp3
+Identity_Is_A_Low_Entropy_History.mp3
+Identity_as_a_Trajectory_of_Constraints.mp3
+Identity_is_a_History_of_Sacrifices.mp3
+Incompleteness_is_Architecture__Unpacking_the_Universe_s_Hidden_Blueprint.mp3
+Inflation without Expansion.mp3
+Intelligence_Is_Universal_Entropy_Management.mp3
+Internet_colapsa_bajo_su_propia_gravedad.mp3
+Invariant_Alignment__Using_Cognitive_Physics_to_Guarantee_AI_Sa.mp3
+Irreversibility_Links_Gravity_AI_and_Knowledge.mp3
+Irreversible_Commitment_Defines_Time_and_Intelligence.mp3
+Is language imposing the sharp lines of reality that the rest of our mind can’t see？.mp3
+Is_the_Universe_a_Shape_or_Ledger.mp3
+La_ciencia_inventa_un_cerebro_simple.mp3
+La_conciencia_requiere_una_pérdida_irreversible.mp3
+La_estabilidad_es_un_logro_dinámico.mp3
+La_historia_irreversible_define_la_realidad.mp3
+La_ilusión_del_pensamiento_dual.mp3
+La_ineficiencia_nos_salvará_de_la_IA.mp3
+La_ingeniería_de_la_violencia_mexica.mp3
+La_mente_humana__¿ley_física_o_metáfora_termodinámica_.mp3
+Life_as_a_Topological_Loop.mp3
+Maintaining_the_Self.mp3
+Mathematical_Foundations_of_the_Compiled_Self.mp3
+Mathematical_Proof_That_Survival_Is_Insufficient.mp3
+Matter_Math_Mind_Same_Statistical_Laws.mp3
+Meaning_Is_Constraint_Not_Description.mp3
+Memory_Failure_is_Structural_by_Design.mp3
+Nuestra_civilización_es_un_error_de_ingeniería.mp3
+Nuestra_vara_de_la_dificultad_está_chueca.mp3
+O_colapso_dos_caminhos_da_informação.mp3
+Old_Cosmic_Connections__Unifying_Galaxies,_Brains,_AI,_and_Ancient_.mp3
+Perception_as_physical_constraint_closure.mp3
+Perfect_Ledgers_Producing_Zero_Value.mp3
+Persistence_as_return_under_constraint.mp3
+Physics_Limits_and_Global_Consistency.mp3
+Quantum_gravity_forbids_modern_dark_energy_models.mp3
+RSVP-TARTAN__Cosmic_Roasts_to_Causal_AI.mp3
+RSVP_El_lenguaje_universal_de_la_complejidad.mp3
+RSVP_Unifica_Cosmos_Mente_y_Empresas_con_Analogías.mp3
+Razonamiento_como_molécula_geodésica.mp3
+Reality-is-what-survives-elimination.mp3
+Reality_as_an_irreversible_event_log.mp3
+Reality_is_what_survives.mp3
+Reality_is_what_survives_elimination.mp3
+Refining_Flyxion’s_Non-Expanding_Universe_Theory.mp3
+Replacing_The_Big_Bang_With_Scalar_Irruption.mp3
+Replacing_messages_with_shared_worlds.mp3
+Reverse_Dominance_and_Federated_AI__How_Systems_Fight_Entropy_f.mp3
+Scalar_Irruption_in_a_Static_Universe.mp3
+Scalar_Irruption_in_a_Static_Universe_-_Debate.mp3
+Ser_complejo_no_requiere_ser_inteligente.mp3
+Simplicity-is-just-compressed-work.mp3
+Simplicity_Interference_and_Quantum_Reality.mp3
+Simplicity_is_just_compressed_work-long.mp3
+Simplicity_is_just_compressed_work.mp3
+Society_is_communication_not_people.mp3
+Spacetime_Is_Frozen_Entropy.mp3
+Spacetime_is_a_mathematical_hallucination.mp3
+Structural_Assembly_Defines_Genuine_Abstraction.mp3
+Structural_Power_is_Cosmic_Constraint.mp3
+Surviving_AI_Optimization_Through_Human_Friction.mp3
+Teoría_Unificada_Células_Galaxias_Conciencia.mp3
+Text_as_Substrate.mp3
+The Song That Doesn't End.mp3
+The-mathematical-certainty-of-AI-hallucinations.mp3
+The-mathematics-of-hollow-AI-writing.mp3
+The-physics-of-toxic-digital-platforms.mp3
+The_Aztec_Architecture_of_Sustainable_Violence.mp3
+The_Brain_Is_Not_A_Computer.mp3
+The_Broken_Internet.mp3
+The_Catastrophic_Error_of_Overwriting_History.mp3
+The_Comfort_Trap_of_Frictionless_Living.mp3
+The_Compiled_Self.mp3
+The_Deep_Logic_of_Incompleteness__From_Cosmic_Voids_to_Human_Emotion_with_RSVP.mp3
+The_End_of_the_Video_Recording.mp3
+The_Extinction_Thesis_Versus_Flourishing.mp3
+The_Geometric_Impossibility_of_AI_Alignment.mp3
+The_Geometry_of_Meaning.mp3
+The_Geometry_of_Thought.mp3
+The_Illusions_of_Reality.mp3
+The_Mathematical_Error_Breaking_Your_Brain.mp3
+The_Mathematical_Inevitability_of_Hollow_Virality.mp3
+The_Myth_of_Dual_Cognition.mp3
+The_Paradox_of_Precaution__How_Entropic_Intelligence_Unifies_AG.mp3
+The_Physics_of_Irreversible_Minds.mp3
+The_Physics_of_Recomposable_Fragmentation.mp3
+The_Physics_of_Thought.mp3
+The_Physics_of_Universal_Memory.mp3
+The_Physics_of_the_Capital_Order.mp3
+The_Physics_of_the_Clip_Economy.mp3
+The_Playcosm__How_Games,_Toys,_and_Privilege_Shape_Our_Reality.mp3
+The_Puzzle_That_Solves_Itself.mp3
+The_Universal_Topology_of_Failure.mp3
+The_Universe_Edits_Out_the_Impossible.mp3
+The_Universe_s_Secret_Language__How_Incompleteness_Fuels_Order_and_Cosmic_Coherence.mp3
+The_invisible_frames_that_filter_reality.mp3
+The_math_of_choices_you_didn_t_make.mp3
+The_mathematical_certainty_of_AI_hallucinations.mp3
+The_mathematical_certainty_of_AI_hallucinations_large.mp3
+The_mathematical_proof_against_going_viral.mp3
+The_mathematics_of_hollow_AI_writing.mp3
+The_neurobiology_of_Lacanian_psychoanalysis.mp3
+The_physics_of_persistent_AI_worlds.mp3
+The_physics_of_the_austerity_trap.mp3
+The_secret_geometric_dance_of_typing.mp3
+The_universe_filters_but_never_optimizes.mp3
+Thermodynamic_Geography_and_Recursive_Futarchy__Governing_Socie.mp3
+Thermodynamics_of_Thought.mp3
+Thermodynamics_of_Thought__How_Rigor,_Desire,_and_the_Psyche_Ob.mp3
+Thermodynamics_of_Thought__Unpacking_the_RSVP_Framework,_the_Pi.mp3
+Time_as_the_shadow_of_missing_information.mp3
+Unifying_Everything_Relativistic_Scalar_Vector_Plenum.mp3
+Unifying_Physics_Geometry_Identity_Free_Energy.mp3
+Unpacking_RSVP_Theory__From_Cosmic_Fields_to_AI_Ethics_and_Interface_Dignity.mp3
+Unpacking_RSVP__How_a_Unified_Field_Theory_Links_Gravity,_Econo.mp3
+We_Are_Not_Observers_We_Are_Participants.mp3
+When_Algorithms_Stop_Sorting_And_Start_Breeding.mp3
+When_Humans_Become_Friction.mp3
+Why-AI-Hallucinates-and-Apps-Hide-Files.mp3
+Why-data-centers-must-mimic-trees.mp3
+Why-your-digital-clone-is-not-you.mp3
+Why_AI_Fragility_Is_Geometrically_Inevitable.mp3
+Why_AI_Hallucinates_and_Apps_Hide_Files-large.mp3
+Why_AI_Hallucinates_and_Apps_Hide_Files.mp3
+Why_AI_code_and_essays_fail.mp3
+Why_AI_filters_and_the_universe_fail.mp3
+Why_AI_servers_fail_in_space.mp3
+Why_AI_understanding_is_divorced_from_action.mp3
+Why_Chess_Is_Easier_Than_Laundry.mp3
+Why_Deliberate_Friction_Stops_Algorithmic_Capture.mp3
+Why_Detached_Ownership_Guarantees_Systemic_Collapse.mp3
+Why_Error_Is_a_Structural_Obstruction.mp3
+Why_Every_Useful_Platform_Becomes_A_Tollbooth.mp3
+Why_Experts_Fail_Simple_Tasks.mp3
+Why_Flat_Roofs_Are_Mathematically_Broken.mp3
+Why_GitHub_Careers_Only_Last_Ten_Years.mp3
+Why_Great_Ideas_Are_Mathematically_Inevitable.mp3
+Why_Hallucination_Is_a_Geometry_Problem.mp3
+Why_Intelligence_Requires_Irreversible_Causal_History.mp3
+Why_Machines_Turn_Us_Into_Narcissists.mp3
+Why_Social_Media_Is_Ugly_on_Purpose.mp3
+Why_Spacetime_is_a_Mathematical_Illusion.mp3
+Why_animals_reason_better_than_humans.mp3
+Why_data_centers_must_mimic_trees.mp3
+Why_digital_platforms_mimic_war_economies.mp3
+Why_evolution_is_a_mindless_sieve.mp3
+Why_finishing_is_a_phase_transition.mp3
+Why_gig_platforms_profit_from_your_failure.mp3
+Why_saved_data_remains_unreachable.mp3
+Why_stored_information_becomes_unreachable.mp3
+Why_the_smartest_brains_hit_pause.mp3
+Why_truth_cannot_survive_the_feed.mp3
+Why_truth_survives_through_historical_errors.mp3
+Why_your_digital_clone_is_not_you.mp3
+Worldhood_and_the_Architecture_of_Irreversible_Constraint.mp3
+You_Are_What_You_Make_Impossible.mp3
+Your_Brain_Is_a_Refractive_Prism.mp3
+Your_Brain_Refracts_Rather_Than_Creates_Consciousness.mp3
+Your_Mind_as_a_Dynamic_Landscape.mp3
+Your_hands_are_not_typing_symbols.mp3
+Your_identity_is_a_dynamic_shape.mp3
+Your_identity_is_a_mathematical_residue.mp3
+baile_excesivo.mp3
+concrete_cracks.mp3
+dynamics-test.mp3
+egg.mp3
+healing_the_jagged_edge.mp3
+malignant_novelty.mp3
+minuet.mp3
+piece.mp3
+pop.mp3
+spoonful.mp3
+the_amber_canvas.mp3
+التكنولوجيا_لا_تلغي_الصعوبة_بل_تعيد_توزيعها.mp3
+اللاعودة_تحكم_كل_شيء_المعرفة_والذكاء_والجاذبية.mp3
+الهوية_الرقمية_مرساة_المعنى_المفقود.mp3
+توحيد_الفيزياء_والحياة_والوعي_في_نظرية_واحدة.mp3
+صرخة في الضباب.mp3
+لماذا_يستقر_اللهب_وينهار_الحجر.mp3
+مجرة الفوضى.mp3
+نظرية_توحيد_الفيزياء_والإدراك_وإطار_RSVP.mp3
+نظرية_كل_شيء_الكون_وعي_الشركات_بالملأ.mp3
+`;
 
-/* ===== audio ===== */
+const CATEGORY_RULES = [
+  {
+    id: "rsvp",
+    name: "RSVP / Unified Theory",
+    glyph: "ΦvS",
+    visualizer: "field",
+    match: /(rsvp|tartan|hydra|scalar|plenum|flyxion|unifying|unified|field|cosmic|galaxies|cosmos|células|mente_y_empresas|كل_شيء|توحيد)/i
+  },
+  {
+    id: "ai",
+    name: "AI / Alignment / Platforms",
+    glyph: "AI",
+    visualizer: "glitch",
+    match: /(ai|algorithm|hallucination|hallucinates|tokens|synthetic|github|platform|apps|servers|model|llm|federated|trustworthy|digital|internet|clone|feed|tech|google|IA|الذكاء)/i
+  },
+  {
+    id: "physics",
+    name: "Physics / Cosmology",
+    glyph: "Ω",
+    visualizer: "orbit",
+    match: /(physics|gravity|spacetime|universe|entropy|thermodynamic|thermodynamics|quantum|matter|time|inflation|big_bang|cosmic|law|laws|energy|irreversibility|irreversible|الفيزياء|الجاذبية|اللهب|الحجر)/i
+  },
+  {
+    id: "mind",
+    name: "Mind / Identity / Consciousness",
+    glyph: "ψ",
+    visualizer: "lissajous",
+    match: /(brain|mind|identity|self|consciousness|thought|perception|cognition|emotion|psych|lacanian|refractive|compiled_self|wordless|human_reasoning|mente|conciencia|cerebro|الوعي|الهوية)/i
+  },
+  {
+    id: "math",
+    name: "Math / Geometry / Formal Systems",
+    glyph: "∴",
+    visualizer: "geometry",
+    match: /(math|mathematical|geometry|geometric|proof|formal|algebra|associahedra|amplituhedron|abstraction|invariant|topolog|constraint|ledger|stable|simplicity|complexity|meaning)/i
+  },
+  {
+    id: "society",
+    name: "Society / Systems / Economy",
+    glyph: "▦",
+    visualizer: "network",
+    match: /(society|civilization|capital|money|jobs|economy|systems|structural|ownership|violence|austerity|war|gig|tollbooth|survival|platforms|civilización|ingeniería|violencia|colapso)/i
+  },
+  {
+    id: "experimental",
+    name: "Experimental / Music / Misc",
+    glyph: "◌",
+    visualizer: "hybrid",
+    match: /.*/i
+  }
+];
 
-const audio = document.getElementById("audio")
-const captions = document.getElementById("captions")
+const canvas = document.getElementById("visualizer");
+const ctx = canvas.getContext("2d");
+const audio = document.getElementById("audio");
+const homeScreen = document.getElementById("homeScreen");
+const categoryGrid = document.getElementById("categoryGrid");
+const hud = document.getElementById("hud");
+const homeButton = document.getElementById("homeButton");
+const tracksButton = document.getElementById("tracksButton");
+const drawer = document.getElementById("drawer");
+const drawerTitle = document.getElementById("drawerTitle");
+const trackList = document.getElementById("trackList");
+const trackTitle = document.getElementById("trackTitle");
+const categoryTitle = document.getElementById("categoryTitle");
+const startHint = document.getElementById("startHint");
 
-let audioCtx, analyser, buffer, source
+let audioCtx, analyser, source, freqData, timeData;
+let currentCategory = null;
+let currentTrack = null;
+let started = false;
+let seed = 1;
+let rng = mulberry32(seed);
+let particles = [];
+let state = "home";
 
-function initAudio(){
-
-if(audioCtx) return
-
-audioCtx = new (window.AudioContext||window.webkitAudioContext)()
-
-analyser = audioCtx.createAnalyser()
-analyser.fftSize = 2048
-
-source = audioCtx.createMediaElementSource(audio)
-
-const gain = audioCtx.createGain()
-
-source.connect(analyser)
-analyser.connect(gain)
-gain.connect(audioCtx.destination)
-
-/* playback characteristics */
-audio.playbackRate = 0.92
-audio.preservesPitch = false
-if(source.detune){
-source.detune.value = -300
+function cleanName(file) {
+  return file
+    .replace(/\.mp3$/i, "")
+    .replace(/_/g, " ")
+    .replace(/--/g, " — ")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
-buffer = new Uint8Array(analyser.fftSize)
-
+function seedFromString(str) {
+  let h = 2166136261;
+  for (let i = 0; i < str.length; i++) {
+    h ^= str.charCodeAt(i);
+    h = Math.imul(h, 16777619);
+  }
+  return h >>> 0;
 }
 
-/* ===== subtitles ===== */
-
-audio.addEventListener("loadedmetadata", ()=>{
-const track = audio.textTracks[0]
-if(!track) return
-track.mode="hidden"
-track.oncuechange=()=>{
-const cue = track.activeCues[0]
-captions.textContent = cue ? cue.text : ""
-}
-})
-
-/* ===== autoplay trigger ===== */
-
-document.body.addEventListener("click", ()=>{
-initAudio()
-audioCtx.resume().then(()=>audio.play())
-},{once:true})
-
-/* ===== canvas ===== */
-
-const canvas = document.getElementById("scope")
-const ctx = canvas.getContext("2d")
-
-const dpr = window.devicePixelRatio || 1
-canvas.width = 330*dpr
-canvas.height = 330*dpr
-ctx.setTransform(dpr,0,0,dpr,0,0)
-
-/* ===== entropy ===== */
-
-function entropy(buf){
-let m=0
-for(let i=0;i<buf.length;i++) m+=buf[i]
-m/=buf.length
-let v=0
-for(let i=0;i<buf.length;i++){
-let d=buf[i]-m
-v+=d*d
-}
-return v/buf.length
+function mulberry32(a) {
+  return function() {
+    let t = a += 0x6D2B79F5;
+    t = Math.imul(t ^ t >>> 15, t | 1);
+    t ^= t + Math.imul(t ^ t >>> 7, t | 61);
+    return ((t ^ t >>> 14) >>> 0) / 4294967296;
+  };
 }
 
-/* ===== draw ===== */
-
-let phase=0
-let eSmooth=0
-let colorPhase=0
-
-function draw(){
-
-if(analyser){
-
-analyser.getByteTimeDomainData(buffer)
-
-const e = entropy(buffer)
-eSmooth += (e - eSmooth)*0.05
-const en = Math.min(eSmooth/5000,1)
-
-ctx.fillStyle="rgba(0,0,0,0.18)"
-ctx.fillRect(0,0,330,330)
-
-ctx.beginPath()
-
-for(let i=0;i<buffer.length;i++){
-
-const t=i/buffer.length*2*Math.PI
-const a=(buffer[i]-128)/128
-
-const f1=3+en*2
-const f2=4+en*3
-
-/* thermal shimmer distortion */
-const shimmer = en * 8
-
-const x=Math.sin(f1*t + phase + Math.sin(t*6)*shimmer)*a*140*(1+en*0.4)
-const y=Math.sin(f2*t + Math.cos(t*5)*shimmer)*a*140*(1+en*0.4)
-
-const px=165+x
-const py=165+y
-
-if(i===0) ctx.moveTo(px,py)
-else ctx.lineTo(px,py)
-
+function classifyTrack(file) {
+  for (const cat of CATEGORY_RULES) {
+    if (cat.match.test(file)) return cat.id;
+  }
+  return "experimental";
 }
 
-ctx.strokeStyle=`rgb(${Math.sin(colorPhase)*60},255,${120+Math.cos(colorPhase)*60})`
-ctx.lineWidth=1.5+en
-ctx.shadowColor="#00ff88"
-ctx.shadowBlur=15+en*25
-ctx.stroke()
-ctx.shadowBlur=0
+const allTracks = TRACKS_TEXT
+  .split(/\n+/)
+  .map(x => x.trim())
+  .filter(Boolean)
+  .filter(x => /\.mp3$/i.test(x));
 
-phase += 0.01 + en*0.025
-colorPhase += 0.01
+const categories = CATEGORY_RULES.map(rule => ({ ...rule, tracks: [] }));
+const catById = Object.fromEntries(categories.map(c => [c.id, c]));
 
+for (const file of allTracks) {
+  catById[classifyTrack(file)].tracks.push(file);
 }
 
-requestAnimationFrame(draw)
-
+for (const cat of categories) {
+  cat.tracks.sort((a, b) => cleanName(a).localeCompare(cleanName(b)));
 }
 
-draw()
+function resize() {
+  const dpr = window.devicePixelRatio || 1;
+  canvas.width = Math.floor(innerWidth * dpr);
+  canvas.height = Math.floor(innerHeight * dpr);
+  ctx.setTransform(dpr, 0, 0, dpr, 0, 0);
+}
 
-audio.addEventListener("error",()=>{
-captions.textContent="Audio failed to load."
-})
+addEventListener("resize", resize);
+resize();
 
+function setupAudio() {
+  if (audioCtx) return;
+  audioCtx = new (window.AudioContext || window.webkitAudioContext)();
+  analyser = audioCtx.createAnalyser();
+  analyser.fftSize = 2048;
+  analyser.smoothingTimeConstant = 0.84;
+  source = audioCtx.createMediaElementSource(audio);
+  source.connect(analyser);
+  analyser.connect(audioCtx.destination);
+  freqData = new Uint8Array(analyser.frequencyBinCount);
+  timeData = new Uint8Array(analyser.fftSize);
+}
+
+async function startAudio() {
+  setupAudio();
+  if (audioCtx.state === "suspended") await audioCtx.resume();
+  try {
+    await audio.play();
+    started = true;
+    startHint.classList.remove("visible");
+  } catch (err) {
+    startHint.classList.add("visible");
+    console.warn("Audio could not start:", err);
+  }
+}
+
+function setTrack(file, autoplay = true) {
+  currentTrack = file;
+  seed = seedFromString(file);
+  rng = mulberry32(seed);
+  particles = makeParticles(100 + Math.floor(rng() * 80));
+  audio.src = encodeURI(file);
+  audio.load();
+  trackTitle.textContent = cleanName(file);
+  renderTrackList();
+  if (autoplay) startAudio();
+}
+
+function openCategory(catId) {
+  currentCategory = catById[catId];
+  state = "player";
+  homeScreen.classList.add("hidden");
+  hud.classList.add("visible");
+  drawer.classList.remove("open");
+  categoryTitle.textContent = currentCategory.name.toUpperCase();
+  drawerTitle.textContent = currentCategory.name + " — TRACKS";
+  setTrack(currentCategory.tracks[0], true);
+}
+
+function goHome() {
+  state = "home";
+  homeScreen.classList.remove("hidden");
+  hud.classList.remove("visible");
+  drawer.classList.remove("open");
+  startHint.classList.remove("visible");
+  audio.pause();
+}
+
+function renderCategories() {
+  categoryGrid.innerHTML = "";
+  for (const cat of categories) {
+    const button = document.createElement("button");
+    button.className = "categoryCard";
+    button.innerHTML = `<strong>${cat.name}</strong><span>${cat.glyph}</span><small>${cat.tracks.length} tracks · ${cat.visualizer}</small>`;
+    button.addEventListener("click", () => openCategory(cat.id));
+    categoryGrid.appendChild(button);
+  }
+}
+
+function renderTrackList() {
+  if (!currentCategory) return;
+  trackList.innerHTML = "";
+  for (const file of currentCategory.tracks) {
+    const button = document.createElement("button");
+    button.className = "trackItem" + (file === currentTrack ? " active" : "");
+    button.textContent = cleanName(file);
+    button.addEventListener("click", () => {
+      setTrack(file, true);
+      drawer.classList.remove("open");
+    });
+    trackList.appendChild(button);
+  }
+}
+
+homeButton.addEventListener("click", goHome);
+tracksButton.addEventListener("click", e => {
+  e.stopPropagation();
+  drawer.classList.toggle("open");
+});
+
+canvas.addEventListener("pointerdown", async () => {
+  if (state !== "player") return;
+  if (!started || audio.paused) await startAudio();
+  else audio.pause();
+});
+
+document.addEventListener("pointerdown", e => {
+  if (!drawer.classList.contains("open")) return;
+  if (drawer.contains(e.target) || tracksButton.contains(e.target)) return;
+  drawer.classList.remove("open");
+});
+
+audio.addEventListener("ended", () => {
+  if (!currentCategory || !currentTrack) return;
+  const i = currentCategory.tracks.indexOf(currentTrack);
+  const next = currentCategory.tracks[(i + 1) % currentCategory.tracks.length];
+  setTrack(next, true);
+});
+
+function getLevels() {
+  if (!analyser) return { bass: 0, mid: 0, high: 0, volume: 0 };
+  analyser.getByteFrequencyData(freqData);
+  analyser.getByteTimeDomainData(timeData);
+  let bass = 0, mid = 0, high = 0, volume = 0;
+  for (let i = 0; i < 52; i++) bass += freqData[i];
+  for (let i = 52; i < 260; i++) mid += freqData[i];
+  for (let i = 260; i < 760; i++) high += freqData[i];
+  for (let i = 0; i < timeData.length; i++) {
+    const v = (timeData[i] - 128) / 128;
+    volume += v * v;
+  }
+  return {
+    bass: bass / (52 * 255),
+    mid: mid / (208 * 255),
+    high: high / (500 * 255),
+    volume: Math.sqrt(volume / timeData.length)
+  };
+}
+
+function fade(w, h) {
+  ctx.fillStyle = "rgba(0, 5, 0, 0.22)";
+  ctx.fillRect(0, 0, w, h);
+}
+
+function phosphorLine(x1, y1, x2, y2, alpha = 0.7, width = 1) {
+  ctx.shadowBlur = 14;
+  ctx.shadowColor = "#00ff66";
+  ctx.strokeStyle = `rgba(140,255,150,${alpha})`;
+  ctx.lineWidth = width;
+  ctx.beginPath();
+  ctx.moveTo(x1, y1);
+  ctx.lineTo(x2, y2);
+  ctx.stroke();
+  ctx.shadowBlur = 0;
+}
+
+function drawFrame(w, h, t, levels) {
+  const cx = w / 2;
+  const cy = h / 2;
+  const r = Math.min(w, h) * 0.34;
+  ctx.save();
+  ctx.translate(cx, cy);
+
+  for (let i = 0; i < 5; i++) {
+    ctx.beginPath();
+    ctx.arc(0, 0, r + i * 9, 0, Math.PI * 2);
+    ctx.strokeStyle = `rgba(120,255,135,${0.12 - i * 0.015})`;
+    ctx.lineWidth = i === 0 ? 2.2 : 1.2;
+    ctx.stroke();
+  }
+
+  ctx.rotate(t * (0.000045 + (seed % 7) * 0.000004));
+  const ticks = 28 + (seed % 20);
+  for (let i = 0; i < ticks; i++) {
+    const a = i / ticks * Math.PI * 2;
+    const len = i % 4 === 0 ? 22 : 11;
+    const r1 = r + 12;
+    const r2 = r + 12 + len + levels.bass * 18;
+    phosphorLine(Math.cos(a) * r1, Math.sin(a) * r1, Math.cos(a) * r2, Math.sin(a) * r2, 0.13, 1);
+  }
+
+  ctx.restore();
+}
+
+function drawNoise(w, h, amount = 60) {
+  ctx.fillStyle = "rgba(150,255,150,0.055)";
+  for (let i = 0; i < amount; i++) {
+    ctx.fillRect(Math.random() * w, Math.random() * h, Math.random() * 2, Math.random() * 2);
+  }
+}
+
+function visualizerLissajous(w, h, t, levels) {
+  drawFrame(w, h, t, levels);
+  const cx = w / 2, cy = h / 2;
+  const scale = Math.min(w, h) * (0.20 + levels.bass * 0.16);
+  const a = 2 + (seed % 5);
+  const b = 3 + ((seed >> 3) % 5);
+  const phase = t * (0.00016 + (seed % 9) * 0.00001) + levels.mid * Math.PI;
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.shadowBlur = 22 + levels.bass * 30;
+  ctx.shadowColor = "#00ff66";
+  ctx.strokeStyle = `rgba(145,255,150,${0.56 + levels.volume * 0.7})`;
+  ctx.lineWidth = 1.2 + levels.bass * 2.5;
+  ctx.beginPath();
+  for (let i = 0; i <= 1000; i++) {
+    const th = i / 1000 * Math.PI * 2;
+    const jitter = Math.sin(th * (19 + seed % 31) + t * 0.002) * levels.high * 18;
+    const x = Math.sin(a * th + phase) * scale + jitter;
+    const y = Math.sin(b * th) * scale * (0.78 + levels.mid * 0.36);
+    i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+  }
+  ctx.stroke();
+  ctx.restore();
+}
+
+function visualizerField(w, h, t, levels) {
+  drawFrame(w, h, t, levels);
+  const cx = w / 2, cy = h / 2;
+  const grid = 15;
+  const span = Math.min(w, h) * 0.62;
+  ctx.save();
+  ctx.translate(cx, cy);
+  ctx.rotate(Math.sin(t * 0.00005) * 0.12);
+  for (let iy = -grid; iy <= grid; iy++) {
+    for (let ix = -grid; ix <= grid; ix++) {
+      const x = ix / grid * span / 2;
+      const y = iy / grid * span / 2;
+      const d = Math.hypot(x, y) + 1;
+      if (d > span * 0.48) continue;
+      const a = Math.atan2(y, x) + Math.sin(d * 0.016 + t * 0.001 + seed) + levels.mid * 2;
+      const len = 5 + levels.bass * 18 + ((ix * iy + seed) % 7);
+      phosphorLine(x, y, x + Math.cos(a) * len, y + Math.sin(a) * len, 0.16 + levels.volume * 0.5, 1);
+    }
+  }
+  ctx.restore();
+}
+
+function visualizerGlitch(w, h, t, levels) {
+  const rows = 34;
+  const cx = w / 2, cy = h / 2;
+  drawFrame(w, h, t, levels);
+  ctx.save();
+  ctx.translate(cx, cy);
+  const span = Math.min(w, h) * 0.58;
+  for (let i = 0; i < rows; i++) {
+    const y = -span / 2 + i / rows * span;
+    const amp = Math.sin(i * 9.7 + t * 0.006 + seed) * (8 + levels.high * 42);
+    const x1 = -span / 2 + amp;
+    const x2 = span / 2 + amp * 0.35;
+    phosphorLine(x1, y, x2, y, 0.06 + levels.mid * 0.42, 1 + levels.bass * 2);
+  }
+  for (let i = 0; i < 16 + levels.high * 30; i++) {
+    const y = (rng() - 0.5) * span;
+    const x = (rng() - 0.5) * span;
+    ctx.strokeStyle = `rgba(140,255,150,${0.08 + levels.high * 0.22})`;
+    ctx.strokeRect(x, y, rng() * 90, 4 + rng() * 14);
+  }
+  ctx.restore();
+}
+
+function visualizerOrbit(w, h, t, levels) {
+  drawFrame(w, h, t, levels);
+  const cx = w / 2, cy = h / 2;
+  const base = Math.min(w, h) * 0.08;
+  ctx.save();
+  ctx.translate(cx, cy);
+  const shells = 7 + (seed % 5);
+  for (let s = 1; s <= shells; s++) {
+    const r = base * s * (0.64 + levels.bass * 0.18);
+    ctx.beginPath();
+    ctx.arc(0, 0, r, 0, Math.PI * 2);
+    ctx.strokeStyle = `rgba(140,255,150,${0.05 + s / shells * 0.08})`;
+    ctx.lineWidth = 1;
+    ctx.stroke();
+    const bodies = 2 + ((seed + s) % 5);
+    for (let b = 0; b < bodies; b++) {
+      const a = t * (0.00012 + s * 0.000018) * (b % 2 ? -1 : 1) + b * Math.PI * 2 / bodies + seed;
+      const x = Math.cos(a) * r;
+      const y = Math.sin(a) * r * (0.6 + 0.3 * Math.sin(seed + s));
+      ctx.beginPath();
+      ctx.arc(x, y, 2 + levels.mid * 7, 0, Math.PI * 2);
+      ctx.fillStyle = `rgba(160,255,160,${0.24 + levels.volume * 0.7})`;
+      ctx.shadowBlur = 14;
+      ctx.shadowColor = "#00ff66";
+      ctx.fill();
+    }
+  }
+  ctx.restore();
+}
+
+function visualizerGeometry(w, h, t, levels) {
+  drawFrame(w, h, t, levels);
+  const cx = w / 2, cy = h / 2;
+  ctx.save();
+  ctx.translate(cx, cy);
+  const sides = 3 + (seed % 6);
+  const layers = 9;
+  for (let l = 0; l < layers; l++) {
+    const r = Math.min(w, h) * (0.06 + l * 0.027 + levels.bass * 0.018);
+    const rot = t * (0.00008 + l * 0.000018) * (l % 2 ? -1 : 1) + seed;
+    ctx.beginPath();
+    for (let i = 0; i <= sides; i++) {
+      const a = rot + i / sides * Math.PI * 2;
+      const x = Math.cos(a) * r;
+      const y = Math.sin(a) * r;
+      i === 0 ? ctx.moveTo(x, y) : ctx.lineTo(x, y);
+    }
+    ctx.strokeStyle = `rgba(145,255,150,${0.08 + l / layers * 0.12 + levels.mid * 0.24})`;
+    ctx.lineWidth = 1 + levels.bass * 1.5;
+    ctx.shadowBlur = 12;
+    ctx.shadowColor = "#00ff66";
+    ctx.stroke();
+  }
+  ctx.restore();
+}
+
+function makeParticles(n) {
+  const arr = [];
+  const r = mulberry32(seed);
+  for (let i = 0; i < n; i++) {
+    arr.push({
+      x: r() * 2 - 1,
+      y: r() * 2 - 1,
+      vx: (r() - 0.5) * 0.004,
+      vy: (r() - 0.5) * 0.004,
+      m: r()
+    });
+  }
+  return arr;
+}
+
+function visualizerNetwork(w, h, t, levels) {
+  drawFrame(w, h, t, levels);
+  const cx = w / 2, cy = h / 2;
+  const span = Math.min(w, h) * 0.27;
+  ctx.save();
+  ctx.translate(cx, cy);
+  for (const p of particles) {
+    p.x += p.vx * (1 + levels.mid * 6);
+    p.y += p.vy * (1 + levels.mid * 6);
+    if (Math.abs(p.x) > 1) p.vx *= -1;
+    if (Math.abs(p.y) > 1) p.vy *= -1;
+  }
+  const maxD = 0.22 + levels.bass * 0.12;
+  for (let i = 0; i < particles.length; i++) {
+    for (let j = i + 1; j < particles.length; j++) {
+      const a = particles[i], b = particles[j];
+      const d = Math.hypot(a.x - b.x, a.y - b.y);
+      if (d < maxD) {
+        phosphorLine(a.x * span, a.y * span, b.x * span, b.y * span, (1 - d / maxD) * (0.08 + levels.volume * 0.32), 1);
+      }
+    }
+  }
+  ctx.fillStyle = `rgba(160,255,160,${0.22 + levels.volume * 0.5})`;
+  for (const p of particles) {
+    ctx.fillRect(p.x * span - 1, p.y * span - 1, 2, 2);
+  }
+  ctx.restore();
+}
+
+function visualizerHybrid(w, h, t, levels) {
+  const choice = seed % 5;
+  if (choice === 0) visualizerLissajous(w, h, t, levels);
+  else if (choice === 1) visualizerOrbit(w, h, t, levels);
+  else if (choice === 2) visualizerGeometry(w, h, t, levels);
+  else if (choice === 3) visualizerGlitch(w, h, t, levels);
+  else visualizerNetwork(w, h, t, levels);
+}
+
+function animate(t) {
+  const w = innerWidth;
+  const h = innerHeight;
+  const levels = getLevels();
+  fade(w, h);
+
+  if (state === "home") {
+    const pulse = 0.04 + Math.sin(t * 0.001) * 0.02;
+    ctx.save();
+    ctx.translate(w / 2, h / 2);
+    for (let i = 0; i < 11; i++) {
+      ctx.beginPath();
+      ctx.arc(0, 0, Math.min(w, h) * (0.08 + i * 0.04), 0, Math.PI * 2);
+      ctx.strokeStyle = `rgba(120,255,130,${pulse / (i + 1)})`;
+      ctx.stroke();
+    }
+    ctx.restore();
+  } else if (currentCategory) {
+    if (currentCategory.visualizer === "field") visualizerField(w, h, t, levels);
+    else if (currentCategory.visualizer === "glitch") visualizerGlitch(w, h, t, levels);
+    else if (currentCategory.visualizer === "orbit") visualizerOrbit(w, h, t, levels);
+    else if (currentCategory.visualizer === "lissajous") visualizerLissajous(w, h, t, levels);
+    else if (currentCategory.visualizer === "geometry") visualizerGeometry(w, h, t, levels);
+    else if (currentCategory.visualizer === "network") visualizerNetwork(w, h, t, levels);
+    else visualizerHybrid(w, h, t, levels);
+  }
+
+  drawNoise(w, h, state === "home" ? 30 : 70 + levels.high * 120);
+  requestAnimationFrame(animate);
+}
+
+renderCategories();
+requestAnimationFrame(animate);
 </script>
-
 </body>
 </html>
+
