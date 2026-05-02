@@ -1,0 +1,272 @@
+1
+00:00:00,000 --> 00:00:06,120
+welcome back to the deep dive today we're uh really digging into something pretty provocative
+
+2
+00:00:06,120 --> 00:00:14,500
+the ultrasonic consciousness hypothesis the core idea that consciousness isn't just about
+
+3
+00:00:14,500 --> 00:00:21,420
+neurons firing you know electrical signals it might be fundamentally linked to well
+
+4
+00:00:21,420 --> 00:00:27,480
+mechanical vibrations across the whole brain including ultrasound stuff you can't actually
+
+5
+00:00:27,480 --> 00:00:34,220
+hear right and the really radical part is how it proposes to solve the uh the binding problem
+
+6
+00:00:34,220 --> 00:00:42,420
+how separate feelings like warmth and smell merge into one experience yeah that's a huge puzzle in
+
+7
+00:00:42,420 --> 00:00:48,900
+neuroscience this hypothesis says maybe it's not computation doing the merging maybe information
+
+8
+00:00:48,900 --> 00:00:55,880
+unifies physically within that vibrational field it's a fascinating mix isn't it biophysics neuroscience
+
+9
+00:00:55,880 --> 00:01:01,960
+even philosophy of mind but okay first things first before we get lost in the philosophy
+
+10
+00:01:01,960 --> 00:01:10,060
+we need to know can ultrasound actually do anything to brain cells physically speaking
+
+11
+00:01:10,060 --> 00:01:16,160
+is that plausible that's the key question and the science seems to say well yes
+
+12
+00:01:16,160 --> 00:01:22,620
+it's physically possible we're not talking about heating things up it's a mechanical effect
+
+13
+00:01:22,620 --> 00:01:31,500
+these sound waves exert a tiny constant pressure as they pass through tissue it's called the
+
+14
+00:01:31,500 --> 00:01:39,840
+acoustic radiation force a arf arf okay think of like a microscopic finger gently pushing and
+
+15
+00:01:39,840 --> 00:01:46,700
+stretching the outer membrane of the neurons okay i can picture the stretching but how does stretching a
+
+16
+00:01:46,700 --> 00:01:53,260
+membrane make a neuron you know fire how does that become an electrical signal ah that's where these
+
+17
+00:01:53,260 --> 00:01:59,060
+special proteins come in they're called mechanosensitive ion channels they're embedded right there in the
+
+18
+00:01:59,060 --> 00:02:06,460
+membrane mechanosensitive so they react to mechanics to being stretched exactly they literally open or
+
+19
+00:02:06,460 --> 00:02:13,760
+close channels based on that physical deformation directly changes the flow of ions which is the basis of the
+
+20
+00:02:13,760 --> 00:02:21,520
+electrical signal we even see proof in simple organisms like take this c elegans worm it reacts to
+
+21
+00:02:21,520 --> 00:02:28,640
+ultrasound in a specific way okay but if you knock out its main mechanosensitive channel called mec4
+
+22
+00:02:29,360 --> 00:02:38,080
+that behavior completely vanishes wow okay so that's a direct link vibration causes channel opening causes
+
+23
+00:02:38,080 --> 00:02:45,600
+behavior precisely precisely yeah it confirms that causal chain and this mechanism this physical
+
+24
+00:02:45,600 --> 00:02:55,440
+interaction is why transcranial focused ultrasound tfus is such a potentially powerful tool right yes
+
+25
+00:02:55,440 --> 00:03:03,840
+because sound waves unlike electrical fields can get through the skull pretty well so tfus can aim ultrasound
+
+26
+00:03:03,840 --> 00:03:11,760
+deep inside hitting structures like the thalamus the thalamus that central relay station really crucial
+
+27
+00:03:11,760 --> 00:03:18,880
+for consciousness and it can target it with incredible precision like millimeter accuracy right and there have
+
+28
+00:03:18,880 --> 00:03:26,880
+been these studies maybe preliminary but still striking linking tfus modulation of the thalamus with patients
+
+29
+00:03:26,880 --> 00:03:33,440
+showing improved signs of awareness people with severe disorders of consciousness it's definitely
+
+30
+00:03:33,440 --> 00:03:39,600
+compelling compelling and suggest we can potentially influence deep brain states using purely mechanical
+
+31
+00:03:39,600 --> 00:03:46,480
+energy but there's always a but in science isn't there there usually is and here connects to some older
+
+32
+00:03:46,480 --> 00:03:54,160
+research something called the hypersonic effect ah yes the paradox the finding that even in audible
+
+33
+00:03:54,160 --> 00:04:01,680
+high frequencies like above 20 kilohertz can cause real physiological changes right things like boosting
+
+34
+00:04:01,680 --> 00:04:08,800
+relaxing relaxing alpha brain waves increasing blood flow in the thalamus again even though the person
+
+35
+00:04:08,800 --> 00:04:15,040
+swears they didn't hear a thing okay so the body reacts even if the conscious mind doesn't register
+
+36
+00:04:15,040 --> 00:04:20,480
+the sound but that leads us straight into the big problem the critical scientific challenge here yeah
+
+37
+00:04:21,520 --> 00:04:30,000
+the indirect auditory pathway confound the confound explain that well think about how tfus works you're
+
+38
+00:04:30,000 --> 00:04:37,120
+you're sending vibrations through the skull right bone conduction exactly those vibrations inevitably travel
+
+39
+00:04:37,120 --> 00:04:43,360
+through the bone and reach the inner ear of the cochlea they activate the normal hearing pathway just
+
+40
+00:04:44,080 --> 00:04:52,320
+not through the air ah so wait if the ultrasound is basically making a sound inside your head via bone
+
+41
+00:04:52,320 --> 00:04:59,920
+conduction then maybe the effects we see like an animal suddenly moving a limb when the ultrasound hits its
+
+42
+00:04:59,920 --> 00:05:06,640
+motor cortex maybe that's not direct brain stimulation at all that's the concern it could just be an
+
+43
+00:05:06,640 --> 00:05:14,880
+involuntary startle reflex like hearing a sudden loud noise even if you don't consciously perceive it as
+
+44
+00:05:14,880 --> 00:05:23,600
+noise precisely it's a startle response triggered via the conventional auditory system this is the major
+
+45
+00:05:23,600 --> 00:05:30,480
+hurdle for the hypothesis right now so the burden of proof is really high researchers have to show that
+
+46
+00:05:30,480 --> 00:05:39,440
+these tfus effects still happen even if you somehow block that auditory pathway like in a deafened animal model
+
+47
+00:05:39,440 --> 00:05:48,000
+correct without that proof the whole exciting idea of direct ultrasonic neuromodulation could just be
+
+48
+00:05:49,440 --> 00:05:56,400
+well a very sophisticated way of startling someone okay that definitely complicates the consciousness hypothesis
+
+49
+00:05:56,400 --> 00:06:03,680
+but it raises another fascinating question doesn't it if our brains are so sensitive to vibrations even
+
+50
+00:06:03,680 --> 00:06:09,680
+unconscious ones yeah what does that mean for the sounds we live with every day especially now in
+
+51
+00:06:09,680 --> 00:06:17,920
+our world of you know digitally compressed audio mp3s streaming that's a really interesting angle if
+
+52
+00:06:17,920 --> 00:06:23,680
+you look at psychoacoustics research there's this subtle effect sometimes called the digital flat
+
+53
+00:06:23,680 --> 00:06:31,760
+effect digital flat f yeah studies suggest that lossy compression the kind used in mp3s and many streaming
+
+54
+00:06:31,760 --> 00:06:40,240
+services systematically removes those very subtle often high frequency components the stuff that makes
+
+55
+00:06:40,240 --> 00:06:48,560
+sound rich maybe the stuff related to the hypersonic effect potentially yeah and removing it seems to have
+
+56
+00:06:48,560 --> 00:06:55,840
+an emotional consequence it can slightly weaken positive emotional descriptors in music or speech
+
+57
+00:06:56,400 --> 00:07:04,560
+things like happy or calm it makes things sound less happy a bit less yeah yeah and maybe simultaneously
+
+58
+00:07:04,560 --> 00:07:11,760
+strengthens negative ones like sad or mysterious it's subtle but measurable so we've got this picture
+
+59
+00:07:12,800 --> 00:07:19,680
+our bodies react to vibrational complexity maybe even stuff we don't hear and our digital tech is actively
+
+60
+00:07:19,680 --> 00:07:26,800
+stripping that complexity away where does that leave us well that brings us to the final maybe
+
+61
+00:07:27,600 --> 00:07:35,600
+provative thought for today if and it's still a big if if consciousness or at least aspects of our brain
+
+62
+00:07:35,600 --> 00:07:43,120
+state are fundamentally tied to these mechanical vibrations influenced by those mechanosensitive channels
+
+63
+00:07:43,120 --> 00:07:52,160
+then this massive global shift towards compressed digital audio which systematically filters out that
+
+64
+00:07:52,160 --> 00:08:01,440
+subtle vibrational information could it be acting like a low-level chronic environmental stressor wow like
+
+65
+00:08:01,440 --> 00:08:10,320
+a constant tiny drag on our well-being because the sound isn't complete possibly it suggests the actual
+
+66
+00:08:10,320 --> 00:08:17,440
+quality of our sonic environment its vibrational richness might impact our collective mood and mental state
+
+67
+00:08:17,440 --> 00:08:23,840
+much more deeply than we currently realize we might be missing something important in the sounds we create
+
+68
+00:08:23,840 --> 00:08:30,160
+and consume something to definitely think about next time you hit play that's all the time we have for this deep dive
+
