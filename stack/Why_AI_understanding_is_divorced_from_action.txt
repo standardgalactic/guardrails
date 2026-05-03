@@ -605,7 +605,7 @@ The path from M to A must hold.
 But the AI doesn't exist in a vacuum.
 Right.
 It is deployed by a corporation into a society governed by laws, driven by markets and quarterly earnings.
-So Fuchin adds category R, the regulatory or institutional category.
+So Flyxion adds category R, the regulatory or institutional category.
 The laws, the economic incentives, the corporate compliance metrics, the structural container of the society.
 Right.
 The mathematical path from human norms through the institution to the AI's deployment must also preserve the moral calamits.
@@ -617,7 +617,7 @@ It has the alignment certificate.
 But it is deployed by a social media corporation whose internal incentive structure mathematically prioritizes user engagement, outrage, and ad revenue over human well-being.
 Then the institutional functor is broken.
 The system as a whole is misaligned.
-Fuchin argues that economic pressures operate independently of the AI's internal architectural properties.
+Flyxion argues that economic pressures operate independently of the AI's internal architectural properties.
 Wow.
 If the institution's optimization pressure targets a proxy-like time spent on screen instead of human well-being, you get proxy collapse at the societal level.
 So no amount of brilliant mathematical architecture in the AI agent can compensate for an institutional functor that is fundamentally greedy.

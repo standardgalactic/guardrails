@@ -173,7 +173,7 @@ Shannon was primarily concerned with the fidelity of transmission across a noisy
 His foundational problem was basically, how do we send a pre-existing, fully formed message from a sender to a receiver without the signal degrading due to static or entropy?
 So Shannon treats the message as an object.
 Yes. Information theory treats the message as an object that is encoded, transmitted, and decoded.
-Whereas Flishan's theory isn't about transmitting a finished object at all.
+Whereas Flyxion's theory isn't about transmitting a finished object at all.
 It's about the stability of the identity itself, as it is repeatedly built from scratch.
 It cares about how a structure survives the process of constant re-instantiation across time, not just across spatial channels.
 Exactly. And when we compare it to classical dynamical systems theory, we see another vital departure.
@@ -787,6 +787,6 @@ what new fixed point would you inevitably mathematically converge toward?
 Think about that the next time you feel like you were just standing still.
 You aren't.
 You're a flame.
-Thank you for taking this duck dive with us today.
+Thank you for taking this deep dive with us today.
 Encourage you to observe the flames of dynamical stability in your own world.
 We'll catch you next time.
